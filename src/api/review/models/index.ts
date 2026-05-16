@@ -7,6 +7,7 @@
 
 export * from "./createReviewRequestContent";
 export * from "./createReviewResponseContent";
+export * from "./duplicatedEntityResponseContent";
 export * from "./getReviewResponseContent";
 export * from "./listReviewsOutputPayload";
 export * from "./listReviewsParams";

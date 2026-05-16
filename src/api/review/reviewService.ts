@@ -23,6 +23,7 @@ import type {
 import type {
 	CreateReviewRequestContent,
 	CreateReviewResponseContent,
+	DuplicatedEntityResponseContent,
 	GetReviewResponseContent,
 	ListReviewsOutputPayload,
 	ListReviewsParams,
@@ -201,10 +202,21 @@ export type createReviewResponse200 = {
 	status: 200;
 };
 
+export type createReviewResponse422 = {
+	data: DuplicatedEntityResponseContent;
+	status: 422;
+};
+
 export type createReviewResponseSuccess = createReviewResponse200 & {
 	headers: Headers;
 };
-export type createReviewResponse = createReviewResponseSuccess;
+export type createReviewResponseError = createReviewResponse422 & {
+	headers: Headers;
+};
+
+export type createReviewResponse =
+	| createReviewResponseSuccess
+	| createReviewResponseError;
 
 export const getCreateReviewUrl = () => {
 	return `/api/reviews`;
@@ -232,7 +244,7 @@ export const createReview = async (
 };
 
 export const getCreateReviewMutationOptions = <
-	TError = unknown,
+	TError = DuplicatedEntityResponseContent,
 	TContext = unknown,
 >(options?: {
 	mutation?: UseMutationOptions<
@@ -273,9 +285,12 @@ export type CreateReviewMutationResult = NonNullable<
 	Awaited<ReturnType<typeof createReview>>
 >;
 export type CreateReviewMutationBody = CreateReviewRequestContent;
-export type CreateReviewMutationError = unknown;
+export type CreateReviewMutationError = DuplicatedEntityResponseContent;
 
-export const useCreateReview = <TError = unknown, TContext = unknown>(
+export const useCreateReview = <
+	TError = DuplicatedEntityResponseContent,
+	TContext = unknown,
+>(
 	options?: {
 		mutation?: UseMutationOptions<
 			Awaited<ReturnType<typeof createReview>>,

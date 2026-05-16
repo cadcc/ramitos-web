@@ -73,9 +73,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			notifySessionExpired();
 			return undefined;
 		}
-
-		const timeoutId = window.setTimeout(notifySessionExpired, delay);
-		return () => window.clearTimeout(timeoutId);
 	}, [user]);
 
 	useEffect(() => {
