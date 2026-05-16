@@ -7,13 +7,19 @@ import {
 	useEffect,
 	type ReactNode,
 } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Alert, Snackbar } from "@mui/material";
 import type { User, AccountRole } from "../api/types";
 import { mockUsers } from "../api/mockData";
 import {
 	clearSession,
 	fetchCurrentUser,
+	getStoredToken,
+	getTokenExpirationTime,
 	loadStoredUser,
 	loginWithPassword,
+	notifySessionExpired,
+	onSessionExpired,
 	storeDevSession,
 	type LoginCredentials,
 } from "../api/auth";
@@ -39,10 +45,38 @@ interface AuthContextValue extends AuthState {
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+	const queryClient = useQueryClient();
 	const [user, setUser] = useState<User | null>(loadStoredUser);
 	const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 	const [loginPending, setLoginPending] = useState(false);
 	const [loginError, setLoginError] = useState<string | null>(null);
+	const [sessionExpiredOpen, setSessionExpiredOpen] = useState(false);
+
+	const expireSession = useCallback(() => {
+		clearSession();
+		setUser(null);
+		setLoginDialogOpen(false);
+		setLoginError(null);
+		setSessionExpiredOpen(true);
+		queryClient.removeQueries({ queryKey: ["ownReview"] });
+	}, [queryClient]);
+
+	useEffect(() => onSessionExpired(expireSession), [expireSession]);
+
+	useEffect(() => {
+		if (!user) return undefined;
+		const expiresAt = getTokenExpirationTime(getStoredToken());
+		if (expiresAt === null) return undefined;
+
+		const delay = expiresAt - Date.now();
+		if (delay <= 0) {
+			notifySessionExpired();
+			return undefined;
+		}
+
+		const timeoutId = window.setTimeout(notifySessionExpired, delay);
+		return () => window.clearTimeout(timeoutId);
+	}, [user]);
 
 	useEffect(() => {
 		let active = true;
@@ -88,6 +122,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		setUser(null);
 	}, []);
 
+	const closeSessionExpiredSnackbar = useCallback(() => {
+		setSessionExpiredOpen(false);
+	}, []);
+
 	const openLoginDialog = useCallback(() => {
 		setLoginError(null);
 		setLoginDialogOpen(true);
@@ -124,7 +162,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		closeLoginDialog,
 	]);
 
-	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={value}>
+			{children}
+			<Snackbar
+				open={sessionExpiredOpen}
+				autoHideDuration={6000}
+				onClose={closeSessionExpiredSnackbar}
+				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+			>
+				<Alert
+					severity="warning"
+					variant="filled"
+					onClose={closeSessionExpiredSnackbar}
+					sx={{ width: "100%" }}
+				>
+					Tu sesion expiro. Vuelve a iniciar sesion para continuar.
+				</Alert>
+			</Snackbar>
+		</AuthContext.Provider>
+	);
 }
 
 export function useAuth() {

@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { listCourseReviews } from "./anonymous-review/anonymousReviewService";
 import type { AnonymousReview } from "./anonymous-review/models";
-import { getAuthHeaders } from "./auth";
+import { getAuthHeaders, handleAuthenticatedResponse } from "./auth";
 import { listReviews } from "./review/reviewService";
 import type { Review as AuthenticatedReview } from "./review/models";
 import type { CourseRatings, Review, ReviewSort } from "./types";
@@ -161,6 +161,9 @@ export async function getOwnCourseReview(
 		{ course_id: courseId, account_id: accountId, limit: 1 },
 		{ headers: getAuthHeaders() },
 	);
+	if (handleAuthenticatedResponse((response as { status: number }).status)) {
+		return null;
+	}
 	if ((response as { status: number }).status >= 400) return null;
 	const review = response.data[0];
 	return review ? authenticatedReviewToReview(courseId, review) : null;

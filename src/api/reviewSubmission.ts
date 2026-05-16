@@ -1,4 +1,4 @@
-import { getAuthHeaders } from "./auth";
+import { getAuthHeaders, handleAuthenticatedResponse } from "./auth";
 import { createReview } from "./review/reviewService";
 import type { CreateReviewResponseContent } from "./review/models";
 import type { ReviewSubmission } from "./types";
@@ -16,6 +16,9 @@ export async function submitCourseReview(
 		{ headers: getAuthHeaders() },
 	);
 
+	if (handleAuthenticatedResponse((response as { status: number }).status)) {
+		throw new Error("Session expired");
+	}
 	if ((response as { status: number }).status >= 400) {
 		throw new Error("Review submission failed");
 	}
