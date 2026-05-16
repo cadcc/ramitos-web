@@ -22,12 +22,16 @@ import {
 	ArrowBack as BackIcon,
 	RateReview as ReviewIcon,
 } from "@mui/icons-material";
-import { getCourseById, getCourseReviews } from "../../api/client";
+import { getCourseReviews } from "../../api/client";
+import {
+	CURRENT_SEMESTER,
+	getCourseDetail,
+	getRelatedCourses,
+} from "../../api/courseDetail";
 import {
 	getAverageScore,
-	getRelatedCourses,
 	getTagColor,
-} from "../../api/mockData";
+} from "../../constants/courseDisplay";
 import CategoryIcon from "../../components/CategoryIcon";
 import type { ReviewSort } from "../../api/types";
 import CourseRadar from "../../components/CourseRadar";
@@ -35,8 +39,6 @@ import ReviewCard from "../../components/ReviewCard";
 import ReviewForm from "../../components/ReviewForm";
 import SemesterGraph from "../../components/SemesterGraph";
 import { useAuth } from "../../contexts/AuthContext";
-
-const CURRENT_SEMESTER = "2026-1";
 
 const searchSchema = z.object({
 	reviewSort: z.enum(["newest", "top"]).optional().default("newest"),
@@ -63,7 +65,7 @@ function CoursePage() {
 
 	const courseQuery = useQuery({
 		queryKey: ["course", cursoId],
-		queryFn: () => getCourseById(cursoId),
+		queryFn: () => getCourseDetail(cursoId),
 	});
 
 	const reviewsQuery = useInfiniteQuery({

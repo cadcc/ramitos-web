@@ -2,7 +2,7 @@ import { Card, CardContent, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Link } from "@tanstack/react-router";
 import type { CursoListItem, CourseRatings } from "../api/types";
-import { getAverageScore } from "../api/mockData";
+import { getAverageScore } from "../constants/courseDisplay";
 
 const CURRENT_SEMESTER = "2026-1";
 

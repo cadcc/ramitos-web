@@ -23,7 +23,7 @@ import {
 	MODALITY_TAGS,
 	AXIS_COLORS,
 	type TagItem,
-} from "../api/mockData";
+} from "../constants/courseDisplay";
 import { MAX_REVIEW_COMMENT_LENGTH } from "../constants/reviews";
 
 interface Props {

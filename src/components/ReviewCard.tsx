@@ -21,7 +21,7 @@ import { reactToReview } from "../api/client";
 import ReviewCommentMarkdown from "./ReviewCommentMarkdown";
 import type { Review } from "../api/types";
 import { useAuth } from "../contexts/AuthContext";
-import { AXIS_COLORS, getTagColor } from "../api/mockData";
+import { AXIS_COLORS, getTagColor } from "../constants/courseDisplay";
 
 interface Props {
 	review: Review;

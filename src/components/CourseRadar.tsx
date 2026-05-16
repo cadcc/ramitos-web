@@ -9,7 +9,7 @@ import {
 	Tooltip,
 } from "recharts";
 import type { CourseRatings } from "../api/types";
-import { AXIS_COLORS } from "../api/mockData";
+import { AXIS_COLORS } from "../constants/courseDisplay";
 
 interface Props {
 	ratings: CourseRatings;
