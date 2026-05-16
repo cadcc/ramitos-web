@@ -27,7 +27,7 @@ import {
 	getCourseDetail,
 	getRelatedCourses,
 } from "../../api/courseDetail";
-import { getCourseReviewsPage } from "../../api/courseReviews";
+import { getCourseReviewsPage, getOwnCourseReview } from "../../api/courseReviews";
 import {
 	getAverageScore,
 	getTagColor,
@@ -59,7 +59,7 @@ function CoursePage() {
 	const { cursoId } = Route.useParams();
 	const { reviewSort } = Route.useSearch();
 	const navigate = useNavigate({ from: "/curso/$cursoId" });
-	const { isAuthenticated, openLoginDialog } = useAuth();
+	const { user, isAuthenticated, openLoginDialog } = useAuth();
 	const loadMoreRef = useRef<HTMLDivElement>(null);
 	const [reviewFormOpen, setReviewFormOpen] = useState(false);
 
@@ -74,6 +74,12 @@ function CoursePage() {
 			getCourseReviewsPage(cursoId, reviewSort as ReviewSort, pageParam),
 		initialPageParam: undefined as number | undefined,
 		getNextPageParam: (last) => last.nextCursor ?? undefined,
+	});
+
+	const ownReviewQuery = useQuery({
+		queryKey: ["ownReview", cursoId, user?.id],
+		queryFn: () => getOwnCourseReview(cursoId, user!.id),
+		enabled: isAuthenticated && user !== null,
 	});
 
 	useEffect(() => {
@@ -120,6 +126,7 @@ function CoursePage() {
 	}
 
 	const allReviews = reviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+	const ownReview = ownReviewQuery.data ?? null;
 	const avg = getAverageScore(course.ratings);
 	const related = getRelatedCourses(cursoId, 3);
 
@@ -460,7 +467,7 @@ function CoursePage() {
 								transition: "all 0.2s ease",
 							}}
 						>
-							Opinar
+							{ownReview ? "Editar opinion" : "Opinar"}
 						</Button>
 					</Box>
 
@@ -479,7 +486,11 @@ function CoursePage() {
 							</Typography>
 						) : (
 							allReviews.map((review) => (
-								<ReviewCard key={review.id} review={review} />
+								<ReviewCard
+									key={review.id}
+									review={review}
+									isOwnReview={ownReview?.id === review.id}
+								/>
 							))
 						)}
 					</Stack>
@@ -502,6 +513,7 @@ function CoursePage() {
 						cursoId={cursoId}
 						open={reviewFormOpen}
 						onClose={() => setReviewFormOpen(false)}
+						initialReview={ownReview}
 					/>
 				)}
 			</Box>

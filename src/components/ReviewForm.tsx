@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	Box,
 	Typography,
@@ -16,8 +16,9 @@ import {
 import { alpha } from "@mui/material/styles";
 import { Send as SendIcon } from "@mui/icons-material";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postReview } from "../api/client";
 import type { CourseRatings, ReviewSubmission } from "../api/types";
+import type { Review } from "../api/types";
+import { submitCourseReview } from "../api/reviewSubmission";
 import {
 	AXIS_TAGS,
 	MODALITY_TAGS,
@@ -30,6 +31,7 @@ interface Props {
 	cursoId: string;
 	open: boolean;
 	onClose: () => void;
+	initialReview?: Review | null;
 }
 
 interface AxisDef {
@@ -80,16 +82,29 @@ const axes: AxisDef[] = [
 	},
 ];
 
-export default function ReviewForm({ cursoId, open, onClose }: Props) {
+export default function ReviewForm({
+	cursoId,
+	open,
+	onClose,
+	initialReview,
+}: Props) {
 	const qc = useQueryClient();
 	const [ratings, setRatings] = useState<Partial<CourseRatings>>({});
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 	const [comment, setComment] = useState("");
 
+	useEffect(() => {
+		if (!open) return;
+		setRatings(initialReview?.ratings ?? {});
+		setSelectedTags(initialReview?.tags ?? []);
+		setComment(initialReview?.comment ?? "");
+	}, [initialReview, open]);
+
 	const mutation = useMutation({
-		mutationFn: postReview,
+		mutationFn: submitCourseReview,
 		onSuccess: () => {
 			qc.invalidateQueries({ queryKey: ["reviews", cursoId] });
+			qc.invalidateQueries({ queryKey: ["ownReview", cursoId] });
 			qc.invalidateQueries({ queryKey: ["course", cursoId] });
 			setComment("");
 			setSelectedTags([]);
@@ -112,6 +127,7 @@ export default function ReviewForm({ cursoId, open, onClose }: Props) {
 		};
 		const submission: ReviewSubmission = {
 			cursoId,
+			// TODO(backend): Review creation does not persist term metadata yet.
 			year: 2026,
 			semester: 1,
 			comment,
@@ -534,7 +550,7 @@ export default function ReviewForm({ cursoId, open, onClose }: Props) {
 				>
 					{mutation.isPending
 						? "Publicando..."
-						: `Publicar${filledCount < 5 ? ` (${filledCount}/5)` : ""}`}
+						: `${initialReview ? "Guardar cambios" : "Publicar"}${filledCount < 5 ? ` (${filledCount}/5)` : ""}`}
 				</Button>
 			</DialogActions>
 		</Dialog>

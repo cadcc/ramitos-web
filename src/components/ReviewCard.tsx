@@ -26,6 +26,7 @@ import { AXIS_COLORS, getTagColor } from "../constants/courseDisplay";
 interface Props {
 	review: Review;
 	showCourseName?: string;
+	isOwnReview?: boolean;
 	onHide?: (id: number) => void;
 }
 
@@ -90,7 +91,12 @@ function getCollapsedExcerpt(md: string): {
 	return { excerpt: t, truncated: false };
 }
 
-export default function ReviewCard({ review, showCourseName, onHide }: Props) {
+export default function ReviewCard({
+	review,
+	showCourseName,
+	isOwnReview = false,
+	onHide,
+}: Props) {
 	const qc = useQueryClient();
 	const { isAuthenticated, openLoginDialog } = useAuth();
 	const [activeReactions, setActiveReactions] = useState<Set<string>>(
@@ -226,41 +232,48 @@ export default function ReviewCard({ review, showCourseName, onHide }: Props) {
 								</Typography>
 							</Box>
 
-							{review.tags.length > 0 && (
-								<Stack
-									direction="row"
-									spacing={0.5}
-									sx={{
-										flexWrap: "wrap",
-										gap: 0.5,
-										justifyContent: "flex-end",
-									}}
-								>
-									{review.tags.map((tag) => {
-										const tagColor = getTagColor(tag);
-										return (
-											<Chip
-												key={tag}
-												label={tag}
-												size="small"
-												sx={{
-													fontSize: "0.65rem",
-													height: 20,
-													...(tagColor
-														? {
-																borderColor: alpha(tagColor, 0.5),
-																color: tagColor,
-																borderWidth: 1,
-																borderStyle: "solid",
-																bgcolor: alpha(tagColor, 0.06),
-															}
-														: {}),
-												}}
-											/>
-										);
-									})}
-								</Stack>
-							)}
+							<Stack
+								direction="row"
+								spacing={0.5}
+								sx={{
+									flexWrap: "wrap",
+									gap: 0.5,
+									justifyContent: "flex-end",
+								}}
+							>
+								{isOwnReview && (
+									<Chip
+										label="Tu opinion"
+										size="small"
+										color="success"
+										variant="outlined"
+										sx={{ fontSize: "0.65rem", height: 20, fontWeight: 700 }}
+									/>
+								)}
+								{review.tags.map((tag) => {
+									const tagColor = getTagColor(tag);
+									return (
+										<Chip
+											key={tag}
+											label={tag}
+											size="small"
+											sx={{
+												fontSize: "0.65rem",
+												height: 20,
+												...(tagColor
+													? {
+															borderColor: alpha(tagColor, 0.5),
+															color: tagColor,
+															borderWidth: 1,
+															borderStyle: "solid",
+															bgcolor: alpha(tagColor, 0.06),
+														}
+													: {}),
+											}}
+										/>
+									);
+								})}
+							</Stack>
 						</Box>
 
 						{review.comment.trim() ? (

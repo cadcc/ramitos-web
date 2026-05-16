@@ -1,6 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { listCourseReviews } from "./anonymous-review/anonymousReviewService";
 import type { AnonymousReview } from "./anonymous-review/models";
+import { getAuthHeaders } from "./auth";
+import { listReviews } from "./review/reviewService";
+import type { Review as AuthenticatedReview } from "./review/models";
 import type { CourseRatings, Review, ReviewSort } from "./types";
 
 const PAGE_SIZE = 10;
@@ -33,7 +36,7 @@ function ratingValue(value: number | undefined): number {
 	return Math.max(0, Math.min(5, value ?? 0));
 }
 
-function toRatings(review: AnonymousReview): CourseRatings {
+function toRatings(review: { stats: AnonymousReview["stats"] }): CourseRatings {
 	return {
 		carga: ratingValue(review.stats.carga),
 		dificultad: ratingValue(review.stats.dificultad),
@@ -43,17 +46,17 @@ function toRatings(review: AnonymousReview): CourseRatings {
 	};
 }
 
-function fallbackTerm(courseId: string, review: AnonymousReview) {
+function fallbackTerm(courseId: string, reviewId: number) {
 	// TODO(backend): Replace with the term when the reviewed course was taken.
-	return withReviewSeed(courseId, review.id, 100, () => ({
+	return withReviewSeed(courseId, reviewId, 100, () => ({
 		year: faker.number.int({ min: 2022, max: 2026 }),
 		semester: faker.helpers.arrayElement([1, 2] as const),
 	}));
 }
 
-function fallbackReactionCounts(courseId: string, review: AnonymousReview) {
+function fallbackReactionCounts(courseId: string, reviewId: number) {
 	// TODO(backend): Replace with persisted review reaction counts.
-	return withReviewSeed(courseId, review.id, 200, () => ({
+	return withReviewSeed(courseId, reviewId, 200, () => ({
 		likes: faker.number.int({ min: 0, max: 28 }),
 		dislikes: faker.number.int({ min: 0, max: 6 }),
 		funny: faker.number.int({ min: 0, max: 10 }),
@@ -61,8 +64,8 @@ function fallbackReactionCounts(courseId: string, review: AnonymousReview) {
 }
 
 function toReview(courseId: string, review: AnonymousReview): Review {
-	const term = fallbackTerm(courseId, review);
-	const reactions = fallbackReactionCounts(courseId, review);
+	const term = fallbackTerm(courseId, review.id);
+	const reactions = fallbackReactionCounts(courseId, review.id);
 
 	return {
 		id: review.id,
@@ -70,6 +73,28 @@ function toReview(courseId: string, review: AnonymousReview): Review {
 		year: term.year,
 		semester: term.semester,
 		comment: review.comments,
+		ratings: toRatings(review),
+		tags: review.tags,
+		...reactions,
+		// TODO(backend): Replace with moderation status once exposed on reviews.
+		hidden: false,
+		createdAt: review.created_at,
+	};
+}
+
+export function authenticatedReviewToReview(
+	courseId: string,
+	review: AuthenticatedReview,
+): Review {
+	const term = fallbackTerm(courseId, review.id);
+	const reactions = fallbackReactionCounts(courseId, review.id);
+
+	return {
+		id: review.id,
+		cursoId: courseId,
+		year: term.year,
+		semester: term.semester,
+		comment: review.comments ?? "",
 		ratings: toRatings(review),
 		tags: review.tags,
 		...reactions,
@@ -126,4 +151,17 @@ export async function getCourseReviewsPage(
 		// TODO(backend): Replace loaded-page count with explicit total review count.
 		total: response.data.length,
 	};
+}
+
+export async function getOwnCourseReview(
+	courseId: string,
+	accountId: number,
+): Promise<Review | null> {
+	const response = await listReviews(
+		{ course_id: courseId, account_id: accountId, limit: 1 },
+		{ headers: getAuthHeaders() },
+	);
+	if ((response as { status: number }).status >= 400) return null;
+	const review = response.data[0];
+	return review ? authenticatedReviewToReview(courseId, review) : null;
 }
