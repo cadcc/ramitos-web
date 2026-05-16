@@ -7,11 +7,9 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "format": "prettier \"src/**/*\" --write",
-    "update-api": "node --experimental-strip-types api/fetch-schemas.ts"
+    "format": "prettier \"src/**/*\" --write"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -29,6 +27,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@tanstack/react-query-devtools": "^5.99.0",
     "@tanstack/router-devtools": "^1.166.13",
     "@tanstack/router-plugin": "^1.167.18",
@@ -38,10 +37,16 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "jsdom": "^29.0.2",
+    "msw": "^2.14.6",
     "orval": "^8.10.0",
     "prettier": "^3.8.3",
     "typescript": "^6.0.2",
     "vite": "^8.0.8",
     "vitest": "^4.1.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

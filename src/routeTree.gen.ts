@@ -8,88 +8,88 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as CursoCursoIdRouteImport } from './routes/curso/$cursoId'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as AdminRouteImport } from "./routes/admin";
+import { Route as IndexRouteImport } from "./routes/index";
+import { Route as CursoCursoIdRouteImport } from "./routes/curso/$cursoId";
 
 const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/admin",
+	path: "/admin",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/",
+	path: "/",
+	getParentRoute: () => rootRouteImport,
+} as any);
 const CursoCursoIdRoute = CursoCursoIdRouteImport.update({
-  id: '/curso/$cursoId',
-  path: '/curso/$cursoId',
-  getParentRoute: () => rootRouteImport,
-} as any)
+	id: "/curso/$cursoId",
+	path: "/curso/$cursoId",
+	getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/curso/$cursoId': typeof CursoCursoIdRoute
+	"/": typeof IndexRoute;
+	"/admin": typeof AdminRoute;
+	"/curso/$cursoId": typeof CursoCursoIdRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/curso/$cursoId': typeof CursoCursoIdRoute
+	"/": typeof IndexRoute;
+	"/admin": typeof AdminRoute;
+	"/curso/$cursoId": typeof CursoCursoIdRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/curso/$cursoId': typeof CursoCursoIdRoute
+	__root__: typeof rootRouteImport;
+	"/": typeof IndexRoute;
+	"/admin": typeof AdminRoute;
+	"/curso/$cursoId": typeof CursoCursoIdRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/curso/$cursoId'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/curso/$cursoId'
-  id: '__root__' | '/' | '/admin' | '/curso/$cursoId'
-  fileRoutesById: FileRoutesById
+	fileRoutesByFullPath: FileRoutesByFullPath;
+	fullPaths: "/" | "/admin" | "/curso/$cursoId";
+	fileRoutesByTo: FileRoutesByTo;
+	to: "/" | "/admin" | "/curso/$cursoId";
+	id: "__root__" | "/" | "/admin" | "/curso/$cursoId";
+	fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
-  CursoCursoIdRoute: typeof CursoCursoIdRoute
+	IndexRoute: typeof IndexRoute;
+	AdminRoute: typeof AdminRoute;
+	CursoCursoIdRoute: typeof CursoCursoIdRoute;
 }
 
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/curso/$cursoId': {
-      id: '/curso/$cursoId'
-      path: '/curso/$cursoId'
-      fullPath: '/curso/$cursoId'
-      preLoaderRoute: typeof CursoCursoIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-  }
+declare module "@tanstack/react-router" {
+	interface FileRoutesByPath {
+		"/admin": {
+			id: "/admin";
+			path: "/admin";
+			fullPath: "/admin";
+			preLoaderRoute: typeof AdminRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/": {
+			id: "/";
+			path: "/";
+			fullPath: "/";
+			preLoaderRoute: typeof IndexRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+		"/curso/$cursoId": {
+			id: "/curso/$cursoId";
+			path: "/curso/$cursoId";
+			fullPath: "/curso/$cursoId";
+			preLoaderRoute: typeof CursoCursoIdRouteImport;
+			parentRoute: typeof rootRouteImport;
+		};
+	}
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
-  CursoCursoIdRoute: CursoCursoIdRoute,
-}
+	IndexRoute: IndexRoute,
+	AdminRoute: AdminRoute,
+	CursoCursoIdRoute: CursoCursoIdRoute,
+};
 export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+	._addFileChildren(rootRouteChildren)
+	._addFileTypes<FileRouteTypes>();

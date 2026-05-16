@@ -1,3 +1,5 @@
+// TODO: DEPRECATE THIS
+
 import type {
 	Curso,
 	CursoListItem,

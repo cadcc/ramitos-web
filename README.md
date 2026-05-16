@@ -20,13 +20,14 @@ pnpm run dev
 
 ### API schemas
 
-When adding a new service: add it to `api/services.json`
-
-To fetch the latest OpenAPI definitions for all services:
+Updating the schemas:
 
 ```bash
-pnpm run update-api
+pnpm orval
 ```
+
+When adding a new service: add it to `orval.config.tsn`
+For mocking your new service: add it to `src/main.tsx`
 
 ### Before commit
 

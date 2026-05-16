@@ -1,3 +1,5 @@
+// TODO: DEPRECATE THIS
+
 export type AccountRole = "none" | "stats" | "mod" | "admin";
 
 export interface User {
