@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "format": "prettier \"src/**/*\" --write"
+    "format": "prettier \"src/**/*\" --write",
+    "update-api": "node --experimental-strip-types api/fetch-schemas.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -32,10 +33,12 @@
     "@tanstack/router-devtools": "^1.166.13",
     "@tanstack/router-plugin": "^1.167.18",
     "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "jsdom": "^29.0.2",
+    "orval": "^8.10.0",
     "prettier": "^3.8.3",
     "typescript": "^6.0.2",
     "vite": "^8.0.8",

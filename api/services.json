@@ -1,0 +1,7 @@
+{
+    "account-service": "/docs/specs/cl.cadcc.ramitos.schema.AccountService.json",
+    "anonymous-review-service": "/docs/specs/cl.cadcc.ramitos.schema.AnonymousReviewService.json",
+    "authentication-service": "/docs/specs/cl.cadcc.ramitos.schema.AuthenticationService.json",
+    "course-service": "/docs/specs/cl.cadcc.ramitos.schema.CourseService.json",
+    "review-service": "/docs/specs/cl.cadcc.ramitos.schema.ReviewService.json"
+}
