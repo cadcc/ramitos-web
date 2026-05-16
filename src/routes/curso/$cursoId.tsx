@@ -22,12 +22,12 @@ import {
 	ArrowBack as BackIcon,
 	RateReview as ReviewIcon,
 } from "@mui/icons-material";
-import { getCourseReviews } from "../../api/client";
 import {
 	CURRENT_SEMESTER,
 	getCourseDetail,
 	getRelatedCourses,
 } from "../../api/courseDetail";
+import { getCourseReviewsPage } from "../../api/courseReviews";
 import {
 	getAverageScore,
 	getTagColor,
@@ -71,8 +71,8 @@ function CoursePage() {
 	const reviewsQuery = useInfiniteQuery({
 		queryKey: ["reviews", cursoId, reviewSort],
 		queryFn: ({ pageParam }) =>
-			getCourseReviews(cursoId, reviewSort as ReviewSort, pageParam),
-		initialPageParam: undefined as string | undefined,
+			getCourseReviewsPage(cursoId, reviewSort as ReviewSort, pageParam),
+		initialPageParam: undefined as number | undefined,
 		getNextPageParam: (last) => last.nextCursor ?? undefined,
 	});
 
