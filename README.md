@@ -1,2 +1,11 @@
-# ramitos-web
-Frontend for Ramitos API
+# Ramitos Web
+
+Work in progress.
+
+## Development
+
+```bash
+pnpm install
+
+pnpm run dev
+```

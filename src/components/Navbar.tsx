@@ -1,0 +1,274 @@
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	Button,
+	IconButton,
+	Avatar,
+	Menu,
+	MenuItem,
+	Divider,
+	Box,
+	ListItemIcon,
+	ListItemText,
+	Tooltip,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	DialogActions,
+	Stack,
+} from "@mui/material";
+import {
+	Logout as LogoutIcon,
+	DarkMode as DarkModeIcon,
+	LightMode as LightModeIcon,
+	Person as PersonIcon,
+	Stars as StarsIcon,
+	Badge as BadgeIcon,
+	AdminPanelSettings as AdminIcon,
+} from "@mui/icons-material";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useAuth } from "../contexts/AuthContext";
+import { useThemeMode } from "../contexts/ThemeContext";
+import { useState } from "react";
+
+function getInitials(name: string): string {
+	return name
+		.split(" ")
+		.map((w) => w[0])
+		.join("")
+		.toUpperCase()
+		.slice(0, 2);
+}
+
+export default function Navbar() {
+	const {
+		user,
+		isAuthenticated,
+		isAdmin,
+		login,
+		logout,
+		loginDialogOpen,
+		openLoginDialog,
+		closeLoginDialog,
+	} = useAuth();
+	const { mode, toggleTheme } = useThemeMode();
+	const navigate = useNavigate();
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
+		setAnchorEl(e.currentTarget);
+	const handleClose = () => setAnchorEl(null);
+
+	const handleLogout = () => {
+		handleClose();
+		logout();
+		navigate({ to: "/" });
+	};
+
+	const handleLogin = (role: "stats" | "admin") => {
+		login(role);
+	};
+
+	return (
+		<>
+			<AppBar
+				position="sticky"
+				elevation={0}
+				sx={{
+					bgcolor: "background.paper",
+					color: "text.primary",
+					borderBottom: 1,
+					borderColor: "divider",
+					backdropFilter: "blur(12px)",
+					backgroundColor: (t) =>
+						t.palette.mode === "light"
+							? "rgba(255, 252, 240, 0.9)"
+							: "rgba(7, 54, 66, 0.9)",
+				}}
+			>
+				<Toolbar sx={{ gap: 1 }}>
+					<Link
+						to="/"
+						style={{
+							textDecoration: "none",
+							color: "inherit",
+							display: "flex",
+							alignItems: "center",
+						}}
+					>
+						<Box
+							component="img"
+							src="/logo.png"
+							alt="Ramitos"
+							sx={{
+								height: 36,
+								mr: 0.5,
+								transition: "transform 0.5s ease",
+								"&:hover": { transform: "rotate(360deg)" },
+							}}
+						/>
+						<Box sx={{ display: "flex", alignItems: "baseline", gap: 0.5 }}>
+							<Typography
+								variant="h5"
+								sx={{
+									fontFamily: '"Space Grotesk", sans-serif',
+									fontWeight: 800,
+									color: "primary.main",
+									letterSpacing: "-0.03em",
+									fontSize: "1.4rem",
+								}}
+							>
+								ramitos
+							</Typography>
+							<Typography
+								variant="caption"
+								sx={{
+									color: "text.secondary",
+									fontSize: "0.65rem",
+									fontWeight: 500,
+								}}
+							>
+								DCC
+							</Typography>
+						</Box>
+					</Link>
+
+					<Box sx={{ flexGrow: 1 }} />
+
+					<Tooltip title={mode === "light" ? "Modo oscuro" : "Modo claro"}>
+						<IconButton onClick={toggleTheme} size="small" color="inherit">
+							{mode === "light" ? (
+								<DarkModeIcon fontSize="small" />
+							) : (
+								<LightModeIcon fontSize="small" />
+							)}
+						</IconButton>
+					</Tooltip>
+
+					{isAuthenticated && user ? (
+						<>
+							<IconButton onClick={handleMenu} size="small">
+								<Avatar
+									sx={{
+										width: 32,
+										height: 32,
+										bgcolor: "primary.main",
+										fontSize: "0.8rem",
+										fontWeight: 700,
+									}}
+								>
+									{getInitials(user.name)}
+								</Avatar>
+							</IconButton>
+							<Menu
+								anchorEl={anchorEl}
+								open={Boolean(anchorEl)}
+								onClose={handleClose}
+								transformOrigin={{ horizontal: "right", vertical: "top" }}
+								anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+								slotProps={{
+									paper: { sx: { minWidth: 220, mt: 1 } },
+								}}
+							>
+								<MenuItem disabled>
+									<ListItemIcon>
+										<PersonIcon fontSize="small" />
+									</ListItemIcon>
+									<ListItemText
+										primary={user.name}
+										secondary={`ID: ${user.id}`}
+									/>
+								</MenuItem>
+								<MenuItem disabled>
+									<ListItemIcon>
+										<StarsIcon fontSize="small" />
+									</ListItemIcon>
+									<ListItemText primary={`${user.score} puntos`} />
+								</MenuItem>
+								<MenuItem disabled>
+									<ListItemIcon>
+										<BadgeIcon fontSize="small" />
+									</ListItemIcon>
+									<ListItemText
+										primary={
+											user.role === "admin" ? "Administrador" : "Estudiante"
+										}
+									/>
+								</MenuItem>
+								{isAdmin && (
+									<Box>
+										<Divider />
+										<MenuItem
+											onClick={() => {
+												handleClose();
+												navigate({ to: "/admin" });
+											}}
+										>
+											<ListItemIcon>
+												<AdminIcon fontSize="small" />
+											</ListItemIcon>
+											<ListItemText primary="Panel Admin" />
+										</MenuItem>
+									</Box>
+								)}
+								<Divider />
+								<MenuItem onClick={handleLogout}>
+									<ListItemIcon>
+										<LogoutIcon fontSize="small" />
+									</ListItemIcon>
+									<ListItemText primary="Cerrar sesión" />
+								</MenuItem>
+							</Menu>
+						</>
+					) : (
+						<Button variant="contained" size="small" onClick={openLoginDialog}>
+							Ingresar
+						</Button>
+					)}
+				</Toolbar>
+			</AppBar>
+
+			<Dialog
+				open={loginDialogOpen}
+				onClose={closeLoginDialog}
+				maxWidth="xs"
+				fullWidth
+			>
+				<DialogTitle
+					sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 }}
+				>
+					Ingresar a Ramitos
+				</DialogTitle>
+				<DialogContent>
+					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+						Selecciona un perfil de prueba para continuar.
+					</Typography>
+					<Stack spacing={1.5}>
+						<Button
+							variant="outlined"
+							fullWidth
+							startIcon={<PersonIcon />}
+							onClick={() => handleLogin("stats")}
+							sx={{ justifyContent: "flex-start", py: 1.5 }}
+						>
+							Estudiante Demo
+						</Button>
+						<Button
+							variant="outlined"
+							fullWidth
+							startIcon={<AdminIcon />}
+							onClick={() => handleLogin("admin")}
+							sx={{ justifyContent: "flex-start", py: 1.5 }}
+						>
+							Administrador
+						</Button>
+					</Stack>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={closeLoginDialog}>Cancelar</Button>
+				</DialogActions>
+			</Dialog>
+		</>
+	);
+}
