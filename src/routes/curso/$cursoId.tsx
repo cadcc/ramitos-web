@@ -59,7 +59,7 @@ function CoursePage() {
 	const { cursoId } = Route.useParams();
 	const { reviewSort } = Route.useSearch();
 	const navigate = useNavigate({ from: "/curso/$cursoId" });
-	const { isStudent, isAuthenticated, openLoginDialog } = useAuth();
+	const { isAuthenticated, openLoginDialog } = useAuth();
 	const loadMoreRef = useRef<HTMLDivElement>(null);
 	const [reviewFormOpen, setReviewFormOpen] = useState(false);
 
@@ -124,7 +124,7 @@ function CoursePage() {
 	const related = getRelatedCourses(cursoId, 3);
 
 	const handleOpinar = () => {
-		if (isAuthenticated && isStudent) {
+		if (isAuthenticated) {
 			setReviewFormOpen(true);
 		} else {
 			openLoginDialog();
@@ -497,7 +497,7 @@ function CoursePage() {
 					</Box>
 				</Box>
 
-				{isStudent && (
+				{isAuthenticated && (
 					<ReviewForm
 						cursoId={cursoId}
 						open={reviewFormOpen}

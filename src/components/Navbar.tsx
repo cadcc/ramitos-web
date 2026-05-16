@@ -17,6 +17,8 @@ import {
 	DialogContent,
 	DialogActions,
 	Stack,
+	TextField,
+	Alert,
 } from "@mui/material";
 import {
 	Logout as LogoutIcon,
@@ -47,7 +49,10 @@ export default function Navbar() {
 		isAuthenticated,
 		isAdmin,
 		login,
+		loginDev,
 		logout,
+		loginError,
+		loginPending,
 		loginDialogOpen,
 		openLoginDialog,
 		closeLoginDialog,
@@ -55,6 +60,8 @@ export default function Navbar() {
 	const { mode, toggleTheme } = useThemeMode();
 	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 
 	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
 		setAnchorEl(e.currentTarget);
@@ -66,8 +73,13 @@ export default function Navbar() {
 		navigate({ to: "/" });
 	};
 
-	const handleLogin = (role: "stats" | "admin") => {
-		login(role);
+	const handleLoginSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		await login({ username, password });
+	};
+
+	const handleDevLogin = (role: "stats" | "admin") => {
+		loginDev(role);
 	};
 
 	return (
@@ -241,15 +253,52 @@ export default function Navbar() {
 					Ingresar a Ramitos
 				</DialogTitle>
 				<DialogContent>
-					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-						Selecciona un perfil de prueba para continuar.
+					<Box component="form" onSubmit={handleLoginSubmit}>
+						<Stack spacing={1.5} sx={{ mt: 0.5 }}>
+							{loginError && (
+								<Alert severity="error" sx={{ py: 0 }}>
+									{loginError}
+								</Alert>
+							)}
+							<TextField
+								label="Usuario"
+								value={username}
+								onChange={(e) => setUsername(e.target.value)}
+								autoComplete="username"
+								size="small"
+								fullWidth
+								required
+							/>
+							<TextField
+								label="Contrasena"
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								autoComplete="current-password"
+								size="small"
+								fullWidth
+								required
+							/>
+							<Button
+								type="submit"
+								variant="contained"
+								fullWidth
+								disabled={loginPending}
+							>
+								{loginPending ? "Ingresando..." : "Ingresar"}
+							</Button>
+						</Stack>
+					</Box>
+
+					<Typography variant="caption" color="text.secondary" sx={{ my: 2, display: "block" }}>
+						Perfiles de desarrollo
 					</Typography>
 					<Stack spacing={1.5}>
 						<Button
 							variant="outlined"
 							fullWidth
 							startIcon={<PersonIcon />}
-							onClick={() => handleLogin("stats")}
+							onClick={() => handleDevLogin("stats")}
 							sx={{ justifyContent: "flex-start", py: 1.5 }}
 						>
 							Estudiante Demo
@@ -258,7 +307,7 @@ export default function Navbar() {
 							variant="outlined"
 							fullWidth
 							startIcon={<AdminIcon />}
-							onClick={() => handleLogin("admin")}
+							onClick={() => handleDevLogin("admin")}
 							sx={{ justifyContent: "flex-start", py: 1.5 }}
 						>
 							Administrador
