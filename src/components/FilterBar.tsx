@@ -21,7 +21,6 @@ import {
 	Tune as TuneIcon,
 } from "@mui/icons-material";
 import type { CourseFilters, SortOption } from "../api/types";
-import { CATEGORY_TAGS } from "../api/mockData";
 import CategoryIcon from "./CategoryIcon";
 
 const sortOptions: { value: SortOption; label: string }[] = [
@@ -41,9 +40,14 @@ const planOptions = [
 interface Props {
 	filters: CourseFilters;
 	onFilterChange: (filters: CourseFilters) => void;
+	categoryOptions?: string[];
 }
 
-export default function FilterBar({ filters, onFilterChange }: Props) {
+export default function FilterBar({
+	filters,
+	onFilterChange,
+	categoryOptions = [],
+}: Props) {
 	const [searchText, setSearchText] = useState(filters.q ?? "");
 	const [filtersOpen, setFiltersOpen] = useState(false);
 
@@ -223,7 +227,7 @@ export default function FilterBar({ filters, onFilterChange }: Props) {
 							}}
 						>
 							<MenuItem value="">Todas</MenuItem>
-							{CATEGORY_TAGS.map((tag) => (
+							{categoryOptions.map((tag) => (
 								<MenuItem
 									key={tag}
 									value={tag}

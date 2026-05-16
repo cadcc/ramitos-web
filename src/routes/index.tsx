@@ -3,7 +3,11 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef, useEffect, useCallback } from "react";
 import { z } from "zod";
 import { Box, Grid, Typography, CircularProgress, Fade } from "@mui/material";
-import { getCourses } from "../api/client";
+import {
+	filterLoadedCourseCatalog,
+	getCourseCatalogPage,
+	getLoadedCategoryTags,
+} from "../api/courseCatalog";
 import type { CourseFilters } from "../api/types";
 import CourseCard from "../components/CourseCard";
 import FilterBar from "../components/FilterBar";
@@ -49,7 +53,7 @@ function HomePage() {
 		isError,
 	} = useInfiniteQuery({
 		queryKey: ["courses", filters],
-		queryFn: ({ pageParam }) => getCourses(filters, pageParam),
+		queryFn: ({ pageParam }) => getCourseCatalogPage(pageParam),
 		initialPageParam: undefined as string | undefined,
 		getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
 	});
@@ -88,17 +92,23 @@ function HomePage() {
 		return () => observer.disconnect();
 	}, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-	const allCourses = data?.pages.flatMap((p) => p.items) ?? [];
-	const total = data?.pages[0]?.total ?? 0;
+	const loadedCourses = data?.pages.flatMap((p) => p.items) ?? [];
+	const allCourses = filterLoadedCourseCatalog(loadedCourses, filters);
+	const categoryOptions = getLoadedCategoryTags(loadedCourses);
+	const total = allCourses.length;
 
 	return (
 		<Box>
-			<FilterBar filters={filters} onFilterChange={handleFilterChange} />
+			<FilterBar
+				filters={filters}
+				onFilterChange={handleFilterChange}
+				categoryOptions={categoryOptions}
+			/>
 
 			{!isLoading && (
 				<Fade in>
 					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-						{total} {total === 1 ? "curso encontrado" : "cursos encontrados"}
+						{total} {total === 1 ? "curso cargado" : "cursos cargados"}
 					</Typography>
 				</Fade>
 			)}
