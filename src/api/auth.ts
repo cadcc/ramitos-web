@@ -41,7 +41,10 @@ function timeoutSignal(ms: number): AbortSignal {
 }
 
 function decodeBase64Url(value: string): string {
-	const padded = value.padEnd(value.length + ((4 - (value.length % 4)) % 4), "=");
+	const padded = value.padEnd(
+		value.length + ((4 - (value.length % 4)) % 4),
+		"=",
+	);
 	return atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
 }
 
@@ -67,7 +70,9 @@ export function isTokenExpired(token = getStoredToken()): boolean {
 	return expiresAt !== null && expiresAt <= Date.now();
 }
 
-export function getTokenExpirationTime(token = getStoredToken()): number | null {
+export function getTokenExpirationTime(
+	token = getStoredToken(),
+): number | null {
 	if (!token) return null;
 	const payload = tokenPayload(token);
 	const exp = Number(payload?.exp);
@@ -101,7 +106,9 @@ function userFromToken(token: string): User | null {
 		const accountData = account as Record<string, unknown>;
 
 		const id = Number(accountData.id);
-		const name = String(accountData.displayName ?? accountData.name ?? "Usuario");
+		const name = String(
+			accountData.displayName ?? accountData.name ?? "Usuario",
+		);
 		return {
 			id,
 			name,
@@ -109,7 +116,9 @@ function userFromToken(token: string): User | null {
 			role: normalizeRole(accountData.role),
 			score: accountScore(id),
 			createdAt: String(
-				accountData.createdAt ?? accountData.created_at ?? new Date().toISOString(),
+				accountData.createdAt ??
+					accountData.created_at ??
+					new Date().toISOString(),
 			),
 		};
 	} catch {
@@ -137,7 +146,9 @@ export function clearSession() {
 	localStorage.removeItem(USER_STORAGE_KEY);
 }
 
-export async function fetchCurrentUser(token = getStoredToken()): Promise<User | null> {
+export async function fetchCurrentUser(
+	token = getStoredToken(),
+): Promise<User | null> {
 	if (!token) return null;
 	if (isTokenExpired(token)) {
 		notifySessionExpired();
@@ -148,7 +159,8 @@ export async function fetchCurrentUser(token = getStoredToken()): Promise<User |
 			headers: getAuthHeaders(token),
 			signal: timeoutSignal(5000),
 		});
-		if ((response as { status: number }).status < 400) return toUser(response.data);
+		if ((response as { status: number }).status < 400)
+			return toUser(response.data);
 		if (isAuthExpiredStatus((response as { status: number }).status)) {
 			notifySessionExpired();
 			return null;
@@ -183,9 +195,4 @@ export async function loginWithPassword(
 
 	storeSession(token, user);
 	return user;
-}
-
-export function storeDevSession(role: AccountRole, user: User) {
-	// TODO(backend): Remove this development fallback once shared test credentials exist.
-	storeSession(`mock-jwt-${role}-${user.id}`, user);
 }

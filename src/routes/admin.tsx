@@ -1,10 +1,6 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
-import {
-	useInfiniteQuery,
-	useMutation,
-	useQueryClient,
-} from "@tanstack/react-query";
-import { useRef, useEffect } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useRef, useEffect, useMemo, useState } from "react";
 import {
 	Box,
 	Typography,
@@ -18,7 +14,7 @@ import {
 	Visibility as VisibleIcon,
 	VisibilityOff as HiddenIcon,
 } from "@mui/icons-material";
-import { getAdminReviews, hideReview } from "../api/client";
+import { getAdminReviewsPage } from "../api/adminReviews";
 import ReviewCard from "../components/ReviewCard";
 
 export const Route = createFileRoute("/admin")({
@@ -37,21 +33,16 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminDashboard() {
-	const qc = useQueryClient();
 	const loadMoreRef = useRef<HTMLDivElement>(null);
+	const [hiddenOverrides, setHiddenOverrides] = useState<Set<number>>(
+		new Set(),
+	);
 
 	const reviewsQuery = useInfiniteQuery({
 		queryKey: ["adminReviews"],
-		queryFn: ({ pageParam }) => getAdminReviews(pageParam),
-		initialPageParam: undefined as string | undefined,
+		queryFn: ({ pageParam }) => getAdminReviewsPage(pageParam),
+		initialPageParam: undefined as number | undefined,
 		getNextPageParam: (last) => last.nextCursor ?? undefined,
-	});
-
-	const hideMutation = useMutation({
-		mutationFn: hideReview,
-		onSuccess: () => {
-			qc.invalidateQueries({ queryKey: ["adminReviews"] });
-		},
 	});
 
 	useEffect(() => {
@@ -77,9 +68,29 @@ function AdminDashboard() {
 		reviewsQuery.fetchNextPage,
 	]);
 
-	const allReviews = reviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+	const allReviews = useMemo(
+		() =>
+			(reviewsQuery.data?.pages.flatMap((p) => p.items) ?? []).map(
+				(review) => ({
+					...review,
+					// TODO(backend): Replace this local-only moderation state when review moderation endpoints exist.
+					hidden: hiddenOverrides.has(review.id)
+						? !review.hidden
+						: review.hidden,
+				}),
+			),
+		[hiddenOverrides, reviewsQuery.data],
+	);
 	const visibleCount = allReviews.filter((r) => !r.hidden).length;
 	const hiddenCount = allReviews.filter((r) => r.hidden).length;
+	const toggleHidden = (reviewId: number) => {
+		setHiddenOverrides((current) => {
+			const next = new Set(current);
+			if (next.has(reviewId)) next.delete(reviewId);
+			else next.add(reviewId);
+			return next;
+		});
+	};
 
 	return (
 		<Fade in>
@@ -132,7 +143,7 @@ function AdminDashboard() {
 								key={review.id}
 								review={review}
 								showCourseName={review.courseName}
-								onHide={(id) => hideMutation.mutate(id)}
+								onHide={toggleHidden}
 							/>
 						))}
 					</Stack>

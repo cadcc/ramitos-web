@@ -9,8 +9,7 @@ import {
 } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Alert, Snackbar } from "@mui/material";
-import type { User, AccountRole } from "../api/types";
-import { mockUsers } from "../api/mockData";
+import type { User } from "../api/types";
 import {
 	clearSession,
 	fetchCurrentUser,
@@ -20,7 +19,6 @@ import {
 	loginWithPassword,
 	notifySessionExpired,
 	onSessionExpired,
-	storeDevSession,
 	type LoginCredentials,
 } from "../api/auth";
 
@@ -33,7 +31,6 @@ interface AuthState {
 
 interface AuthContextValue extends AuthState {
 	login: (credentials: LoginCredentials) => Promise<void>;
-	loginDev: (role: AccountRole) => void;
 	logout: () => void;
 	loginError: string | null;
 	loginPending: boolean;
@@ -73,6 +70,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			notifySessionExpired();
 			return undefined;
 		}
+
+		const timeoutId = window.setTimeout(notifySessionExpired, delay);
+		return () => window.clearTimeout(timeoutId);
 	}, [user]);
 
 	useEffect(() => {
@@ -103,17 +103,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		}
 	}, []);
 
-	const loginDev = useCallback((role: AccountRole) => {
-		const mockUser =
-			role === "admin"
-				? mockUsers.find((u) => u.role === "admin")!
-				: mockUsers.find((u) => u.role !== "admin")!;
-
-		storeDevSession(role, mockUser);
-		setUser(mockUser);
-		setLoginDialogOpen(false);
-	}, []);
-
 	const logout = useCallback(() => {
 		clearSession();
 		setUser(null);
@@ -139,7 +128,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			isAdmin: user?.role === "admin" || user?.role === "mod",
 			isStudent: user !== null && user.role !== "admin",
 			login,
-			loginDev,
 			logout,
 			loginError,
 			loginPending,
@@ -150,7 +138,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	}, [
 		user,
 		login,
-		loginDev,
 		logout,
 		loginError,
 		loginPending,

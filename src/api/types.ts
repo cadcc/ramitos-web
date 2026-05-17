@@ -1,4 +1,4 @@
-// TODO: DEPRECATE THIS
+// Frontend view-model types used by adapters and components.
 
 export type AccountRole = "none" | "stats" | "mod" | "admin";
 

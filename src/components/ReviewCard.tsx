@@ -16,8 +16,6 @@ import {
 	ThumbDown as DislikeIcon,
 	SentimentVerySatisfied as FunnyIcon,
 } from "@mui/icons-material";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { reactToReview } from "../api/client";
 import ReviewCommentMarkdown from "./ReviewCommentMarkdown";
 import type { Review } from "../api/types";
 import { useAuth } from "../contexts/AuthContext";
@@ -97,7 +95,6 @@ export default function ReviewCard({
 	isOwnReview = false,
 	onHide,
 }: Props) {
-	const qc = useQueryClient();
 	const { isAuthenticated, openLoginDialog } = useAuth();
 	const [activeReactions, setActiveReactions] = useState<Set<string>>(
 		new Set(),
@@ -113,14 +110,6 @@ export default function ReviewCard({
 		setCommentExpanded(false);
 	}, [review.id]);
 
-	const reactionMutation = useMutation({
-		mutationFn: reactToReview,
-		onSuccess: () => {
-			qc.invalidateQueries({ queryKey: ["reviews"] });
-			qc.invalidateQueries({ queryKey: ["adminReviews"] });
-		},
-	});
-
 	const handleReaction = (type: "like" | "dislike" | "funny") => {
 		if (!isAuthenticated) {
 			openLoginDialog();
@@ -132,7 +121,7 @@ export default function ReviewCard({
 			else next.add(type);
 			return next;
 		});
-		reactionMutation.mutate({ reviewId: review.id, type });
+		// TODO(backend): Persist review reactions once reaction endpoints exist.
 	};
 
 	return (

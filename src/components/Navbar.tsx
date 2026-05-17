@@ -49,7 +49,6 @@ export default function Navbar() {
 		isAuthenticated,
 		isAdmin,
 		login,
-		loginDev,
 		logout,
 		loginError,
 		loginPending,
@@ -76,10 +75,6 @@ export default function Navbar() {
 	const handleLoginSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		await login({ username, password });
-	};
-
-	const handleDevLogin = (role: "stats" | "admin") => {
-		loginDev(role);
 	};
 
 	return (
@@ -289,30 +284,6 @@ export default function Navbar() {
 							</Button>
 						</Stack>
 					</Box>
-
-					<Typography variant="caption" color="text.secondary" sx={{ my: 2, display: "block" }}>
-						Perfiles de desarrollo
-					</Typography>
-					<Stack spacing={1.5}>
-						<Button
-							variant="outlined"
-							fullWidth
-							startIcon={<PersonIcon />}
-							onClick={() => handleDevLogin("stats")}
-							sx={{ justifyContent: "flex-start", py: 1.5 }}
-						>
-							Estudiante Demo
-						</Button>
-						<Button
-							variant="outlined"
-							fullWidth
-							startIcon={<AdminIcon />}
-							onClick={() => handleDevLogin("admin")}
-							sx={{ justifyContent: "flex-start", py: 1.5 }}
-						>
-							Administrador
-						</Button>
-					</Stack>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={closeLoginDialog}>Cancelar</Button>

@@ -18,6 +18,8 @@ Then copy `.env.example` to `.env` and populate the values.
 pnpm run dev
 ```
 
+If no backend is running, you can set `VITE_API_MOCKING_ENABLED` to `true` to intercept requests with MSW + faker mocks.
+
 ### API schemas
 
 Updating the schemas:
