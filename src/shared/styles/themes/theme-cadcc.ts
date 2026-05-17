@@ -47,7 +47,7 @@ const cadccTypography: ThemeOptions["typography"] = {
 	h2: {
 		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
-		color: cadccColors.violet,
+		color: cadccColors.yellow,
 		fontSize: "1.5rem",
 	},
 	h3: {
@@ -212,13 +212,11 @@ const theme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "#ffffff !important",
-					color: cadccColors.violet,
-					borderBottom: `2px solid ${cadccColors.lines}`,
-					borderTop: "none", // Fixes the floating look
+					borderBottom: `2px solid ${cadccColors.violet}`,
+					borderTop: "none",
 					borderLeft: "none",
 					borderRight: "none",
-					borderRadius: 0, // Overrides the global MuiPaper 16px radius
+					borderRadius: 0,
 					boxShadow: "none",
 				},
 			},

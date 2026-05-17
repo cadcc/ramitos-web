@@ -82,9 +82,11 @@ export default function Navbar() {
 				position="sticky"
 				elevation={0}
 				sx={{
-					bgcolor: "background.paper",
-					color: "text.primary",
 					borderBottom: 1,
+                    borderTop: "none",
+                    borderLeft: "none",
+                    borderRight: "none",
+                    borderRadius: 0,
 					borderColor: "divider",
 				}}
 			>
@@ -109,12 +111,11 @@ export default function Navbar() {
 								"&:hover": { transform: "rotate(360deg)" },
 							}}
 						/>
-						<Box sx={{ display: "flex", alignItems: "baseline", gap: 0.5 }}>
+						<Box sx={{ display: "flex", alignItems: "baseline", gap: 0.3 }}>
 							<Typography
-								variant="h5"
+								variant="h2"
 								sx={{
 									fontWeight: 800,
-									color: "primary.main",
 									letterSpacing: "-0.03em",
 									fontSize: "1.4rem",
 								}}
@@ -124,8 +125,7 @@ export default function Navbar() {
 							<Typography
 								variant="caption"
 								sx={{
-									color: "text.secondary",
-									fontSize: "0.65rem",
+									fontSize: "0.6rem",
 									fontWeight: 500,
 								}}
 							>
@@ -145,7 +145,8 @@ export default function Navbar() {
 									sx={{
 										width: 32,
 										height: 32,
-										bgcolor: "primary.main",
+                                        color: "secondary.contrastText",
+										bgcolor: "secondary.main",
 										fontSize: "0.8rem",
 										fontWeight: 700,
 									}}

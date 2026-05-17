@@ -173,6 +173,18 @@ const solarizedLightTheme = createTheme({
 				},
 			},
 		},
+        MuiAppBar: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "#FFFCF0",
+                    color: TOKEN_DARK_CONTENT,
+
+                    "h2": {
+                        color: "#A82968",
+                    }
+				},
+			},
+		},
 	},
 	shape: { borderRadius: 8 },
 });
