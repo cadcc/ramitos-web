@@ -1,4 +1,4 @@
-import type { CourseRatings } from "../api/types";
+import type { CourseRatings } from "../shared/types/domain";
 
 export type TagItem = string | [string, string];
 

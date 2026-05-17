@@ -11,8 +11,8 @@ function serviceConfig(schemaName: string, folderName: string): Options {
 		input: `${BASE_URL}/docs/specs/cl.cadcc.ramitos.schema.${schemaName}.json`,
 		output: {
 			client: "react-query",
-			target: `src/api/${folderName}`,
-			schemas: `src/api/${folderName}/models`,
+			target: `src/generated/api/${folderName}`,
+			schemas: `src/generated/api/${folderName}/models`,
 			mode: "split",
 			formatter: "prettier",
 			clean: true,

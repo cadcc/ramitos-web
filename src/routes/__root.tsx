@@ -1,21 +1,9 @@
 import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
 import { Home as HomeIcon } from "@mui/icons-material";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import { AuthProvider } from "../contexts/AuthContext";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			staleTime: 1000 * 60 * 2,
-			refetchOnWindowFocus: false,
-		},
-	},
-});
+import { AppProviders } from "../app/providers/AppProviders";
+import Navbar from "../shared/components/Navbar";
+import Footer from "../shared/components/Footer";
 
 function NotFound() {
 	return (
@@ -78,35 +66,30 @@ export const Route = createRootRoute({
 
 function RootLayout() {
 	return (
-		<QueryClientProvider client={queryClient}>
-			<ThemeProvider>
-				<AuthProvider>
-					<Box
-						sx={{
-							display: "flex",
-							flexDirection: "column",
-							minHeight: "100vh",
-						}}
-					>
-						<Navbar />
-						<Box
-							component="main"
-							sx={{
-								flexGrow: 1,
-								width: "100%",
-								maxWidth: 1200,
-								mx: "auto",
-								px: { xs: 2, sm: 3 },
-								py: 3,
-							}}
-						>
-							<Outlet />
-						</Box>
-						<Footer />
-					</Box>
-				</AuthProvider>
-			</ThemeProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
+		<AppProviders>
+			<Box
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					minHeight: "100vh",
+				}}
+			>
+				<Navbar />
+				<Box
+					component="main"
+					sx={{
+						flexGrow: 1,
+						width: "100%",
+						maxWidth: 1200,
+						mx: "auto",
+						px: { xs: 2, sm: 3 },
+						py: 3,
+					}}
+				>
+					<Outlet />
+				</Box>
+				<Footer />
+			</Box>
+		</AppProviders>
 	);
 }
