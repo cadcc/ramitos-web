@@ -28,6 +28,7 @@ import {
 	Stars as StarsIcon,
 	Badge as BadgeIcon,
 	AdminPanelSettings as AdminIcon,
+	Palette as PaletteIcon,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useAuth } from "../../features/auth";
@@ -56,11 +57,12 @@ export default function Navbar() {
 		openLoginDialog,
 		closeLoginDialog,
 	} = useAuth();
-	const { mode, toggleTheme } = useThemeMode();
+	const { currentTheme, setTheme, availableThemes } = useThemeMode();
 	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [themeAnchorEl, setThemeAnchorEl] = useState<null | HTMLElement>(null);
 
 	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
 		setAnchorEl(e.currentTarget);
@@ -75,6 +77,14 @@ export default function Navbar() {
 	const handleLoginSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		await login({ username, password });
+	};
+
+	const handleThemeMenuOpen = (e: React.MouseEvent<HTMLElement>) =>
+		setThemeAnchorEl(e.currentTarget);
+	const handleThemeMenuClose = () => setThemeAnchorEl(null);
+	const handleThemeSelect = (theme: (typeof availableThemes)[0]) => {
+		setTheme(theme);
+		handleThemeMenuClose();
 	};
 
 	return (
@@ -143,15 +153,35 @@ export default function Navbar() {
 
 					<Box sx={{ flexGrow: 1 }} />
 
-					<Tooltip title={mode === "light" ? "Modo oscuro" : "Modo claro"}>
-						<IconButton onClick={toggleTheme} size="small" color="inherit">
-							{mode === "light" ? (
-								<DarkModeIcon fontSize="small" />
-							) : (
-								<LightModeIcon fontSize="small" />
-							)}
+					<Tooltip title="Cambiar tema">
+						<IconButton
+							onClick={handleThemeMenuOpen}
+							size="small"
+							color="inherit"
+						>
+							<PaletteIcon fontSize="small" />
 						</IconButton>
 					</Tooltip>
+
+					<Menu
+						anchorEl={themeAnchorEl}
+						open={Boolean(themeAnchorEl)}
+						onClose={handleThemeMenuClose}
+						transformOrigin={{ horizontal: "right", vertical: "top" }}
+						anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+						slotProps={{ paper: { sx: { mt: 1 } } }}
+					>
+						{availableThemes.map((themeName) => (
+							<MenuItem
+								key={themeName}
+								selected={themeName === currentTheme}
+								onClick={() => handleThemeSelect(themeName)}
+								sx={{ textTransform: "capitalize" }}
+							>
+								{themeName}
+							</MenuItem>
+						))}
+					</Menu>
 
 					{isAuthenticated && user ? (
 						<>
