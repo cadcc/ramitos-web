@@ -27,15 +27,26 @@ export default function Footer() {
 			>
 				<GitHubIcon sx={{ fontSize: 16 }} />
 				<MuiLink
-					href="https://github.com/open-source-uc/ramitos"
+					href="https://github.com/cadcc/ramitos-web"
 					target="_blank"
 					rel="noopener"
 					color="inherit"
 					underline="hover"
 				>
-					Ramitos
+					Frontend
 				</MuiLink>
-				&mdash; Hecho con cariño para el DCC, U. de Chile
+				//
+				<GitHubIcon sx={{ fontSize: 16 }} />
+				<MuiLink
+					href="https://github.com/cadcc/Ramitos-Backend"
+					target="_blank"
+					rel="noopener"
+					color="inherit"
+					underline="hover"
+				>
+					Backend
+				</MuiLink>
+				// del dcc pal dcc &lt;3
 			</Typography>
 		</Box>
 	);

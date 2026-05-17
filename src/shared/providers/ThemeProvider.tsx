@@ -8,21 +8,20 @@ import {
 } from "react";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { appThemes, type ThemeName } from "../../theme/theme";
+import { appThemes, type ThemeKey, type ThemeConfig } from "../styles";
 
 interface ThemeContextValue {
-	currentTheme: ThemeName;
-	setTheme: (name: ThemeName) => void;
-	availableThemes: ThemeName[];
+	currentTheme: ThemeKey;
+	setTheme: (name: ThemeKey) => void;
+	availableThemes: ThemeConfig[];
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-function getInitialTheme(): ThemeName {
+function getInitialTheme(): ThemeKey {
 	const stored = localStorage.getItem("ramitos-theme");
-	// Check if the stored theme actually exists in our appThemes object
 	if (stored && stored in appThemes) {
-		return stored as ThemeName;
+		return stored as ThemeKey;
 	}
 	return window.matchMedia("(prefers-color-scheme: dark)").matches
 		? "dark"
@@ -30,15 +29,14 @@ function getInitialTheme(): ThemeName {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-	const [currentTheme, setCurrentTheme] = useState<ThemeName>(getInitialTheme);
+	const [currentTheme, setCurrentTheme] = useState<ThemeKey>(getInitialTheme);
 
 	useEffect(() => {
 		localStorage.setItem("ramitos-theme", currentTheme);
 	}, [currentTheme]);
 
-	// Retrieve the actual MUI theme object based on the current selection
-	const theme = useMemo(
-		() => appThemes[currentTheme] || appThemes.light,
+	const muiTheme = useMemo(
+		() => appThemes[currentTheme]?.theme || appThemes.light.theme,
 		[currentTheme],
 	);
 
@@ -46,15 +44,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 		() => ({
 			currentTheme,
 			setTheme: setCurrentTheme,
-			// Dynamically extract available themes so the UI can build a menu
-			availableThemes: Object.keys(appThemes) as ThemeName[],
+			availableThemes: Object.values(appThemes),
 		}),
 		[currentTheme],
 	);
 
 	return (
 		<ThemeContext.Provider value={value}>
-			<MuiThemeProvider theme={theme}>
+			<MuiThemeProvider theme={muiTheme}>
 				<CssBaseline />
 				{children}
 			</MuiThemeProvider>

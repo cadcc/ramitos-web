@@ -34,6 +34,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useAuth } from "../../features/auth";
 import { useThemeMode } from "../providers/ThemeProvider";
 import { useState } from "react";
+import { type ThemeKey } from "../styles";
 
 function getInitials(name: string): string {
 	return name
@@ -82,8 +83,8 @@ export default function Navbar() {
 	const handleThemeMenuOpen = (e: React.MouseEvent<HTMLElement>) =>
 		setThemeAnchorEl(e.currentTarget);
 	const handleThemeMenuClose = () => setThemeAnchorEl(null);
-	const handleThemeSelect = (theme: (typeof availableThemes)[0]) => {
-		setTheme(theme);
+	const handleThemeSelect = (themeKey: ThemeKey) => {
+		setTheme(themeKey);
 		handleThemeMenuClose();
 	};
 
@@ -171,14 +172,13 @@ export default function Navbar() {
 						anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 						slotProps={{ paper: { sx: { mt: 1 } } }}
 					>
-						{availableThemes.map((themeName) => (
+						{availableThemes.map((config) => (
 							<MenuItem
-								key={themeName}
-								selected={themeName === currentTheme}
-								onClick={() => handleThemeSelect(themeName)}
-								sx={{ textTransform: "capitalize" }}
+								key={config.id}
+								selected={config.id === currentTheme}
+								onClick={() => handleThemeSelect(config.id as ThemeKey)}
 							>
-								{themeName}
+								{config.name}
 							</MenuItem>
 						))}
 					</Menu>
