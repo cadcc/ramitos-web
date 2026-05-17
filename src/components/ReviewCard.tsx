@@ -55,7 +55,7 @@ const axisEntries: {
 ];
 
 function formatDate(d: string) {
-	return new Date(d).toLocaleDateString("es-CL", {
+	return new Date(d).toLocaleDateString(undefined, {
 		day: "numeric",
 		month: "short",
 		year: "numeric",

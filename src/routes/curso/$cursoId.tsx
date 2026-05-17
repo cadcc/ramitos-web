@@ -450,19 +450,15 @@ function CoursePage() {
 						</Box>
 						<Button
 							variant="contained"
-							color="success"
+							color="primary"
 							startIcon={<ReviewIcon />}
 							onClick={handleOpinar}
 							sx={{
 								fontWeight: 700,
 								px: 3,
 								borderRadius: 3,
-								boxShadow: (t) =>
-									`0 4px 14px ${alpha(t.palette.success.main, 0.35)}`,
 								"&:hover": {
 									transform: "translateY(-1px)",
-									boxShadow: (t) =>
-										`0 6px 20px ${alpha(t.palette.success.main, 0.45)}`,
 								},
 								transition: "all 0.2s ease",
 							}}
