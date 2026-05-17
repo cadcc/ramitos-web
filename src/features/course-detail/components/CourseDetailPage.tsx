@@ -7,6 +7,7 @@ import {
 	CircularProgress,
 	Divider,
 	Fade,
+	Paper,
 	Stack,
 	Typography,
 } from "@mui/material";
@@ -342,11 +343,10 @@ function RelatedCourses({
 							maxWidth: 150,
 						}}
 					>
-						<Box
+						<Paper
 							sx={{
 								px: 1.25,
 								py: 0.75,
-								borderRadius: 1.5,
 								border: 1,
 								borderColor: "divider",
 								"&:hover": {
@@ -376,7 +376,7 @@ function RelatedCourses({
 							>
 								{course.name}
 							</Typography>
-						</Box>
+						</Paper>
 					</Link>
 				))}
 			</Box>

@@ -15,27 +15,35 @@
  */
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
+import type { ThemeConfig } from "..";
+import { Elderly } from "@mui/icons-material";
+
+const TOKEN_PURE_BLUE = "#0000FF";
+const TOKEN_HOT_RED = "#FF0000";
+const TOKEN_WINDOWS_GRAY = "#C0C0C0";
+const TOKEN_TITLE_FONT_FAMILY =
+	'"Arial Black", Impact, Haettenschweiler, sans-serif';
 
 const retroTypography: ThemeOptions["typography"] = {
 	fontFamily:
 		'"MS Sans Serif", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
 	h1: {
-		fontFamily: '"Arial Black", Impact, Haettenschweiler, sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		textTransform: "uppercase",
 		fontWeight: 900,
 		letterSpacing: "0.02em",
 	},
 	h2: {
-		fontFamily: '"Arial Black", Impact, Haettenschweiler, sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		textTransform: "uppercase",
 		fontWeight: 900,
 	},
 	h3: {
-		fontFamily: '"Arial Black", Impact, Haettenschweiler, sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 900,
 	},
 	h4: {
-		fontFamily: '"Arial Black", Impact, Haettenschweiler, sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 900,
 	},
 	h5: { fontWeight: 700 },
@@ -56,24 +64,24 @@ const retroTypography: ThemeOptions["typography"] = {
 	},
 };
 
-export const retroTheme = createTheme({
+export const theme = createTheme({
 	palette: {
 		mode: "light",
 		primary: {
-			main: "#0000FF", // Pure Blue
+			main: TOKEN_PURE_BLUE,
 			contrastText: "#FFFFFF",
 		},
 		secondary: {
-			main: "#FF0000", // Hot Red
+			main: TOKEN_HOT_RED,
 			contrastText: "#FFFFFF",
 		},
 		background: {
-			default: "#C0C0C0", // Windows Gray
+			default: TOKEN_WINDOWS_GRAY,
 			paper: "#C0C0C0",
 		},
 		text: {
 			primary: "#000000",
-			secondary: "#808080",
+			secondary: "#404040",
 		},
 		divider: "#808080",
 		error: { main: "#FF0000" },
@@ -172,7 +180,7 @@ export const retroTheme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					background: "linear-gradient(to right, #000080, #1084d0)", // Windows Title Bar Gradient
+					background: "linear-gradient(to right, #1084d0, hsl(204, 86%, 44%))", // Windows Title Bar Gradient
 					color: "#FFFFFF",
 					border: "2px solid",
 					borderColor: "#ffffff #808080 #808080 #ffffff",
@@ -322,3 +330,19 @@ export const retroTheme = createTheme({
 		},
 	},
 });
+
+export const retroTheme: ThemeConfig = {
+	id: "retro",
+	name: "RETRO",
+	theme: theme,
+	icon: {
+		type: "mui",
+		component: Elderly,
+		color: "red",
+	},
+	label: {
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
+		background: TOKEN_WINDOWS_GRAY,
+		color: TOKEN_PURE_BLUE,
+	},
+};

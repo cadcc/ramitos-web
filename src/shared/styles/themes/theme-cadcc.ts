@@ -13,11 +13,10 @@
  * - Interactions: Bouncy, elastic, and springy hover/active states.
  * - Vibe: Welcoming, tactile, fun, pop-art.
  */
-// TODO: fix overlapping text
-// TODO: adjust rounding
-// TODO: make navbar flush with top of screen
+// TODO: add the shine/swoosh
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
+import type { ThemeConfig } from "..";
 
 const cadccColors = {
 	green: "#00ada0",
@@ -31,6 +30,8 @@ const cadccColors = {
 	lines: "#1f1954",
 };
 
+const TOKEN_COMFORTAA = '"Comfortaa", cursive';
+
 const hardShadow = `4px 4px 0px ${cadccColors.lines}`;
 const hardShadowHover = `6px 6px 0px ${cadccColors.lines}`;
 const hardShadowCard = `8px 8px 0px ${cadccColors.lines}`;
@@ -38,42 +39,42 @@ const hardShadowCard = `8px 8px 0px ${cadccColors.lines}`;
 const cadccTypography: ThemeOptions["typography"] = {
 	fontFamily: '"Nunito", sans-serif',
 	h1: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 		fontSize: "2rem",
 	},
 	h2: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 		fontSize: "1.5rem",
 	},
 	h3: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 		fontSize: "1.25rem",
 	},
 	h4: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 		fontSize: "1.1rem",
 	},
 	h5: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 	},
 	h6: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		color: cadccColors.violet,
 	},
 	subtitle1: { fontWeight: 700, color: cadccColors.gray },
 	button: {
-		fontFamily: '"Comfortaa", cursive',
+		fontFamily: TOKEN_COMFORTAA,
 		fontWeight: 700,
 		textTransform: "none",
 		fontSize: "1rem",
@@ -82,7 +83,7 @@ const cadccTypography: ThemeOptions["typography"] = {
 	body2: { color: "#040115", fontWeight: 500 },
 };
 
-export const cadccTheme = createTheme({
+const theme = createTheme({
 	palette: {
 		mode: "light",
 		primary: { main: cadccColors.blue, contrastText: "#ffffff" },
@@ -154,7 +155,7 @@ export const cadccTheme = createTheme({
 			defaultProps: { disableElevation: true },
 			styleOverrides: {
 				root: {
-					borderRadius: 9999,
+					borderRadius: 16, // Changed from 9999 to 16 to fix multi-line ovals
 					border: `2px solid ${cadccColors.lines}`,
 					padding: "8px 24px",
 					transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -214,6 +215,10 @@ export const cadccTheme = createTheme({
 					backgroundColor: "#ffffff !important",
 					color: cadccColors.violet,
 					borderBottom: `2px solid ${cadccColors.lines}`,
+					borderTop: "none", // Fixes the floating look
+					borderLeft: "none",
+					borderRight: "none",
+					borderRadius: 0, // Overrides the global MuiPaper 16px radius
 					boxShadow: "none",
 				},
 			},
@@ -223,20 +228,25 @@ export const cadccTheme = createTheme({
 				root: {
 					borderRadius: 12,
 					backgroundColor: "#ffffff",
-					border: `2px solid ${cadccColors.gray}`,
 					boxShadow: "none",
 					transition: "all 0.2s ease",
-					"& .MuiOutlinedInput-notchedOutline": {
-						border: "none",
-					},
-					"&:hover": {
+					// Apply border color changes to the notched outline instead of root
+					"&:hover .MuiOutlinedInput-notchedOutline": {
 						borderColor: cadccColors.blue,
 					},
 					"&.Mui-focused": {
-						borderColor: cadccColors.blue,
 						boxShadow: `4px 4px 0px ${cadccColors.blue}`,
 						transform: "translate(-2px, -2px)",
 					},
+					"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+						borderColor: cadccColors.blue,
+						borderWidth: 2,
+					},
+				},
+				// Style the notch so labels can properly cut through the border
+				notchedOutline: {
+					borderColor: cadccColors.gray,
+					borderWidth: 2,
 				},
 			},
 		},
@@ -299,7 +309,7 @@ export const cadccTheme = createTheme({
 				head: {
 					backgroundColor: cadccColors.blue,
 					color: "#ffffff",
-					fontFamily: '"Comfortaa", cursive',
+					fontFamily: TOKEN_COMFORTAA,
 					fontWeight: 700,
 					borderBottom: `2px solid ${cadccColors.lines}`,
 				},
@@ -318,7 +328,7 @@ export const cadccTheme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: 8,
-					fontFamily: '"Comfortaa", cursive',
+					fontFamily: TOKEN_COMFORTAA,
 					fontWeight: 700,
 					border: `2px solid ${cadccColors.lines}`,
 					boxShadow: `2px 2px 0px ${cadccColors.lines}`,
@@ -331,3 +341,18 @@ export const cadccTheme = createTheme({
 		},
 	},
 });
+
+export const cadccTheme: ThemeConfig = {
+	id: "cadcc",
+	name: "cadcc",
+	theme: theme,
+	icon: {
+		type: "image",
+		url: "/cadcc-logo.png", // TODO: handle this with vite
+	},
+	label: {
+		fontFamily: TOKEN_COMFORTAA,
+		background: cadccColors.background,
+		color: cadccColors.black,
+	},
+};

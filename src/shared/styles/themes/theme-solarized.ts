@@ -28,36 +28,44 @@
  * - Vibe: "Late night coding session" — easy on the eyes, sleek, distraction-free.
  */
 
+import type { ThemeConfig } from "..";
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
+import { DarkModeRounded, PrintRounded } from "@mui/icons-material";
+
+const TOKEN_TITLE_FONT_FAMILY = '"Space Grotesk", sans-serif';
+const TOKEN_DARK_CONTENT = "#073642";
+const TOKEN_LIGHT_CONTENT = "#FDF6E3";
+const TOKEN_PRIMARY_LIGHTER = "#4DA3E0";
+const TOKEN_PRIMARY_DARKER = "#1A6BA8";
 
 const sharedTypography: ThemeOptions["typography"] = {
 	fontFamily: '"Figtree", sans-serif',
 	h1: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 700,
 		letterSpacing: "-0.03em",
 	},
 	h2: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 700,
 		letterSpacing: "-0.02em",
 	},
 	h3: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 700,
 		letterSpacing: "-0.02em",
 	},
 	h4: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 600,
 		letterSpacing: "-0.01em",
 	},
 	h5: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 600,
 	},
 	h6: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 600,
 	},
 	subtitle1: {
@@ -70,7 +78,7 @@ const sharedTypography: ThemeOptions["typography"] = {
 		textTransform: "none" as const,
 	},
 	overline: {
-		fontFamily: '"Space Grotesk", sans-serif',
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
 		fontWeight: 700,
 		letterSpacing: "0.08em",
 	},
@@ -117,27 +125,27 @@ const sharedComponents: ThemeOptions["components"] = {
 	},
 };
 
-export const lightTheme = createTheme({
+const solarizedLightTheme = createTheme({
 	palette: {
 		mode: "light",
 		primary: {
 			main: "#268BD2",
 			light: "#4DA3E0",
 			dark: "#1A6BA8",
-			contrastText: "#FDF6E3",
+			contrastText: TOKEN_LIGHT_CONTENT,
 		},
 		secondary: {
 			main: "#D33682",
 			light: "#DC5A9A",
 			dark: "#A82968",
-			contrastText: "#FDF6E3",
+			contrastText: TOKEN_LIGHT_CONTENT,
 		},
 		background: {
-			default: "#FDF6E3",
+			default: TOKEN_LIGHT_CONTENT,
 			paper: "#FFFCF0",
 		},
 		text: {
-			primary: "#073642",
+			primary: TOKEN_DARK_CONTENT,
 			secondary: "#586E75",
 		},
 		divider: "#EEE8D5",
@@ -152,7 +160,7 @@ export const lightTheme = createTheme({
 		MuiCssBaseline: {
 			styleOverrides: {
 				body: {
-					backgroundColor: "#FDF6E3",
+					backgroundColor: TOKEN_LIGHT_CONTENT,
 				},
 			},
 		},
@@ -169,14 +177,14 @@ export const lightTheme = createTheme({
 	shape: { borderRadius: 8 },
 });
 
-export const darkTheme = createTheme({
+const solarizedDarkTheme = createTheme({
 	palette: {
 		mode: "dark",
 		primary: {
 			main: "#268BD2",
 			light: "#4DA3E0",
 			dark: "#1A6BA8",
-			contrastText: "#FDF6E3",
+			contrastText: TOKEN_LIGHT_CONTENT,
 		},
 		secondary: {
 			main: "#D33682",
@@ -186,10 +194,10 @@ export const darkTheme = createTheme({
 		},
 		background: {
 			default: "#002B36",
-			paper: "#073642",
+			paper: TOKEN_DARK_CONTENT,
 		},
 		text: {
-			primary: "#FDF6E3",
+			primary: TOKEN_LIGHT_CONTENT,
 			secondary: "#93A1A1",
 		},
 		divider: "rgba(238,232,213,0.1)",
@@ -220,3 +228,35 @@ export const darkTheme = createTheme({
 	},
 	shape: { borderRadius: 8 },
 });
+
+export const lightTheme: ThemeConfig = {
+	id: "light",
+	name: "Toqui",
+	theme: solarizedLightTheme,
+	icon: {
+		type: "mui",
+		component: PrintRounded,
+		color: TOKEN_PRIMARY_DARKER,
+	},
+	label: {
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
+		background: TOKEN_LIGHT_CONTENT,
+		color: TOKEN_DARK_CONTENT,
+	},
+};
+
+export const darkTheme: ThemeConfig = {
+	id: "dark",
+	name: "Salita",
+	theme: solarizedDarkTheme,
+	icon: {
+		type: "mui",
+		component: DarkModeRounded,
+		color: TOKEN_PRIMARY_LIGHTER,
+	},
+	label: {
+		fontFamily: TOKEN_TITLE_FONT_FAMILY,
+		background: TOKEN_DARK_CONTENT,
+		color: TOKEN_LIGHT_CONTENT,
+	},
+};

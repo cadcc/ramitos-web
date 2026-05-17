@@ -1,3 +1,5 @@
+// TODO: split this?
+
 import {
 	AppBar,
 	Toolbar,
@@ -29,12 +31,15 @@ import {
 	Badge as BadgeIcon,
 	AdminPanelSettings as AdminIcon,
 	Palette as PaletteIcon,
+	ContrastOutlined,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useAuth } from "../../features/auth";
-import { useThemeMode } from "../providers/ThemeProvider";
+import { useAuth } from "../../../features/auth";
+import { useThemeMode } from "../../providers/ThemeProvider";
 import { useState } from "react";
-import { type ThemeKey } from "../styles";
+import { type ThemeKey } from "../../styles";
+import ContentCut from "@mui/icons-material/ContentCut";
+import ThemeSelector from "./ThemeSelector";
 
 function getInitials(name: string): string {
 	return name
@@ -117,7 +122,7 @@ export default function Navbar() {
 					>
 						<Box
 							component="img"
-							src="/logo.png"
+							src="/logo.png" // TODO: handle this with vite
 							alt="Ramitos"
 							sx={{
 								height: 36,
@@ -154,34 +159,7 @@ export default function Navbar() {
 
 					<Box sx={{ flexGrow: 1 }} />
 
-					<Tooltip title="Cambiar tema">
-						<IconButton
-							onClick={handleThemeMenuOpen}
-							size="small"
-							color="inherit"
-						>
-							<PaletteIcon fontSize="small" />
-						</IconButton>
-					</Tooltip>
-
-					<Menu
-						anchorEl={themeAnchorEl}
-						open={Boolean(themeAnchorEl)}
-						onClose={handleThemeMenuClose}
-						transformOrigin={{ horizontal: "right", vertical: "top" }}
-						anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-						slotProps={{ paper: { sx: { mt: 1 } } }}
-					>
-						{availableThemes.map((config) => (
-							<MenuItem
-								key={config.id}
-								selected={config.id === currentTheme}
-								onClick={() => handleThemeSelect(config.id as ThemeKey)}
-							>
-								{config.name}
-							</MenuItem>
-						))}
-					</Menu>
+					<ThemeSelector />
 
 					{isAuthenticated && user ? (
 						<>

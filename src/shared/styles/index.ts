@@ -3,40 +3,39 @@ import { darkTheme, lightTheme } from "./themes/theme-solarized";
 import { anakenaTheme } from "./themes/theme-anakena";
 import { cadccTheme } from "./themes/theme-cadcc";
 import { retroTheme } from "./themes/theme-retro";
+import type { ComponentType } from "react";
+import type { SvgIconProps } from "@mui/material";
+
+interface MuiIconConfig {
+	type: "mui";
+	component: ComponentType<SvgIconProps>;
+	color: string;
+}
+
+interface ImageIconConfig {
+	type: "image";
+	url: string;
+}
 
 export interface ThemeConfig {
 	id: string;
 	name: string;
 	theme: Theme;
-	// future: iconsets? descriptions? unlock codes?
+	icon: MuiIconConfig | ImageIconConfig;
+	label: {
+		fontFamily: string;
+		background: string;
+		color: string;
+	};
+	// TODO: (future) iconsets
 }
 
 export const appThemes = {
-	light: {
-		id: "light",
-		name: "Toqui",
-		theme: lightTheme,
-	},
-	dark: {
-		id: "dark",
-		name: "Oscuro",
-		theme: darkTheme,
-	},
-	anakena: {
-		id: "anakena",
-		name: "Anakena",
-		theme: anakenaTheme,
-	},
-	retro: {
-		id: "retro",
-		name: "Retro",
-		theme: retroTheme,
-	},
-	cadcc: {
-		id: "cadcc",
-		name: "CaDCC",
-		theme: cadccTheme,
-	},
+	light: lightTheme,
+	dark: darkTheme,
+	retro: retroTheme,
+	anakena: anakenaTheme,
+	cadcc: cadccTheme,
 } satisfies Record<string, ThemeConfig>;
 
 export type ThemeKey = keyof typeof appThemes;

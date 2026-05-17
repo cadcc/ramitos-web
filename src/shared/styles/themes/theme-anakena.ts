@@ -10,93 +10,99 @@
  * * RULES:
  * - Typography: 100% Monospace (JetBrains Mono). No exceptions.
  * - Shapes: STRICTLY 0px border radius. Absolutely no curves.
- * - Colors: Phosphor green (#33ff00) on deep black. High contrast only.
+ * - Colors: Phosphor green on deep black. High contrast only.
  * - Interactions: No smooth transitions. States change instantly.
  * - Vibe: Hacker, cyber-industrial, functional, raw data.
  */
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import type { ThemeConfig } from "..";
+
+const TOKEN_FONT_FAMILY = '"JetBrains Mono", monospace';
+const TOKEN_PHOSPHOR_GREEN = "#33ff00";
+const TOKEN_DEEP_BLACK = "#0a0a0a";
 
 const terminalTypography: ThemeOptions["typography"] = {
-	fontFamily: '"JetBrains Mono", "Fira Code", monospace',
+	fontFamily: TOKEN_FONT_FAMILY,
 	h1: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
 	h2: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
 	h3: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
 	h4: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
 	h5: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
 	h6: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.05em",
 		fontWeight: 700,
 	},
-	subtitle1: { fontFamily: '"JetBrains Mono", monospace', fontSize: "1.05rem" },
+	subtitle1: { fontFamily: TOKEN_FONT_FAMILY, fontSize: "1.05rem" },
 	button: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.1em",
 		fontWeight: 700,
 	},
 	body1: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textShadow: "0 0 2px rgba(51, 255, 0, 0.3)",
 	},
-	body2: { fontFamily: '"JetBrains Mono", monospace' },
+	body2: { fontFamily: TOKEN_FONT_FAMILY },
 	overline: {
-		fontFamily: '"JetBrains Mono", monospace',
+		fontFamily: TOKEN_FONT_FAMILY,
 		textTransform: "uppercase",
 		letterSpacing: "0.2em",
 	},
 };
 
-export const anakenaTheme = createTheme({
+const theme = createTheme({
 	palette: {
 		mode: "dark",
 		primary: {
-			main: "#33ff00",
-			contrastText: "#0a0a0a",
+			main: TOKEN_PHOSPHOR_GREEN,
+			contrastText: TOKEN_DEEP_BLACK,
 		},
 		secondary: {
 			main: "#ffb000",
-			contrastText: "#0a0a0a",
+			contrastText: TOKEN_DEEP_BLACK,
 		},
 		background: {
-			default: "#0a0a0a",
-			paper: "#0a0a0a",
+			default: TOKEN_DEEP_BLACK,
+			paper: TOKEN_DEEP_BLACK,
 		},
 		text: {
-			primary: "#33ff00",
+			primary: TOKEN_PHOSPHOR_GREEN,
 			secondary: "#1f521f",
 		},
 		divider: "#1f521f",
 		error: { main: "#ff3333" },
 		warning: { main: "#ffb000" },
-		success: { main: "#33ff00" },
+		success: { main: TOKEN_PHOSPHOR_GREEN },
 		info: { main: "#1f521f" },
 	},
 	typography: terminalTypography,
@@ -139,12 +145,12 @@ export const anakenaTheme = createTheme({
 					borderRadius: 0,
 					border: "1px solid #1f521f",
 					backgroundColor: "transparent",
-					color: "#33ff00",
+					color: TOKEN_PHOSPHOR_GREEN,
 					position: "relative",
 					transition: "none", // Remove smooth transitions for hardware feel
 					"&:hover": {
-						backgroundColor: "#33ff00",
-						color: "#0a0a0a",
+						backgroundColor: TOKEN_PHOSPHOR_GREEN,
+						color: TOKEN_DEEP_BLACK,
 						border: "1px solid #33ff00",
 						boxShadow: "0 0 8px rgba(51, 255, 0, 0.6)",
 					},
@@ -155,7 +161,7 @@ export const anakenaTheme = createTheme({
 				contained: {
 					backgroundColor: "#1f521f",
 					"&:hover": {
-						backgroundColor: "#33ff00",
+						backgroundColor: TOKEN_PHOSPHOR_GREEN,
 					},
 				},
 			},
@@ -166,7 +172,7 @@ export const anakenaTheme = createTheme({
 					borderRadius: 0,
 					border: "1px solid #1f521f",
 					boxShadow: "none",
-					backgroundColor: "#0a0a0a",
+					backgroundColor: TOKEN_DEEP_BLACK,
 					backgroundImage: "none",
 				},
 			},
@@ -194,16 +200,16 @@ export const anakenaTheme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: 0,
-					fontFamily: '"JetBrains Mono", monospace',
+					fontFamily: TOKEN_FONT_FAMILY,
 					"& .MuiOutlinedInput-notchedOutline": {
 						borderColor: "#1f521f",
 						borderStyle: "dashed",
 					},
 					"&:hover .MuiOutlinedInput-notchedOutline": {
-						borderColor: "#33ff00",
+						borderColor: TOKEN_PHOSPHOR_GREEN,
 					},
 					"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-						borderColor: "#33ff00",
+						borderColor: TOKEN_PHOSPHOR_GREEN,
 						borderStyle: "solid",
 						borderWidth: "1px",
 					},
@@ -217,8 +223,8 @@ export const anakenaTheme = createTheme({
 			styleOverrides: {
 				root: {
 					color: "#1f521f",
-					fontFamily: '"JetBrains Mono", monospace',
-					"&.Mui-focused": { color: "#33ff00" },
+					fontFamily: TOKEN_FONT_FAMILY,
+					"&.Mui-focused": { color: TOKEN_PHOSPHOR_GREEN },
 				},
 			},
 		},
@@ -250,7 +256,7 @@ export const anakenaTheme = createTheme({
 				root: {
 					"&.Mui-selected": {
 						backgroundColor: "#1f521f",
-						color: "#33ff00",
+						color: TOKEN_PHOSPHOR_GREEN,
 						"&:before": {
 							content: '"> "',
 							marginRight: "8px",
@@ -258,8 +264,8 @@ export const anakenaTheme = createTheme({
 						},
 					},
 					"&:hover": {
-						backgroundColor: "#33ff00",
-						color: "#0a0a0a",
+						backgroundColor: TOKEN_PHOSPHOR_GREEN,
+						color: TOKEN_DEEP_BLACK,
 					},
 				},
 			},
@@ -269,7 +275,7 @@ export const anakenaTheme = createTheme({
 				root: {
 					borderRadius: 0,
 					border: "1px solid",
-					fontFamily: '"JetBrains Mono", monospace',
+					fontFamily: TOKEN_FONT_FAMILY,
 					"&.MuiAlert-standardError": {
 						backgroundColor: "rgba(255, 51, 51, 0.1)",
 						color: "#ff3333",
@@ -281,3 +287,19 @@ export const anakenaTheme = createTheme({
 		},
 	},
 });
+
+export const anakenaTheme: ThemeConfig = {
+	id: "anakena",
+	name: "cd anakena",
+	theme: theme,
+	icon: {
+		type: "mui",
+		component: TerminalIcon,
+		color: TOKEN_PHOSPHOR_GREEN,
+	},
+	label: {
+		fontFamily: TOKEN_FONT_FAMILY,
+		background: TOKEN_DEEP_BLACK,
+		color: TOKEN_PHOSPHOR_GREEN,
+	},
+};
