@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 export default defineConfig(({mode}) => {
 
@@ -8,7 +8,7 @@ export default defineConfig(({mode}) => {
 
     return {
         plugins: [
-          TanStackRouterVite({ //TODO: look into this being deprecated
+          tanstackRouter({
             routesDirectory: './src/routes',
             generatedRouteTree: './src/routeTree.gen.ts',
             autoCodeSplitting: true,

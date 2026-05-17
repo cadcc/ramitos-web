@@ -1,11 +1,11 @@
 import { getAuthHeaders, handleAuthenticatedResponse } from "./auth";
 import { createReview } from "./review/reviewService";
-import type { CreateReviewResponseContent } from "./review/models";
+import type { CreateReviewResponseContent, DuplicatedEntityResponseContent } from "./review/models";
 import type { ReviewSubmission } from "./types";
 
 export async function submitCourseReview(
 	submission: ReviewSubmission,
-): Promise<CreateReviewResponseContent> {
+): Promise<CreateReviewResponseContent | DuplicatedEntityResponseContent> {
 	const response = await createReview(
 		{
 			course_code: submission.cursoId,

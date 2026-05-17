@@ -39,4 +39,6 @@ pnpm run format
 
 ### Deployment
 
-placeholder
+```bash
+pnpm run build
+```
