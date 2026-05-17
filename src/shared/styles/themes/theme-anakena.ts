@@ -290,7 +290,7 @@ const theme = createTheme({
 
 export const anakenaTheme: ThemeConfig = {
 	id: "anakena",
-	name: "cd anakena",
+	name: "anakena",
 	theme: theme,
 	icon: {
 		type: "mui",

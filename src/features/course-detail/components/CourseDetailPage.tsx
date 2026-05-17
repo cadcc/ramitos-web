@@ -3,6 +3,8 @@ import {
 	Box,
 	Breadcrumbs,
 	Button,
+	Card,
+	CardActionArea,
 	Chip,
 	CircularProgress,
 	Divider,
@@ -157,7 +159,7 @@ function CourseScoreSummary({ course }: { course: Curso }) {
 		<Box
 			sx={{
 				bgcolor: "background.paper",
-				borderRadius: 2,
+				borderRadius: 1.5,
 				border: 1,
 				borderColor: "divider",
 				p: 2,
@@ -232,7 +234,7 @@ function CourseFactsPanel({
 		<Box
 			sx={{
 				bgcolor: "background.paper",
-				borderRadius: 2,
+				borderRadius: 1.5,
 				border: 1,
 				borderColor: "divider",
 				p: 2,
@@ -322,62 +324,50 @@ function RelatedCourses({
 	if (courses.length === 0) return null;
 
 	return (
-		<Box sx={{ mt: 2 }}>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={{ fontSize: "0.72rem", mb: 0.5, display: "block" }}
-			>
+		<Box sx={{ mt: 1 }}>
+			<Typography variant="caption" color="text.secondary">
 				Relacionados
 			</Typography>
-			<Box sx={{ display: "flex", gap: 1, overflow: "auto", pb: 0.5 }}>
+			<Box sx={{ display: "flex", gap: 1, pb: 0.5 }}>
 				{courses.map((course) => (
-					<Link
+					<Box
 						key={course.id}
-						to="/curso/$cursoId"
-						params={{ cursoId: course.id }}
-						style={{
-							textDecoration: "none",
-							color: "inherit",
-							flexShrink: 0,
-							maxWidth: 150,
+						sx={{
+							borderRadius: 0.75,
+                            p: 0.75,
+                            border: "1px solid",
+                            borderColor: "divider"
 						}}
 					>
-						<Paper
-							sx={{
-								px: 1.25,
-								py: 0.75,
-								border: 1,
-								borderColor: "divider",
-								"&:hover": {
-									borderColor: "primary.main",
-									bgcolor: (theme) => alpha(theme.palette.primary.main, 0.03),
-								},
-								transition: "all 0.15s ease",
-							}}
-						>
-							<Typography
-								sx={{
-									fontSize: "0.68rem",
-									fontWeight: 600,
-									whiteSpace: "nowrap",
-								}}
+						<CardActionArea>
+							<Link
+								to="/curso/$cursoId"
+								params={{ cursoId: course.id }}
+								style={{ textDecoration: "none", color: "inherit" }}
 							>
-								{course.code}
-							</Typography>
-							<Typography
-								sx={{
-									fontSize: "0.6rem",
-									color: "text.secondary",
-									whiteSpace: "nowrap",
-									overflow: "hidden",
-									textOverflow: "ellipsis",
-								}}
-							>
-								{course.name}
-							</Typography>
-						</Paper>
-					</Link>
+								<Typography
+									sx={{
+										fontSize: "0.68rem",
+										fontWeight: 600,
+										whiteSpace: "nowrap",
+									}}
+								>
+									{course.code}
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: "0.6rem",
+										color: "text.secondary",
+										whiteSpace: "nowrap",
+										overflow: "hidden",
+										textOverflow: "ellipsis",
+									}}
+								>
+									{course.name}
+								</Typography>
+							</Link>
+						</CardActionArea>
+					</Box>
 				))}
 			</Box>
 		</Box>

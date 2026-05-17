@@ -344,7 +344,7 @@ const theme = createTheme({
 
 export const cadccTheme: ThemeConfig = {
 	id: "cadcc",
-	name: "cadcc",
+	name: "ofisalita",
 	theme: theme,
 	icon: {
 		type: "image",

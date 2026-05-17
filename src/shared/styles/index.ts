@@ -5,6 +5,8 @@ import { cadccTheme } from "./themes/theme-cadcc";
 import { retroTheme } from "./themes/theme-retro";
 import type { ComponentType } from "react";
 import type { SvgIconProps } from "@mui/material";
+import { bubblegumTheme } from "./themes/theme-bubblegum";
+import { minimalDarkTheme, minimalLightTheme } from "./themes/theme-minimal";
 
 interface MuiIconConfig {
 	type: "mui";
@@ -31,11 +33,14 @@ export interface ThemeConfig {
 }
 
 export const appThemes = {
-	light: lightTheme,
-	dark: darkTheme,
-	retro: retroTheme,
-	anakena: anakenaTheme,
-	cadcc: cadccTheme,
+    minimalLight: minimalLightTheme, // eniac light
+	cadcc: cadccTheme, // ofisalita light
+	light: lightTheme, // toqui light
+    bubblegum: bubblegumTheme, // kioskito light
+	retro: retroTheme, // sistemas light
+	dark: darkTheme, // salita dark
+	anakena: anakenaTheme, // anakena dark
+    minimalDark: minimalDarkTheme, // lorenzo dark
 } satisfies Record<string, ThemeConfig>;
 
 export type ThemeKey = keyof typeof appThemes;

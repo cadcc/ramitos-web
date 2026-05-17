@@ -231,7 +231,7 @@ const solarizedDarkTheme = createTheme({
 
 export const lightTheme: ThemeConfig = {
 	id: "light",
-	name: "Toqui",
+	name: "toqui",
 	theme: solarizedLightTheme,
 	icon: {
 		type: "mui",
@@ -247,7 +247,7 @@ export const lightTheme: ThemeConfig = {
 
 export const darkTheme: ThemeConfig = {
 	id: "dark",
-	name: "Salita",
+	name: "salita",
 	theme: solarizedDarkTheme,
 	icon: {
 		type: "mui",

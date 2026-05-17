@@ -24,21 +24,14 @@ import {
 } from "@mui/material";
 import {
 	Logout as LogoutIcon,
-	DarkMode as DarkModeIcon,
-	LightMode as LightModeIcon,
 	Person as PersonIcon,
 	Stars as StarsIcon,
 	Badge as BadgeIcon,
 	AdminPanelSettings as AdminIcon,
-	Palette as PaletteIcon,
-	ContrastOutlined,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useAuth } from "../../../features/auth";
-import { useThemeMode } from "../../providers/ThemeProvider";
 import { useState } from "react";
-import { type ThemeKey } from "../../styles";
-import ContentCut from "@mui/icons-material/ContentCut";
 import ThemeSelector from "./ThemeSelector";
 
 function getInitials(name: string): string {
@@ -63,12 +56,10 @@ export default function Navbar() {
 		openLoginDialog,
 		closeLoginDialog,
 	} = useAuth();
-	const { currentTheme, setTheme, availableThemes } = useThemeMode();
 	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [themeAnchorEl, setThemeAnchorEl] = useState<null | HTMLElement>(null);
 
 	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
 		setAnchorEl(e.currentTarget);
@@ -85,14 +76,6 @@ export default function Navbar() {
 		await login({ username, password });
 	};
 
-	const handleThemeMenuOpen = (e: React.MouseEvent<HTMLElement>) =>
-		setThemeAnchorEl(e.currentTarget);
-	const handleThemeMenuClose = () => setThemeAnchorEl(null);
-	const handleThemeSelect = (themeKey: ThemeKey) => {
-		setTheme(themeKey);
-		handleThemeMenuClose();
-	};
-
 	return (
 		<>
 			<AppBar
@@ -103,11 +86,6 @@ export default function Navbar() {
 					color: "text.primary",
 					borderBottom: 1,
 					borderColor: "divider",
-					backdropFilter: "blur(12px)",
-					backgroundColor: (t) =>
-						t.palette.mode === "light"
-							? "rgba(255, 252, 240, 0.9)"
-							: "rgba(7, 54, 66, 0.9)",
 				}}
 			>
 				<Toolbar sx={{ gap: 1 }}>
@@ -135,7 +113,6 @@ export default function Navbar() {
 							<Typography
 								variant="h5"
 								sx={{
-									fontFamily: '"Space Grotesk", sans-serif',
 									fontWeight: 800,
 									color: "primary.main",
 									letterSpacing: "-0.03em",

@@ -16,7 +16,7 @@
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
 import type { ThemeConfig } from "..";
-import { Elderly } from "@mui/icons-material";
+import { AttachFile, Elderly } from "@mui/icons-material";
 
 const TOKEN_PURE_BLUE = "#0000FF";
 const TOKEN_HOT_RED = "#FF0000";
@@ -333,11 +333,11 @@ export const theme = createTheme({
 
 export const retroTheme: ThemeConfig = {
 	id: "retro",
-	name: "RETRO",
+	name: "sistemas",
 	theme: theme,
 	icon: {
 		type: "mui",
-		component: Elderly,
+		component: AttachFile,
 		color: "red",
 	},
 	label: {

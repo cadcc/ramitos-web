@@ -81,7 +81,7 @@ export default function ThemeSelector() {
 								alignItems: "center",
 								width: "100%",
 								background: config.label.background,
-								borderRadius: "8px",
+								borderRadius: 1,
 								p: "6px 8px",
 								marginInline: "auto",
 								transition: "all 0.15s ease-in-out",
@@ -118,9 +118,7 @@ export default function ThemeSelector() {
 								slotProps={{
 									primary: {
 										sx: {
-											fontFamily:
-												config.label.fontFamily ??
-												config.theme.typography.fontFamily,
+											fontFamily: config.label.fontFamily,
 											fontWeight: "bold",
 											pr: "4px",
 											color: config.label.color,
