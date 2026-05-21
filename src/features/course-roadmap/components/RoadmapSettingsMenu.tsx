@@ -1,14 +1,12 @@
 import {
 	Box,
 	Divider,
-	IconButton,
 	Popover,
 	Stack,
 	Switch,
 	TextField,
 	Typography,
 } from "@mui/material";
-import { Add as AddIcon, Remove as RemoveIcon } from "@mui/icons-material";
 import type { RoadmapSettings } from "../model/types";
 
 interface RoadmapSettingsMenuProps {
@@ -86,9 +84,6 @@ function DepthControl({
 	return (
 		<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 			<Typography sx={{ flex: 1, fontSize: "0.88rem" }}>{label}</Typography>
-			<IconButton size="small" onClick={() => onChange(value - 1)}>
-				<RemoveIcon fontSize="small" />
-			</IconButton>
 			<TextField
 				value={value}
 				type="number"
@@ -99,9 +94,6 @@ function DepthControl({
 				}}
 				sx={{ width: 68 }}
 			/>
-			<IconButton size="small" onClick={() => onChange(value + 1)}>
-				<AddIcon fontSize="small" />
-			</IconButton>
 		</Box>
 	);
 }

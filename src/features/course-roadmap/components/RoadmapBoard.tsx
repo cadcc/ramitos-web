@@ -18,6 +18,7 @@ export function RoadmapBoard({ state }: RoadmapBoardProps) {
 		showLines: state.settings.showLines,
 		editMode: state.editMode,
 		visibleCourseIds: state.visibleCourseIds,
+		coursesById: state.coursesById,
 	});
 
 	const handleCourseClick = useCallback(

@@ -148,8 +148,9 @@ export default function Navbar() {
 							textDecoration: "none",
 							fontSize: "0.9rem",
 							fontWeight: 700,
+							lineHeight: 1,
+							height: 32,
 							px: 0.5,
-							py: 0.25,
 							borderBottom: 2,
 							borderColor: "transparent",
 							"&:hover": {
@@ -164,8 +165,6 @@ export default function Navbar() {
 					>
 						Malla
 					</Box>
-
-					<ThemeSelector />
 
 					{isAuthenticated && user ? (
 						<>
@@ -248,6 +247,8 @@ export default function Navbar() {
 							Ingresar
 						</Button>
 					)}
+
+					<ThemeSelector />
 				</Toolbar>
 			</AppBar>
 
