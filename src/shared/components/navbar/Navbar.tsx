@@ -83,10 +83,10 @@ export default function Navbar() {
 				elevation={0}
 				sx={{
 					borderBottom: 1,
-                    borderTop: "none",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    borderRadius: 0,
+					borderTop: "none",
+					borderLeft: "none",
+					borderRight: "none",
+					borderRadius: 0,
 					borderColor: "divider",
 				}}
 			>
@@ -136,6 +136,35 @@ export default function Navbar() {
 
 					<Box sx={{ flexGrow: 1 }} />
 
+					<Box
+						component={Link}
+						to="/malla"
+						activeProps={{ "aria-current": "page" }}
+						className="app-nav-link"
+						sx={{
+							display: { xs: "none", sm: "inline-flex" },
+							alignItems: "center",
+							color: "text.primary",
+							textDecoration: "none",
+							fontSize: "0.9rem",
+							fontWeight: 700,
+							px: 0.5,
+							py: 0.25,
+							borderBottom: 2,
+							borderColor: "transparent",
+							"&:hover": {
+								color: "primary.main",
+								borderColor: "primary.main",
+							},
+							'&[aria-current="page"]': {
+								color: "primary.main",
+								borderColor: "primary.main",
+							},
+						}}
+					>
+						Malla
+					</Box>
+
 					<ThemeSelector />
 
 					{isAuthenticated && user ? (
@@ -145,7 +174,7 @@ export default function Navbar() {
 									sx={{
 										width: 32,
 										height: 32,
-                                        color: "secondary.contrastText",
+										color: "secondary.contrastText",
 										bgcolor: "secondary.main",
 										fontSize: "0.8rem",
 										fontWeight: 700,

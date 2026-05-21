@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MallaRouteImport } from './routes/malla'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CursoCursoIdRouteImport } from './routes/curso/$cursoId'
 
+const MallaRoute = MallaRouteImport.update({
+  id: '/malla',
+  path: '/malla',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -32,35 +38,46 @@ const CursoCursoIdRoute = CursoCursoIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/curso/$cursoId'
+  fullPaths: '/' | '/admin' | '/malla' | '/curso/$cursoId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/curso/$cursoId'
-  id: '__root__' | '/' | '/admin' | '/curso/$cursoId'
+  to: '/' | '/admin' | '/malla' | '/curso/$cursoId'
+  id: '__root__' | '/' | '/admin' | '/malla' | '/curso/$cursoId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  MallaRoute: typeof MallaRoute
   CursoCursoIdRoute: typeof CursoCursoIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/malla': {
+      id: '/malla'
+      path: '/malla'
+      fullPath: '/malla'
+      preLoaderRoute: typeof MallaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  MallaRoute: MallaRoute,
   CursoCursoIdRoute: CursoCursoIdRoute,
 }
 export const routeTree = rootRouteImport

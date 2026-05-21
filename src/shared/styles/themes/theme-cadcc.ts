@@ -109,13 +109,28 @@ const theme = createTheme({
                 
                 /* Custom CaDCC Link Styles */
                 a {
-                    color: ${cadccColors.blue};
+                    color: ${cadccColors.violet};
                     font-weight: 700;
                     text-decoration: none;
                     transition: color 0.2s ease;
                 }
                 a:hover {
                     color: ${cadccColors.pink};
+                }
+                header a {
+                    color: #ffffff;
+                }
+                header a:hover,
+                header a[aria-current="page"] {
+                    color: ${cadccColors.yellow};
+                }
+                header .app-nav-link {
+                    color: #ffffff !important;
+                }
+                header .app-nav-link:hover,
+                header .app-nav-link[aria-current="page"] {
+                    color: ${cadccColors.yellow} !important;
+                    border-color: ${cadccColors.yellow} !important;
                 }
 
                 /* CaDCC Utility Underlines */

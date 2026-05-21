@@ -25,7 +25,7 @@ const bubbleTokens = {
 	textMuted: "#B8005A", // Mid Magenta
 	primary: "#ff0081", // Hot Pink
 	secondary: "#00E6A7", // Mint Green (Contrast)
-    lightShadow: "rgba(255, 255, 255, 0.5)",
+	lightShadow: "rgba(255, 255, 255, 0.5)",
 	darkShadow: "rgba(255, 119, 188, 0.5)", // #ff77bc with opacity
 	darkShadowHover: "rgba(255, 119, 188, 0.65)",
 };
@@ -38,7 +38,7 @@ const shadows = {
 	insetDeep: `inset 10px 10px 20px ${bubbleTokens.darkShadowHover}, inset -10px -10px 20px rgba(255, 255, 255, 0.9)`,
 };
 
-const TOKEN_TITLE_FONT_FAMILY = '"Fredoka", sans-serif'
+const TOKEN_TITLE_FONT_FAMILY = '"Fredoka", sans-serif';
 
 const bubbleTypography: ThemeOptions["typography"] = {
 	fontFamily: '"DM Sans", sans-serif',

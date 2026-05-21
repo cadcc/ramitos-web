@@ -33,14 +33,14 @@ export interface ThemeConfig {
 }
 
 export const appThemes = {
-    minimalLight: minimalLightTheme, // eniac light
+	minimalLight: minimalLightTheme, // eniac light
 	cadcc: cadccTheme, // ofisalita light
 	light: lightTheme, // toqui light
-    bubblegum: bubblegumTheme, // kioskito light
+	bubblegum: bubblegumTheme, // kioskito light
 	retro: retroTheme, // sistemas light
 	dark: darkTheme, // salita dark
 	anakena: anakenaTheme, // anakena dark
-    minimalDark: minimalDarkTheme, // lorenzo dark
+	minimalDark: minimalDarkTheme, // lorenzo dark
 } satisfies Record<string, ThemeConfig>;
 
 export type ThemeKey = keyof typeof appThemes;

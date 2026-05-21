@@ -334,9 +334,9 @@ function RelatedCourses({
 						key={course.id}
 						sx={{
 							borderRadius: 0.75,
-                            p: 0.75,
-                            border: "1px solid",
-                            borderColor: "divider"
+							p: 0.75,
+							border: "1px solid",
+							borderColor: "divider",
 						}}
 					>
 						<CardActionArea>
