@@ -35,6 +35,10 @@ const TOKEN_COMFORTAA = '"Comfortaa", cursive';
 const hardShadow = `4px 4px 0px ${cadccColors.lines}`;
 const hardShadowHover = `6px 6px 0px ${cadccColors.lines}`;
 const hardShadowCard = `8px 8px 0px ${cadccColors.lines}`;
+const celShadeInset =
+	"inset -16px -10px 0 rgba(31, 25, 84, 0.08), inset 10px 8px 0 rgba(255, 255, 255, 0.45)";
+const celShadeInsetStrong =
+	"inset -18px -12px 0 rgba(31, 25, 84, 0.12), inset 10px 8px 0 rgba(255, 255, 255, 0.5)";
 
 const cadccTypography: ThemeOptions["typography"] = {
 	fontFamily: '"Nunito", sans-serif',
@@ -105,6 +109,11 @@ const theme = createTheme({
                 body {
                     background-color: ${cadccColors.background};
                     color: #040115;
+                    background-image:
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100 Q66 82 100 0 L100 100 Z' fill='%23606898' fill-opacity='0.22'/%3E%3C/svg%3E");
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
                 }
                 
                 /* Custom CaDCC Link Styles */
@@ -174,14 +183,14 @@ const theme = createTheme({
 					border: `2px solid ${cadccColors.lines}`,
 					padding: "8px 24px",
 					transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
-					boxShadow: hardShadow,
+					boxShadow: `${hardShadow}, ${celShadeInset}`,
 					"&:hover": {
 						transform: "translate(-2px, -2px)",
-						boxShadow: hardShadowHover,
+						boxShadow: `${hardShadowHover}, ${celShadeInsetStrong}`,
 					},
 					"&:active": {
 						transform: "translate(2px, 2px)",
-						boxShadow: `0px 0px 0px ${cadccColors.lines}`,
+						boxShadow: `0px 0px 0px ${cadccColors.lines}, inset 8px 8px 0 rgba(31, 25, 84, 0.1)`,
 					},
 					"&.MuiButton-containedPrimary": {
 						backgroundColor: cadccColors.blue,
@@ -206,11 +215,14 @@ const theme = createTheme({
 				root: {
 					borderRadius: 16,
 					border: `2px solid ${cadccColors.lines}`,
-					boxShadow: hardShadowCard,
-					overflow: "visible",
+					boxShadow: `${hardShadowCard}, ${celShadeInset}`,
+					overflow: "hidden",
 					transition: "transform 0.2s ease",
+					backgroundImage:
+						"linear-gradient(135deg, rgba(255,255,255,0.38) 0 28%, transparent 28% 100%)",
 					"&:hover": {
 						transform: "rotate(-1deg) scale(1.01)",
+						boxShadow: `${hardShadowCard}, ${celShadeInsetStrong}`,
 					},
 				},
 			},
@@ -220,7 +232,8 @@ const theme = createTheme({
 				root: {
 					borderRadius: 16,
 					border: `2px solid ${cadccColors.lines}`,
-					boxShadow: hardShadow,
+					boxShadow: `${hardShadow}, ${celShadeInset}`,
+					overflow: "hidden",
 				},
 			},
 		},
@@ -232,7 +245,8 @@ const theme = createTheme({
 					borderLeft: "none",
 					borderRight: "none",
 					borderRadius: 0,
-					boxShadow: "none",
+					boxShadow:
+						"inset -18px -8px 0 rgba(26, 8, 86, 0.16), inset 0 6px 0 rgba(255, 255, 255, 0.18)",
 				},
 			},
 		},
@@ -271,7 +285,7 @@ const theme = createTheme({
 					borderTop: `2px solid ${cadccColors.lines}`,
 					borderRight: `2px solid ${cadccColors.lines}`,
 					borderBottom: `2px solid ${cadccColors.lines}`,
-					boxShadow: hardShadow,
+					boxShadow: `${hardShadow}, ${celShadeInset}`,
 					fontFamily: '"Nunito", sans-serif',
 					fontWeight: 600,
 					color: "#040115",
@@ -303,7 +317,7 @@ const theme = createTheme({
 				root: {
 					borderCollapse: "collapse",
 					border: `2px solid ${cadccColors.lines}`,
-					boxShadow: hardShadow,
+					boxShadow: `${hardShadow}, ${celShadeInset}`,
 					backgroundColor: "#ffffff",
 					borderRadius: 8,
 					overflow: "hidden",
@@ -344,7 +358,7 @@ const theme = createTheme({
 					fontFamily: TOKEN_COMFORTAA,
 					fontWeight: 700,
 					border: `2px solid ${cadccColors.lines}`,
-					boxShadow: `2px 2px 0px ${cadccColors.lines}`,
+					boxShadow: `2px 2px 0px ${cadccColors.lines}, ${celShadeInset}`,
 					"&.MuiChip-colorPrimary": {
 						backgroundColor: cadccColors.yellow,
 						color: cadccColors.violet,

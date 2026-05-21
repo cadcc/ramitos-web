@@ -240,7 +240,12 @@ export const theme = createTheme({
 				root: {
 					color: "#000000",
 					fontWeight: "bold",
+					backgroundColor: TOKEN_WINDOWS_GRAY,
+					padding: "0 4px",
 					"&.Mui-focused": { color: "#000000" },
+					"&.MuiInputLabel-shrink": {
+						transform: "translate(12px, -11px) scale(0.75)",
+					},
 				},
 			},
 		},
