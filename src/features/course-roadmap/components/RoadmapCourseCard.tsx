@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Box, Typography } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo } from "react";
+import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import { roadmapColors, roadmapSizes } from "../model/tokens";
 import { opacityForDepth } from "../model/roadmapLogic";
 import type {
@@ -39,6 +40,7 @@ function RoadmapCourseCardComponent({
 					component: Link,
 					to: "/curso/$cursoId",
 					params: { cursoId: course.code },
+					search: { reviewSort: DEFAULT_REVIEW_SORT },
 				}
 			: { component: "div" as const };
 

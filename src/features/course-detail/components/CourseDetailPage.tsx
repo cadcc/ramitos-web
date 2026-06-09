@@ -16,6 +16,7 @@ import {
 import { alpha } from "@mui/material/styles";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
 import { getAverageScore, getTagColor } from "../../../constants/courseDisplay";
+import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
 import type { Curso, ReviewSort } from "../../../shared/types/domain";
 import { CourseReviewsSection } from "../../reviews";
@@ -343,6 +344,7 @@ function RelatedCourses({
 							<Link
 								to="/curso/$cursoId"
 								params={{ cursoId: course.id }}
+								search={{ reviewSort: DEFAULT_REVIEW_SORT }}
 								style={{ textDecoration: "none", color: "inherit" }}
 							>
 								<Typography

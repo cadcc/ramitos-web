@@ -6,6 +6,7 @@ import type {
 	CursoListItem,
 } from "../../../shared/types/domain";
 import { getAverageScore } from "../../../constants/courseDisplay";
+import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 
 const CURRENT_SEMESTER = "2026-1";
 
@@ -86,6 +87,7 @@ export default function CourseCard({ course, index }: Props) {
 			<Link
 				to="/curso/$cursoId"
 				params={{ cursoId: course.id }}
+				search={{ reviewSort: DEFAULT_REVIEW_SORT }}
 				style={{
 					textDecoration: "none",
 					color: "inherit",
