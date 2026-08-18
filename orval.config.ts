@@ -4,11 +4,12 @@ import { loadEnv } from "vite";
 
 const env = loadEnv("development", process.cwd(), "");
 const BASE_URL = env.VITE_API_BASE_URL || "http://localhost:8000";
+const SCHEMA_BASE_URL = env.VITE_API_SCHEMA_BASE_URL || BASE_URL;
 
 function serviceConfig(schemaName: string, folderName: string): Options {
 	return {
         // TODO: add fallback/cached input
-		input: `${BASE_URL}/docs/specs/cl.cadcc.ramitos.schema.${schemaName}.json`,
+		input: `${SCHEMA_BASE_URL}/docs/specs/cl.cadcc.ramitos.schema.${schemaName}.json`,
 		output: {
 			client: "react-query",
 			target: `src/generated/api/${folderName}`,

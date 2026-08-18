@@ -6,10 +6,6 @@ import {
 } from "../../../generated/api/account/accountService.msw.ts";
 import { getListCourseReviewsMockHandler } from "../../../generated/api/anonymous-review/anonymousReviewService.msw.ts";
 import {
-	getDccLoginMockHandler,
-	getPasswordLoginMockHandler,
-} from "../../../generated/api/authentication/authenticationService.msw.ts";
-import {
 	getGetCourseMockHandler,
 	getListCoursesMockHandler,
 } from "../../../generated/api/course/courseService.msw.ts";
@@ -26,7 +22,6 @@ import {
 	mockListCourseReviews,
 	mockListCourses,
 	mockListReviews,
-	mockPasswordLogin,
 } from "./fixtures";
 
 const handlers = [
@@ -36,8 +31,6 @@ const handlers = [
 	getListReviewsMockHandler(mockListReviews),
 	getCreateReviewMockHandler(mockCreateReview),
 	getGetReviewMockHandler(mockGetReview),
-	getPasswordLoginMockHandler(mockPasswordLogin),
-	getDccLoginMockHandler(mockPasswordLogin),
 	getGetSelfMockHandler(mockGetSelf),
 	getCreateAccountMockHandler(mockGetSelf),
 	getUpdateAccountMockHandler(mockGetSelf),
@@ -45,8 +38,23 @@ const handlers = [
 
 const worker = setupWorker(...handlers);
 
-export async function initializeMocking() {
-	return import.meta.env.VITE_API_MOCKING_ENABLED === "true"
-		? worker.start()
-		: null;
+async function unregisterMockServiceWorkers() {
+	if (!("serviceWorker" in navigator)) return;
+	const registrations = await navigator.serviceWorker.getRegistrations();
+	await Promise.all(
+		registrations
+			.filter((registration) =>
+				registration.active?.scriptURL.endsWith("/mockServiceWorker.js"),
+			)
+			.map((registration) => registration.unregister()),
+	);
+}
+
+export async function initializeMocking(): Promise<void> {
+	if (import.meta.env.VITE_API_MOCKING_ENABLED === "true") {
+		await worker.start({ onUnhandledRequest: "bypass" });
+		return;
+	}
+
+	await unregisterMockServiceWorkers();
 }

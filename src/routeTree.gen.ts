@@ -13,6 +13,7 @@ import { Route as MallaRouteImport } from './routes/malla'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CursoCursoIdRouteImport } from './routes/curso/$cursoId'
+import { Route as AuthDccCallbackRouteImport } from './routes/auth.dcc.callback'
 
 const MallaRoute = MallaRouteImport.update({
   id: '/malla',
@@ -34,18 +35,25 @@ const CursoCursoIdRoute = CursoCursoIdRouteImport.update({
   path: '/curso/$cursoId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthDccCallbackRoute = AuthDccCallbackRouteImport.update({
+  id: '/auth/dcc/callback',
+  path: '/auth/dcc/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
+  '/auth/dcc/callback': typeof AuthDccCallbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
+  '/auth/dcc/callback': typeof AuthDccCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,25 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/malla': typeof MallaRoute
   '/curso/$cursoId': typeof CursoCursoIdRoute
+  '/auth/dcc/callback': typeof AuthDccCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/malla' | '/curso/$cursoId'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/malla'
+    | '/curso/$cursoId'
+    | '/auth/dcc/callback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/malla' | '/curso/$cursoId'
-  id: '__root__' | '/' | '/admin' | '/malla' | '/curso/$cursoId'
+  to: '/' | '/admin' | '/malla' | '/curso/$cursoId' | '/auth/dcc/callback'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/malla'
+    | '/curso/$cursoId'
+    | '/auth/dcc/callback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +87,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   MallaRoute: typeof MallaRoute
   CursoCursoIdRoute: typeof CursoCursoIdRoute
+  AuthDccCallbackRoute: typeof AuthDccCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CursoCursoIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/dcc/callback': {
+      id: '/auth/dcc/callback'
+      path: '/auth/dcc/callback'
+      fullPath: '/auth/dcc/callback'
+      preLoaderRoute: typeof AuthDccCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +135,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   MallaRoute: MallaRoute,
   CursoCursoIdRoute: CursoCursoIdRoute,
+  AuthDccCallbackRoute: AuthDccCallbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

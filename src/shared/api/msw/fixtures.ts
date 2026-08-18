@@ -4,7 +4,6 @@ import {
 	AccountRole,
 	type GetSelfResponseContent,
 } from "../../../generated/api/account/models";
-import type { PasswordLoginResponseContent } from "../../../generated/api/authentication/models";
 import type {
 	Course,
 	ListCoursesOutputPayload,
@@ -320,24 +319,6 @@ function authAccount(info: RequestInfo): GetSelfResponseContent {
 	return TEST_ACCOUNT;
 }
 
-function jwtFor(account: GetSelfResponseContent): string {
-	const payload = {
-		exp: Math.floor(Date.now() / 1000) + 60 * 60 * 8,
-		account: {
-			id: account.id,
-			displayName: account.name,
-			role: account.role,
-			createdAt: account.created_at,
-		},
-	};
-	const encode = (value: unknown) =>
-		btoa(JSON.stringify(value))
-			.replace(/=/g, "")
-			.replace(/\+/g, "-")
-			.replace(/\//g, "_");
-	return `${encode({ alg: "none", typ: "JWT" })}.${encode(payload)}.mock-signature`;
-}
-
 function courseByParam(info: RequestInfo): Course {
 	const param = info.params.courseId ?? info.params.courseCode;
 	const courseCode = Array.isArray(param) ? param[0] : String(param);
@@ -439,10 +420,6 @@ export function mockGetReview(info: RequestInfo): GetReviewResponseContent {
 			.find((review) => review.id === reviewId) ??
 		makeReview(fallbackCourse, reviewId)
 	);
-}
-
-export function mockPasswordLogin(): PasswordLoginResponseContent {
-	return { accessToken: jwtFor(TEST_ACCOUNT) };
 }
 
 export function mockGetSelf(info: RequestInfo): GetSelfResponseContent {

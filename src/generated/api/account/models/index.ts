@@ -9,5 +9,6 @@ export * from "./accountRole";
 export * from "./createAccountRequestContent";
 export * from "./createAccountResponseContent";
 export * from "./getSelfResponseContent";
+export * from "./notAuthenticatedResponseContent";
 export * from "./updateAccountRequestContent";
 export * from "./updateAccountResponseContent";

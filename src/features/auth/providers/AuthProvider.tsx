@@ -15,10 +15,12 @@ import {
 	fetchCurrentUser,
 	getStoredToken,
 	getTokenExpirationTime,
-	loadStoredUser,
+	getSessionExpiryTimerDelay,
+	loginWithDccSecret,
 	loginWithPassword,
 	notifySessionExpired,
 	onSessionExpired,
+	startDccLogin,
 	type LoginCredentials,
 } from "../api/auth.api";
 
@@ -31,6 +33,8 @@ interface AuthState {
 
 interface AuthContextValue extends AuthState {
 	login: (credentials: LoginCredentials) => Promise<void>;
+	startDccLogin: (returnPath?: string) => void;
+	completeDccLogin: (secret: string) => Promise<void>;
 	logout: () => void;
 	loginError: string | null;
 	loginPending: boolean;
@@ -43,7 +47,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
 	const queryClient = useQueryClient();
-	const [user, setUser] = useState<User | null>(loadStoredUser);
+	const [user, setUser] = useState<User | null>(null);
 	const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 	const [loginPending, setLoginPending] = useState(false);
 	const [loginError, setLoginError] = useState<string | null>(null);
@@ -65,24 +69,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		const expiresAt = getTokenExpirationTime(getStoredToken());
 		if (expiresAt === null) return undefined;
 
-		const delay = expiresAt - Date.now();
-		if (delay <= 0) {
-			notifySessionExpired();
-			return undefined;
-		}
+		let timeoutId: number | undefined;
+		const scheduleExpiryCheck = () => {
+			const delay = getSessionExpiryTimerDelay(expiresAt);
+			if (delay <= 0) {
+				notifySessionExpired();
+				return;
+			}
+			timeoutId = window.setTimeout(scheduleExpiryCheck, delay);
+		};
 
-		const timeoutId = window.setTimeout(notifySessionExpired, delay);
-		return () => window.clearTimeout(timeoutId);
+		scheduleExpiryCheck();
+		return () => {
+			if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+		};
 	}, [user]);
 
 	useEffect(() => {
+		// A stale session check must not race the one-time DCC callback exchange.
+		if (window.location.pathname === "/auth/dcc/callback") return;
+
 		let active = true;
 		fetchCurrentUser()
 			.then((loadedUser) => {
 				if (active && loadedUser) setUser(loadedUser);
 			})
 			.catch(() => {
-				/* keep any stored user as a temporary offline/dev fallback */
+				clearSession();
 			});
 		return () => {
 			active = false;
@@ -98,6 +111,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			setLoginDialogOpen(false);
 		} catch {
 			setLoginError("No pudimos iniciar sesion con esas credenciales.");
+		} finally {
+			setLoginPending(false);
+		}
+	}, []);
+
+	const completeDccLogin = useCallback(async (secret: string) => {
+		setLoginPending(true);
+		setLoginError(null);
+		try {
+			const loggedUser = await loginWithDccSecret(secret);
+			setUser(loggedUser);
+			setLoginDialogOpen(false);
 		} finally {
 			setLoginPending(false);
 		}
@@ -128,6 +153,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 			isAdmin: user?.role === "admin" || user?.role === "mod",
 			isStudent: user !== null && user.role !== "admin",
 			login,
+			startDccLogin,
+			completeDccLogin,
 			logout,
 			loginError,
 			loginPending,
@@ -138,6 +165,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	}, [
 		user,
 		login,
+		completeDccLogin,
 		logout,
 		loginError,
 		loginPending,

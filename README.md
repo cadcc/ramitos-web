@@ -23,11 +23,16 @@ Copy `.env.example` to `.env` and set:
 
 ```bash
 VITE_API_BASE_URL="https://example-backend"
+VITE_API_SCHEMA_BASE_URL="https://example-backend/api"
+VITE_AUTH_API_ORIGIN="https://example-backend"
 VITE_API_MOCKING_ENABLED=false
+VITE_API_PROXY_SECURE=true
 ```
 
 `VITE_API_BASE_URL` is used by `vite.config.ts` as the target for the local
-`/api` proxy.
+`/api` proxy. `VITE_API_SCHEMA_BASE_URL` points Orval at the published schemas,
+and `VITE_AUTH_API_ORIGIN` sends browser-based DCC login starts directly to the
+public backend while returning to the frontend origin that initiated login.
 
 ## Commands
 
@@ -86,6 +91,8 @@ When adding or changing backend schemas:
 ## Mocking
 
 Set `VITE_API_MOCKING_ENABLED=true` to intercept `/api` calls with MSW.
+For test backends with an incomplete local certificate chain, set
+`VITE_API_PROXY_SECURE=false`; keep certificate verification enabled otherwise.
 
 Mock setup lives in:
 

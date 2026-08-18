@@ -10,13 +10,15 @@ import { HttpResponse, http } from "msw";
 import type { RequestHandlerOptions } from "msw";
 
 import type {
-	DccLoginResponseContent,
+	DccLoginExchangeTokensResponseContent,
 	PasswordLoginResponseContent,
 } from "./models";
 
-export const getDccLoginResponseMock = (
-	overrideResponse: Partial<Extract<DccLoginResponseContent, object>> = {},
-): DccLoginResponseContent => ({
+export const getDccLoginExchangeTokensResponseMock = (
+	overrideResponse: Partial<
+		Extract<DccLoginExchangeTokensResponseContent, object>
+	> = {},
+): DccLoginExchangeTokensResponseContent => ({
 	accessToken: faker.string.alpha({ length: { min: 10, max: 20 } }),
 	...overrideResponse,
 });
@@ -28,25 +30,69 @@ export const getPasswordLoginResponseMock = (
 	...overrideResponse,
 });
 
-export const getDccLoginMockHandler = (
+export const getDccLoginCallbackMockHandler = (
 	overrideResponse?:
-		| DccLoginResponseContent
+		| void
 		| ((
 				info: Parameters<Parameters<typeof http.get>[1]>[0],
-		  ) => Promise<DccLoginResponseContent> | DccLoginResponseContent),
+		  ) => Promise<void> | void),
 	options?: RequestHandlerOptions,
 ) => {
 	return http.get(
 		"*/api/workflow/login/dcc",
 		async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+			if (typeof overrideResponse === "function") {
+				await overrideResponse(info);
+			}
+
+			return new HttpResponse(null, { status: 200 });
+		},
+		options,
+	);
+};
+
+export const getDccLoginExchangeTokensMockHandler = (
+	overrideResponse?:
+		| DccLoginExchangeTokensResponseContent
+		| ((
+				info: Parameters<Parameters<typeof http.post>[1]>[0],
+		  ) =>
+				| Promise<DccLoginExchangeTokensResponseContent>
+				| DccLoginExchangeTokensResponseContent),
+	options?: RequestHandlerOptions,
+) => {
+	return http.post(
+		"*/api/workflow/login/dcc/finish",
+		async (info: Parameters<Parameters<typeof http.post>[1]>[0]) => {
 			return HttpResponse.json(
 				overrideResponse !== undefined
 					? typeof overrideResponse === "function"
 						? await overrideResponse(info)
 						: overrideResponse
-					: getDccLoginResponseMock(),
+					: getDccLoginExchangeTokensResponseMock(),
 				{ status: 200 },
 			);
+		},
+		options,
+	);
+};
+
+export const getDccLoginStartMockHandler = (
+	overrideResponse?:
+		| void
+		| ((
+				info: Parameters<Parameters<typeof http.get>[1]>[0],
+		  ) => Promise<void> | void),
+	options?: RequestHandlerOptions,
+) => {
+	return http.get(
+		"*/api/workflow/login/dcc/start",
+		async (info: Parameters<Parameters<typeof http.get>[1]>[0]) => {
+			if (typeof overrideResponse === "function") {
+				await overrideResponse(info);
+			}
+
+			return new HttpResponse(null, { status: 200 });
 		},
 		options,
 	);
@@ -78,6 +124,8 @@ export const getPasswordLoginMockHandler = (
 	);
 };
 export const getAuthenticationServiceMock = () => [
-	getDccLoginMockHandler(),
+	getDccLoginCallbackMockHandler(),
+	getDccLoginExchangeTokensMockHandler(),
+	getDccLoginStartMockHandler(),
 	getPasswordLoginMockHandler(),
 ];

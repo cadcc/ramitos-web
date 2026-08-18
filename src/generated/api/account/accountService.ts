@@ -24,6 +24,7 @@ import type {
 	CreateAccountRequestContent,
 	CreateAccountResponseContent,
 	GetSelfResponseContent,
+	NotAuthenticatedResponseContent,
 	UpdateAccountRequestContent,
 	UpdateAccountResponseContent,
 } from "./models";
@@ -33,10 +34,29 @@ export type createAccountResponse200 = {
 	status: 200;
 };
 
+export type createAccountResponse401 = {
+	data: NotAuthenticatedResponseContent;
+	status: 401;
+};
+
+export type createAccountResponse403 = {
+	data: void;
+	status: 403;
+};
+
 export type createAccountResponseSuccess = createAccountResponse200 & {
 	headers: Headers;
 };
-export type createAccountResponse = createAccountResponseSuccess;
+export type createAccountResponseError = (
+	| createAccountResponse401
+	| createAccountResponse403
+) & {
+	headers: Headers;
+};
+
+export type createAccountResponse =
+	| createAccountResponseSuccess
+	| createAccountResponseError;
 
 export const getCreateAccountUrl = () => {
 	return `/api/accounts`;
@@ -64,7 +84,7 @@ export const createAccount = async (
 };
 
 export const getCreateAccountMutationOptions = <
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 	TContext = unknown,
 >(options?: {
 	mutation?: UseMutationOptions<
@@ -105,9 +125,12 @@ export type CreateAccountMutationResult = NonNullable<
 	Awaited<ReturnType<typeof createAccount>>
 >;
 export type CreateAccountMutationBody = CreateAccountRequestContent;
-export type CreateAccountMutationError = unknown;
+export type CreateAccountMutationError = NotAuthenticatedResponseContent | void;
 
-export const useCreateAccount = <TError = unknown, TContext = unknown>(
+export const useCreateAccount = <
+	TError = NotAuthenticatedResponseContent | void,
+	TContext = unknown,
+>(
 	options?: {
 		mutation?: UseMutationOptions<
 			Awaited<ReturnType<typeof createAccount>>,
@@ -132,10 +155,24 @@ export type getSelfResponse200 = {
 	status: 200;
 };
 
+export type getSelfResponse401 = {
+	data: NotAuthenticatedResponseContent;
+	status: 401;
+};
+
+export type getSelfResponse403 = {
+	data: void;
+	status: 403;
+};
+
 export type getSelfResponseSuccess = getSelfResponse200 & {
 	headers: Headers;
 };
-export type getSelfResponse = getSelfResponseSuccess;
+export type getSelfResponseError = (getSelfResponse401 | getSelfResponse403) & {
+	headers: Headers;
+};
+
+export type getSelfResponse = getSelfResponseSuccess | getSelfResponseError;
 
 export const getGetSelfUrl = () => {
 	return `/api/accounts/@me`;
@@ -161,7 +198,7 @@ export const getGetSelfQueryKey = () => {
 
 export const getGetSelfQueryOptions = <
 	TData = Awaited<ReturnType<typeof getSelf>>,
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 >(options?: {
 	query?: Partial<
 		UseQueryOptions<Awaited<ReturnType<typeof getSelf>>, TError, TData>
@@ -186,11 +223,11 @@ export const getGetSelfQueryOptions = <
 export type GetSelfQueryResult = NonNullable<
 	Awaited<ReturnType<typeof getSelf>>
 >;
-export type GetSelfQueryError = unknown;
+export type GetSelfQueryError = NotAuthenticatedResponseContent | void;
 
 export function useGetSelf<
 	TData = Awaited<ReturnType<typeof getSelf>>,
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 >(
 	options: {
 		query: Partial<
@@ -212,7 +249,7 @@ export function useGetSelf<
 };
 export function useGetSelf<
 	TData = Awaited<ReturnType<typeof getSelf>>,
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 >(
 	options?: {
 		query?: Partial<
@@ -234,7 +271,7 @@ export function useGetSelf<
 };
 export function useGetSelf<
 	TData = Awaited<ReturnType<typeof getSelf>>,
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 >(
 	options?: {
 		query?: Partial<
@@ -249,7 +286,7 @@ export function useGetSelf<
 
 export function useGetSelf<
 	TData = Awaited<ReturnType<typeof getSelf>>,
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 >(
 	options?: {
 		query?: Partial<
@@ -276,10 +313,35 @@ export type updateAccountResponse200 = {
 	status: 200;
 };
 
+export type updateAccountResponse401 = {
+	data: NotAuthenticatedResponseContent;
+	status: 401;
+};
+
+export type updateAccountResponse403 = {
+	data: void;
+	status: 403;
+};
+
+export type updateAccountResponse404 = {
+	data: void;
+	status: 404;
+};
+
 export type updateAccountResponseSuccess = updateAccountResponse200 & {
 	headers: Headers;
 };
-export type updateAccountResponse = updateAccountResponseSuccess;
+export type updateAccountResponseError = (
+	| updateAccountResponse401
+	| updateAccountResponse403
+	| updateAccountResponse404
+) & {
+	headers: Headers;
+};
+
+export type updateAccountResponse =
+	| updateAccountResponseSuccess
+	| updateAccountResponseError;
 
 export const getUpdateAccountUrl = (userId: string) => {
 	return `/api/accounts/${userId}`;
@@ -308,7 +370,7 @@ export const updateAccount = async (
 };
 
 export const getUpdateAccountMutationOptions = <
-	TError = unknown,
+	TError = NotAuthenticatedResponseContent | void,
 	TContext = unknown,
 >(options?: {
 	mutation?: UseMutationOptions<
@@ -349,9 +411,12 @@ export type UpdateAccountMutationResult = NonNullable<
 	Awaited<ReturnType<typeof updateAccount>>
 >;
 export type UpdateAccountMutationBody = UpdateAccountRequestContent | undefined;
-export type UpdateAccountMutationError = unknown;
+export type UpdateAccountMutationError = NotAuthenticatedResponseContent | void;
 
-export const useUpdateAccount = <TError = unknown, TContext = unknown>(
+export const useUpdateAccount = <
+	TError = NotAuthenticatedResponseContent | void,
+	TContext = unknown,
+>(
 	options?: {
 		mutation?: UseMutationOptions<
 			Awaited<ReturnType<typeof updateAccount>>,

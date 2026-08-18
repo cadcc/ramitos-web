@@ -1,12 +1,35 @@
 import { faker } from "@faker-js/faker";
 import { getSelf } from "../../../generated/api/account/accountService";
 import type { GetSelfResponseContent } from "../../../generated/api/account/models";
-import { passwordLogin } from "../../../generated/api/authentication/authenticationService";
-import type { AccountRole, User } from "../../../shared/types/domain";
+import {
+	dccLoginExchangeTokens,
+	getDccLoginExchangeTokensUrl,
+	getDccLoginStartUrl,
+	passwordLogin,
+} from "../../../generated/api/authentication/authenticationService";
+import type { User } from "../../../shared/types/domain";
 
 const TOKEN_STORAGE_KEY = "ramitos-token";
 const USER_STORAGE_KEY = "ramitos-user";
+const DCC_RETURN_PATH_STORAGE_KEY = "ramitos-dcc-login-return-path";
 const SESSION_EXPIRED_EVENT = "ramitos-session-expired";
+const DCC_CALLBACK_PATH = "/auth/dcc/callback";
+const MAX_TIMER_DELAY_MS = 2_147_483_647;
+
+const dccTokenExchanges = new Map<string, Promise<User>>();
+
+export class DccLoginConfigurationError extends Error {
+	constructor() {
+		super("DCC login is not configured for this frontend origin");
+		this.name = "DccLoginConfigurationError";
+	}
+}
+
+export function isDccLoginConfigurationError(
+	error: unknown,
+): error is DccLoginConfigurationError {
+	return error instanceof Error && error.name === "DccLoginConfigurationError";
+}
 
 export interface LoginCredentials {
 	username: string;
@@ -48,15 +71,6 @@ function decodeBase64Url(value: string): string {
 	return atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
 }
 
-function normalizeRole(role: unknown): AccountRole {
-	if (typeof role === "string") return role as AccountRole;
-	if (role && typeof role === "object") {
-		const key = Object.keys(role)[0]?.toLowerCase();
-		if (key) return key as AccountRole;
-	}
-	return "none";
-}
-
 function tokenPayload(token: string): Record<string, unknown> | null {
 	try {
 		return JSON.parse(decodeBase64Url(token.split(".")[1] ?? ""));
@@ -80,6 +94,13 @@ export function getTokenExpirationTime(
 	return exp * 1000;
 }
 
+export function getSessionExpiryTimerDelay(
+	expiresAt: number,
+	now = Date.now(),
+): number {
+	return Math.min(Math.max(expiresAt - now, 0), MAX_TIMER_DELAY_MS);
+}
+
 function accountScore(accountId: number): number {
 	// TODO(backend): Replace with account score/reputation once exposed by AccountService.
 	// TODO(backend): Once account profile data is complete, switch AuthContext to the generated useGetSelf hook.
@@ -98,45 +119,6 @@ export function toUser(account: GetSelfResponseContent): User {
 	};
 }
 
-function userFromToken(token: string): User | null {
-	try {
-		const payload = tokenPayload(token);
-		if (!payload) return null;
-		const account = payload.account;
-		if (!account || typeof account !== "object") return null;
-		const accountData = account as Record<string, unknown>;
-
-		const id = Number(accountData.id);
-		const name = String(
-			accountData.displayName ?? accountData.name ?? "Usuario",
-		);
-		return {
-			id,
-			name,
-			username: name,
-			role: normalizeRole(accountData.role),
-			score: accountScore(id),
-			createdAt: String(
-				accountData.createdAt ??
-					accountData.created_at ??
-					new Date().toISOString(),
-			),
-		};
-	} catch {
-		return null;
-	}
-}
-
-export function loadStoredUser(): User | null {
-	try {
-		const stored = localStorage.getItem(USER_STORAGE_KEY);
-		if (stored) return JSON.parse(stored) as User;
-	} catch {
-		/* ignore */
-	}
-	return null;
-}
-
 export function storeSession(token: string, user: User) {
 	localStorage.setItem(TOKEN_STORAGE_KEY, token);
 	localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
@@ -145,6 +127,58 @@ export function storeSession(token: string, user: User) {
 export function clearSession() {
 	localStorage.removeItem(TOKEN_STORAGE_KEY);
 	localStorage.removeItem(USER_STORAGE_KEY);
+}
+
+function isSafeInternalPath(path: string): boolean {
+	if (!path.startsWith("/") || path.startsWith("//")) return false;
+	try {
+		return (
+			new URL(path, window.location.origin).origin === window.location.origin
+		);
+	} catch {
+		return false;
+	}
+}
+
+export function getDccLoginReturnPath(requestedPath?: string): string {
+	if (requestedPath && isSafeInternalPath(requestedPath)) return requestedPath;
+	const stored = sessionStorage.getItem(DCC_RETURN_PATH_STORAGE_KEY);
+	return stored && isSafeInternalPath(stored) ? stored : "/";
+}
+
+export function clearDccLoginReturnPath() {
+	sessionStorage.removeItem(DCC_RETURN_PATH_STORAGE_KEY);
+}
+
+function getDccAuthOrigin(): string {
+	const configuredOrigin = import.meta.env.VITE_AUTH_API_ORIGIN?.trim();
+	if (!configuredOrigin) return window.location.origin;
+	try {
+		return new URL(configuredOrigin).origin;
+	} catch {
+		return window.location.origin;
+	}
+}
+
+export function startDccLogin(requestedReturnPath?: string) {
+	const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+	const returnPath =
+		requestedReturnPath && isSafeInternalPath(requestedReturnPath)
+			? requestedReturnPath
+			: currentPath.startsWith(DCC_CALLBACK_PATH)
+				? "/"
+				: currentPath;
+	clearSession();
+	sessionStorage.setItem(DCC_RETURN_PATH_STORAGE_KEY, returnPath);
+
+	const authOrigin = getDccAuthOrigin();
+	const redirect = new URL(DCC_CALLBACK_PATH, window.location.origin);
+	redirect.searchParams.set("returnTo", returnPath);
+	const loginUrl = new URL(
+		getDccLoginStartUrl({ redirect: redirect.toString() }),
+		authOrigin,
+	);
+	window.location.assign(loginUrl.toString());
 }
 
 export async function fetchCurrentUser(
@@ -160,18 +194,17 @@ export async function fetchCurrentUser(
 			headers: getAuthHeaders(token),
 			signal: timeoutSignal(5000),
 		});
-		if ((response as { status: number }).status < 400)
-			return toUser(response.data);
-		if (isAuthExpiredStatus((response as { status: number }).status)) {
+		if (response.status === 200) return toUser(response.data);
+		if (isAuthExpiredStatus(response.status)) {
 			notifySessionExpired();
 			return null;
 		}
 	} catch {
-		/* fall back to token payload below */
+		clearSession();
+		return null;
 	}
-	// TODO(backend): Use AccountService as the sole source of current-user state once /api/accounts/@me responds reliably.
-	// TODO(backend): Once /api/accounts/@me is reliable, switch session restore to the generated useGetSelf hook.
-	return userFromToken(token);
+	clearSession();
+	return null;
 }
 
 export function handleAuthenticatedResponse(status: number): boolean {
@@ -184,10 +217,7 @@ export async function loginWithPassword(
 	credentials: LoginCredentials,
 ): Promise<User> {
 	const loginResponse = await passwordLogin(credentials);
-	if (
-		(loginResponse as { status: number }).status >= 400 ||
-		!loginResponse.data.accessToken
-	) {
+	if (loginResponse.status !== 200 || !loginResponse.data.accessToken) {
 		throw new Error("Invalid login response");
 	}
 
@@ -197,4 +227,64 @@ export async function loginWithPassword(
 
 	storeSession(token, user);
 	return user;
+}
+
+async function requestDccAccessToken(secret: string): Promise<string> {
+	const authOrigin = getDccAuthOrigin();
+	if (authOrigin !== window.location.origin) {
+		try {
+			const response = await fetch(
+				new URL(getDccLoginExchangeTokensUrl(), authOrigin),
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ secret }),
+					credentials: "include",
+				},
+			);
+			if (!response.ok) throw new Error("DCC token exchange failed");
+			const data = (await response.json()) as { accessToken?: string };
+			if (!data.accessToken) throw new Error("DCC token exchange failed");
+			return data.accessToken;
+		} catch (error) {
+			if (error instanceof TypeError) throw new DccLoginConfigurationError();
+			throw error;
+		}
+	}
+
+	const response = await dccLoginExchangeTokens(
+		{ secret },
+		{ credentials: "same-origin" },
+	);
+	if (response.status === 200 && response.data.accessToken) {
+		return response.data.accessToken;
+	}
+	throw new Error("DCC token exchange failed");
+}
+
+async function exchangeDccLoginSecret(secret: string): Promise<User> {
+	const token = await requestDccAccessToken(secret);
+
+	const user = await fetchCurrentUser(token);
+	if (!user) throw new Error("Unable to load DCC account");
+
+	storeSession(token, user);
+	return user;
+}
+
+export function loginWithDccSecret(secret: string): Promise<User> {
+	const normalizedSecret = secret.trim();
+	if (!normalizedSecret) return Promise.reject(new Error("Missing DCC secret"));
+
+	const existing = dccTokenExchanges.get(normalizedSecret);
+	if (existing) return existing;
+
+	const exchange = exchangeDccLoginSecret(normalizedSecret);
+	dccTokenExchanges.set(normalizedSecret, exchange);
+	exchange.catch(() => {
+		if (dccTokenExchanges.get(normalizedSecret) === exchange) {
+			dccTokenExchanges.delete(normalizedSecret);
+		}
+	});
+	return exchange;
 }

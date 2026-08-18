@@ -21,23 +21,370 @@ import type {
 } from "@tanstack/react-query";
 
 import type {
-	DccLoginParams,
-	DccLoginResponseContent,
+	CallbackRejectedResponseContent,
+	DccLoginExchangeTokensRequestContent,
+	DccLoginExchangeTokensResponseContent,
+	DccLoginStartParams,
 	PasswordLoginRequestContent,
 	PasswordLoginResponseContent,
+	RequestReplayedResponseContent,
+	StatisticallyImpossibleResponseContent,
+	WorkflowTimeoutResponseContent,
+	WorkflowTrackerCookieMissingResponseContent,
 } from "./models";
 
-export type dccLoginResponse200 = {
-	data: DccLoginResponseContent;
+export type dccLoginCallbackResponse200 = {
+	data: void;
 	status: 200;
 };
 
-export type dccLoginResponseSuccess = dccLoginResponse200 & {
+export type dccLoginCallbackResponse400 = {
+	data:
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent;
+	status: 400;
+};
+
+export type dccLoginCallbackResponseSuccess = dccLoginCallbackResponse200 & {
 	headers: Headers;
 };
-export type dccLoginResponse = dccLoginResponseSuccess;
+export type dccLoginCallbackResponseError = dccLoginCallbackResponse400 & {
+	headers: Headers;
+};
 
-export const getDccLoginUrl = (params: DccLoginParams) => {
+export type dccLoginCallbackResponse =
+	| dccLoginCallbackResponseSuccess
+	| dccLoginCallbackResponseError;
+
+export const getDccLoginCallbackUrl = () => {
+	return `/api/workflow/login/dcc`;
+};
+
+export const dccLoginCallback = async (
+	options?: RequestInit,
+): Promise<dccLoginCallbackResponse> => {
+	const res = await fetch(getDccLoginCallbackUrl(), {
+		...options,
+		method: "GET",
+	});
+
+	const body = [204, 205, 304].includes(res.status) ? null : await res.text();
+
+	const data: dccLoginCallbackResponse["data"] = body
+		? JSON.parse(body)
+		: undefined;
+	return {
+		data,
+		status: res.status,
+		headers: res.headers,
+	} as dccLoginCallbackResponse;
+};
+
+export const getDccLoginCallbackQueryKey = () => {
+	return [`/api/workflow/login/dcc`] as const;
+};
+
+export const getDccLoginCallbackQueryOptions = <
+	TData = Awaited<ReturnType<typeof dccLoginCallback>>,
+	TError =
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent,
+>(options?: {
+	query?: Partial<
+		UseQueryOptions<Awaited<ReturnType<typeof dccLoginCallback>>, TError, TData>
+	>;
+	fetch?: RequestInit;
+}) => {
+	const { query: queryOptions, fetch: fetchOptions } = options ?? {};
+
+	const queryKey = queryOptions?.queryKey ?? getDccLoginCallbackQueryKey();
+
+	const queryFn: QueryFunction<
+		Awaited<ReturnType<typeof dccLoginCallback>>
+	> = ({ signal }) => dccLoginCallback({ signal, ...fetchOptions });
+
+	return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+		Awaited<ReturnType<typeof dccLoginCallback>>,
+		TError,
+		TData
+	> & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type DccLoginCallbackQueryResult = NonNullable<
+	Awaited<ReturnType<typeof dccLoginCallback>>
+>;
+export type DccLoginCallbackQueryError =
+	| WorkflowTrackerCookieMissingResponseContent
+	| WorkflowTimeoutResponseContent
+	| RequestReplayedResponseContent
+	| CallbackRejectedResponseContent;
+
+export function useDccLoginCallback<
+	TData = Awaited<ReturnType<typeof dccLoginCallback>>,
+	TError =
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent,
+>(
+	options: {
+		query: Partial<
+			UseQueryOptions<
+				Awaited<ReturnType<typeof dccLoginCallback>>,
+				TError,
+				TData
+			>
+		> &
+			Pick<
+				DefinedInitialDataOptions<
+					Awaited<ReturnType<typeof dccLoginCallback>>,
+					TError,
+					Awaited<ReturnType<typeof dccLoginCallback>>
+				>,
+				"initialData"
+			>;
+		fetch?: RequestInit;
+	},
+	queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useDccLoginCallback<
+	TData = Awaited<ReturnType<typeof dccLoginCallback>>,
+	TError =
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent,
+>(
+	options?: {
+		query?: Partial<
+			UseQueryOptions<
+				Awaited<ReturnType<typeof dccLoginCallback>>,
+				TError,
+				TData
+			>
+		> &
+			Pick<
+				UndefinedInitialDataOptions<
+					Awaited<ReturnType<typeof dccLoginCallback>>,
+					TError,
+					Awaited<ReturnType<typeof dccLoginCallback>>
+				>,
+				"initialData"
+			>;
+		fetch?: RequestInit;
+	},
+	queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useDccLoginCallback<
+	TData = Awaited<ReturnType<typeof dccLoginCallback>>,
+	TError =
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent,
+>(
+	options?: {
+		query?: Partial<
+			UseQueryOptions<
+				Awaited<ReturnType<typeof dccLoginCallback>>,
+				TError,
+				TData
+			>
+		>;
+		fetch?: RequestInit;
+	},
+	queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
+
+export function useDccLoginCallback<
+	TData = Awaited<ReturnType<typeof dccLoginCallback>>,
+	TError =
+		| WorkflowTrackerCookieMissingResponseContent
+		| WorkflowTimeoutResponseContent
+		| RequestReplayedResponseContent
+		| CallbackRejectedResponseContent,
+>(
+	options?: {
+		query?: Partial<
+			UseQueryOptions<
+				Awaited<ReturnType<typeof dccLoginCallback>>,
+				TError,
+				TData
+			>
+		>;
+		fetch?: RequestInit;
+	},
+	queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+} {
+	const queryOptions = getDccLoginCallbackQueryOptions(options);
+
+	const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+		TData,
+		TError
+	> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+	return { ...query, queryKey: queryOptions.queryKey };
+}
+
+export type dccLoginExchangeTokensResponse200 = {
+	data: DccLoginExchangeTokensResponseContent;
+	status: 200;
+};
+
+export type dccLoginExchangeTokensResponse400 = {
+	data: RequestReplayedResponseContent | WorkflowTimeoutResponseContent;
+	status: 400;
+};
+
+export type dccLoginExchangeTokensResponseSuccess =
+	dccLoginExchangeTokensResponse200 & {
+		headers: Headers;
+	};
+export type dccLoginExchangeTokensResponseError =
+	dccLoginExchangeTokensResponse400 & {
+		headers: Headers;
+	};
+
+export type dccLoginExchangeTokensResponse =
+	| dccLoginExchangeTokensResponseSuccess
+	| dccLoginExchangeTokensResponseError;
+
+export const getDccLoginExchangeTokensUrl = () => {
+	return `/api/workflow/login/dcc/finish`;
+};
+
+export const dccLoginExchangeTokens = async (
+	dccLoginExchangeTokensRequestContent: DccLoginExchangeTokensRequestContent,
+	options?: RequestInit,
+): Promise<dccLoginExchangeTokensResponse> => {
+	const res = await fetch(getDccLoginExchangeTokensUrl(), {
+		...options,
+		method: "POST",
+		headers: { "Content-Type": "application/json", ...options?.headers },
+		body: JSON.stringify(dccLoginExchangeTokensRequestContent),
+	});
+
+	const body = [204, 205, 304].includes(res.status) ? null : await res.text();
+
+	const data: dccLoginExchangeTokensResponse["data"] = body
+		? JSON.parse(body)
+		: {};
+	return {
+		data,
+		status: res.status,
+		headers: res.headers,
+	} as dccLoginExchangeTokensResponse;
+};
+
+export const getDccLoginExchangeTokensMutationOptions = <
+	TError = RequestReplayedResponseContent | WorkflowTimeoutResponseContent,
+	TContext = unknown,
+>(options?: {
+	mutation?: UseMutationOptions<
+		Awaited<ReturnType<typeof dccLoginExchangeTokens>>,
+		TError,
+		{ data: DccLoginExchangeTokensRequestContent },
+		TContext
+	>;
+	fetch?: RequestInit;
+}): UseMutationOptions<
+	Awaited<ReturnType<typeof dccLoginExchangeTokens>>,
+	TError,
+	{ data: DccLoginExchangeTokensRequestContent },
+	TContext
+> => {
+	const mutationKey = ["dccLoginExchangeTokens"];
+	const { mutation: mutationOptions, fetch: fetchOptions } = options
+		? options.mutation &&
+			"mutationKey" in options.mutation &&
+			options.mutation.mutationKey
+			? options
+			: { ...options, mutation: { ...options.mutation, mutationKey } }
+		: { mutation: { mutationKey }, fetch: undefined };
+
+	const mutationFn: MutationFunction<
+		Awaited<ReturnType<typeof dccLoginExchangeTokens>>,
+		{ data: DccLoginExchangeTokensRequestContent }
+	> = (props) => {
+		const { data } = props ?? {};
+
+		return dccLoginExchangeTokens(data, fetchOptions);
+	};
+
+	return { mutationFn, ...mutationOptions };
+};
+
+export type DccLoginExchangeTokensMutationResult = NonNullable<
+	Awaited<ReturnType<typeof dccLoginExchangeTokens>>
+>;
+export type DccLoginExchangeTokensMutationBody =
+	DccLoginExchangeTokensRequestContent;
+export type DccLoginExchangeTokensMutationError =
+	| RequestReplayedResponseContent
+	| WorkflowTimeoutResponseContent;
+
+export const useDccLoginExchangeTokens = <
+	TError = RequestReplayedResponseContent | WorkflowTimeoutResponseContent,
+	TContext = unknown,
+>(
+	options?: {
+		mutation?: UseMutationOptions<
+			Awaited<ReturnType<typeof dccLoginExchangeTokens>>,
+			TError,
+			{ data: DccLoginExchangeTokensRequestContent },
+			TContext
+		>;
+		fetch?: RequestInit;
+	},
+	queryClient?: QueryClient,
+): UseMutationResult<
+	Awaited<ReturnType<typeof dccLoginExchangeTokens>>,
+	TError,
+	{ data: DccLoginExchangeTokensRequestContent },
+	TContext
+> => {
+	return useMutation(
+		getDccLoginExchangeTokensMutationOptions(options),
+		queryClient,
+	);
+};
+
+export type dccLoginStartResponse200 = {
+	data: void;
+	status: 200;
+};
+
+export type dccLoginStartResponse400 = {
+	data:
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent;
+	status: 400;
+};
+
+export type dccLoginStartResponseSuccess = dccLoginStartResponse200 & {
+	headers: Headers;
+};
+export type dccLoginStartResponseError = dccLoginStartResponse400 & {
+	headers: Headers;
+};
+
+export type dccLoginStartResponse =
+	| dccLoginStartResponseSuccess
+	| dccLoginStartResponseError;
+
+export const getDccLoginStartUrl = (params?: DccLoginStartParams) => {
 	const normalizedParams = new URLSearchParams();
 
 	Object.entries(params || {}).forEach(([key, value]) => {
@@ -49,75 +396,90 @@ export const getDccLoginUrl = (params: DccLoginParams) => {
 	const stringifiedParams = normalizedParams.toString();
 
 	return stringifiedParams.length > 0
-		? `/api/workflow/login/dcc?${stringifiedParams}`
-		: `/api/workflow/login/dcc`;
+		? `/api/workflow/login/dcc/start?${stringifiedParams}`
+		: `/api/workflow/login/dcc/start`;
 };
 
-export const dccLogin = async (
-	params: DccLoginParams,
+export const dccLoginStart = async (
+	params?: DccLoginStartParams,
 	options?: RequestInit,
-): Promise<dccLoginResponse> => {
-	const res = await fetch(getDccLoginUrl(params), {
+): Promise<dccLoginStartResponse> => {
+	const res = await fetch(getDccLoginStartUrl(params), {
 		...options,
 		method: "GET",
 	});
 
 	const body = [204, 205, 304].includes(res.status) ? null : await res.text();
 
-	const data: dccLoginResponse["data"] = body ? JSON.parse(body) : {};
-	return { data, status: res.status, headers: res.headers } as dccLoginResponse;
+	const data: dccLoginStartResponse["data"] = body
+		? JSON.parse(body)
+		: undefined;
+	return {
+		data,
+		status: res.status,
+		headers: res.headers,
+	} as dccLoginStartResponse;
 };
 
-export const getDccLoginQueryKey = (params?: DccLoginParams) => {
-	return [`/api/workflow/login/dcc`, ...(params ? [params] : [])] as const;
+export const getDccLoginStartQueryKey = (params?: DccLoginStartParams) => {
+	return [
+		`/api/workflow/login/dcc/start`,
+		...(params ? [params] : []),
+	] as const;
 };
 
-export const getDccLoginQueryOptions = <
-	TData = Awaited<ReturnType<typeof dccLogin>>,
-	TError = unknown,
+export const getDccLoginStartQueryOptions = <
+	TData = Awaited<ReturnType<typeof dccLoginStart>>,
+	TError =
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent,
 >(
-	params: DccLoginParams,
+	params?: DccLoginStartParams,
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof dccLogin>>, TError, TData>
+			UseQueryOptions<Awaited<ReturnType<typeof dccLoginStart>>, TError, TData>
 		>;
 		fetch?: RequestInit;
 	},
 ) => {
 	const { query: queryOptions, fetch: fetchOptions } = options ?? {};
 
-	const queryKey = queryOptions?.queryKey ?? getDccLoginQueryKey(params);
+	const queryKey = queryOptions?.queryKey ?? getDccLoginStartQueryKey(params);
 
-	const queryFn: QueryFunction<Awaited<ReturnType<typeof dccLogin>>> = ({
+	const queryFn: QueryFunction<Awaited<ReturnType<typeof dccLoginStart>>> = ({
 		signal,
-	}) => dccLogin(params, { signal, ...fetchOptions });
+	}) => dccLoginStart(params, { signal, ...fetchOptions });
 
 	return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
-		Awaited<ReturnType<typeof dccLogin>>,
+		Awaited<ReturnType<typeof dccLoginStart>>,
 		TError,
 		TData
 	> & { queryKey: DataTag<QueryKey, TData, TError> };
 };
 
-export type DccLoginQueryResult = NonNullable<
-	Awaited<ReturnType<typeof dccLogin>>
+export type DccLoginStartQueryResult = NonNullable<
+	Awaited<ReturnType<typeof dccLoginStart>>
 >;
-export type DccLoginQueryError = unknown;
+export type DccLoginStartQueryError =
+	| CallbackRejectedResponseContent
+	| StatisticallyImpossibleResponseContent;
 
-export function useDccLogin<
-	TData = Awaited<ReturnType<typeof dccLogin>>,
-	TError = unknown,
+export function useDccLoginStart<
+	TData = Awaited<ReturnType<typeof dccLoginStart>>,
+	TError =
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent,
 >(
-	params: DccLoginParams,
+	params: undefined | DccLoginStartParams,
 	options: {
 		query: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof dccLogin>>, TError, TData>
+			UseQueryOptions<Awaited<ReturnType<typeof dccLoginStart>>, TError, TData>
 		> &
 			Pick<
 				DefinedInitialDataOptions<
-					Awaited<ReturnType<typeof dccLogin>>,
+					Awaited<ReturnType<typeof dccLoginStart>>,
 					TError,
-					Awaited<ReturnType<typeof dccLogin>>
+					Awaited<ReturnType<typeof dccLoginStart>>
 				>,
 				"initialData"
 			>;
@@ -127,20 +489,22 @@ export function useDccLogin<
 ): DefinedUseQueryResult<TData, TError> & {
 	queryKey: DataTag<QueryKey, TData, TError>;
 };
-export function useDccLogin<
-	TData = Awaited<ReturnType<typeof dccLogin>>,
-	TError = unknown,
+export function useDccLoginStart<
+	TData = Awaited<ReturnType<typeof dccLoginStart>>,
+	TError =
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent,
 >(
-	params: DccLoginParams,
+	params?: DccLoginStartParams,
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof dccLogin>>, TError, TData>
+			UseQueryOptions<Awaited<ReturnType<typeof dccLoginStart>>, TError, TData>
 		> &
 			Pick<
 				UndefinedInitialDataOptions<
-					Awaited<ReturnType<typeof dccLogin>>,
+					Awaited<ReturnType<typeof dccLoginStart>>,
 					TError,
-					Awaited<ReturnType<typeof dccLogin>>
+					Awaited<ReturnType<typeof dccLoginStart>>
 				>,
 				"initialData"
 			>;
@@ -150,14 +514,16 @@ export function useDccLogin<
 ): UseQueryResult<TData, TError> & {
 	queryKey: DataTag<QueryKey, TData, TError>;
 };
-export function useDccLogin<
-	TData = Awaited<ReturnType<typeof dccLogin>>,
-	TError = unknown,
+export function useDccLoginStart<
+	TData = Awaited<ReturnType<typeof dccLoginStart>>,
+	TError =
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent,
 >(
-	params: DccLoginParams,
+	params?: DccLoginStartParams,
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof dccLogin>>, TError, TData>
+			UseQueryOptions<Awaited<ReturnType<typeof dccLoginStart>>, TError, TData>
 		>;
 		fetch?: RequestInit;
 	},
@@ -166,14 +532,16 @@ export function useDccLogin<
 	queryKey: DataTag<QueryKey, TData, TError>;
 };
 
-export function useDccLogin<
-	TData = Awaited<ReturnType<typeof dccLogin>>,
-	TError = unknown,
+export function useDccLoginStart<
+	TData = Awaited<ReturnType<typeof dccLoginStart>>,
+	TError =
+		| CallbackRejectedResponseContent
+		| StatisticallyImpossibleResponseContent,
 >(
-	params: DccLoginParams,
+	params?: DccLoginStartParams,
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof dccLogin>>, TError, TData>
+			UseQueryOptions<Awaited<ReturnType<typeof dccLoginStart>>, TError, TData>
 		>;
 		fetch?: RequestInit;
 	},
@@ -181,7 +549,7 @@ export function useDccLogin<
 ): UseQueryResult<TData, TError> & {
 	queryKey: DataTag<QueryKey, TData, TError>;
 } {
-	const queryOptions = getDccLoginQueryOptions(params, options);
+	const queryOptions = getDccLoginStartQueryOptions(params, options);
 
 	const query = useQuery(queryOptions, queryClient) as UseQueryResult<
 		TData,
@@ -196,10 +564,21 @@ export type passwordLoginResponse200 = {
 	status: 200;
 };
 
+export type passwordLoginResponse400 = {
+	data: void;
+	status: 400;
+};
+
 export type passwordLoginResponseSuccess = passwordLoginResponse200 & {
 	headers: Headers;
 };
-export type passwordLoginResponse = passwordLoginResponseSuccess;
+export type passwordLoginResponseError = passwordLoginResponse400 & {
+	headers: Headers;
+};
+
+export type passwordLoginResponse =
+	| passwordLoginResponseSuccess
+	| passwordLoginResponseError;
 
 export const getPasswordLoginUrl = () => {
 	return `/api/workflow/login/pass`;
@@ -227,7 +606,7 @@ export const passwordLogin = async (
 };
 
 export const getPasswordLoginMutationOptions = <
-	TError = unknown,
+	TError = void,
 	TContext = unknown,
 >(options?: {
 	mutation?: UseMutationOptions<
@@ -268,9 +647,9 @@ export type PasswordLoginMutationResult = NonNullable<
 	Awaited<ReturnType<typeof passwordLogin>>
 >;
 export type PasswordLoginMutationBody = PasswordLoginRequestContent;
-export type PasswordLoginMutationError = unknown;
+export type PasswordLoginMutationError = void;
 
-export const usePasswordLogin = <TError = unknown, TContext = unknown>(
+export const usePasswordLogin = <TError = void, TContext = unknown>(
 	options?: {
 		mutation?: UseMutationOptions<
 			Awaited<ReturnType<typeof passwordLogin>>,

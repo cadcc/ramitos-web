@@ -21,6 +21,10 @@ export const getCreateAccountResponseMock = (
 ): CreateAccountResponseContent => ({
 	id: faker.number.int(),
 	name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+	mufasaId: faker.helpers.arrayElement([
+		faker.string.alpha({ length: { min: 10, max: 20 } }),
+		undefined,
+	]),
 	role: faker.helpers.arrayElement(Object.values(AccountRole)),
 	created_at: faker.date.past().toISOString().slice(0, 19) + "Z",
 	updated_at: faker.date.past().toISOString().slice(0, 19) + "Z",
@@ -32,6 +36,10 @@ export const getGetSelfResponseMock = (
 ): GetSelfResponseContent => ({
 	id: faker.number.int(),
 	name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+	mufasaId: faker.helpers.arrayElement([
+		faker.string.alpha({ length: { min: 10, max: 20 } }),
+		undefined,
+	]),
 	role: faker.helpers.arrayElement(Object.values(AccountRole)),
 	created_at: faker.date.past().toISOString().slice(0, 19) + "Z",
 	updated_at: faker.date.past().toISOString().slice(0, 19) + "Z",
@@ -43,6 +51,10 @@ export const getUpdateAccountResponseMock = (
 ): UpdateAccountResponseContent => ({
 	id: faker.number.int(),
 	name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+	mufasaId: faker.helpers.arrayElement([
+		faker.string.alpha({ length: { min: 10, max: 20 } }),
+		undefined,
+	]),
 	role: faker.helpers.arrayElement(Object.values(AccountRole)),
 	created_at: faker.date.past().toISOString().slice(0, 19) + "Z",
 	updated_at: faker.date.past().toISOString().slice(0, 19) + "Z",

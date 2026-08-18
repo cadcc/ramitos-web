@@ -27,10 +27,21 @@ export type listCourseReviewsResponse200 = {
 	status: 200;
 };
 
+export type listCourseReviewsResponse404 = {
+	data: void;
+	status: 404;
+};
+
 export type listCourseReviewsResponseSuccess = listCourseReviewsResponse200 & {
 	headers: Headers;
 };
-export type listCourseReviewsResponse = listCourseReviewsResponseSuccess;
+export type listCourseReviewsResponseError = listCourseReviewsResponse404 & {
+	headers: Headers;
+};
+
+export type listCourseReviewsResponse =
+	| listCourseReviewsResponseSuccess
+	| listCourseReviewsResponseError;
 
 export const getListCourseReviewsUrl = (
 	courseCode: string,
@@ -83,7 +94,7 @@ export const getListCourseReviewsQueryKey = (
 
 export const getListCourseReviewsQueryOptions = <
 	TData = Awaited<ReturnType<typeof listCourseReviews>>,
-	TError = unknown,
+	TError = void,
 >(
 	courseCode: string,
 	params?: ListCourseReviewsParams,
@@ -123,11 +134,11 @@ export const getListCourseReviewsQueryOptions = <
 export type ListCourseReviewsQueryResult = NonNullable<
 	Awaited<ReturnType<typeof listCourseReviews>>
 >;
-export type ListCourseReviewsQueryError = unknown;
+export type ListCourseReviewsQueryError = void;
 
 export function useListCourseReviews<
 	TData = Awaited<ReturnType<typeof listCourseReviews>>,
-	TError = unknown,
+	TError = void,
 >(
 	courseCode: string,
 	params: undefined | ListCourseReviewsParams,
@@ -155,7 +166,7 @@ export function useListCourseReviews<
 };
 export function useListCourseReviews<
 	TData = Awaited<ReturnType<typeof listCourseReviews>>,
-	TError = unknown,
+	TError = void,
 >(
 	courseCode: string,
 	params?: ListCourseReviewsParams,
@@ -183,7 +194,7 @@ export function useListCourseReviews<
 };
 export function useListCourseReviews<
 	TData = Awaited<ReturnType<typeof listCourseReviews>>,
-	TError = unknown,
+	TError = void,
 >(
 	courseCode: string,
 	params?: ListCourseReviewsParams,
@@ -204,7 +215,7 @@ export function useListCourseReviews<
 
 export function useListCourseReviews<
 	TData = Awaited<ReturnType<typeof listCourseReviews>>,
-	TError = unknown,
+	TError = void,
 >(
 	courseCode: string,
 	params?: ListCourseReviewsParams,

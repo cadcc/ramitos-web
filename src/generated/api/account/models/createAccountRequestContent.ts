@@ -9,6 +9,8 @@ import type { AccountRole } from "./accountRole";
 export interface CreateAccountRequestContent {
 	username: string;
 	password: string;
+	/** Must be a MUFASA compatible identifier. If missing, this user skips MUFASA checks */
+	mufasaId?: string;
 	role: AccountRole;
 	name: string;
 }

@@ -9,6 +9,8 @@ import type { AccountRole } from "./accountRole";
 export interface UpdateAccountResponseContent {
 	id: number;
 	name: string;
+	/** Usually it's a RUT. */
+	mufasaId?: string;
 	role: AccountRole;
 	created_at: string;
 	updated_at: string;

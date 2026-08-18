@@ -14,13 +14,6 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Tooltip,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogActions,
-	Stack,
-	TextField,
-	Alert,
 } from "@mui/material";
 import {
 	Logout as LogoutIcon,
@@ -30,7 +23,7 @@ import {
 	AdminPanelSettings as AdminIcon,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useAuth } from "../../../features/auth";
+import { LoginDialog, useAuth } from "../../../features/auth";
 import { useState } from "react";
 import ThemeSelector from "./ThemeSelector";
 
@@ -44,22 +37,9 @@ function getInitials(name: string): string {
 }
 
 export default function Navbar() {
-	const {
-		user,
-		isAuthenticated,
-		isAdmin,
-		login,
-		logout,
-		loginError,
-		loginPending,
-		loginDialogOpen,
-		openLoginDialog,
-		closeLoginDialog,
-	} = useAuth();
+	const { user, isAuthenticated, isAdmin, logout, openLoginDialog } = useAuth();
 	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
 
 	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
 		setAnchorEl(e.currentTarget);
@@ -69,11 +49,6 @@ export default function Navbar() {
 		handleClose();
 		logout();
 		navigate({ to: "/" });
-	};
-
-	const handleLoginSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-		await login({ username, password });
 	};
 
 	return (
@@ -252,59 +227,7 @@ export default function Navbar() {
 				</Toolbar>
 			</AppBar>
 
-			<Dialog
-				open={loginDialogOpen}
-				onClose={closeLoginDialog}
-				maxWidth="xs"
-				fullWidth
-			>
-				<DialogTitle
-					sx={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 }}
-				>
-					Ingresar a Ramitos
-				</DialogTitle>
-				<DialogContent>
-					<Box component="form" onSubmit={handleLoginSubmit}>
-						<Stack spacing={1.5} sx={{ mt: 0.5 }}>
-							{loginError && (
-								<Alert severity="error" sx={{ py: 0 }}>
-									{loginError}
-								</Alert>
-							)}
-							<TextField
-								label="Usuario"
-								value={username}
-								onChange={(e) => setUsername(e.target.value)}
-								autoComplete="username"
-								size="small"
-								fullWidth
-								required
-							/>
-							<TextField
-								label="Contrasena"
-								type="password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								autoComplete="current-password"
-								size="small"
-								fullWidth
-								required
-							/>
-							<Button
-								type="submit"
-								variant="contained"
-								fullWidth
-								disabled={loginPending}
-							>
-								{loginPending ? "Ingresando..." : "Ingresar"}
-							</Button>
-						</Stack>
-					</Box>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={closeLoginDialog}>Cancelar</Button>
-				</DialogActions>
-			</Dialog>
+			<LoginDialog />
 		</>
 	);
 }
