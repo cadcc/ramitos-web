@@ -6,6 +6,7 @@ import {
 } from "../../../generated/api/account/models";
 import type {
 	Course,
+	CoursesStaticDataContainer,
 	ListCoursesOutputPayload,
 } from "../../../generated/api/course/models";
 import type { ListCourseReviewsOutputPayload } from "../../../generated/api/anonymous-review/models";
@@ -329,9 +330,30 @@ function courseByParam(info: RequestInfo): Course {
 }
 
 export function mockListCourses(info: RequestInfo): ListCoursesOutputPayload {
+	const params = new URL(info.request.url).searchParams;
+	const requestedCodes = params.getAll("codes");
+	if (requestedCodes.length > 0) {
+		const requested = new Set(requestedCodes);
+		return courses.filter((course) => requested.has(course.id));
+	}
+
 	const limit = Number(searchParam(info, "limit") ?? 24);
 	const after = searchParam(info, "after");
 	return pageByCursor(courses, limit, after);
+}
+
+export function mockGetCoursesStaticData(): CoursesStaticDataContainer {
+	return {
+		count: courses.length,
+		categories: COURSE_TAGS,
+		courses: courses.map((course) => ({
+			code: course.id,
+			name: course.name,
+			categories: Object.keys(course.tag_stats)
+				.map((tag) => COURSE_TAGS.indexOf(tag))
+				.filter((index) => index >= 0),
+		})),
+	};
 }
 
 export function mockGetCourse(info: RequestInfo): Course {

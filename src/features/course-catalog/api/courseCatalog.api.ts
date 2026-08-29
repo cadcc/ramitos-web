@@ -1,33 +1,90 @@
 import { listCourses } from "../../../generated/api/course/courseService";
-import type { Course } from "../../../generated/api/course/models";
+import type {
+	Course,
+	CoursesStaticDataContainer,
+} from "../../../generated/api/course/models";
 import type {
 	CourseFilters,
 	CourseRatings,
 	CursoListItem,
 } from "../../../shared/types/domain";
 
-const PAGE_SIZE = 24;
+export const COURSE_CATALOG_PAGE_SIZE = 24;
+
+export interface CourseCatalogEntry {
+	id: string;
+	name: string;
+	categoryTags: string[];
+}
+
+export interface CourseCatalogIndex {
+	items: CourseCatalogEntry[];
+	categoryOptions: string[];
+	total: number;
+}
 
 export interface CourseCatalogPage {
 	items: CursoListItem[];
-	nextCursor: string | null;
+	nextCursor: number | null;
 }
 
-function statValue(course: Course, key: keyof CourseRatings): number {
-	const value = course.stats[key]?.value ?? 0;
+function statValue(
+	course: Course | undefined,
+	key: keyof CourseRatings,
+): number {
+	const value = course?.stats[key]?.value ?? 0;
 	return Math.max(0, Math.min(5, value));
 }
 
-export function toCourseCatalogItem(course: Course): CursoListItem {
-	// TODO(backend): Once Course includes all catalog card fields, replace this adapter with the generated useListCourses hook.
-	return {
-		id: course.id,
+function categoryNames(
+	indexes: number[] | undefined,
+	categories: string[],
+): string[] {
+	return Array.from(
+		new Set(
+			(indexes ?? [])
+				.map((index) => categories[index])
+				.filter((category): category is string => Boolean(category)),
+		),
+	);
+}
+
+export function normalizeCourseCatalog(
+	data: CoursesStaticDataContainer,
+): CourseCatalogIndex {
+	const items = data.courses.map((course) => ({
+		id: course.code,
 		name: course.name,
-		code: course.id,
+		categoryTags: categoryNames(course.categories, data.categories),
+	}));
+
+	return {
+		items,
+		categoryOptions: [...data.categories].sort((a, b) =>
+			a.localeCompare(b, "es"),
+		),
+		total: data.count,
+	};
+}
+
+export function toCourseCatalogItem(
+	entry: CourseCatalogEntry,
+	course?: Course,
+): CursoListItem {
+	const categoryTags = Array.from(
+		new Set([...entry.categoryTags, ...Object.keys(course?.tag_stats ?? {})]),
+	);
+
+	// TODO(backend): Replace the remaining catalog defaults when credits,
+	// offering history, plan membership, and review counts are exposed.
+	return {
+		id: entry.id,
+		name: entry.name,
+		code: entry.id,
 		credits: 0,
 		department: "",
 		plan: "electivo_especialidad",
-		categoryTags: Object.keys(course.tag_stats),
+		categoryTags,
 		currentlyOffered: false,
 		lastOffered: "",
 		ratings: {
@@ -42,69 +99,76 @@ export function toCourseCatalogItem(course: Course): CursoListItem {
 }
 
 export async function getCourseCatalogPage(
-	cursor?: string,
+	entries: CourseCatalogEntry[],
+	cursor = 0,
 ): Promise<CourseCatalogPage> {
+	const pageEntries = entries.slice(cursor, cursor + COURSE_CATALOG_PAGE_SIZE);
+	if (pageEntries.length === 0) return { items: [], nextCursor: null };
+
 	const response = await listCourses({
-		limit: PAGE_SIZE,
-		after: cursor,
+		codes: pageEntries.map((course) => course.id),
 	});
-	const items = response.data.map(toCourseCatalogItem);
+	const coursesById = new Map(
+		response.data.map((course) => [course.id, course] as const),
+	);
+	const nextCursor = cursor + pageEntries.length;
 
 	return {
-		items,
-		nextCursor:
-			response.data.length === PAGE_SIZE
-				? (response.data[response.data.length - 1]?.id ?? null)
-				: null,
+		items: pageEntries.map((entry) =>
+			toCourseCatalogItem(entry, coursesById.get(entry.id)),
+		),
+		nextCursor: nextCursor < entries.length ? nextCursor : null,
 	};
 }
 
-export function filterLoadedCourseCatalog(
-	courses: CursoListItem[],
+export function filterCourseCatalog(
+	entries: CourseCatalogEntry[],
 	filters: CourseFilters,
-): CursoListItem[] {
-	// TODO(backend): Once listCourses accepts catalog filters/sort, remove this client-side filtering and switch the page to the generated useListCourses hook.
-	let filtered = courses;
+): CourseCatalogEntry[] {
+	// TODO(backend): Move filtering and sorting to listCourses when the endpoint
+	// accepts catalog filters and returns complete sort metadata.
+	let filtered = entries;
 
 	if (filters.q) {
-		const q = filters.q.toLowerCase();
+		const query = filters.q.toLocaleLowerCase("es");
 		filtered = filtered.filter(
 			(course) =>
-				course.name.toLowerCase().includes(q) ||
-				course.code.toLowerCase().includes(q),
+				course.name.toLocaleLowerCase("es").includes(query) ||
+				course.id.toLocaleLowerCase("es").includes(query),
 		);
 	}
 
-	if (filters.tags && filters.tags.length > 0) {
+	if (filters.tags?.length) {
 		filtered = filtered.filter((course) =>
 			filters.tags!.some((tag) => course.categoryTags.includes(tag)),
 		);
 	}
 
-	if (filters.sort) {
-		filtered = [...filtered].sort((a, b) => {
-			switch (filters.sort) {
-				case "rating":
-					return averageScore(b.ratings) - averageScore(a.ratings);
-				case "alphabetical":
-					return a.name.localeCompare(b.name, "es");
-				case "code":
-					return a.code.localeCompare(b.code);
-				case "reviews":
-				case "recent":
-				default:
-					return 0;
-			}
-		});
+	if (filters.sort === "alphabetical") {
+		return [...filtered].sort((a, b) => a.name.localeCompare(b.name, "es"));
+	}
+
+	if (filters.sort === "code") {
+		return [...filtered].sort((a, b) => a.id.localeCompare(b.id, "es"));
 	}
 
 	return filtered;
 }
 
-export function getLoadedCategoryTags(courses: CursoListItem[]): string[] {
-	return Array.from(
-		new Set(courses.flatMap((course) => course.categoryTags)),
-	).sort((a, b) => a.localeCompare(b, "es"));
+export function sortLoadedCourseCatalog(
+	courses: CursoListItem[],
+	sort: CourseFilters["sort"],
+): CursoListItem[] {
+	if (sort !== "rating" && sort !== "reviews" && sort !== "recent") {
+		return courses;
+	}
+
+	return [...courses].sort((a, b) => {
+		if (sort === "rating")
+			return averageScore(b.ratings) - averageScore(a.ratings);
+		if (sort === "reviews") return b.reviewCount - a.reviewCount;
+		return b.lastOffered.localeCompare(a.lastOffered);
+	});
 }
 
 function averageScore(ratings: CourseRatings): number {

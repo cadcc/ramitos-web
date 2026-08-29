@@ -1,12 +1,8 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { Box, CircularProgress, Fade, Grid, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
-import {
-	filterLoadedCourseCatalog,
-	getCourseCatalogPage,
-	getLoadedCategoryTags,
-} from "../api/courseCatalog.api";
+import { sortLoadedCourseCatalog } from "../api/courseCatalog.api";
+import { useCourseCatalog } from "../hooks/useCourseCatalog";
 import CourseCard from "./CourseCard";
 import FilterBar from "./FilterBar";
 
@@ -21,6 +17,8 @@ export function CourseCatalogPage({
 }: CourseCatalogPageProps) {
 	const observerTarget = useRef<HTMLDivElement>(null);
 
+	const { indexQuery, pagesQuery, filteredTotal, categoryOptions } =
+		useCourseCatalog(filters);
 	const {
 		data,
 		fetchNextPage,
@@ -28,12 +26,7 @@ export function CourseCatalogPage({
 		isFetchingNextPage,
 		isLoading,
 		isError,
-	} = useInfiniteQuery({
-		queryKey: ["courses", filters],
-		queryFn: ({ pageParam }) => getCourseCatalogPage(pageParam),
-		initialPageParam: undefined as string | undefined,
-		getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
-	});
+	} = pagesQuery;
 
 	useEffect(() => {
 		const el = observerTarget.current;
@@ -52,10 +45,10 @@ export function CourseCatalogPage({
 		return () => observer.disconnect();
 	}, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-	const loadedCourses = data?.pages.flatMap((p) => p.items) ?? [];
-	const allCourses = filterLoadedCourseCatalog(loadedCourses, filters);
-	const categoryOptions = getLoadedCategoryTags(loadedCourses);
-	const total = allCourses.length;
+	const courses = data?.pages.flatMap((page) => page.items) ?? [];
+	const displayedCourses = sortLoadedCourseCatalog(courses, filters.sort);
+	const loading = indexQuery.isLoading || isLoading;
+	const error = indexQuery.isError || isError;
 
 	return (
 		<Box>
@@ -65,25 +58,25 @@ export function CourseCatalogPage({
 				categoryOptions={categoryOptions}
 			/>
 
-			{!isLoading && (
+			{!loading && !error && (
 				<Fade in>
 					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-						{total} {total === 1 ? "curso cargado" : "cursos cargados"}
+						{filteredTotal} {filteredTotal === 1 ? "curso" : "cursos"}
 					</Typography>
 				</Fade>
 			)}
 
-			{isLoading ? (
+			{loading ? (
 				<Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
 					<CircularProgress />
 				</Box>
-			) : isError ? (
+			) : error ? (
 				<Box sx={{ textAlign: "center", py: 8 }}>
 					<Typography color="error">
 						Error al cargar los cursos. Intenta de nuevo.
 					</Typography>
 				</Box>
-			) : allCourses.length === 0 ? (
+			) : displayedCourses.length === 0 ? (
 				<Box sx={{ textAlign: "center", py: 8 }}>
 					<Typography variant="h5">No se encontraron cursos</Typography>
 					<Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
@@ -92,7 +85,7 @@ export function CourseCatalogPage({
 				</Box>
 			) : (
 				<Grid container spacing={2}>
-					{allCourses.map((course, i) => (
+					{displayedCourses.map((course, i) => (
 						<Grid size={{ xs: 12, sm: 6, md: 3 }} key={course.id}>
 							<CourseCard course={course} index={i} />
 						</Grid>

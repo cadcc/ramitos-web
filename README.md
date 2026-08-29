@@ -41,7 +41,7 @@ pnpm run dev      # start Vite on http://localhost:5173
 pnpm run build    # typecheck and production build
 pnpm run test     # run Vitest
 pnpm run format   # format src with Prettier
-pnpm orval        # regenerate OpenAPI clients
+pnpm run generate:api # regenerate OpenAPI clients
 ```
 
 Before handing off code, run:
@@ -83,7 +83,7 @@ component -> feature hook -> feature api/mapper -> generated client
 When adding or changing backend schemas:
 
 1. Update `orval.config.ts` if a new service is needed.
-2. Run `pnpm orval`.
+2. Run `pnpm run generate:api`.
 3. Wire new calls through the owning feature's `api`/`hooks`.
 4. If the backend shape is incomplete, keep the adapter and add/update the
    backend TODO or feature request.

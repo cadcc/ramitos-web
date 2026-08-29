@@ -7,6 +7,7 @@ import {
 import { getListCourseReviewsMockHandler } from "../../../generated/api/anonymous-review/anonymousReviewService.msw.ts";
 import {
 	getGetCourseMockHandler,
+	getGetCoursesStaticDataMockHandler,
 	getListCoursesMockHandler,
 } from "../../../generated/api/course/courseService.msw.ts";
 import {
@@ -17,6 +18,7 @@ import {
 import {
 	mockCreateReview,
 	mockGetCourse,
+	mockGetCoursesStaticData,
 	mockGetReview,
 	mockGetSelf,
 	mockListCourseReviews,
@@ -25,6 +27,7 @@ import {
 } from "./fixtures";
 
 const handlers = [
+	getGetCoursesStaticDataMockHandler(mockGetCoursesStaticData),
 	getListCoursesMockHandler(mockListCourses),
 	getGetCourseMockHandler(mockGetCourse),
 	getListCourseReviewsMockHandler(mockListCourseReviews),
