@@ -11,8 +11,9 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogActions,
+	useMediaQuery,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
+import { alpha, useTheme } from "@mui/material/styles";
 import { Send as SendIcon } from "@mui/icons-material";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type {
@@ -32,11 +33,18 @@ interface Props {
 	initialReview?: Review | null;
 }
 
+const CURRENT_YEAR = new Date().getFullYear();
+const CURRENT_SEMESTER: 1 | 2 = new Date().getMonth() < 7 ? 1 : 2;
+
 function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const qc = useQueryClient();
 	const [ratings, setRatings] = useState<Partial<CourseRatings>>({});
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 	const [comment, setComment] = useState("");
+	const year = initialReview?.year ?? CURRENT_YEAR;
+	const semester = initialReview?.semester ?? CURRENT_SEMESTER;
 
 	useEffect(() => {
 		if (!open) return;
@@ -74,8 +82,8 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 			cursoId,
 			// TODO(backend): Review creation does not persist term metadata yet.
 			// TODO(backend): Once term metadata is supported, switch this form to the generated review mutation hook.
-			year: 2026,
-			semester: 1,
+			year,
+			semester,
 			comment,
 			ratings: full,
 			tags: selectedTags,
@@ -108,20 +116,25 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 			onClose={onClose}
 			maxWidth="sm"
 			fullWidth
-			slotProps={{ paper: { sx: { maxHeight: "85vh" } } }}
+			fullScreen={isMobile}
+			slotProps={{
+				paper: { sx: { maxHeight: { xs: "100%", sm: "85vh" } } },
+			}}
 		>
 			<DialogTitle
 				sx={{
 					fontFamily: '"Space Grotesk", sans-serif',
 					fontWeight: 700,
-					pb: 0,
-					fontSize: "1.25rem",
+					px: { xs: 2, sm: 3 },
+					pt: { xs: 2, sm: 2.5 },
+					pb: 1,
+					fontSize: { xs: "1.1rem", sm: "1.25rem" },
 				}}
 			>
-				Comparte tu experiencia
+				Comparte tu experiencia ({year}-{semester})
 			</DialogTitle>
-			<DialogContent sx={{ pt: 1.5 }}>
-				<Stack spacing={2.5} sx={{ mt: 0.5 }}>
+			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
+				<Stack spacing={{ xs: 2.75, sm: 2.5 }} sx={{ mt: 0.5 }}>
 					{reviewAxes.map((axis) => (
 						<ReviewRatingAxisField
 							key={axis.key}
@@ -166,6 +179,7 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 										key={item.join("|")}
 										sx={{
 											display: "inline-flex",
+											width: { xs: "100%", sm: "auto" },
 											border: 1,
 											borderColor: "divider",
 											borderRadius: 2,
@@ -179,9 +193,12 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 													key={tag}
 													onClick={() => toggleTag(tag)}
 													sx={{
+														flex: { xs: 1, sm: "initial" },
+														minWidth: 0,
 														px: 1.25,
 														py: 0.35,
 														fontSize: "0.78rem",
+														textAlign: "center",
 														fontWeight: isActive ? 600 : 400,
 														cursor: "pointer",
 														userSelect: "none",
@@ -220,18 +237,13 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 
 					<TextField
 						label="Comentario (opcional)"
-						placeholder="Párrafos con líneas en blanco. También puedes usar Markdown (negritas, listas, enlaces, código…)."
+						placeholder="¿Qué opinas del curso? ¿Cómo fue tu experiencia? Cuéntanos..."
 						multiline
-						minRows={6}
+						minRows={isMobile ? 4 : 6}
 						maxRows={24}
 						value={comment}
 						onChange={(e) => setComment(e.target.value)}
 						slotProps={{ htmlInput: { maxLength: MAX_REVIEW_COMMENT_LENGTH } }}
-						helperText={
-							comment.length > 0
-								? `${comment.length.toLocaleString()}/${MAX_REVIEW_COMMENT_LENGTH.toLocaleString()} · se renderiza como Markdown`
-								: "Opcional · párrafos y Markdown (negritas, listas, enlaces, código…). Hasta 20.000 caracteres."
-						}
 						size="small"
 					/>
 
@@ -247,9 +259,22 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 					)}
 				</Stack>
 			</DialogContent>
-			<DialogActions sx={{ px: 3, pb: 2, pt: 0 }}>
+			<DialogActions
+				sx={{
+					position: "sticky",
+					bottom: 0,
+					zIndex: 1,
+					justifyContent: "space-between",
+					gap: 1,
+					px: { xs: 2, sm: 3 },
+					py: { xs: 1.5, sm: 2 },
+					borderTop: 1,
+					borderColor: "divider",
+					bgcolor: "background.paper",
+				}}
+			>
 				<Button onClick={onClose} size="small">
-					Cancelar
+					Cerrar
 				</Button>
 				<Button
 					variant="contained"

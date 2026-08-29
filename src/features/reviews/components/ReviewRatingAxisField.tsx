@@ -28,9 +28,10 @@ export function ReviewRatingAxisField({
 			<Box
 				sx={{
 					display: "flex",
+					flexDirection: { xs: "column", sm: "row" },
 					justifyContent: "space-between",
 					alignItems: "flex-start",
-					gap: 1.5,
+					gap: { xs: 0.75, sm: 1.5 },
 				}}
 			>
 				<Box sx={{ flex: 1 }}>
@@ -47,7 +48,7 @@ export function ReviewRatingAxisField({
 					<Typography
 						variant="caption"
 						color="text.secondary"
-						sx={{ fontSize: "0.85rem" }}
+						sx={{ fontSize: "0.8rem" }}
 					>
 						{axis.question}
 					</Typography>
@@ -56,12 +57,22 @@ export function ReviewRatingAxisField({
 				<Box
 					sx={{
 						flexShrink: 0,
+						width: { xs: "100%", sm: "auto" },
+						maxWidth: { xs: 320, sm: "none" },
+						alignSelf: { xs: "center", sm: "auto" },
 						display: "flex",
 						flexDirection: "column",
 						alignItems: "center",
 					}}
 				>
-					<Box sx={{ display: "flex", gap: "6px" }}>
+					<Box
+						sx={{
+							display: "grid",
+							gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+							gap: { xs: 0.5, sm: "6px" },
+							width: "100%",
+						}}
+					>
 						{[1, 2, 3, 4, 5].map((value) => {
 							const isSelected = selected === value;
 							const emoji = axis.emojis[value - 1]!;
@@ -80,8 +91,9 @@ export function ReviewRatingAxisField({
 										}
 									}}
 									sx={{
-										width: 40,
-										height: 36,
+										width: { xs: "100%", sm: 40 },
+										minWidth: 0,
+										height: { xs: 44, sm: 36 },
 										borderRadius: 1.5,
 										display: "flex",
 										alignItems: "center",
@@ -108,8 +120,8 @@ export function ReviewRatingAxisField({
 					</Box>
 					<Box
 						sx={{
-							display: "flex",
-							justifyContent: "space-between",
+							display: "grid",
+							gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
 							width: "100%",
 							mt: 0.4,
 							px: "2px",
@@ -121,7 +133,6 @@ export function ReviewRatingAxisField({
 								sx={{
 									fontSize: "0.7rem",
 									color: "text.secondary",
-									maxWidth: "30%",
 									textAlign:
 										levelIndex === 0
 											? "left"
@@ -154,6 +165,7 @@ export function ReviewRatingAxisField({
 								key={item.join("|")}
 								sx={{
 									display: "inline-flex",
+									width: { xs: "100%", sm: "auto" },
 									border: 1,
 									borderColor: alpha(axisColor, 0.35),
 									borderRadius: 2,
@@ -167,9 +179,12 @@ export function ReviewRatingAxisField({
 											key={tag}
 											onClick={() => onToggleTag(tag)}
 											sx={{
+												flex: { xs: 1, sm: "initial" },
+												minWidth: 0,
 												px: 1.25,
 												py: 0.35,
 												fontSize: "0.78rem",
+												textAlign: "center",
 												fontWeight: isActive ? 600 : 400,
 												cursor: "pointer",
 												userSelect: "none",
