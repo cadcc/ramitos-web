@@ -58,6 +58,18 @@ describe("course catalog API adapter", () => {
 		]);
 	});
 
+	it("shows only modern six-character course codes by default", () => {
+		const entries = [
+			{ id: "CC10A", name: "Curso historico", categoryTags: [] },
+			{ id: "CC1000", name: "Curso moderno", categoryTags: [] },
+		];
+
+		expect(filterCourseCatalog(entries, {})).toEqual([entries[1]]);
+		expect(filterCourseCatalog(entries, { modernOnly: false })).toEqual(
+			entries,
+		);
+	});
+
 	it("requests dynamic data by code and preserves static result order", async () => {
 		listCoursesMock.mockResolvedValue({
 			data: [

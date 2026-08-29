@@ -6,7 +6,6 @@ export {
 	filterCourseCatalog,
 	getCourseCatalogPage,
 	normalizeCourseCatalog,
-	sortLoadedCourseCatalog,
 } from "./api/courseCatalog.api";
 export type {
 	CourseCatalogEntry,

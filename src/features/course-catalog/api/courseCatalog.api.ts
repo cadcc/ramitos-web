@@ -129,6 +129,10 @@ export function filterCourseCatalog(
 	// accepts catalog filters and returns complete sort metadata.
 	let filtered = entries;
 
+	if (filters.modernOnly !== false) {
+		filtered = filtered.filter((course) => course.id.length >= 6);
+	}
+
 	if (filters.q) {
 		const query = filters.q.toLocaleLowerCase("es");
 		filtered = filtered.filter(
@@ -153,31 +157,4 @@ export function filterCourseCatalog(
 	}
 
 	return filtered;
-}
-
-export function sortLoadedCourseCatalog(
-	courses: CursoListItem[],
-	sort: CourseFilters["sort"],
-): CursoListItem[] {
-	if (sort !== "rating" && sort !== "reviews" && sort !== "recent") {
-		return courses;
-	}
-
-	return [...courses].sort((a, b) => {
-		if (sort === "rating")
-			return averageScore(b.ratings) - averageScore(a.ratings);
-		if (sort === "reviews") return b.reviewCount - a.reviewCount;
-		return b.lastOffered.localeCompare(a.lastOffered);
-	});
-}
-
-function averageScore(ratings: CourseRatings): number {
-	return (
-		(ratings.carga +
-			ratings.dificultad +
-			ratings.docencia +
-			ratings.relevancia +
-			ratings.vibes) /
-		5
-	);
 }

@@ -1,10 +1,7 @@
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Link } from "@tanstack/react-router";
-import type {
-	CourseRatings,
-	CursoListItem,
-} from "../../../shared/types/domain";
+import type { CursoListItem } from "../../../shared/types/domain";
 import { getAverageScore } from "../../../constants/courseDisplay";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import {
@@ -13,58 +10,13 @@ import {
 	courseCardOpinionSx,
 	courseCardTitleSx,
 } from "./courseCard.styles";
+import { MiniRadar } from "./MiniRadar";
 
 const CURRENT_SEMESTER = "2026-1";
 
 interface Props {
 	course: CursoListItem;
 	index: number;
-}
-
-const RADAR_KEYS: (keyof CourseRatings)[] = [
-	"docencia",
-	"vibes",
-	"relevancia",
-	"carga",
-	"dificultad",
-];
-
-function MiniRadar({ ratings }: { ratings: CourseRatings }) {
-	const size = 38;
-	const cx = size / 2;
-	const cy = size / 2;
-	const r = size / 2 - 3;
-	const n = RADAR_KEYS.length;
-
-	const bgPoints = RADAR_KEYS.map((_, i) => {
-		const angle = (i * 2 * Math.PI) / n - Math.PI / 2;
-		return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
-	}).join(" ");
-
-	const dataPoints = RADAR_KEYS.map((key, i) => {
-		const val = ratings[key] / 5;
-		const angle = (i * 2 * Math.PI) / n - Math.PI / 2;
-		return `${cx + r * val * Math.cos(angle)},${cy + r * val * Math.sin(angle)}`;
-	}).join(" ");
-
-	return (
-		<svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-			<polygon
-				points={bgPoints}
-				fill="none"
-				stroke="currentColor"
-				strokeWidth={0.5}
-				opacity={0.2}
-			/>
-			<polygon
-				points={dataPoints}
-				fill="currentColor"
-				fillOpacity={0.2}
-				stroke="currentColor"
-				strokeWidth={1.5}
-			/>
-		</svg>
-	);
 }
 
 export default function CourseCard({ course, index }: Props) {

@@ -88,6 +88,7 @@ export type ReviewSort = "newest" | "top";
 export interface CourseFilters {
 	q?: string;
 	sort?: SortOption;
+	modernOnly?: boolean;
 	plan?: Curso["plan"];
 	tags?: string[];
 	semester?: string;

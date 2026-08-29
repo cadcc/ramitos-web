@@ -14,6 +14,8 @@ import {
 	Button,
 	Collapse,
 	Badge,
+	FormControlLabel,
+	Switch,
 } from "@mui/material";
 import {
 	Search as SearchIcon,
@@ -23,13 +25,19 @@ import {
 import type { CourseFilters, SortOption } from "../../../shared/types/domain";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
 
-const sortOptions: { value: SortOption; label: string }[] = [
-	{ value: "reviews", label: "Más opiniones" },
-	{ value: "rating", label: "Mejor evaluado" },
-	{ value: "recent", label: "Reciente" },
-	{ value: "alphabetical", label: "A-Z" },
-	{ value: "code", label: "Código" },
+const sortOptions: {
+	value: SortOption;
+	label: string;
+	implemented: boolean;
+}[] = [
+	{ value: "reviews", label: "Más opiniones", implemented: false },
+	{ value: "rating", label: "Mejor evaluado", implemented: false },
+	{ value: "recent", label: "Reciente", implemented: false },
+	{ value: "alphabetical", label: "A-Z", implemented: true },
+	{ value: "code", label: "Código", implemented: true },
 ];
+
+const implementedSorts = new Set<SortOption>(["alphabetical", "code"]);
 
 const planOptions = [
 	{ value: "obligatorio", label: "Obligatorio" },
@@ -50,6 +58,8 @@ export default function FilterBar({
 }: Props) {
 	const [searchText, setSearchText] = useState(filters.q ?? "");
 	const [filtersOpen, setFiltersOpen] = useState(false);
+	const selectedSort =
+		filters.sort && implementedSorts.has(filters.sort) ? filters.sort : "code";
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -61,7 +71,8 @@ export default function FilterBar({
 	const activeFilterCount =
 		(filters.plan ? 1 : 0) +
 		(filters.currentlyOffered ? 1 : 0) +
-		(filters.tags && filters.tags.length > 0 ? 1 : 0);
+		(filters.tags && filters.tags.length > 0 ? 1 : 0) +
+		(filters.modernOnly === false ? 1 : 0);
 
 	return (
 		<Box sx={{ mb: 2 }}>
@@ -101,7 +112,7 @@ export default function FilterBar({
 				<FormControl size="small" sx={{ minWidth: 130 }}>
 					<InputLabel sx={{ fontSize: "0.85rem" }}>Ordenar</InputLabel>
 					<Select
-						value={filters.sort ?? "reviews"}
+						value={selectedSort}
 						label="Ordenar"
 						onChange={(e) =>
 							onFilterChange({ ...filters, sort: e.target.value as SortOption })
@@ -113,7 +124,7 @@ export default function FilterBar({
 						}}
 					>
 						{sortOptions.map((o) => (
-							<MenuItem key={o.value} value={o.value}>
+							<MenuItem key={o.value} value={o.value} disabled={!o.implemented}>
 								{o.label}
 							</MenuItem>
 						))}
@@ -173,7 +184,7 @@ export default function FilterBar({
 						}}
 					>
 						{planOptions.map((o) => (
-							<ToggleButton key={o.value} value={o.value}>
+							<ToggleButton key={o.value} value={o.value} disabled>
 								{o.label}
 							</ToggleButton>
 						))}
@@ -205,10 +216,36 @@ export default function FilterBar({
 							},
 						}}
 					>
-						<ToggleButton value="yes">Dictándose</ToggleButton>
+						<ToggleButton value="yes" disabled>
+							Dictándose
+						</ToggleButton>
 					</ToggleButtonGroup>
 
-					<FormControl size="small" sx={{ minWidth: 120 }}>
+					<FormControlLabel
+						control={
+							<Switch
+								size="small"
+								checked={filters.modernOnly !== false}
+								onChange={(event) =>
+									onFilterChange({
+										...filters,
+										modernOnly: event.target.checked,
+									})
+								}
+							/>
+						}
+						label="Modernos"
+						sx={{
+							m: 0,
+							"& .MuiFormControlLabel-label": { fontSize: "0.8rem" },
+						}}
+					/>
+
+					<FormControl
+						size="small"
+						sx={{ minWidth: 120 }}
+						disabled={categoryOptions.length === 0}
+					>
 						<InputLabel sx={{ fontSize: "0.8rem" }}>Categoría</InputLabel>
 						<Select
 							value={filters.tags?.[0] ?? ""}
@@ -252,7 +289,11 @@ export default function FilterBar({
 						<Chip
 							label="Limpiar"
 							onDelete={() =>
-								onFilterChange({ q: filters.q, sort: filters.sort })
+								onFilterChange({
+									q: filters.q,
+									sort: selectedSort,
+									modernOnly: true,
+								})
 							}
 							size="small"
 							variant="outlined"

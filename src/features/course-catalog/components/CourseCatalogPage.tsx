@@ -2,10 +2,7 @@ import { useEffect, useRef } from "react";
 import { Box, Fade, Grid, Skeleton, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
 import type { CourseCatalogEntry } from "../api/courseCatalog.api";
-import {
-	COURSE_CATALOG_PAGE_SIZE,
-	sortLoadedCourseCatalog,
-} from "../api/courseCatalog.api";
+import { COURSE_CATALOG_PAGE_SIZE } from "../api/courseCatalog.api";
 import { useCourseCatalog } from "../hooks/useCourseCatalog";
 import CourseCard from "./CourseCard";
 import { CourseCardSkeleton } from "./CourseCardSkeleton";
@@ -79,7 +76,6 @@ export function CourseCatalogPage({
 	}, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
 	const courses = data?.pages.flatMap((page) => page.items) ?? [];
-	const displayedCourses = sortLoadedCourseCatalog(courses, filters.sort);
 	const loading = indexQuery.isLoading || isLoading;
 	const error = indexQuery.isError || isError;
 
@@ -91,14 +87,16 @@ export function CourseCatalogPage({
 				categoryOptions={categoryOptions}
 			/>
 
-			{!loading && !error && (
+			{indexQuery.isSuccess && !error && (
 				<Fade in>
 					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
 						{filteredTotal} {filteredTotal === 1 ? "curso" : "cursos"}
 					</Typography>
 				</Fade>
 			)}
-			{loading && <Skeleton width={86} height={20} sx={{ mb: 2 }} />}
+			{indexQuery.isLoading && (
+				<Skeleton width={86} height={20} sx={{ mb: 2 }} />
+			)}
 
 			{loading ? (
 				<CourseSkeletonGrid
@@ -110,7 +108,7 @@ export function CourseCatalogPage({
 						Error al cargar los cursos. Intenta de nuevo.
 					</Typography>
 				</Box>
-			) : displayedCourses.length === 0 ? (
+			) : courses.length === 0 ? (
 				<Box sx={{ textAlign: "center", py: 8 }}>
 					<Typography variant="h5">No se encontraron cursos</Typography>
 					<Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
@@ -119,7 +117,7 @@ export function CourseCatalogPage({
 				</Box>
 			) : (
 				<Grid container spacing={2}>
-					{displayedCourses.map((course, index) => (
+					{courses.map((course, index) => (
 						<Grid size={{ xs: 12, sm: 6, md: 3 }} key={course.id}>
 							<CourseCard course={course} index={index} />
 						</Grid>
