@@ -7,6 +7,12 @@ import type {
 } from "../../../shared/types/domain";
 import { getAverageScore } from "../../../constants/courseDisplay";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
+import {
+	COURSE_CARD_MIN_HEIGHT,
+	courseCardCodeSx,
+	courseCardOpinionSx,
+	courseCardTitleSx,
+} from "./courseCard.styles";
 
 const CURRENT_SEMESTER = "2026-1";
 
@@ -69,10 +75,11 @@ export default function CourseCard({ course, index }: Props) {
 		<Card
 			sx={{
 				height: "100%",
+				minHeight: COURSE_CARD_MIN_HEIGHT,
 				display: "flex",
 				flexDirection: "column",
 				animation: "fadeInUp 0.35s ease both",
-				animationDelay: `${index * 40}ms`,
+				animationDelay: `${(index % 8) * 20}ms`,
 				"@keyframes fadeInUp": {
 					from: { opacity: 0, transform: "translateY(8px)" },
 					to: { opacity: 1, transform: "translateY(0)" },
@@ -119,19 +126,11 @@ export default function CourseCard({ course, index }: Props) {
 							<Typography
 								variant="overline"
 								color="primary"
-								sx={{ fontSize: "0.65rem", lineHeight: 1.4 }}
+								sx={courseCardCodeSx}
 							>
 								{course.code}
 							</Typography>
-							<Typography
-								variant="body1"
-								sx={{
-									fontFamily: '"Space Grotesk", sans-serif',
-									fontWeight: 600,
-									fontSize: "0.95rem",
-									lineHeight: 1.25,
-								}}
-							>
+							<Typography variant="body1" sx={courseCardTitleSx}>
 								{course.name}
 							</Typography>
 						</Box>
@@ -161,7 +160,7 @@ export default function CourseCard({ course, index }: Props) {
 						<Typography
 							variant="caption"
 							color="text.secondary"
-							sx={{ fontSize: "0.7rem" }}
+							sx={courseCardOpinionSx}
 						>
 							{course.reviewCount} opiniones
 						</Typography>

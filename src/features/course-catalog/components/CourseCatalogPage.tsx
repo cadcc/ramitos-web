@@ -1,14 +1,41 @@
 import { useEffect, useRef } from "react";
-import { Box, CircularProgress, Fade, Grid, Typography } from "@mui/material";
+import { Box, Fade, Grid, Skeleton, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
-import { sortLoadedCourseCatalog } from "../api/courseCatalog.api";
+import type { CourseCatalogEntry } from "../api/courseCatalog.api";
+import {
+	COURSE_CATALOG_PAGE_SIZE,
+	sortLoadedCourseCatalog,
+} from "../api/courseCatalog.api";
 import { useCourseCatalog } from "../hooks/useCourseCatalog";
 import CourseCard from "./CourseCard";
+import { CourseCardSkeleton } from "./CourseCardSkeleton";
 import FilterBar from "./FilterBar";
 
 interface CourseCatalogPageProps {
 	filters: CourseFilters;
 	onFilterChange: (filters: CourseFilters) => void;
+}
+
+interface CourseSkeletonGridProps {
+	entries?: CourseCatalogEntry[];
+	fallbackCount?: number;
+}
+
+function CourseSkeletonGrid({
+	entries,
+	fallbackCount = COURSE_CATALOG_PAGE_SIZE,
+}: CourseSkeletonGridProps) {
+	const skeletons = entries ?? Array.from({ length: fallbackCount });
+
+	return (
+		<Grid container spacing={2} aria-label="Cargando cursos">
+			{skeletons.map((entry, index) => (
+				<Grid size={{ xs: 12, sm: 6, md: 3 }} key={entry?.id ?? index}>
+					<CourseCardSkeleton code={entry?.id} title={entry?.name} />
+				</Grid>
+			))}
+		</Grid>
+	);
 }
 
 export function CourseCatalogPage({
@@ -17,8 +44,14 @@ export function CourseCatalogPage({
 }: CourseCatalogPageProps) {
 	const observerTarget = useRef<HTMLDivElement>(null);
 
-	const { indexQuery, pagesQuery, filteredTotal, categoryOptions } =
-		useCourseCatalog(filters);
+	const {
+		indexQuery,
+		pagesQuery,
+		filteredTotal,
+		categoryOptions,
+		initialSkeletonEntries,
+		nextSkeletonEntries,
+	} = useCourseCatalog(filters);
 	const {
 		data,
 		fetchNextPage,
@@ -65,11 +98,12 @@ export function CourseCatalogPage({
 					</Typography>
 				</Fade>
 			)}
+			{loading && <Skeleton width={86} height={20} sx={{ mb: 2 }} />}
 
 			{loading ? (
-				<Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
-					<CircularProgress />
-				</Box>
+				<CourseSkeletonGrid
+					entries={indexQuery.isSuccess ? initialSkeletonEntries : undefined}
+				/>
 			) : error ? (
 				<Box sx={{ textAlign: "center", py: 8 }}>
 					<Typography color="error">
@@ -85,25 +119,19 @@ export function CourseCatalogPage({
 				</Box>
 			) : (
 				<Grid container spacing={2}>
-					{displayedCourses.map((course, i) => (
+					{displayedCourses.map((course, index) => (
 						<Grid size={{ xs: 12, sm: 6, md: 3 }} key={course.id}>
-							<CourseCard course={course} index={i} />
+							<CourseCard course={course} index={index} />
 						</Grid>
 					))}
 				</Grid>
 			)}
 
-			<Box
-				ref={observerTarget}
-				sx={{
-					height: 60,
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
-				{isFetchingNextPage && <CircularProgress size={24} />}
-			</Box>
+			{!loading && !error && hasNextPage && (
+				<Box ref={observerTarget} sx={{ mt: 2 }}>
+					<CourseSkeletonGrid entries={nextSkeletonEntries} />
+				</Box>
+			)}
 		</Box>
 	);
 }
