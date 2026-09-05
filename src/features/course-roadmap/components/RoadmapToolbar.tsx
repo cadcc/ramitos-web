@@ -65,6 +65,7 @@ export function RoadmapToolbar({
 					<IconButton
 						aria-label="Configurar malla"
 						onClick={(event) => onSettingsClick(event.currentTarget)}
+						sx={{ width: 44, height: 44 }}
 					>
 						<SettingsIcon />
 					</IconButton>
@@ -74,6 +75,7 @@ export function RoadmapToolbar({
 					variant={editMode ? "contained" : "outlined"}
 					startIcon={<EditIcon />}
 					onClick={() => onEditModeChange(!editMode)}
+					sx={{ minHeight: 44 }}
 				>
 					Marcar
 				</Button>
@@ -93,8 +95,8 @@ export function RoadmapToolbar({
 									}
 								}}
 								sx={{
-									width: 28,
-									height: 28,
+									width: { xs: 40, sm: 32 },
+									height: { xs: 40, sm: 32 },
 									borderRadius: "50%",
 									bgcolor: roadmapColors.marks[color],
 									border: 2,
@@ -107,6 +109,7 @@ export function RoadmapToolbar({
 							<IconButton
 								aria-label="Des-marcar todos los cursos"
 								onClick={onClearMarks}
+								sx={{ width: 44, height: 44 }}
 							>
 								<ClearIcon />
 							</IconButton>

@@ -81,16 +81,27 @@ export function DccLoginCallbackPage({
 				display: "grid",
 				placeItems: "center",
 				minHeight: { xs: "50vh", sm: "60vh" },
+				px: { xs: 1, sm: 0 },
 			}}
 		>
 			<Stack
 				spacing={2}
-				sx={{ maxWidth: 440, alignItems: "center", textAlign: "center" }}
+				sx={{
+					width: "100%",
+					maxWidth: 440,
+					alignItems: "center",
+					textAlign: "center",
+				}}
 			>
 				{callbackState === "processing" && (
 					<>
 						<CircularProgress aria-label="Completando inicio de sesión" />
-						<Typography variant="h4">Completando tu ingreso</Typography>
+						<Typography
+							variant="h4"
+							sx={{ fontSize: { xs: "1.75rem", sm: "2.125rem" } }}
+						>
+							Completando tu ingreso
+						</Typography>
 						<Typography color="text.secondary">
 							Estamos verificando tu cuenta DCC.
 						</Typography>
@@ -100,29 +111,47 @@ export function DccLoginCallbackPage({
 				{callbackState === "success" && (
 					<>
 						<CheckCircleIcon color="success" sx={{ fontSize: 48 }} />
-						<Typography variant="h4">Sesión iniciada</Typography>
+						<Typography
+							variant="h4"
+							sx={{ fontSize: { xs: "1.75rem", sm: "2.125rem" } }}
+						>
+							Sesión iniciada
+						</Typography>
 					</>
 				)}
 
 				{callbackState === "error" && (
 					<>
 						<ErrorOutlineIcon color="error" sx={{ fontSize: 48 }} />
-						<Typography variant="h4">
+						<Typography
+							variant="h4"
+							sx={{ fontSize: { xs: "1.75rem", sm: "2.125rem" } }}
+						>
 							No pudimos completar el ingreso
 						</Typography>
-						<Alert severity="error">
+						<Alert severity="error" sx={{ width: "100%" }}>
 							{callbackError === "configuration"
 								? "El servidor de pruebas no permite completar el ingreso desde esta dirección local."
 								: "El enlace expiró, ya fue utilizado o la autenticación fue cancelada."}
 						</Alert>
-						<Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
+						<Stack
+							direction={{ xs: "column", sm: "row" }}
+							spacing={1}
+							sx={{ width: { xs: "100%", sm: "auto" } }}
+						>
 							<Button
 								variant="contained"
 								onClick={() => startDccLogin(callback.returnTo)}
+								sx={{ minHeight: 44 }}
 							>
 								Intentar nuevamente
 							</Button>
-							<Button component={Link} to="/" variant="text">
+							<Button
+								component={Link}
+								to="/"
+								variant="text"
+								sx={{ minHeight: 44 }}
+							>
 								Volver al inicio
 							</Button>
 						</Stack>

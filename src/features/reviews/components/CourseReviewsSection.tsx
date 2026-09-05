@@ -48,14 +48,27 @@ export function CourseReviewsSection({
 			<Box
 				sx={{
 					display: "flex",
+					flexDirection: { xs: "column", sm: "row" },
 					justifyContent: "space-between",
-					alignItems: "center",
+					alignItems: { xs: "stretch", sm: "center" },
 					mb: 2,
 					gap: 1,
 				}}
 			>
-				<Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-					<Typography variant="h5">Opiniones ({total})</Typography>
+				<Box
+					sx={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+						gap: 1,
+					}}
+				>
+					<Typography
+						variant="h5"
+						sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
+					>
+						Opiniones ({total})
+					</Typography>
 					<ToggleButtonGroup
 						value={reviewSort}
 						exclusive
@@ -84,6 +97,8 @@ export function CourseReviewsSection({
 						fontWeight: 700,
 						px: 3,
 						borderRadius: 3,
+						width: { xs: "100%", sm: "auto" },
+						minHeight: 44,
 						"&:hover": {
 							transform: "translateY(-1px)",
 						},

@@ -65,7 +65,13 @@ export default function Navbar() {
 					borderColor: "divider",
 				}}
 			>
-				<Toolbar sx={{ gap: 1 }}>
+				<Toolbar
+					sx={{
+						gap: { xs: 0.5, sm: 1 },
+						px: { xs: 1.5, sm: 3 },
+						minHeight: { xs: 56, sm: 64 },
+					}}
+				>
 					<Link
 						to="/"
 						style={{
@@ -80,7 +86,7 @@ export default function Navbar() {
 							src="/logo.png" // TODO: handle this with vite
 							alt="Ramitos"
 							sx={{
-								height: 36,
+								height: { xs: 32, sm: 36 },
 								mr: 0.5,
 								transition: "transform 0.5s ease",
 								"&:hover": { transform: "rotate(360deg)" },
@@ -91,8 +97,7 @@ export default function Navbar() {
 								variant="h2"
 								sx={{
 									fontWeight: 800,
-									letterSpacing: "-0.03em",
-									fontSize: "1.4rem",
+									fontSize: { xs: "1.2rem", sm: "1.4rem" },
 								}}
 							>
 								ramitos
@@ -100,6 +105,7 @@ export default function Navbar() {
 							<Typography
 								variant="caption"
 								sx={{
+									display: { xs: "none", sm: "block" },
 									fontSize: "0.6rem",
 									fontWeight: 500,
 								}}
@@ -117,14 +123,14 @@ export default function Navbar() {
 						activeProps={{ "aria-current": "page" }}
 						className="app-nav-link"
 						sx={{
-							display: { xs: "none", sm: "inline-flex" },
+							display: "inline-flex",
 							alignItems: "center",
 							color: "text.primary",
 							textDecoration: "none",
-							fontSize: "0.9rem",
+							fontSize: { xs: "0.78rem", sm: "0.9rem" },
 							fontWeight: 700,
 							lineHeight: 1,
-							height: 32,
+							height: { xs: 40, sm: 32 },
 							px: 0.5,
 							borderBottom: 2,
 							borderColor: "transparent",
@@ -143,7 +149,12 @@ export default function Navbar() {
 
 					{isAuthenticated && user ? (
 						<>
-							<IconButton onClick={handleMenu} size="small">
+							<IconButton
+								onClick={handleMenu}
+								size="small"
+								aria-label="Abrir menú de cuenta"
+								sx={{ width: 40, height: 40 }}
+							>
 								<Avatar
 									sx={{
 										width: 32,
@@ -218,7 +229,16 @@ export default function Navbar() {
 							</Menu>
 						</>
 					) : (
-						<Button variant="contained" size="small" onClick={openLoginDialog}>
+						<Button
+							variant="contained"
+							size="small"
+							onClick={openLoginDialog}
+							sx={{
+								px: { xs: 1.25, sm: 2 },
+								minWidth: 0,
+								minHeight: 40,
+							}}
+						>
 							Ingresar
 						</Button>
 					)}

@@ -55,6 +55,14 @@ export function LoginDialog() {
 			onClose={handleClose}
 			maxWidth="xs"
 			fullWidth
+			slotProps={{
+				paper: {
+					sx: {
+						m: { xs: 2, sm: 4 },
+						width: { xs: "calc(100% - 32px)", sm: "100%" },
+					},
+				},
+			}}
 		>
 			<DialogTitle>Ingresar a Ramitos</DialogTitle>
 			<DialogContent>
@@ -72,6 +80,7 @@ export function LoginDialog() {
 						onClick={() => startDccLogin()}
 						disabled={loginPending}
 						fullWidth
+						sx={{ minHeight: 44 }}
 					>
 						Ingresar con cuenta DCC
 					</Button>
@@ -83,6 +92,7 @@ export function LoginDialog() {
 						startIcon={<KeyIcon />}
 						onClick={() => setPasswordFormOpen((open) => !open)}
 						aria-expanded={passwordFormOpen}
+						sx={{ minHeight: 44 }}
 					>
 						Ingresar con credenciales internas
 					</Button>
@@ -116,6 +126,7 @@ export function LoginDialog() {
 									variant="outlined"
 									disabled={loginPending}
 									fullWidth
+									sx={{ minHeight: 44 }}
 								>
 									{loginPending ? "Ingresando..." : "Ingresar"}
 								</Button>
@@ -125,7 +136,11 @@ export function LoginDialog() {
 				</Stack>
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={handleClose} disabled={loginPending}>
+				<Button
+					onClick={handleClose}
+					disabled={loginPending}
+					sx={{ minHeight: 44 }}
+				>
 					Cancelar
 				</Button>
 			</DialogActions>

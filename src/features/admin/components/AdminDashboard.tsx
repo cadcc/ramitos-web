@@ -30,7 +30,7 @@ export function AdminDashboard() {
 				<Box
 					sx={{
 						display: "flex",
-						alignItems: "center",
+						alignItems: "flex-start",
 						gap: 1.5,
 						mb: 1,
 					}}
@@ -40,6 +40,8 @@ export function AdminDashboard() {
 						variant="h3"
 						sx={{
 							fontWeight: 700,
+							fontSize: { xs: "1.75rem", sm: "3rem" },
+							lineHeight: 1.15,
 						}}
 					>
 						Panel de Moderación
@@ -49,7 +51,11 @@ export function AdminDashboard() {
 					Revisa y modera las opiniones publicadas en la plataforma.
 				</Typography>
 
-				<Stack direction="row" spacing={1} sx={{ mb: 3 }}>
+				<Stack
+					direction="row"
+					spacing={1}
+					sx={{ mb: 3, flexWrap: "wrap", gap: 1 }}
+				>
 					<Chip
 						icon={<VisibleIcon />}
 						label={`${visibleCount} visibles`}

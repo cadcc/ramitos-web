@@ -32,7 +32,13 @@ export default function ThemeSelector() {
 	return (
 		<>
 			<Tooltip title="Cambiar tema">
-				<IconButton onClick={handleThemeMenuOpen} size="small" color="inherit">
+				<IconButton
+					onClick={handleThemeMenuOpen}
+					size="small"
+					color="inherit"
+					aria-label="Cambiar tema"
+					sx={{ width: 40, height: 40 }}
+				>
 					<PaletteIcon fontSize="small" />
 				</IconButton>
 			</Tooltip>
@@ -43,7 +49,15 @@ export default function ThemeSelector() {
 				onClose={handleThemeMenuClose}
 				transformOrigin={{ horizontal: "right", vertical: "top" }}
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-				slotProps={{ paper: { sx: { mt: 1 } } }}
+				slotProps={{
+					paper: {
+						sx: {
+							mt: 1,
+							maxWidth: "calc(100vw - 24px)",
+							maxHeight: "calc(100dvh - 80px)",
+						},
+					},
+				}}
 			>
 				{availableThemes.map((config) => (
 					<MenuItem

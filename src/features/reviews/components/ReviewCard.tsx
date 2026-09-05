@@ -126,13 +126,24 @@ function ReviewCardBase({
 
 	return (
 		<Card sx={{ opacity: review.hidden ? 0.5 : 1, width: "100%" }}>
-			<CardContent sx={{ p: 2, "&:last-child": { pb: 2 } }}>
-				<Box sx={{ display: "flex", gap: 2 }}>
+			<CardContent
+				sx={{
+					p: { xs: 1.5, sm: 2 },
+					"&:last-child": { pb: { xs: 1.5, sm: 2 } },
+				}}
+			>
+				<Box
+					sx={{
+						display: "flex",
+						flexDirection: { xs: "column", sm: "row" },
+						gap: { xs: 1.25, sm: 2 },
+					}}
+				>
 					{/* Left: discrete colored dots */}
 					<Box
 						sx={{
 							flexShrink: 0,
-							width: 110,
+							width: { xs: "100%", sm: 110 },
 							bgcolor: (t) =>
 								alpha(
 									t.palette.primary.main,
@@ -140,7 +151,8 @@ function ReviewCardBase({
 								),
 							borderRadius: 1.5,
 							p: 1.25,
-							display: "flex",
+							display: { xs: "grid", sm: "flex" },
+							gridTemplateColumns: { xs: "repeat(5, minmax(0, 1fr))" },
 							flexDirection: "column",
 							gap: 0.75,
 						}}
@@ -152,25 +164,35 @@ function ReviewCardBase({
 
 							return (
 								<Tooltip title={tooltip} arrow placement="left" key={key}>
-									<Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+									<Box
+										sx={{
+											display: "flex",
+											flexDirection: { xs: "column", sm: "row" },
+											alignItems: "center",
+											gap: { xs: 0.25, sm: 0.5 },
+										}}
+									>
 										<Typography
 											sx={{
 												fontSize: "0.58rem",
 												fontWeight: 700,
-												width: 24,
+												width: { xs: "auto", sm: 24 },
+												textAlign: "center",
 												color,
 												fontFamily: "monospace",
 											}}
 										>
 											{abbr}
 										</Typography>
-										<Box sx={{ display: "flex", gap: "3px" }}>
+										<Box
+											sx={{ display: "flex", gap: { xs: "2px", sm: "3px" } }}
+										>
 											{[1, 2, 3, 4, 5].map((dot) => (
 												<Box
 													key={dot}
 													sx={{
-														width: 8,
-														height: 8,
+														width: { xs: 6, sm: 8 },
+														height: { xs: 6, sm: 8 },
 														borderRadius: "50%",
 														bgcolor: dot <= filled ? color : alpha(color, 0.15),
 														transition: "background-color 0.2s",
@@ -196,6 +218,7 @@ function ReviewCardBase({
 						<Box
 							sx={{
 								display: "flex",
+								flexDirection: { xs: "column", sm: "row" },
 								justifyContent: "space-between",
 								alignItems: "flex-start",
 								gap: 1,
@@ -227,7 +250,7 @@ function ReviewCardBase({
 								sx={{
 									flexWrap: "wrap",
 									gap: 0.5,
-									justifyContent: "flex-end",
+									justifyContent: { xs: "flex-start", sm: "flex-end" },
 								}}
 							>
 								{isOwnReview && (
@@ -295,6 +318,7 @@ function ReviewCardBase({
 							sx={{
 								display: "flex",
 								alignItems: "center",
+								flexWrap: "wrap",
 								gap: 0.5,
 								mt: "auto",
 							}}
@@ -303,9 +327,13 @@ function ReviewCardBase({
 								<IconButton
 									size="small"
 									onClick={() => handleReaction("like")}
-									sx={
-										activeReactions.has("like") ? { color: "success.main" } : {}
-									}
+									sx={{
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("like")
+											? { color: "success.main" }
+											: {}),
+									}}
 								>
 									<LikeIcon sx={{ fontSize: 14 }} />
 								</IconButton>
@@ -327,11 +355,13 @@ function ReviewCardBase({
 								<IconButton
 									size="small"
 									onClick={() => handleReaction("dislike")}
-									sx={
-										activeReactions.has("dislike")
+									sx={{
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("dislike")
 											? { color: "error.main" }
-											: {}
-									}
+											: {}),
+									}}
 								>
 									<DislikeIcon sx={{ fontSize: 14 }} />
 								</IconButton>
@@ -353,11 +383,13 @@ function ReviewCardBase({
 								<IconButton
 									size="small"
 									onClick={() => handleReaction("funny")}
-									sx={
-										activeReactions.has("funny")
+									sx={{
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("funny")
 											? { color: "warning.main" }
-											: {}
-									}
+											: {}),
+									}}
 								>
 									<FunnyIcon sx={{ fontSize: 14 }} />
 								</IconButton>
@@ -381,7 +413,10 @@ function ReviewCardBase({
 										size="small"
 										variant="outlined"
 										onClick={() => onHide(review.id)}
-										sx={{ fontSize: "0.65rem", height: 22 }}
+										sx={{
+											fontSize: "0.65rem",
+											height: { xs: 40, sm: 22 },
+										}}
 									/>
 								</Box>
 							)}

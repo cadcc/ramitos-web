@@ -102,7 +102,10 @@ function CourseBreadcrumbs({ courseCode }: { courseCode: string }) {
 function CourseHeader({ course }: { course: Curso }) {
 	return (
 		<Box sx={{ mb: 3 }}>
-			<Typography variant="h3" sx={{ mb: 0.5, lineHeight: 1.15 }}>
+			<Typography
+				variant="h3"
+				sx={{ mb: 0.5, lineHeight: 1.15, fontSize: { xs: "2rem", sm: "3rem" } }}
+			>
 				{course.code} - {course.name}
 			</Typography>
 			<Typography
@@ -260,7 +263,12 @@ function CourseFactsPanel({
 						</Typography>
 						<Typography
 							variant="caption"
-							sx={{ fontWeight: 600, fontSize: "0.8rem" }}
+							sx={{
+								fontWeight: 600,
+								fontSize: "0.8rem",
+								minWidth: 0,
+								overflowWrap: "anywhere",
+							}}
 						>
 							{value}
 						</Typography>
@@ -329,11 +337,22 @@ function RelatedCourses({
 			<Typography variant="caption" color="text.secondary">
 				Relacionados
 			</Typography>
-			<Box sx={{ display: "flex", gap: 1, pb: 0.5 }}>
+			<Box
+				sx={{
+					display: "flex",
+					gap: 1,
+					pb: 0.5,
+					overflowX: "auto",
+					scrollSnapType: "x proximity",
+				}}
+			>
 				{courses.map((course) => (
 					<Box
 						key={course.id}
 						sx={{
+							flex: "0 0 auto",
+							scrollSnapAlign: "start",
+							maxWidth: 150,
 							borderRadius: 0.75,
 							p: 0.75,
 							border: "1px solid",

@@ -32,7 +32,15 @@ export function RoadmapSettingsMenu({
 			onClose={onClose}
 			anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
 			transformOrigin={{ vertical: "top", horizontal: "right" }}
-			slotProps={{ paper: { sx: { p: 2, width: 320 } } }}
+			slotProps={{
+				paper: {
+					sx: {
+						p: 2,
+						width: { xs: "calc(100vw - 32px)", sm: 320 },
+						maxWidth: 320,
+					},
+				},
+			}}
 		>
 			<Stack spacing={1.5}>
 				<Typography variant="h6">Configuracion</Typography>

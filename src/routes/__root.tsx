@@ -7,8 +7,11 @@ import Footer from "../shared/components/Footer";
 
 function NotFound() {
 	return (
-		<Box sx={{ textAlign: "center", py: 12 }}>
-			<Typography variant="h2" sx={{ mb: 1 }}>
+		<Box sx={{ textAlign: "center", py: { xs: 8, sm: 12 } }}>
+			<Typography
+				variant="h2"
+				sx={{ mb: 1, fontSize: { xs: "3rem", sm: "4rem" } }}
+			>
 				404
 			</Typography>
 			<Typography variant="h5" color="text.secondary" sx={{ mb: 3 }}>
@@ -19,6 +22,7 @@ function NotFound() {
 				to="/"
 				variant="contained"
 				startIcon={<HomeIcon />}
+				sx={{ minHeight: 44 }}
 			>
 				Volver al inicio
 			</Button>
@@ -28,14 +32,18 @@ function NotFound() {
 
 function RootErrorComponent() {
 	return (
-		<Box sx={{ textAlign: "center", py: 12 }}>
+		<Box sx={{ textAlign: "center", py: { xs: 8, sm: 12 } }}>
 			<Typography variant="h4" sx={{ mb: 1 }}>
 				Algo salió mal
 			</Typography>
 			<Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
 				Ocurrió un error inesperado. Intenta recargar la página.
 			</Typography>
-			<Button variant="contained" onClick={() => window.location.reload()}>
+			<Button
+				variant="contained"
+				onClick={() => window.location.reload()}
+				sx={{ minHeight: 44 }}
+			>
 				Recargar
 			</Button>
 		</Box>
@@ -83,7 +91,7 @@ function RootLayout() {
 						maxWidth: 1200,
 						mx: "auto",
 						px: { xs: 2, sm: 3 },
-						py: 3,
+						py: { xs: 2, sm: 3 },
 					}}
 				>
 					<Outlet />

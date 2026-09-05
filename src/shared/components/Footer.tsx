@@ -19,10 +19,11 @@ export default function Footer() {
 				color="text.secondary"
 				sx={{
 					display: "flex",
+					flexWrap: "wrap",
 					alignItems: "center",
 					justifyContent: "center",
 					gap: 0.75,
-					fontSize: "0.8rem",
+					fontSize: { xs: "0.72rem", sm: "0.8rem" },
 				}}
 			>
 				<GitHubIcon sx={{ fontSize: 16 }} />

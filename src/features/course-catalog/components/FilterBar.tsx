@@ -77,14 +77,25 @@ export default function FilterBar({
 	return (
 		<Box sx={{ mb: 2 }}>
 			{/* Top row: search + sort + filter toggle */}
-			<Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+			<Box
+				sx={{
+					display: "grid",
+					gridTemplateColumns: {
+						xs: "minmax(0, 1fr) auto",
+						sm: "minmax(0, 1fr) 130px auto",
+					},
+					gap: 1,
+					alignItems: "center",
+				}}
+			>
 				<TextField
 					placeholder="Buscar curso..."
 					size="small"
 					value={searchText}
 					onChange={(e) => setSearchText(e.target.value)}
 					sx={{
-						flex: 1,
+						minWidth: 0,
+						gridColumn: { xs: "1 / -1", sm: "auto" },
 						"& .MuiOutlinedInput-root": {
 							borderRadius: 2,
 							bgcolor: "background.paper",
@@ -109,7 +120,7 @@ export default function FilterBar({
 					}}
 				/>
 
-				<FormControl size="small" sx={{ minWidth: 130 }}>
+				<FormControl size="small" sx={{ minWidth: { xs: 0, sm: 130 } }}>
 					<InputLabel sx={{ fontSize: "0.85rem" }}>Ordenar</InputLabel>
 					<Select
 						value={selectedSort}
@@ -147,6 +158,7 @@ export default function FilterBar({
 							fontSize: "0.8rem",
 							borderColor: "divider",
 							minWidth: 90,
+							minHeight: 40,
 						}}
 					>
 						Filtros
@@ -161,7 +173,7 @@ export default function FilterBar({
 						display: "flex",
 						gap: 0.75,
 						flexWrap: "wrap",
-						justifyContent: "center",
+						justifyContent: { xs: "stretch", sm: "center" },
 						alignItems: "center",
 						mt: 1.5,
 					}}
@@ -174,11 +186,15 @@ export default function FilterBar({
 						}
 						size="small"
 						sx={{
+							width: { xs: "100%", sm: "auto" },
 							"& .MuiToggleButton-root": {
+								flex: { xs: 1, sm: "initial" },
 								textTransform: "none",
-								fontSize: "0.75rem",
-								px: 1.5,
+								fontSize: { xs: "0.68rem", sm: "0.75rem" },
+								lineHeight: 1.2,
+								px: { xs: 0.75, sm: 1.5 },
 								py: 0.4,
+								minHeight: 40,
 								borderColor: "divider",
 							},
 						}}
@@ -207,11 +223,14 @@ export default function FilterBar({
 						}
 						size="small"
 						sx={{
+							width: { xs: "100%", sm: "auto" },
 							"& .MuiToggleButton-root": {
+								width: { xs: "100%", sm: "auto" },
 								textTransform: "none",
 								fontSize: "0.75rem",
 								px: 1.5,
 								py: 0.4,
+								minHeight: 40,
 								borderColor: "divider",
 							},
 						}}
@@ -243,7 +262,7 @@ export default function FilterBar({
 
 					<FormControl
 						size="small"
-						sx={{ minWidth: 120 }}
+						sx={{ minWidth: 120, width: { xs: "100%", sm: "auto" } }}
 						disabled={categoryOptions.length === 0}
 					>
 						<InputLabel sx={{ fontSize: "0.8rem" }}>Categoría</InputLabel>
