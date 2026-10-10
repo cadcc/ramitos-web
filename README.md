@@ -38,7 +38,7 @@ Variables prefixed with VITE\_ are public browser configuration. Do not put secr
 | `pnpm test:e2e`               | Desktop and mobile Chromium smoke tests using local mocks.    |
 | `pnpm preview`                | Inspect the production bundle locally.                        |
 
-Before running browser tests for the first time, run `pnpm exec playwright install chromium`. CI runs `pnpm check` and the browser suite on pushes and pull requests. Failed browser traces are uploaded as artifacts. Formatting excludes generated output, external data, historical local notes, and test artifacts. Generated files remain typechecked through their consumers.
+Before running browser tests for the first time, run `pnpm exec playwright install chromium`. Run `pnpm check` and `pnpm test:e2e` locally to verify changes. Formatting excludes generated output, external data, historical local notes, and test artifacts. Generated files remain typechecked through their consumers.
 
 ## Architecture
 
