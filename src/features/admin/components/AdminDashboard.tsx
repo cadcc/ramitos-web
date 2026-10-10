@@ -6,11 +6,9 @@ import {
 	Chip,
 	Fade,
 } from "@mui/material";
-import {
-	AdminPanelSettings as AdminIcon,
-	Visibility as VisibleIcon,
-	VisibilityOff as HiddenIcon,
-} from "@mui/icons-material";
+import AdminIcon from "@mui/icons-material/AdminPanelSettings";
+import VisibleIcon from "@mui/icons-material/Visibility";
+import HiddenIcon from "@mui/icons-material/VisibilityOff";
 import { useAdminReviews } from "../hooks/useAdminReviews";
 import { AdminReviewCard } from "../../reviews";
 

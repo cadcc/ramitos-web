@@ -4,22 +4,20 @@ import {
 	useQueryClient,
 } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { useGetCoursesStaticData } from "../../../generated/api/course/courseService";
 import type { CourseFilters } from "../../../shared/types/domain";
 import {
 	COURSE_CATALOG_PAGE_SIZE,
 	filterCourseCatalog,
 	getCourseCatalogPage,
-	normalizeCourseCatalog,
+	getCourseCatalogIndex,
 } from "../api/courseCatalog.api";
 
 export function useCourseCatalog(filters: CourseFilters) {
 	const queryClient = useQueryClient();
-	const indexQuery = useGetCoursesStaticData({
-		query: {
-			select: (response) => normalizeCourseCatalog(response.data),
-			staleTime: Number.POSITIVE_INFINITY,
-		},
+	const indexQuery = useQuery({
+		queryKey: ["course-catalog-index"],
+		queryFn: getCourseCatalogIndex,
+		staleTime: Number.POSITIVE_INFINITY,
 	});
 
 	const filteredEntries = useMemo(

@@ -1,3 +1,3 @@
 import type { useRoadmapState } from "../hooks/useRoadmapState";
 
-export type ReturnTypeHack = ReturnType<typeof useRoadmapState>;
+export type RoadmapState = ReturnType<typeof useRoadmapState>;

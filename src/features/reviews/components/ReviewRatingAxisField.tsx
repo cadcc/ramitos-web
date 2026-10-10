@@ -80,6 +80,7 @@ export function ReviewRatingAxisField({
 								<Box
 									key={value}
 									role="button"
+									aria-pressed={isSelected}
 									tabIndex={0}
 									aria-label={`${axis.label}: ${value} - ${axis.levels[value - 1]}`}
 									title={`${axis.levels[value - 1]}`}
@@ -177,8 +178,14 @@ export function ReviewRatingAxisField({
 									return (
 										<Box
 											key={tag}
+											component="button"
+											type="button"
+											aria-pressed={isActive}
 											onClick={() => onToggleTag(tag)}
 											sx={{
+												border: 0,
+												backgroundColor: "transparent",
+												fontFamily: "inherit",
 												flex: { xs: 1, sm: "initial" },
 												minWidth: 0,
 												px: 1.25,

@@ -13,15 +13,12 @@ import {
 	Box,
 	ListItemIcon,
 	ListItemText,
-	Tooltip,
 } from "@mui/material";
-import {
-	Logout as LogoutIcon,
-	Person as PersonIcon,
-	Stars as StarsIcon,
-	Badge as BadgeIcon,
-	AdminPanelSettings as AdminIcon,
-} from "@mui/icons-material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from "@mui/icons-material/Person";
+import StarsIcon from "@mui/icons-material/Stars";
+import BadgeIcon from "@mui/icons-material/Badge";
+import AdminIcon from "@mui/icons-material/AdminPanelSettings";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { LoginDialog, useAuth } from "../../../features/auth";
 import { useState } from "react";
@@ -48,7 +45,7 @@ export default function Navbar() {
 	const handleLogout = () => {
 		handleClose();
 		logout();
-		navigate({ to: "/" });
+		void navigate({ to: "/" });
 	};
 
 	return (
@@ -209,7 +206,7 @@ export default function Navbar() {
 										<MenuItem
 											onClick={() => {
 												handleClose();
-												navigate({ to: "/admin" });
+												void navigate({ to: "/admin" });
 											}}
 										>
 											<ListItemIcon>

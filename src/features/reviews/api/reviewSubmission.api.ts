@@ -1,14 +1,11 @@
 import { getAuthHeaders, handleAuthenticatedResponse } from "../../auth";
 import { createReview } from "../../../generated/api/review/reviewService";
-import type {
-	CreateReviewResponseContent,
-	DuplicatedEntityResponseContent,
-} from "../../../generated/api/review/models";
+import type { CreateReviewResponseContent } from "../../../generated/api/review/models";
 import type { ReviewSubmission } from "../../../shared/types/domain";
 
 export async function submitCourseReview(
 	submission: ReviewSubmission,
-): Promise<CreateReviewResponseContent | DuplicatedEntityResponseContent> {
+): Promise<CreateReviewResponseContent> {
 	// TODO(backend): Once review create/update accepts the full form model, replace this adapter with the generated useCreateReview/update-review hook.
 	const response = await createReview(
 		{
@@ -20,10 +17,10 @@ export async function submitCourseReview(
 		{ headers: getAuthHeaders() },
 	);
 
-	if (handleAuthenticatedResponse((response as { status: number }).status)) {
+	if (handleAuthenticatedResponse(response.status)) {
 		throw new Error("Session expired");
 	}
-	if ((response as { status: number }).status >= 400) {
+	if (response.status !== 200) {
 		throw new Error("Review submission failed");
 	}
 

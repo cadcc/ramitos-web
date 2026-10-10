@@ -8,7 +8,7 @@ import {
 	ToggleButtonGroup,
 	Typography,
 } from "@mui/material";
-import { RateReview as ReviewIcon } from "@mui/icons-material";
+import ReviewIcon from "@mui/icons-material/RateReview";
 import type { ReviewSort } from "../../../shared/types/domain";
 import { useAuth } from "../../auth";
 import { CourseReviewCard, OwnCourseReviewCard } from "./ReviewCard";
@@ -72,7 +72,7 @@ export function CourseReviewsSection({
 					<ToggleButtonGroup
 						value={reviewSort}
 						exclusive
-						onChange={(_, val) => {
+						onChange={(_, val: ReviewSort | null) => {
 							if (val) onReviewSortChange(val);
 						}}
 						size="small"
@@ -114,6 +114,10 @@ export function CourseReviewsSection({
 					<Box sx={{ display: "flex", justifyContent: "center", py: 4 }}>
 						<CircularProgress size={28} />
 					</Box>
+				) : reviewsQuery.isError ? (
+					<Typography role="alert" color="error">
+						No pudimos cargar las opiniones. Intenta recargar la página.
+					</Typography>
 				) : reviews.length === 0 ? (
 					<Typography
 						variant="body1"

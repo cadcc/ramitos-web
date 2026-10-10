@@ -14,9 +14,10 @@
  * - Vibe: Late-night coding (Dark) / Clean morning desk (Light).
  */
 
-import { createTheme, type ThemeOptions } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import type { ThemeConfig } from "..";
-import { Contrast, LightMode } from "@mui/icons-material";
+import Contrast from "@mui/icons-material/Contrast";
+import LightMode from "@mui/icons-material/LightMode";
 
 // 1. Define the unified token interface
 interface MinimalTokens {

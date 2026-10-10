@@ -8,7 +8,7 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from "@mui/material";
-import { Palette as PaletteIcon } from "@mui/icons-material";
+import PaletteIcon from "@mui/icons-material/Palette";
 import { useThemeMode } from "../../providers/ThemeProvider";
 import { type ThemeKey } from "../../styles";
 

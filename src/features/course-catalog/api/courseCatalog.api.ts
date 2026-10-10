@@ -1,4 +1,7 @@
-import { listCourses } from "../../../generated/api/course/courseService";
+import {
+	getCoursesStaticData,
+	listCourses,
+} from "../../../generated/api/course/courseService";
 import type {
 	Course,
 	CoursesStaticDataContainer,
@@ -157,4 +160,10 @@ export function filterCourseCatalog(
 	}
 
 	return filtered;
+}
+
+export async function getCourseCatalogIndex(): Promise<CourseCatalogIndex> {
+	const response = await getCoursesStaticData();
+	if (response.status !== 200) throw new Error("Unable to load catalog index");
+	return normalizeCourseCatalog(response.data);
 }

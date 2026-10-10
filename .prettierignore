@@ -1,8 +1,20 @@
-# .prettierignore
 dist
 build
-docs
 public
 coverage
 node_modules
 pnpm-lock.yaml
+src/generated
+src/routeTree.gen.ts
+.tanstack
+.agents
+playwright-report
+test-results
+api/schemas
+data
+docs/PLAN.md
+docs/TODO.md
+docs/temp.md
+docs/malla.md
+docs/FRONTEND_BACKEND_HANDOFF.md
+docs/BACKEND_FEATURE_REQUESTS.md

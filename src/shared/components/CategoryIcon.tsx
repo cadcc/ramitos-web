@@ -1,22 +1,20 @@
-import {
-	Code,
-	AccountTree,
-	SmartToy,
-	Psychology,
-	Storage,
-	Language,
-	Memory,
-	Lock,
-	Web,
-	Brush,
-	Architecture,
-	BarChart,
-	Mouse,
-	SportsEsports,
-	BusinessCenter,
-	Functions,
-	Chat,
-} from "@mui/icons-material";
+import Code from "@mui/icons-material/Code";
+import AccountTree from "@mui/icons-material/AccountTree";
+import SmartToy from "@mui/icons-material/SmartToy";
+import Psychology from "@mui/icons-material/Psychology";
+import Storage from "@mui/icons-material/Storage";
+import Language from "@mui/icons-material/Language";
+import Memory from "@mui/icons-material/Memory";
+import Lock from "@mui/icons-material/Lock";
+import Web from "@mui/icons-material/Web";
+import Brush from "@mui/icons-material/Brush";
+import Architecture from "@mui/icons-material/Architecture";
+import BarChart from "@mui/icons-material/BarChart";
+import Mouse from "@mui/icons-material/Mouse";
+import SportsEsports from "@mui/icons-material/SportsEsports";
+import BusinessCenter from "@mui/icons-material/BusinessCenter";
+import Functions from "@mui/icons-material/Functions";
+import Chat from "@mui/icons-material/Chat";
 import { SvgIcon } from "@mui/material";
 import type { SvgIconProps } from "@mui/material";
 import type { ComponentType } from "react";

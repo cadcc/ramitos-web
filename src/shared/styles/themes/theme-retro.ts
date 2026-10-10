@@ -16,7 +16,7 @@
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
 import type { ThemeConfig } from "..";
-import { AttachFile, Elderly } from "@mui/icons-material";
+import AttachFile from "@mui/icons-material/AttachFile";
 
 const TOKEN_PURE_BLUE = "#0000FF";
 const TOKEN_HOT_RED = "#FF0000";

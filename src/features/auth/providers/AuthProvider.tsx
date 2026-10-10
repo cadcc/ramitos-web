@@ -1,5 +1,6 @@
 import {
 	createContext,
+	useRef,
 	useContext,
 	useState,
 	useCallback,
@@ -47,6 +48,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
 	const queryClient = useQueryClient();
+	const sessionVersion = useRef(0);
 	const [user, setUser] = useState<User | null>(null);
 	const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 	const [loginPending, setLoginPending] = useState(false);
@@ -59,7 +61,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		setLoginDialogOpen(false);
 		setLoginError(null);
 		setSessionExpiredOpen(true);
-		queryClient.removeQueries({ queryKey: ["ownReview"] });
+		sessionVersion.current += 1;
+		queryClient.clear();
 	}, [queryClient]);
 
 	useEffect(() => onSessionExpired(expireSession), [expireSession]);
@@ -90,48 +93,62 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		if (window.location.pathname === "/auth/dcc/callback") return;
 
 		let active = true;
+		const version = sessionVersion.current;
 		fetchCurrentUser()
 			.then((loadedUser) => {
-				if (active && loadedUser) setUser(loadedUser);
+				if (active && version === sessionVersion.current && loadedUser)
+					setUser(loadedUser);
 			})
 			.catch(() => {
-				clearSession();
+				if (active && version === sessionVersion.current) clearSession();
 			});
 		return () => {
 			active = false;
 		};
 	}, []);
 
-	const login = useCallback(async (credentials: LoginCredentials) => {
-		setLoginPending(true);
-		setLoginError(null);
-		try {
-			const loggedUser = await loginWithPassword(credentials);
-			setUser(loggedUser);
-			setLoginDialogOpen(false);
-		} catch {
-			setLoginError("No pudimos iniciar sesion con esas credenciales.");
-		} finally {
-			setLoginPending(false);
-		}
-	}, []);
+	const login = useCallback(
+		async (credentials: LoginCredentials) => {
+			sessionVersion.current += 1;
+			setLoginPending(true);
+			setLoginError(null);
+			try {
+				const loggedUser = await loginWithPassword(credentials);
+				queryClient.clear();
+				setUser(loggedUser);
+				setLoginDialogOpen(false);
+			} catch {
+				setLoginError("No pudimos iniciar sesion con esas credenciales.");
+			} finally {
+				setLoginPending(false);
+			}
+		},
+		[queryClient],
+	);
 
-	const completeDccLogin = useCallback(async (secret: string) => {
-		setLoginPending(true);
-		setLoginError(null);
-		try {
-			const loggedUser = await loginWithDccSecret(secret);
-			setUser(loggedUser);
-			setLoginDialogOpen(false);
-		} finally {
-			setLoginPending(false);
-		}
-	}, []);
+	const completeDccLogin = useCallback(
+		async (secret: string) => {
+			sessionVersion.current += 1;
+			setLoginPending(true);
+			setLoginError(null);
+			try {
+				const loggedUser = await loginWithDccSecret(secret);
+				queryClient.clear();
+				setUser(loggedUser);
+				setLoginDialogOpen(false);
+			} finally {
+				setLoginPending(false);
+			}
+		},
+		[queryClient],
+	);
 
 	const logout = useCallback(() => {
+		sessionVersion.current += 1;
 		clearSession();
+		queryClient.clear();
 		setUser(null);
-	}, []);
+	}, [queryClient]);
 
 	const closeSessionExpiredSnackbar = useCallback(() => {
 		setSessionExpiredOpen(false);

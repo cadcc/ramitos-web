@@ -30,7 +30,8 @@
 
 import type { ThemeConfig } from "..";
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
-import { DarkModeRounded, PrintRounded } from "@mui/icons-material";
+import DarkModeRounded from "@mui/icons-material/DarkModeRounded";
+import PrintRounded from "@mui/icons-material/PrintRounded";
 
 const TOKEN_TITLE_FONT_FAMILY = '"Space Grotesk", sans-serif';
 const TOKEN_DARK_CONTENT = "#073642";

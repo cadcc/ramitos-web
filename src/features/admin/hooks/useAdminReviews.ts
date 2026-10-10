@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useInfiniteScroll } from "../../../shared/hooks/useInfiniteScroll";
+import { useMemo, useState } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getAdminReviewsPage } from "../api/adminReviews.api";
 
 export function useAdminReviews() {
-	const loadMoreRef = useRef<HTMLDivElement>(null);
 	const [hiddenOverrides, setHiddenOverrides] = useState<Set<number>>(
 		new Set(),
 	);
@@ -15,28 +15,7 @@ export function useAdminReviews() {
 		getNextPageParam: (last) => last.nextCursor ?? undefined,
 	});
 
-	useEffect(() => {
-		const el = loadMoreRef.current;
-		if (!el) return;
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (
-					entries[0]?.isIntersecting &&
-					reviewsQuery.hasNextPage &&
-					!reviewsQuery.isFetchingNextPage
-				) {
-					reviewsQuery.fetchNextPage();
-				}
-			},
-			{ threshold: 0.1 },
-		);
-		observer.observe(el);
-		return () => observer.disconnect();
-	}, [
-		reviewsQuery.hasNextPage,
-		reviewsQuery.isFetchingNextPage,
-		reviewsQuery.fetchNextPage,
-	]);
+	const loadMoreRef = useInfiniteScroll(reviewsQuery);
 
 	const reviews = useMemo(
 		() =>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useInfiniteScroll } from "../../../shared/hooks/useInfiniteScroll";
 import { Box, Fade, Grid, Skeleton, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
 import type { CourseCatalogEntry } from "../api/courseCatalog.api";
@@ -39,8 +39,6 @@ export function CourseCatalogPage({
 	filters,
 	onFilterChange,
 }: CourseCatalogPageProps) {
-	const observerTarget = useRef<HTMLDivElement>(null);
-
 	const {
 		indexQuery,
 		pagesQuery,
@@ -58,22 +56,11 @@ export function CourseCatalogPage({
 		isError,
 	} = pagesQuery;
 
-	useEffect(() => {
-		const el = observerTarget.current;
-		if (!el) return;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0]?.isIntersecting && hasNextPage && !isFetchingNextPage) {
-					fetchNextPage();
-				}
-			},
-			{ threshold: 0.1 },
-		);
-
-		observer.observe(el);
-		return () => observer.disconnect();
-	}, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+	const observerTarget = useInfiniteScroll({
+		hasNextPage,
+		isFetchingNextPage,
+		fetchNextPage,
+	});
 
 	const courses = data?.pages.flatMap((page) => page.items) ?? [];
 	const loading = indexQuery.isLoading || isLoading;

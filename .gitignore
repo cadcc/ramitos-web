@@ -143,6 +143,13 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Project
+AGENTS.md
 .agents
+.scratch
 .tanstack
 docs
+
+# Browser test output
+playwright-report/
+test-results/
+

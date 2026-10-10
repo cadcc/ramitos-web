@@ -11,11 +11,9 @@ import {
 	Button,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import {
-	ThumbUp as LikeIcon,
-	ThumbDown as DislikeIcon,
-	SentimentVerySatisfied as FunnyIcon,
-} from "@mui/icons-material";
+import LikeIcon from "@mui/icons-material/ThumbUp";
+import DislikeIcon from "@mui/icons-material/ThumbDown";
+import FunnyIcon from "@mui/icons-material/SentimentVerySatisfied";
 import ReviewCommentMarkdown from "./ReviewCommentMarkdown";
 import type { Review } from "../../../shared/types/domain";
 import { useAuth } from "../../auth";

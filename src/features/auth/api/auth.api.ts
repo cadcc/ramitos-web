@@ -73,7 +73,12 @@ function decodeBase64Url(value: string): string {
 
 function tokenPayload(token: string): Record<string, unknown> | null {
 	try {
-		return JSON.parse(decodeBase64Url(token.split(".")[1] ?? ""));
+		const value: unknown = JSON.parse(
+			decodeBase64Url(token.split(".")[1] ?? ""),
+		);
+		return typeof value === "object" && value !== null && !Array.isArray(value)
+			? (value as Record<string, unknown>)
+			: null;
 	} catch {
 		return null;
 	}
@@ -125,6 +130,7 @@ export function storeSession(token: string, user: User) {
 }
 
 export function clearSession() {
+	dccTokenExchanges.clear();
 	localStorage.removeItem(TOKEN_STORAGE_KEY);
 	localStorage.removeItem(USER_STORAGE_KEY);
 }
@@ -186,7 +192,7 @@ export async function fetchCurrentUser(
 ): Promise<User | null> {
 	if (!token) return null;
 	if (isTokenExpired(token)) {
-		notifySessionExpired();
+		if (getStoredToken() === token) notifySessionExpired();
 		return null;
 	}
 	try {
@@ -196,14 +202,14 @@ export async function fetchCurrentUser(
 		});
 		if (response.status === 200) return toUser(response.data);
 		if (isAuthExpiredStatus(response.status)) {
-			notifySessionExpired();
+			if (getStoredToken() === token) notifySessionExpired();
 			return null;
 		}
 	} catch {
-		clearSession();
+		if (getStoredToken() === token) clearSession();
 		return null;
 	}
-	clearSession();
+	if (getStoredToken() === token) clearSession();
 	return null;
 }
 

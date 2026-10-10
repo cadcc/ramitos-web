@@ -28,6 +28,7 @@ export function CourseRoadmapPage({ degree }: CourseRoadmapPageProps) {
 			return () => window.clearTimeout(timeout);
 		}
 		wasComplete.current = state.completion.complete;
+		return undefined;
 	}, [state.completion.complete]);
 
 	const handleClearMarks = () => {

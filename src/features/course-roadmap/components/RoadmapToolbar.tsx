@@ -6,11 +6,9 @@ import {
 	Tooltip,
 	Typography,
 } from "@mui/material";
-import {
-	DeleteSweep as ClearIcon,
-	Edit as EditIcon,
-	Settings as SettingsIcon,
-} from "@mui/icons-material";
+import ClearIcon from "@mui/icons-material/DeleteSweep";
+import EditIcon from "@mui/icons-material/Edit";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { roadmapColors } from "../model/tokens";
 import type { RoadmapMarkColor, RoadmapSettings } from "../model/types";
 import { RoadmapSettingsMenu } from "./RoadmapSettingsMenu";

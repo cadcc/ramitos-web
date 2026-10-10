@@ -190,7 +190,7 @@ function sanitizeEditColor(value: unknown): RoadmapMarkColor {
 function sanitizeMarks(value: unknown): RoadmapMarks {
 	if (typeof value !== "object" || value === null) return {};
 	const result: RoadmapMarks = {};
-	for (const [key, mark] of Object.entries(value)) {
+	for (const [key, mark] of Object.entries(value as Record<string, unknown>)) {
 		if (mark === 0 || mark === 1 || mark === 2 || mark === 3 || mark === 4) {
 			result[key] = mark;
 		}

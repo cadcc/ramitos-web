@@ -107,7 +107,9 @@ function fallbackDescription(course: GetCourseResponseContent): string {
 
 function fallbackReviewCount(course: GetCourseResponseContent): number {
 	// TODO(backend): Replace with aggregate review count from the API.
-	const values = Object.values(course.stats)
+	const values = Object.values(
+		course.stats as Record<string, { value: number }>,
+	)
 		.map((stat) => stat?.value)
 		.filter((value): value is number => typeof value === "number" && value > 0);
 	return values.length > 0

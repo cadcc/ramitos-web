@@ -17,7 +17,7 @@
 
 import { createTheme, type ThemeOptions } from "@mui/material/styles";
 import type { ThemeConfig } from "..";
-import { BubbleChartTwoTone } from "@mui/icons-material";
+import BubbleChartTwoTone from "@mui/icons-material/BubbleChartTwoTone";
 
 const bubbleTokens = {
 	bg: "hsl(329, 80%, 90%)", // Light Bubblegum Base

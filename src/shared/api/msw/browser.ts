@@ -41,23 +41,6 @@ const handlers = [
 
 const worker = setupWorker(...handlers);
 
-async function unregisterMockServiceWorkers() {
-	if (!("serviceWorker" in navigator)) return;
-	const registrations = await navigator.serviceWorker.getRegistrations();
-	await Promise.all(
-		registrations
-			.filter((registration) =>
-				registration.active?.scriptURL.endsWith("/mockServiceWorker.js"),
-			)
-			.map((registration) => registration.unregister()),
-	);
-}
-
-export async function initializeMocking(): Promise<void> {
-	if (import.meta.env.VITE_API_MOCKING_ENABLED === "true") {
-		await worker.start({ onUnhandledRequest: "bypass" });
-		return;
-	}
-
-	await unregisterMockServiceWorkers();
+export async function startMocking(): Promise<void> {
+	await worker.start({ onUnhandledRequest: "bypass" });
 }

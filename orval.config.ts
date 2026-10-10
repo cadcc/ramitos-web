@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { defineConfig } from "orval";
 import type { Options } from "orval";
 import { loadEnv } from "vite";
@@ -8,8 +9,10 @@ const SCHEMA_BASE_URL = env.VITE_API_SCHEMA_BASE_URL || BASE_URL;
 
 function serviceConfig(schemaName: string, folderName: string): Options {
 	return {
-        // TODO: add fallback/cached input
-		input: `${SCHEMA_BASE_URL}/docs/specs/cl.cadcc.ramitos.schema.${schemaName}.json`,
+		// Prefer reviewed local snapshots; live fallback supports the initial snapshot.
+		input: existsSync(`api/schemas/${schemaName}.json`)
+			? `api/schemas/${schemaName}.json`
+			: `${SCHEMA_BASE_URL}/docs/specs/cl.cadcc.ramitos.schema.${schemaName}.json`,
 		output: {
 			client: "react-query",
 			target: `src/generated/api/${folderName}`,
@@ -28,6 +31,4 @@ export default defineConfig({
 	authentication: serviceConfig("AuthenticationService", "authentication"),
 	course: serviceConfig("CourseService", "course"),
 	review: serviceConfig("ReviewService", "review"),
-
-	// TODO: figure out how to use zod with react-query (is it even usable?)
 });

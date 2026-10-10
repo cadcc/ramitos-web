@@ -3,18 +3,16 @@ import {
 	Box,
 	Breadcrumbs,
 	Button,
-	Card,
 	CardActionArea,
 	Chip,
 	CircularProgress,
 	Divider,
 	Fade,
-	Paper,
 	Stack,
 	Typography,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { ArrowBack as BackIcon } from "@mui/icons-material";
+import BackIcon from "@mui/icons-material/ArrowBack";
 import { getAverageScore, getTagColor } from "../../../constants/courseDisplay";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
@@ -76,7 +74,7 @@ export function CourseDetailPage({
 					cursoId={cursoId}
 					reviewSort={reviewSort}
 					onReviewSortChange={(nextSort) =>
-						navigate({ search: { reviewSort: nextSort }, replace: true })
+						void navigate({ search: { reviewSort: nextSort }, replace: true })
 					}
 				/>
 			</Box>

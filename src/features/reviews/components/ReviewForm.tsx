@@ -13,8 +13,8 @@ import {
 	DialogActions,
 	useMediaQuery,
 } from "@mui/material";
-import { alpha, useTheme } from "@mui/material/styles";
-import { Send as SendIcon } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
+import SendIcon from "@mui/icons-material/Send";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type {
 	CourseRatings,
@@ -55,10 +55,10 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 
 	const mutation = useMutation({
 		mutationFn: submitCourseReview,
-		onSuccess: () => {
-			qc.invalidateQueries({ queryKey: ["reviews", cursoId] });
-			qc.invalidateQueries({ queryKey: ["ownReview", cursoId] });
-			qc.invalidateQueries({ queryKey: ["course", cursoId] });
+		onSuccess: async () => {
+			await qc.invalidateQueries({ queryKey: ["reviews", cursoId] });
+			await qc.invalidateQueries({ queryKey: ["ownReview", cursoId] });
+			await qc.invalidateQueries({ queryKey: ["course", cursoId] });
 			setComment("");
 			setSelectedTags([]);
 			setRatings({});
@@ -67,7 +67,7 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 	});
 
 	const filledCount = Object.keys(ratings).length;
-	const canSubmit = filledCount === 5;
+	const canSubmit = filledCount === 5 && !initialReview;
 
 	const handleSubmit = () => {
 		if (!canSubmit) return;
@@ -135,6 +135,11 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 			</DialogTitle>
 			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
 				<Stack spacing={{ xs: 2.75, sm: 2.5 }} sx={{ mt: 0.5 }}>
+					{initialReview && (
+						<Alert severity="info">
+							La edición de opiniones aún no está disponible.
+						</Alert>
+					)}
 					{reviewAxes.map((axis) => (
 						<ReviewRatingAxisField
 							key={axis.key}
@@ -191,8 +196,14 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 											return (
 												<Box
 													key={tag}
+													component="button"
+													type="button"
+													aria-pressed={isActive}
 													onClick={() => toggleTag(tag)}
 													sx={{
+														border: 0,
+														backgroundColor: "transparent",
+														fontFamily: "inherit",
 														flex: { xs: 1, sm: "initial" },
 														minWidth: 0,
 														px: 1.25,

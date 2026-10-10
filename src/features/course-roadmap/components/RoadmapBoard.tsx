@@ -1,12 +1,12 @@
 import { Box, Stack } from "@mui/material";
 import { useCallback, useRef } from "react";
 import { useRoadmapLines } from "../hooks/useRoadmapLines";
-import type { ReturnTypeHack } from "../model/viewTypes";
+import type { RoadmapState } from "../model/viewTypes";
 import { DependencyLinesOverlay } from "./DependencyLinesOverlay";
 import { PhaseSection } from "./PhaseSection";
 
 interface RoadmapBoardProps {
-	state: ReturnTypeHack;
+	state: RoadmapState;
 }
 
 export function RoadmapBoard({ state }: RoadmapBoardProps) {
@@ -21,12 +21,13 @@ export function RoadmapBoard({ state }: RoadmapBoardProps) {
 		coursesById: state.coursesById,
 	});
 
+	const { editMode, toggleMark, toggleTouchSelection } = state;
 	const handleCourseClick = useCallback(
 		(courseId: string) => {
-			if (state.editMode) state.toggleMark(courseId);
-			else state.toggleTouchSelection(courseId);
+			if (editMode) toggleMark(courseId);
+			else toggleTouchSelection(courseId);
 		},
-		[state.editMode, state.toggleMark, state.toggleTouchSelection],
+		[editMode, toggleMark, toggleTouchSelection],
 	);
 
 	return (

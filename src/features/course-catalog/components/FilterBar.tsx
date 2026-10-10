@@ -17,11 +17,9 @@ import {
 	FormControlLabel,
 	Switch,
 } from "@mui/material";
-import {
-	Search as SearchIcon,
-	Close as CloseIcon,
-	Tune as TuneIcon,
-} from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import TuneIcon from "@mui/icons-material/Tune";
 import type { CourseFilters, SortOption } from "../../../shared/types/domain";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
 
@@ -56,17 +54,29 @@ export default function FilterBar({
 	onFilterChange,
 	categoryOptions = [],
 }: Props) {
-	const [searchText, setSearchText] = useState(filters.q ?? "");
+	const [draft, setDraft] = useState({
+		source: filters.q,
+		text: filters.q ?? "",
+	});
+	// Adjust the draft when URL navigation changes the source query.
+	if (draft.source !== filters.q) {
+		setDraft({ source: filters.q, text: filters.q ?? "" });
+	}
+	// Typing keeps a local debounced value.
+	const searchText =
+		draft.source === filters.q ? draft.text : (filters.q ?? "");
+	const setSearchText = (text: string) => setDraft({ source: filters.q, text });
 	const [filtersOpen, setFiltersOpen] = useState(false);
 	const selectedSort =
 		filters.sort && implementedSorts.has(filters.sort) ? filters.sort : "code";
 
 	useEffect(() => {
+		if (searchText === (filters.q ?? "")) return;
 		const timer = setTimeout(() => {
 			onFilterChange({ ...filters, q: searchText || undefined });
 		}, 350);
 		return () => clearTimeout(timer);
-	}, [searchText]);
+	}, [searchText, filters, onFilterChange]);
 
 	const activeFilterCount =
 		(filters.plan ? 1 : 0) +
@@ -103,6 +113,7 @@ export default function FilterBar({
 						},
 					}}
 					slotProps={{
+						htmlInput: { "aria-label": "Buscar curso" },
 						input: {
 							startAdornment: (
 								<InputAdornment position="start">
@@ -111,7 +122,11 @@ export default function FilterBar({
 							),
 							endAdornment: searchText ? (
 								<InputAdornment position="end">
-									<IconButton size="small" onClick={() => setSearchText("")}>
+									<IconButton
+										aria-label="Limpiar búsqueda"
+										size="small"
+										onClick={() => setSearchText("")}
+									>
 										<CloseIcon sx={{ fontSize: 14 }} />
 									</IconButton>
 								</InputAdornment>
@@ -126,7 +141,7 @@ export default function FilterBar({
 						value={selectedSort}
 						label="Ordenar"
 						onChange={(e) =>
-							onFilterChange({ ...filters, sort: e.target.value as SortOption })
+							onFilterChange({ ...filters, sort: e.target.value })
 						}
 						sx={{
 							bgcolor: "background.paper",
@@ -181,7 +196,7 @@ export default function FilterBar({
 					<ToggleButtonGroup
 						value={filters.plan ?? null}
 						exclusive
-						onChange={(_, val) =>
+						onChange={(_, val: CourseFilters["plan"] | null) =>
 							onFilterChange({ ...filters, plan: val ?? undefined })
 						}
 						size="small"
@@ -270,7 +285,7 @@ export default function FilterBar({
 							value={filters.tags?.[0] ?? ""}
 							label="Categoría"
 							onChange={(e) => {
-								const val = e.target.value as string;
+								const val = e.target.value;
 								onFilterChange({
 									...filters,
 									tags: val ? [val] : undefined,

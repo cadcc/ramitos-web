@@ -4,14 +4,20 @@ import { AdminDashboard } from "../features/admin";
 export const Route = createFileRoute("/admin")({
 	beforeLoad: () => {
 		const stored = localStorage.getItem("ramitos-user");
-		if (!stored) throw redirect({ to: "/" });
+		if (!stored) return redirect({ to: "/" });
 		try {
-			const user = JSON.parse(stored);
-			if (user.role !== "admin" && user.role !== "mod")
-				throw redirect({ to: "/" });
+			const user: unknown = JSON.parse(stored);
+			if (
+				typeof user !== "object" ||
+				user === null ||
+				!("role" in user) ||
+				(user.role !== "admin" && user.role !== "mod")
+			)
+				return redirect({ to: "/" });
 		} catch {
-			throw redirect({ to: "/" });
+			return redirect({ to: "/" });
 		}
+		return undefined;
 	},
 	component: AdminDashboard,
 });

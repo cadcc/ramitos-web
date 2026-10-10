@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { faker } from "@faker-js/faker";
 import type { HttpResponseResolver } from "msw";
 import {
@@ -303,7 +304,19 @@ function authAccount(info: RequestInfo): GetSelfResponseContent {
 	const token = header?.replace(/^Bearer\s+/i, "");
 	if (!token) return TEST_ACCOUNT;
 	try {
-		const payload = JSON.parse(atob(token.split(".")[1] ?? ""));
+		const payload = z
+			.object({
+				account: z
+					.object({
+						id: z.number(),
+						displayName: z.string().optional(),
+						name: z.string().optional(),
+						role: z.enum(["none", "stats", "mod", "admin"]).optional(),
+						createdAt: z.string().optional(),
+					})
+					.optional(),
+			})
+			.parse(JSON.parse(atob(token.split(".")[1] ?? "")));
 		const account = payload.account;
 		if (account?.id) {
 			return {
@@ -322,7 +335,7 @@ function authAccount(info: RequestInfo): GetSelfResponseContent {
 
 function courseByParam(info: RequestInfo): Course {
 	const param = info.params.courseId ?? info.params.courseCode;
-	const courseCode = Array.isArray(param) ? param[0] : String(param);
+	const courseCode = String(Array.isArray(param) ? param[0] : param);
 	return (
 		courses.find((course) => course.id === courseCode) ??
 		courseFromSeed([courseCode, `Curso ${courseCode}`, ["Programación"]])

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-	CheckCircle as CheckCircleIcon,
-	ErrorOutlined as ErrorOutlineIcon,
-} from "@mui/icons-material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutlined";
 import {
 	Alert,
 	Box,

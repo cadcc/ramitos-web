@@ -43,7 +43,7 @@ function HomePage() {
 
 	const handleFilterChange = useCallback(
 		(newFilters: CourseFilters) => {
-			navigate({
+			void navigate({
 				search: {
 					q: newFilters.q,
 					sort: newFilters.sort,

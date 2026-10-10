@@ -1,8 +1,6 @@
 import { useState, type FormEvent } from "react";
-import {
-	AccountBalance as AccountBalanceIcon,
-	Key as KeyIcon,
-} from "@mui/icons-material";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import KeyIcon from "@mui/icons-material/Key";
 import {
 	Alert,
 	Box,
@@ -98,7 +96,12 @@ export function LoginDialog() {
 					</Button>
 
 					<Collapse in={passwordFormOpen} unmountOnExit>
-						<Box component="form" onSubmit={handlePasswordLogin}>
+						<Box
+							component="form"
+							onSubmit={(event) => {
+								void handlePasswordLogin(event);
+							}}
+						>
 							<Stack spacing={1.5}>
 								<TextField
 									label="Usuario"

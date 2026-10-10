@@ -63,7 +63,15 @@ export default function CourseRadar({ ratings }: Props) {
 				/>
 				<PolarAngleAxis
 					dataKey="axis"
-					tick={({ x, y, payload: tickPayload }: any) => {
+					tick={({
+						x,
+						y,
+						payload: tickPayload,
+					}: {
+						x?: number | string;
+						y?: number | string;
+						payload: { value: string };
+					}) => {
 						const item = data.find((d) => d.axis === tickPayload.value);
 						return (
 							<text

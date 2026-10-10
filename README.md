@@ -1,120 +1,82 @@
 # Ramitos Web
 
-Frontend SPA for browsing DCC courses and student opinions. The app talks to the
-Ramitos REST API and uses Orval-generated clients for typed backend access.
+React SPA for browsing DCC courses, reading and submitting student opinions, and planning a curriculum at Universidad de Chile. The UI is in Spanish.
 
-## Stack
+## Development
 
-- React 19 + Vite
-- TanStack Router for file-based routes
-- TanStack Query for server state
-- MUI for UI
-- Orval for OpenAPI clients and generated MSW handlers
-- MSW + Faker for local API mocks
-- TypeScript + Zod
+Use Node **24.0.2** (see `.node-version`) and pnpm **11.1.2** (pinned in `package.json`).
 
-## Setup
-
-```bash
-pnpm install
+```sh
+pnpm install --frozen-lockfile
+# Copy .env.example to .env using your editor or shell.
+pnpm dev
 ```
 
-Copy `.env.example` to `.env` and set:
+Vite serves the app at http://localhost:5173. To work without a backend, set `VITE_API_MOCKING_ENABLED=true` in `.env`. Mocking is development-only; production builds never start MSW.
 
-```bash
-VITE_API_BASE_URL="https://example-backend"
-VITE_API_SCHEMA_BASE_URL="https://example-backend/api"
-VITE_AUTH_API_ORIGIN="https://example-backend"
-VITE_API_MOCKING_ENABLED=false
-VITE_API_PROXY_SECURE=true
-```
+| Variable                   | Purpose                                                                                  |
+| -------------------------- | ---------------------------------------------------------------------------------------- |
+| `VITE_API_BASE_URL`        | Backend target for Vite's development /api proxy.                                        |
+| `VITE_API_SCHEMA_BASE_URL` | Base URL for explicit OpenAPI snapshot updates and initial live generation.              |
+| `VITE_AUTH_API_ORIGIN`     | Public backend origin for DCC login and token exchange. Defaults to the frontend origin. |
+| `VITE_API_MOCKING_ENABLED` | Set to true for local MSW fixtures; false for real API calls.                            |
+| `VITE_API_PROXY_SECURE`    | Development proxy certificate verification; defaults to true.                            |
 
-`VITE_API_BASE_URL` is used by `vite.config.ts` as the target for the local
-`/api` proxy. `VITE_API_SCHEMA_BASE_URL` points Orval at the published schemas,
-and `VITE_AUTH_API_ORIGIN` sends browser-based DCC login starts directly to the
-public backend while returning to the frontend origin that initiated login.
+Variables prefixed with VITE\_ are public browser configuration. Do not put secrets in them. Keep local credentials and environment files out of Git. A backend with a private certificate authority needs a trusted CA; the proxy setting does not change the schema downloader's certificate verification.
 
-## Commands
+## Quality checks
 
-```bash
-pnpm run dev      # start Vite on http://localhost:5173
-pnpm run build    # typecheck and production build
-pnpm run test     # run Vitest
-pnpm run format   # format src with Prettier
-pnpm run generate:api # regenerate OpenAPI clients
-```
+| Command                       | Purpose                                                       |
+| ----------------------------- | ------------------------------------------------------------- |
+| `pnpm format`                 | Format maintained source, config, and documentation.          |
+| `pnpm format:check`           | Check formatting without writes.                              |
+| `pnpm lint` / `pnpm lint:fix` | Typed ESLint, React Hooks, and feature-boundary checks.       |
+| `pnpm typecheck`              | Strict TypeScript, including tool config and browser tests.   |
+| `pnpm test` / `pnpm test:run` | Watch tests / run once.                                       |
+| `pnpm build`                  | Typecheck and create the production bundle in dist/.          |
+| `pnpm check`                  | Format check, lint, types, unit/integration tests, and build. |
+| `pnpm test:e2e`               | Desktop and mobile Chromium smoke tests using local mocks.    |
+| `pnpm preview`                | Inspect the production bundle locally.                        |
 
-Before handing off code, run:
+Before running browser tests for the first time, run `pnpm exec playwright install chromium`. CI runs `pnpm check` and the browser suite on pushes and pull requests. Failed browser traces are uploaded as artifacts. Formatting excludes generated output, external data, historical local notes, and test artifacts. Generated files remain typechecked through their consumers.
 
-```bash
-pnpm run format
-pnpm run build
-```
+## Architecture
 
-## Project Structure
+The app uses React 19, Vite, MUI, TanStack Router, TanStack Query, Orval, MSW, and Zod.
 
-```txt
+```text
 src/
-  app/          app-wide providers and query client setup
-  features/     feature-owned API adapters, hooks, components, public exports
-  generated/    Orval output only; do not edit by hand
-  routes/       thin TanStack Router files
-  shared/       shared components, providers, types, and MSW infrastructure
-  constants/    shared domain/display constants
-  theme/        MUI theme definitions
+  app/providers/   application provider composition and QueryClient
+  features/        auth, course-catalog, course-detail, course-roadmap,
+                   reviews, admin (API adapters, hooks, components, models)
+  routes/          URL search/params and route composition
+  shared/          shared hooks, components, themes, types, mock infrastructure
+  constants/       domain and display constants
+  generated/api/   disposable Orval clients, models, and mock handlers
 ```
 
-Feature folders expose their supported cross-feature surface through
-`features/<feature>/index.ts`. Prefer importing from that public API instead of
-deep-linking into another feature's internals.
+Cross-feature imports go through `features/<feature>/index.ts`; imports within a feature may use its internal modules. ESLint checks that boundary. Generated clients belong behind feature API adapters, with an exception for shared mock infrastructure. UI code consumes frontend view models instead of backend DTOs. Prefer direct MUI icon imports to avoid loading the entire icon library in development and tests.
 
-## API Boundary
+Server state belongs in TanStack Query; search/filter state belongs in the URL; theme, authentication, and roadmap interaction state use React hooks/context. Roadmap marks and preferences persist only in this browser. The shared infinite-scroll hook manages observer lifetime; callers own pagination and error rendering.
 
-Orval generates clients into `src/generated/api`. UI code should not import from
-`src/generated` directly. Feature API files adapt backend DTOs into frontend view
-models and contain TODOs for backend gaps.
+## API generation
 
-Typical flow:
-
-```txt
-component -> feature hook -> feature api/mapper -> generated client
+```sh
+pnpm api:update     # fetch and validate all five backend schemas
+pnpm generate:api   # generate clients from local snapshots when available
+pnpm check
 ```
 
-When adding or changing backend schemas:
+The update command writes `api/schemas/<Service>.json` only after all downloads validate. Review and commit schema and generated-code changes together. Orval prefers these snapshots and falls back to live schemas when a snapshot is absent. The initial snapshot could not be retrieved during cleanup because the configured endpoint failed certificate verification; offline regeneration is therefore pending. Normal builds use the checked-in generated clients and do not contact the backend.
 
-1. Update `orval.config.ts` if a new service is needed.
-2. Run `pnpm run generate:api`.
-3. Wire new calls through the owning feature's `api`/`hooks`.
-4. If the backend shape is incomplete, keep the adapter and add/update the
-   backend TODO or feature request.
+Do not hand-edit `src/generated/` or `src/routeTree.gen.ts`. Put custom request handling and DTO mapping in the owning feature's API files. Keep mock overrides in `src/shared/api/msw/fixtures.ts`.
 
-## Mocking
+## Deployment
 
-Set `VITE_API_MOCKING_ENABLED=true` to intercept `/api` calls with MSW.
-For test backends with an incomplete local certificate chain, set
-`VITE_API_PROXY_SECURE=false`; keep certificate verification enabled otherwise.
+Deploy `dist/` to a static host with an SPA fallback to `index.html` for routes such as `/curso/CC1001`, `/malla`, and `/auth/dcc/callback`. Serve real assets normally and route `/api/*` to the backend before applying the SPA fallback. Vite's development proxy is not part of the deployed app. Configure the public DCC auth origin at build time; the backend must allow the frontend callback origin and credentialed token exchange where cross-origin authentication is used.
 
-Mock setup lives in:
+Verify direct links, reload, login/callback/logout, review submission, and expired-session behavior against staging before release. The frontend admin redirect is a navigation convenience; backend authorization must protect every privileged endpoint.
 
-- `src/shared/api/msw/browser.ts`
-- `src/shared/api/msw/fixtures.ts`
+## MVP status
 
-Generated MSW handlers come from `src/generated/api/**`. Override behavior in
-the shared MSW fixtures; do not edit generated files.
-
-## Current Features
-
-- `/` course catalog with URL-backed search/filter state and infinite loading
-- `/curso/$cursoId` course detail, review list, own-review detection, and
-  create/edit review composer
-- `/admin` review moderation feed guarded by stored auth role
-- Password login with session-expiration handling
-- Light/dark theme toggle
-
-## Architecture Notes
-
-- Keep route files thin: bind URL params/search to feature screens.
-- Keep backend adaptation in feature `api`/mapper files, not JSX.
-- Prefer explicit component variants over boolean prop growth.
-- Use feature hooks for query keys, pagination, and cache behavior.
-- Treat `src/generated` as disposable Orval output.
+See [MVP readiness](docs/MVP_READINESS.md) for implemented behavior, prototype placeholders, backend dependencies, and remaining release checks. The cleanup does not make every prototype feature production-ready.

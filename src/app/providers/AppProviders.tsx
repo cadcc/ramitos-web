@@ -15,7 +15,7 @@ export function AppProviders({ children }: AppProvidersProps) {
 			<ThemeProvider>
 				<AuthProvider>{children}</AuthProvider>
 			</ThemeProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
+			{import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
 		</QueryClientProvider>
 	);
 }

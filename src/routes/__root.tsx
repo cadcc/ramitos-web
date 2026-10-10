@@ -1,6 +1,6 @@
 import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
-import { Home as HomeIcon } from "@mui/icons-material";
+import HomeIcon from "@mui/icons-material/Home";
 import { AppProviders } from "../app/providers/AppProviders";
 import Navbar from "../shared/components/navbar/Navbar";
 import Footer from "../shared/components/Footer";
