@@ -3,7 +3,7 @@ import { listReviews } from "../../../generated/api/review/reviewService";
 import { Ordering } from "../../../generated/api/review/models";
 import type { Review } from "../../../shared/types/domain";
 import { authenticatedReviewToReview } from "../../reviews";
-import { getAuthHeaders, handleAuthenticatedResponse } from "../../auth";
+import { session } from "../../auth";
 
 const PAGE_SIZE = 15;
 
@@ -34,17 +34,18 @@ export async function getAdminReviewsPage(
 	cursor?: number,
 ): Promise<AdminReviewsPage> {
 	// TODO(backend): Once an admin review feed returns course names and moderation fields, replace this adapter with the generated hook for that endpoint.
-	const response = await listReviews(
-		{
-			limit: PAGE_SIZE,
-			after: cursor,
-			created_order: Ordering.desc,
-		},
-		{ headers: getAuthHeaders() },
+	const response = await session.authenticated((headers) =>
+		listReviews(
+			{
+				limit: PAGE_SIZE,
+				after: cursor,
+				created_order: Ordering.desc,
+			},
+			{ headers },
+		),
 	);
 
 	if (
-		handleAuthenticatedResponse((response as { status: number }).status) ||
 		(response as { status: number }).status >= 400 ||
 		!Array.isArray(response.data)
 	) {

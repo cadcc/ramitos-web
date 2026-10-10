@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { listCourseReviews } from "../../../generated/api/anonymous-review/anonymousReviewService";
 import type { AnonymousReview } from "../../../generated/api/anonymous-review/models";
-import { getAuthHeaders, handleAuthenticatedResponse } from "../../auth";
+import { session } from "../../auth";
 import { listReviews } from "../../../generated/api/review/reviewService";
 import type { Review as AuthenticatedReview } from "../../../generated/api/review/models";
 import type {
@@ -171,13 +171,12 @@ export async function getOwnCourseReview(
 	accountId: number,
 ): Promise<Review | null> {
 	// TODO(backend): Once the backend exposes a viewer-owned review endpoint or full review shape, replace this lookup adapter with the generated hook for that endpoint.
-	const response = await listReviews(
-		{ course_id: courseId, account_id: accountId, limit: 1 },
-		{ headers: getAuthHeaders() },
+	const response = await session.authenticated((headers) =>
+		listReviews(
+			{ course_id: courseId, account_id: accountId, limit: 1 },
+			{ headers },
+		),
 	);
-	if (handleAuthenticatedResponse((response as { status: number }).status)) {
-		return null;
-	}
 	if ((response as { status: number }).status >= 400) return null;
 	const review = response.data[0];
 	return review ? authenticatedReviewToReview(courseId, review) : null;

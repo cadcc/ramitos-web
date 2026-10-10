@@ -59,6 +59,14 @@ Cross-feature imports go through `features/<feature>/index.ts`; imports within a
 
 Server state belongs in TanStack Query; search/filter state belongs in the URL; theme, authentication, and roadmap interaction state use React hooks/context. Roadmap marks and preferences persist only in this browser. The shared infinite-scroll hook manages observer lifetime; callers own pagination and error rendering.
 
+## Session ownership
+
+The auth feature owns session verification, login acceptance, persistence, expiry, and synchronization across tabs. `AuthProvider` exposes that state to React; the admin route waits for a verified role before rendering protected content. Authenticated requests run through the session module so responses from a prior account cannot update or expire the current session.
+
+A session change clears the query cache. Logout and a newer login attempt supersede pending work, including DCC callback completion. Tabs coordinate through a single browser-local session record and Web Locks; production requires a secure context with Web Locks support (HTTPS, or localhost for development). Existing stored credentials migrate and are verified; stored role data never grants frontend access.
+
+Network failures during account verification preserve credentials and expose a retry action while public browsing remains available. HTTP 401 and local expiry end the session; a feature-level 403 denies that action only. A 403 during account verification clears the session and reports access denial. Storage failures withdraw account access and show a recovery action; if logout persistence fails, retry completes logout instead of restoring the old credentials.
+
 ## API generation
 
 ```sh

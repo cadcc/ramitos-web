@@ -9,14 +9,9 @@ import {
 } from "../../../generated/api/authentication/authenticationService";
 import type { User } from "../../../shared/types/domain";
 
-const TOKEN_STORAGE_KEY = "ramitos-token";
-const USER_STORAGE_KEY = "ramitos-user";
 const DCC_RETURN_PATH_STORAGE_KEY = "ramitos-dcc-login-return-path";
-const SESSION_EXPIRED_EVENT = "ramitos-session-expired";
 const DCC_CALLBACK_PATH = "/auth/dcc/callback";
 const MAX_TIMER_DELAY_MS = 2_147_483_647;
-
-const dccTokenExchanges = new Map<string, Promise<User>>();
 
 export class DccLoginConfigurationError extends Error {
 	constructor() {
@@ -34,33 +29,6 @@ export function isDccLoginConfigurationError(
 export interface LoginCredentials {
 	username: string;
 	password: string;
-}
-
-export function getStoredToken(): string | null {
-	return localStorage.getItem(TOKEN_STORAGE_KEY);
-}
-
-export function getAuthHeaders(token = getStoredToken()): HeadersInit {
-	return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
-export function onSessionExpired(listener: () => void): () => void {
-	window.addEventListener(SESSION_EXPIRED_EVENT, listener);
-	return () => window.removeEventListener(SESSION_EXPIRED_EVENT, listener);
-}
-
-export function notifySessionExpired() {
-	window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
-}
-
-export function isAuthExpiredStatus(status: number): boolean {
-	return status === 401;
-}
-
-function timeoutSignal(ms: number): AbortSignal {
-	const controller = new AbortController();
-	window.setTimeout(() => controller.abort(), ms);
-	return controller.signal;
 }
 
 function decodeBase64Url(value: string): string {
@@ -84,14 +52,12 @@ function tokenPayload(token: string): Record<string, unknown> | null {
 	}
 }
 
-export function isTokenExpired(token = getStoredToken()): boolean {
+export function isTokenExpired(token: string | null): boolean {
 	const expiresAt = getTokenExpirationTime(token);
 	return expiresAt !== null && expiresAt <= Date.now();
 }
 
-export function getTokenExpirationTime(
-	token = getStoredToken(),
-): number | null {
+export function getTokenExpirationTime(token: string | null): number | null {
 	if (!token) return null;
 	const payload = tokenPayload(token);
 	const exp = Number(payload?.exp);
@@ -122,17 +88,6 @@ export function toUser(account: GetSelfResponseContent): User {
 		score: accountScore(account.id),
 		createdAt: account.created_at,
 	};
-}
-
-export function storeSession(token: string, user: User) {
-	localStorage.setItem(TOKEN_STORAGE_KEY, token);
-	localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-}
-
-export function clearSession() {
-	dccTokenExchanges.clear();
-	localStorage.removeItem(TOKEN_STORAGE_KEY);
-	localStorage.removeItem(USER_STORAGE_KEY);
 }
 
 function isSafeInternalPath(path: string): boolean {
@@ -166,7 +121,7 @@ function getDccAuthOrigin(): string {
 	}
 }
 
-export function startDccLogin(requestedReturnPath?: string) {
+export function redirectToDccLogin(requestedReturnPath?: string) {
 	const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
 	const returnPath =
 		requestedReturnPath && isSafeInternalPath(requestedReturnPath)
@@ -174,7 +129,7 @@ export function startDccLogin(requestedReturnPath?: string) {
 			: currentPath.startsWith(DCC_CALLBACK_PATH)
 				? "/"
 				: currentPath;
-	clearSession();
+
 	sessionStorage.setItem(DCC_RETURN_PATH_STORAGE_KEY, returnPath);
 
 	const authOrigin = getDccAuthOrigin();
@@ -187,55 +142,44 @@ export function startDccLogin(requestedReturnPath?: string) {
 	window.location.assign(loginUrl.toString());
 }
 
-export async function fetchCurrentUser(
-	token = getStoredToken(),
-): Promise<User | null> {
-	if (!token) return null;
-	if (isTokenExpired(token)) {
-		if (getStoredToken() === token) notifySessionExpired();
-		return null;
+export class AccountVerificationError extends Error {
+	constructor(public readonly status: number) {
+		super("Account verification failed");
 	}
+}
+
+export async function fetchCurrentUser(token: string): Promise<User> {
+	const controller = new AbortController();
+	const timeout = window.setTimeout(() => controller.abort(), 5000);
 	try {
 		const response = await getSelf({
-			headers: getAuthHeaders(token),
-			signal: timeoutSignal(5000),
+			headers: { Authorization: `Bearer ${token}` },
+			signal: controller.signal,
 		});
-		if (response.status === 200) return toUser(response.data);
-		if (isAuthExpiredStatus(response.status)) {
-			if (getStoredToken() === token) notifySessionExpired();
-			return null;
+		if (response.status !== 200)
+			throw new AccountVerificationError(response.status);
+		if (
+			!response.data ||
+			typeof response.data.id !== "number" ||
+			typeof response.data.role !== "string"
+		) {
+			throw new Error("Invalid account response");
 		}
-	} catch {
-		if (getStoredToken() === token) clearSession();
-		return null;
+		return toUser(response.data);
+	} finally {
+		window.clearTimeout(timeout);
 	}
-	if (getStoredToken() === token) clearSession();
-	return null;
 }
 
-export function handleAuthenticatedResponse(status: number): boolean {
-	if (!isAuthExpiredStatus(status)) return false;
-	notifySessionExpired();
-	return true;
-}
-
-export async function loginWithPassword(
+export async function requestPasswordToken(
 	credentials: LoginCredentials,
-): Promise<User> {
-	const loginResponse = await passwordLogin(credentials);
-	if (loginResponse.status !== 200 || !loginResponse.data.accessToken) {
+): Promise<string> {
+	const response = await passwordLogin(credentials);
+	if (response.status !== 200 || !response.data.accessToken)
 		throw new Error("Invalid login response");
-	}
-
-	const token = loginResponse.data.accessToken;
-	const user = await fetchCurrentUser(token);
-	if (!user) throw new Error("Unable to load account");
-
-	storeSession(token, user);
-	return user;
+	return response.data.accessToken;
 }
-
-async function requestDccAccessToken(secret: string): Promise<string> {
+export async function requestDccAccessToken(secret: string): Promise<string> {
 	const authOrigin = getDccAuthOrigin();
 	if (authOrigin !== window.location.origin) {
 		try {
@@ -266,31 +210,4 @@ async function requestDccAccessToken(secret: string): Promise<string> {
 		return response.data.accessToken;
 	}
 	throw new Error("DCC token exchange failed");
-}
-
-async function exchangeDccLoginSecret(secret: string): Promise<User> {
-	const token = await requestDccAccessToken(secret);
-
-	const user = await fetchCurrentUser(token);
-	if (!user) throw new Error("Unable to load DCC account");
-
-	storeSession(token, user);
-	return user;
-}
-
-export function loginWithDccSecret(secret: string): Promise<User> {
-	const normalizedSecret = secret.trim();
-	if (!normalizedSecret) return Promise.reject(new Error("Missing DCC secret"));
-
-	const existing = dccTokenExchanges.get(normalizedSecret);
-	if (existing) return existing;
-
-	const exchange = exchangeDccLoginSecret(normalizedSecret);
-	dccTokenExchanges.set(normalizedSecret, exchange);
-	exchange.catch(() => {
-		if (dccTokenExchanges.get(normalizedSecret) === exchange) {
-			dccTokenExchanges.delete(normalizedSecret);
-		}
-	});
-	return exchange;
 }

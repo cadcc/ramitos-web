@@ -144,6 +144,7 @@ vite.config.ts.timestamp-*
 
 # Project
 AGENTS.md
+GLOSSARY.md
 .agents
 .scratch
 .tanstack

@@ -1,5 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
+vi.mock("../../auth", () => ({
+	session: {
+		authenticated: <T>(request: (headers: HeadersInit) => Promise<T>) =>
+			request({ Authorization: "Bearer test-token" }),
+	},
+}));
 import { submitCourseReview } from "./reviewSubmission.api";
 import type { ReviewSubmission } from "../../../shared/types/domain";
 
@@ -13,12 +19,10 @@ const submission: ReviewSubmission = {
 };
 afterEach(() => {
 	vi.unstubAllGlobals();
-	localStorage.clear();
 });
 
 describe("review submission API boundary", () => {
 	it("sends the trimmed comment, ratings and bearer token", async () => {
-		localStorage.setItem("ramitos-token", "test-token");
 		const fetchMock = vi
 			.fn<typeof fetch>()
 			.mockResolvedValue(
@@ -45,14 +49,7 @@ describe("review submission API boundary", () => {
 				"fetch",
 				vi.fn().mockResolvedValue(new Response("{}", { status })),
 			);
-			const expired = vi.fn();
-			window.addEventListener("ramitos-session-expired", expired);
-			try {
-				await expect(submitCourseReview(submission)).rejects.toThrow();
-				expect(expired).toHaveBeenCalledTimes(status === 401 ? 1 : 0);
-			} finally {
-				window.removeEventListener("ramitos-session-expired", expired);
-			}
+			await expect(submitCourseReview(submission)).rejects.toThrow();
 		},
 	);
 	it("propagates a network failure", async () => {

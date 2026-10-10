@@ -24,7 +24,7 @@ export interface DccLoginCallbackParams {
 	workflow?: string;
 }
 
-type CallbackState = "processing" | "success" | "error";
+type CallbackState = "processing" | "success" | "error" | "cancelled";
 type CallbackError = "configuration" | "rejected";
 
 export function DccLoginCallbackPage({
@@ -53,8 +53,13 @@ export function DccLoginCallbackPage({
 
 		let active = true;
 		completeDccLogin(callback.secret)
-			.then(() => {
+			.then((outcome) => {
 				if (!active) return;
+				if (outcome.status === "cancelled") {
+					setCallbackState("cancelled");
+					return;
+				}
+				if (outcome.status === "failed") throw outcome.error;
 				setCallbackState("success");
 				const returnPath = getDccLoginReturnPath(callback.returnTo);
 				clearDccLoginReturnPath();
@@ -106,6 +111,11 @@ export function DccLoginCallbackPage({
 					</>
 				)}
 
+				{callbackState === "cancelled" && (
+					<Typography>
+						El ingreso fue cancelado porque tu sesión cambió.
+					</Typography>
+				)}
 				{callbackState === "success" && (
 					<>
 						<CheckCircleIcon color="success" sx={{ fontSize: 48 }} />

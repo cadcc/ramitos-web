@@ -7,9 +7,10 @@ import {
 	getDccLoginReturnPath,
 	getSessionExpiryTimerDelay,
 	isDccLoginConfigurationError,
-	loginWithDccSecret,
 } from "./auth.api";
 
+import { testBrowser } from "../model/session.test-support";
+import { SESSION_KEY } from "../model/session";
 const RETURN_PATH_KEY = "ramitos-dcc-login-return-path";
 
 const apiMocks = vi.hoisted(() => ({
@@ -88,7 +89,7 @@ describe("DCC login errors", () => {
 describe("DCC token exchange", () => {
 	beforeEach(() => {
 		vi.stubEnv("VITE_AUTH_API_ORIGIN", window.location.origin);
-		localStorage.clear();
+
 		apiMocks.dccLoginExchangeTokens.mockReset();
 		apiMocks.getSelf.mockReset();
 	});
@@ -122,9 +123,11 @@ describe("DCC token exchange", () => {
 			headers: new Headers(),
 		});
 
+		const browser = testBrowser();
+		const owner = browser.tab();
 		const [firstUser, secondUser] = await Promise.all([
-			loginWithDccSecret("one-time-secret"),
-			loginWithDccSecret("one-time-secret"),
+			owner.completeDccLogin("one-time-secret"),
+			owner.completeDccLogin("one-time-secret"),
 		]);
 
 		expect(apiMocks.dccLoginExchangeTokens).toHaveBeenCalledOnce();
@@ -133,11 +136,10 @@ describe("DCC token exchange", () => {
 			{ credentials: "same-origin" },
 		);
 		expect(firstUser).toEqual(secondUser);
-		expect(firstUser.name).toBe("Usuario DCC");
-		expect(localStorage.getItem("ramitos-token")).toBe(token);
+		expect(owner.getSnapshot().user?.name).toBe("Usuario DCC");
 		expect(
-			JSON.parse(localStorage.getItem("ramitos-user") ?? "null"),
-		).toMatchObject({ id: 42, name: "Usuario DCC" });
+			JSON.parse(browser.storage.getItem(SESSION_KEY) ?? "null"),
+		).toMatchObject({ token });
 	});
 
 	it("exchanges the secret directly with credentials across origins", async () => {
@@ -168,7 +170,7 @@ describe("DCC token exchange", () => {
 			headers: new Headers(),
 		});
 
-		await loginWithDccSecret("cross-origin-secret");
+		await testBrowser().tab().completeDccLogin("cross-origin-secret");
 
 		expect(fetchMock).toHaveBeenCalledWith(
 			new URL("/api/workflow/login/dcc/finish", "https://auth.example.test"),
@@ -179,5 +181,45 @@ describe("DCC token exchange", () => {
 			}),
 		);
 		expect(apiMocks.dccLoginExchangeTokens).not.toHaveBeenCalled();
+	});
+});
+
+describe("account verification timeout", () => {
+	it("retains credentials after timeout and permits a later verification", async () => {
+		vi.useFakeTimers();
+		try {
+			apiMocks.getSelf.mockImplementation(
+				({ signal }: RequestInit) =>
+					new Promise((_resolve, reject) => {
+						signal?.addEventListener("abort", () =>
+							reject(new DOMException("Aborted", "AbortError")),
+						);
+					}),
+			);
+			const browser = testBrowser();
+			browser.storage.setItem("ramitos-token", "existing-token");
+			const owner = browser.tab();
+			const restoring = owner.retry();
+			await vi.advanceTimersByTimeAsync(5001);
+			await restoring;
+			expect(owner.getSnapshot()).toMatchObject({
+				status: "error",
+				issue: "verification",
+			});
+			expect(browser.storage.getItem(SESSION_KEY)).toContain("existing-token");
+			apiMocks.getSelf.mockResolvedValue({
+				status: 200,
+				data: {
+					id: 42,
+					name: "Usuario DCC",
+					role: "stats",
+					created_at: "2026-01-01",
+				},
+			});
+			await owner.retry();
+			expect(owner.getSnapshot().status).toBe("authenticated");
+		} finally {
+			vi.useRealTimers();
+		}
 	});
 });
