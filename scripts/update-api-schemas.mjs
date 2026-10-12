@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { loadEnv } from "vite";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const env = loadEnv("development", process.cwd(), "");
 const base =
