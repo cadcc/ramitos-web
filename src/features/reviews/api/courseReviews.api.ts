@@ -130,23 +130,13 @@ export async function getCourseReviewsPage(
 	cursor?: number,
 ): Promise<CourseReviewsPage> {
 	// TODO(backend): Once review list responses include cursor/total metadata and all card fields, replace this adapter with the generated useListCourseReviews hook.
-	let response: Awaited<ReturnType<typeof listCourseReviews>>;
-	try {
-		response = await listCourseReviews(courseId, {
-			limit: PAGE_SIZE,
-			after: cursor,
-		});
-	} catch {
-		// TODO(backend): Return an empty review list instead of a failed response when a course has no public reviews.
-		return { items: [], nextCursor: null, total: 0 };
-	}
-
-	if (
-		(response as { status: number }).status >= 400 ||
-		!Array.isArray(response.data)
-	) {
-		// TODO(backend): Return a typed review array for every successful public review-list request.
-		return { items: [], nextCursor: null, total: 0 };
+	const response = await listCourseReviews(courseId, {
+		limit: PAGE_SIZE,
+		after: cursor,
+	});
+	if (response.status === 404) return { items: [], nextCursor: null, total: 0 };
+	if (response.status !== 200 || !Array.isArray(response.data)) {
+		throw new Error("Unable to load course reviews");
 	}
 
 	const items = sortLoadedReviews(

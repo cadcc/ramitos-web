@@ -1,0 +1,305 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "AuthenticationService",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/workflow/login/dcc": {
+      "get": {
+        "operationId": "DccLoginCallback",
+        "parameters": [
+          {
+            "name": "Cookie",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DccLoginCallback 200 response",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              }
+            }
+          },
+          "400": {
+            "description": "400 Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/WorkflowTrackerCookieMissingResponseContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WorkflowTimeoutResponseContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/RequestReplayedResponseContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CallbackRejectedResponseContent"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflow/login/dcc/finish": {
+      "post": {
+        "operationId": "DccLoginExchangeTokens",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DccLoginExchangeTokensRequestContent"
+              }
+            }
+          },
+          "required": true
+        },
+        "parameters": [
+          {
+            "name": "Cookie",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DccLoginExchangeTokens 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DccLoginExchangeTokensResponseContent"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/RequestReplayedResponseContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/WorkflowTimeoutResponseContent"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflow/login/dcc/start": {
+      "get": {
+        "operationId": "DccLoginStart",
+        "parameters": [
+          {
+            "name": "redirect",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DccLoginStart 200 response",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              }
+            }
+          },
+          "400": {
+            "description": "400 Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CallbackRejectedResponseContent"
+                    },
+                    {
+                      "$ref": "#/components/schemas/StatisticallyImpossibleResponseContent"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workflow/login/pass": {
+      "post": {
+        "operationId": "PasswordLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordLoginRequestContent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "PasswordLogin 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordLoginResponseContent"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "InvalidCredentials 400 response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CallbackRejectedResponseContent": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DccLoginExchangeTokensRequestContent": {
+        "type": "object",
+        "properties": {
+          "secret": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "secret"
+        ]
+      },
+      "DccLoginExchangeTokensResponseContent": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accessToken"
+        ]
+      },
+      "PasswordLoginRequestContent": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password",
+          "username"
+        ]
+      },
+      "PasswordLoginResponseContent": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accessToken"
+        ]
+      },
+      "RequestReplayedResponseContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "default": "The server refuses to answer because the request was replayed."
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "StatisticallyImpossibleResponseContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "WorkflowTimeoutResponseContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "default": "The client took too long to finish the workflow. May retry from the start."
+          },
+          "retry": {
+            "type": "string",
+            "description": "use this Uri to start the workflow again"
+          }
+        },
+        "required": [
+          "reason",
+          "retry"
+        ]
+      },
+      "WorkflowTrackerCookieMissingResponseContent": {
+        "type": "object",
+        "properties": {
+          "cookieName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cookieName"
+        ]
+      }
+    }
+  }
+}

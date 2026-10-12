@@ -1,4 +1,5 @@
 import { useInfiniteScroll } from "../../../shared/hooks/useInfiniteScroll";
+import { useEffect } from "react";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import type { ReviewSort } from "../../../shared/types/domain";
 import {
@@ -6,7 +7,11 @@ import {
 	getOwnCourseReview,
 } from "../api/courseReviews.api";
 
-export function useCourseReviews(cursoId: string, reviewSort: ReviewSort) {
+export function useCourseReviews(
+	cursoId: string,
+	reviewSort: ReviewSort,
+	reviewId?: number,
+) {
 	const reviewsQuery = useInfiniteQuery({
 		queryKey: ["reviews", cursoId, reviewSort],
 		queryFn: ({ pageParam }) =>
@@ -15,12 +20,30 @@ export function useCourseReviews(cursoId: string, reviewSort: ReviewSort) {
 		getNextPageParam: (last) => last.nextCursor ?? undefined,
 	});
 
-	const loadMoreRef = useInfiniteScroll(reviewsQuery);
+	const reviews = reviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+	const targetFound = reviews.some((review) => review.id === reviewId);
+	const { hasNextPage, isFetching, isError, fetchNextPage } = reviewsQuery;
+	useEffect(() => {
+		if (
+			reviewId !== undefined &&
+			!targetFound &&
+			hasNextPage &&
+			!isFetching &&
+			!isError
+		) {
+			void fetchNextPage().catch(() => undefined);
+		}
+	}, [reviewId, targetFound, hasNextPage, isFetching, isError, fetchNextPage]);
+	const loadMoreRef = useInfiniteScroll({
+		...reviewsQuery,
+		hasNextPage: hasNextPage && !isError,
+	});
 
 	return {
 		reviewsQuery,
 		loadMoreRef,
-		reviews: reviewsQuery.data?.pages.flatMap((p) => p.items) ?? [],
+		reviews,
+		targetFound,
 		total: reviewsQuery.data?.pages[0]?.total ?? 0,
 	};
 }

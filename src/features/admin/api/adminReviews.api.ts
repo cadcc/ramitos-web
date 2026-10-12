@@ -1,68 +1,61 @@
-import { faker } from "@faker-js/faker";
+import { listCourses } from "../../../generated/api/course/courseService";
 import { listReviews } from "../../../generated/api/review/reviewService";
 import { Ordering } from "../../../generated/api/review/models";
 import type { Review } from "../../../shared/types/domain";
 import { authenticatedReviewToReview } from "../../reviews";
 import { session } from "../../auth";
 
-const PAGE_SIZE = 15;
+export { Ordering } from "../../../generated/api/review/models";
 
 export interface AdminReview extends Review {
 	courseName: string;
+	accountId: number;
 }
 
 export interface AdminReviewsPage {
 	items: AdminReview[];
 	nextCursor: number | null;
-	total: number;
-}
-
-function fallbackCourseName(courseCode: string): string {
-	// TODO(backend): Replace with course name once the admin feed includes course display metadata.
-	faker.seed(
-		courseCode.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0),
-	);
-	return `${courseCode} - ${faker.helpers.arrayElement([
-		"Curso DCC",
-		"Topicos de Computacion",
-		"Taller Aplicado",
-		"Seminario de Especialidad",
-	])}`;
 }
 
 export async function getAdminReviewsPage(
 	cursor?: number,
+	pageSize = 15,
+	createdOrder: Ordering = Ordering.desc,
 ): Promise<AdminReviewsPage> {
-	// TODO(backend): Once an admin review feed returns course names and moderation fields, replace this adapter with the generated hook for that endpoint.
 	const response = await session.authenticated((headers) =>
 		listReviews(
-			{
-				limit: PAGE_SIZE,
-				after: cursor,
-				created_order: Ordering.desc,
-			},
+			{ limit: pageSize, after: cursor, created_order: createdOrder },
 			{ headers },
 		),
 	);
-
-	if (
-		(response as { status: number }).status >= 400 ||
-		!Array.isArray(response.data)
-	) {
-		return { items: [], nextCursor: null, total: 0 };
+	if (response.status !== 200 || !Array.isArray(response.data)) {
+		throw new Error("Unable to load admin reviews");
 	}
+	if (response.data.length === 0) return { items: [], nextCursor: null };
 
-	const items = response.data.map((review) => ({
-		...authenticatedReviewToReview(review.course_code, review),
-		courseName: fallbackCourseName(review.course_code),
-	}));
-
+	const codes = [...new Set(response.data.map((review) => review.course_code))];
+	const courses = await listCourses({ codes, limit: codes.length });
+	if (courses.status !== 200 || !Array.isArray(courses.data)) {
+		throw new Error("Unable to load review courses");
+	}
+	const courseNames = new Map(
+		courses.data.map((course) => [course.id, course.name]),
+	);
 	return {
-		items,
+		items: response.data.map((review) => {
+			const name = courseNames.get(review.course_code);
+			return {
+				...authenticatedReviewToReview(review.course_code, review),
+				accountId: review.account_id,
+				courseName: name
+					? `${review.course_code} - ${name}`
+					: review.course_code,
+			};
+		}),
+		// ReviewService exposes no total or next cursor; a full page may have a successor.
 		nextCursor:
-			response.data.length === PAGE_SIZE
-				? (response.data[response.data.length - 1]?.id ?? null)
+			response.data.length === pageSize
+				? response.data[response.data.length - 1]!.id
 				: null,
-		total: response.data.length,
 	};
 }

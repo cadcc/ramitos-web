@@ -1,0 +1,302 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "CourseService",
+    "version": "1.2.0"
+  },
+  "paths": {
+    "/api/courses": {
+      "get": {
+        "operationId": "ListCourses",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 50,
+              "minimum": 1,
+              "format": "int64"
+            }
+          },
+          {
+            "name": "codes",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 50,
+              "minItems": 1
+            },
+            "explode": true
+          },
+          {
+            "name": "enrolled",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "reviewable",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ListCourses 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCoursesOutputPayload"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/courses.json": {
+      "get": {
+        "operationId": "GetCoursesStaticData",
+        "responses": {
+          "200": {
+            "description": "GetCoursesStaticData 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoursesStaticDataContainer"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/courses/{courseId}": {
+      "get": {
+        "operationId": "GetCourse",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetCourse 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCourseResponseContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Course": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/CourseStats"
+          },
+          "tag_stats": {
+            "$ref": "#/components/schemas/CourseTagStats"
+          },
+          "enrolled": {
+            "type": "boolean"
+          },
+          "reviewable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reviewCount",
+          "stats",
+          "tag_stats"
+        ]
+      },
+      "CourseStat": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      },
+      "CourseStaticData": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "mallas": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "name"
+        ]
+      },
+      "CourseStats": {
+        "type": "object",
+        "properties": {
+          "docencia": {
+            "$ref": "#/components/schemas/CourseStat"
+          },
+          "vibes": {
+            "$ref": "#/components/schemas/CourseStat"
+          },
+          "relevancia": {
+            "$ref": "#/components/schemas/CourseStat"
+          },
+          "carga": {
+            "$ref": "#/components/schemas/CourseStat"
+          },
+          "dificultad": {
+            "$ref": "#/components/schemas/CourseStat"
+          }
+        }
+      },
+      "CourseTagStats": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/CourseStat"
+        }
+      },
+      "CoursesStaticDataContainer": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "courses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CourseStaticData"
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "categories",
+          "count",
+          "courses"
+        ]
+      },
+      "GetCourseResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/CourseStats"
+          },
+          "tag_stats": {
+            "$ref": "#/components/schemas/CourseTagStats"
+          },
+          "enrolled": {
+            "type": "boolean"
+          },
+          "reviewable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reviewCount",
+          "stats",
+          "tag_stats"
+        ]
+      },
+      "ListCoursesOutputPayload": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Course"
+        }
+      }
+    },
+    "securitySchemes": {
+      "smithy.api.httpBearerAuth": {
+        "type": "http",
+        "description": "HTTP Bearer authentication",
+        "scheme": "Bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "smithy.api.httpBearerAuth": []
+    }
+  ]
+}

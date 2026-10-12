@@ -144,6 +144,8 @@ export default function Navbar() {
 						Malla
 					</Box>
 
+					<ThemeSelector />
+
 					{isAuthenticated && user ? (
 						<>
 							<IconButton
@@ -212,7 +214,7 @@ export default function Navbar() {
 											<ListItemIcon>
 												<AdminIcon fontSize="small" />
 											</ListItemIcon>
-											<ListItemText primary="Panel Admin" />
+											<ListItemText primary="Moderación" />
 										</MenuItem>
 									</Box>
 								)}
@@ -239,8 +241,6 @@ export default function Navbar() {
 							Ingresar
 						</Button>
 					)}
-
-					<ThemeSelector />
 				</Toolbar>
 			</AppBar>
 

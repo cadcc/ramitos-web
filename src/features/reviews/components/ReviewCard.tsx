@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
 	Card,
@@ -14,6 +15,8 @@ import { alpha } from "@mui/material/styles";
 import LikeIcon from "@mui/icons-material/ThumbUp";
 import DislikeIcon from "@mui/icons-material/ThumbDown";
 import FunnyIcon from "@mui/icons-material/SentimentVerySatisfied";
+import VisibleIcon from "@mui/icons-material/Visibility";
+import HiddenIcon from "@mui/icons-material/VisibilityOff";
 import ReviewCommentMarkdown from "./ReviewCommentMarkdown";
 import type { Review } from "../../../shared/types/domain";
 import { useAuth } from "../../auth";
@@ -22,6 +25,7 @@ import { AXIS_COLORS, getTagColor } from "../../../constants/courseDisplay";
 interface Props {
 	review: Review;
 	showCourseName?: string;
+	accountId?: number;
 	isOwnReview?: boolean;
 	onHide?: (id: number) => void;
 }
@@ -90,6 +94,7 @@ function getCollapsedExcerpt(md: string): {
 function ReviewCardBase({
 	review,
 	showCourseName,
+	accountId,
 	isOwnReview = false,
 	onHide,
 }: Props) {
@@ -230,7 +235,15 @@ function ReviewCardBase({
 										color="primary"
 										sx={{ fontWeight: 700, display: "block", mb: 0.15 }}
 									>
-										{showCourseName}
+										<Link
+											to="/curso/$cursoId"
+											params={{ cursoId: review.cursoId }}
+											search={{ reviewSort: "newest", reviewId: review.id }}
+											style={{ color: "inherit" }}
+											aria-label={`Ver opinión en ${showCourseName}`}
+										>
+											{showCourseName}
+										</Link>
 									</Typography>
 								)}
 								<Typography
@@ -243,46 +256,83 @@ function ReviewCardBase({
 							</Box>
 
 							<Stack
-								direction="row"
-								spacing={0.5}
+								spacing={1}
 								sx={{
-									flexWrap: "wrap",
-									gap: 0.5,
-									justifyContent: { xs: "flex-start", sm: "flex-end" },
+									alignItems: { xs: "flex-start", sm: "flex-end" },
+									flexShrink: 0,
+									maxWidth: "100%",
 								}}
 							>
-								{isOwnReview && (
-									<Chip
-										label="Tu opinion"
-										size="small"
-										color="success"
-										variant="outlined"
-										sx={{ fontSize: "0.65rem", height: 20, fontWeight: 700 }}
-									/>
+								{(accountId !== undefined || onHide) && (
+									<Stack
+										direction="row"
+										spacing={1.5}
+										sx={{
+											justifyContent: "flex-end",
+											alignItems: "center",
+											flexShrink: 0,
+											whiteSpace: "nowrap",
+										}}
+									>
+										{accountId !== undefined && (
+											<Typography variant="caption" color="text.secondary">
+												ID de cuenta: {accountId}
+											</Typography>
+										)}
+										{onHide && (
+											<Chip
+												label={review.hidden ? "Mostrar" : "Ocultar"}
+												icon={review.hidden ? <VisibleIcon /> : <HiddenIcon />}
+												size="small"
+												variant="outlined"
+												onClick={() => onHide(review.id)}
+												sx={{ fontSize: "0.65rem", height: { xs: 40, sm: 22 } }}
+											/>
+										)}
+									</Stack>
 								)}
-								{review.tags.map((tag) => {
-									const tagColor = getTagColor(tag);
-									return (
+								<Stack
+									direction="row"
+									spacing={0.5}
+									sx={{
+										flexWrap: "wrap",
+										gap: 0.5,
+										justifyContent: { xs: "flex-start", sm: "flex-end" },
+									}}
+								>
+									{isOwnReview && (
 										<Chip
-											key={tag}
-											label={tag}
+											label="Tu opinion"
 											size="small"
-											sx={{
-												fontSize: "0.65rem",
-												height: 20,
-												...(tagColor
-													? {
-															borderColor: alpha(tagColor, 0.5),
-															color: tagColor,
-															borderWidth: 1,
-															borderStyle: "solid",
-															bgcolor: alpha(tagColor, 0.06),
-														}
-													: {}),
-											}}
+											color="success"
+											variant="outlined"
+											sx={{ fontSize: "0.65rem", height: 20, fontWeight: 700 }}
 										/>
-									);
-								})}
+									)}
+									{review.tags.map((tag) => {
+										const tagColor = getTagColor(tag);
+										return (
+											<Chip
+												key={tag}
+												label={tag}
+												size="small"
+												sx={{
+													fontSize: "0.65rem",
+													height: 20,
+													...(tagColor
+														? {
+																borderColor: alpha(tagColor, 0.5),
+																color: tagColor,
+																borderWidth: 1,
+																borderStyle: "solid",
+																bgcolor: alpha(tagColor, 0.06),
+															}
+														: {}),
+												}}
+											/>
+										);
+									})}
+								</Stack>
 							</Stack>
 						</Box>
 
@@ -404,25 +454,10 @@ function ReviewCardBase({
 								{review.funny + (activeReactions.has("funny") ? 1 : 0)}
 							</Typography>
 
-							{onHide && (
-								<Box sx={{ ml: "auto" }}>
-									<Chip
-										label={review.hidden ? "Mostrar" : "Ocultar"}
-										size="small"
-										variant="outlined"
-										onClick={() => onHide(review.id)}
-										sx={{
-											fontSize: "0.65rem",
-											height: { xs: 40, sm: 22 },
-										}}
-									/>
-								</Box>
-							)}
-
 							<Typography
 								variant="caption"
 								color="text.secondary"
-								sx={{ ml: onHide ? 0 : "auto", fontSize: "0.65rem" }}
+								sx={{ ml: "auto", fontSize: "0.65rem" }}
 							>
 								{formatDate(review.createdAt)}
 							</Typography>
@@ -445,12 +480,16 @@ export function OwnCourseReviewCard({ review }: Pick<Props, "review">) {
 export function AdminReviewCard({
 	review,
 	showCourseName,
+	accountId,
 	onHide,
-}: Pick<Props, "review" | "showCourseName" | "onHide">) {
+}: Pick<Props, "review" | "showCourseName" | "onHide"> & {
+	accountId: number;
+}) {
 	return (
 		<ReviewCardBase
 			review={review}
 			showCourseName={showCourseName}
+			accountId={accountId}
 			onHide={onHide}
 		/>
 	);

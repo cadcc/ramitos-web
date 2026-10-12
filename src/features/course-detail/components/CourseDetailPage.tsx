@@ -32,11 +32,13 @@ const planLabels: Record<string, string> = {
 interface CourseDetailPageProps {
 	cursoId: string;
 	reviewSort: ReviewSort;
+	reviewId?: number;
 }
 
 export function CourseDetailPage({
 	cursoId,
 	reviewSort,
+	reviewId,
 }: CourseDetailPageProps) {
 	const navigate = useNavigate({ from: "/curso/$cursoId" });
 	const courseQuery = useCourseDetail(cursoId);
@@ -73,8 +75,12 @@ export function CourseDetailPage({
 				<CourseReviewsSection
 					cursoId={cursoId}
 					reviewSort={reviewSort}
+					reviewId={reviewId}
 					onReviewSortChange={(nextSort) =>
-						void navigate({ search: { reviewSort: nextSort }, replace: true })
+						void navigate({
+							search: { reviewSort: nextSort, reviewId },
+							replace: true,
+						})
 					}
 				/>
 			</Box>

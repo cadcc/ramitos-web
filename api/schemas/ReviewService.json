@@ -1,0 +1,356 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "ReviewService",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/reviews": {
+      "get": {
+        "operationId": "ListReviews",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 50,
+              "minimum": 1,
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "created_order",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Ordering"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ListReviews 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListReviewsOutputPayload"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "CreateReview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReviewRequestContent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "CreateReview 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateReviewResponseContent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "DuplicatedEntity 422 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DuplicatedEntityResponseContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews/{reviewId}": {
+      "get": {
+        "operationId": "GetReview",
+        "parameters": [
+          {
+            "name": "reviewId",
+            "in": "path",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GetReview 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetReviewResponseContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateReviewRequestContent": {
+        "type": "object",
+        "properties": {
+          "course_code": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ReviewStats"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "course_code",
+          "stats",
+          "tags"
+        ]
+      },
+      "CreateReviewResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "course_code": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ReviewStats"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "account_id",
+          "course_code",
+          "created_at",
+          "id",
+          "stats",
+          "tags"
+        ]
+      },
+      "DuplicatedEntityResponseContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "default": "DuplicatedEntity"
+          },
+          "conflicting_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "conflicting_fields",
+          "reason"
+        ]
+      },
+      "GetReviewResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "course_code": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ReviewStats"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "account_id",
+          "course_code",
+          "created_at",
+          "id",
+          "stats",
+          "tags"
+        ]
+      },
+      "ListReviewsOutputPayload": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Review"
+        }
+      },
+      "Ordering": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ]
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "account_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "course_code": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ReviewStats"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "account_id",
+          "course_code",
+          "created_at",
+          "id",
+          "stats",
+          "tags"
+        ]
+      },
+      "ReviewStats": {
+        "type": "object",
+        "properties": {
+          "docencia": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "vibes": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "relevancia": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "carga": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "dificultad": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "smithy.api.httpBearerAuth": {
+        "type": "http",
+        "description": "HTTP Bearer authentication",
+        "scheme": "Bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "smithy.api.httpBearerAuth": []
+    }
+  ]
+}

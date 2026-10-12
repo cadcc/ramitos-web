@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "AnonymousReviewService",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/courses/{courseCode}/reviews": {
+      "get": {
+        "operationId": "ListCourseReviews",
+        "parameters": [
+          {
+            "name": "courseCode",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 50,
+              "minimum": 1,
+              "format": "int64"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ListCourseReviews 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCourseReviewsOutputPayload"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound 404 response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnonymousReview": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "comments": {
+            "type": "string"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ReviewStats"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "comments",
+          "created_at",
+          "id",
+          "stats",
+          "tags"
+        ]
+      },
+      "ListCourseReviewsOutputPayload": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AnonymousReview"
+        }
+      },
+      "ReviewStats": {
+        "type": "object",
+        "properties": {
+          "docencia": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "vibes": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "relevancia": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "carga": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          },
+          "dificultad": {
+            "type": "integer",
+            "maximum": 5,
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

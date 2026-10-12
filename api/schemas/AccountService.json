@@ -1,0 +1,304 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "AccountService",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/accounts": {
+      "post": {
+        "operationId": "CreateAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccountRequestContent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "CreateAccount 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAccountResponseContent"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NotAuthenticated 401 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotAuthenticatedResponseContent"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "InsufficientPermissions 403 response"
+          }
+        }
+      }
+    },
+    "/api/accounts/@me": {
+      "get": {
+        "operationId": "GetSelf",
+        "responses": {
+          "200": {
+            "description": "GetSelf 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSelfResponseContent"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NotAuthenticated 401 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotAuthenticatedResponseContent"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "InsufficientPermissions 403 response"
+          }
+        }
+      }
+    },
+    "/api/accounts/{userId}": {
+      "patch": {
+        "operationId": "UpdateAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAccountRequestContent"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "UpdateAccount 200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateAccountResponseContent"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "NotAuthenticated 401 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotAuthenticatedResponseContent"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "InsufficientPermissions 403 response"
+          },
+          "404": {
+            "description": "NotFound 404 response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccountRole": {
+        "type": "string",
+        "enum": [
+          "none",
+          "stats",
+          "mod",
+          "admin"
+        ]
+      },
+      "CreateAccountRequestContent": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "mufasaId": {
+            "type": "string",
+            "description": "Must be a MUFASA compatible identifier. If missing, this user skips MUFASA checks"
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "password",
+          "role",
+          "username"
+        ]
+      },
+      "CreateAccountResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mufasaId": {
+            "type": "string",
+            "description": "Usually it's a RUT."
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "created_at",
+          "id",
+          "name",
+          "role",
+          "updated_at"
+        ]
+      },
+      "GetSelfResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mufasaId": {
+            "type": "string",
+            "description": "Usually it's a RUT."
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "created_at",
+          "id",
+          "name",
+          "role",
+          "updated_at"
+        ]
+      },
+      "NotAuthenticatedResponseContent": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateAccountRequestContent": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateAccountResponseContent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mufasaId": {
+            "type": "string",
+            "description": "Usually it's a RUT."
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "created_at",
+          "id",
+          "name",
+          "role",
+          "updated_at"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "smithy.api.httpBearerAuth": {
+        "type": "http",
+        "description": "HTTP Bearer authentication",
+        "scheme": "Bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "smithy.api.httpBearerAuth": []
+    }
+  ]
+}
