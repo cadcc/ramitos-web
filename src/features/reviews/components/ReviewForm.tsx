@@ -1,3 +1,4 @@
+import { ReviewTagOptions } from "./ReviewTagOptions";
 import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
@@ -5,7 +6,6 @@ import {
 	Typography,
 	TextField,
 	Button,
-	Chip,
 	Stack,
 	Alert,
 	Dialog,
@@ -23,7 +23,10 @@ import type {
 	ReviewSubmission,
 } from "../../../shared/types/domain";
 import { submitCourseReview } from "../api/reviewSubmission.api";
-import { AXIS_TAGS, MODALITY_TAGS } from "../../../constants/courseDisplay";
+import {
+	REVIEW_TAG_SECTIONS,
+	toggleReviewTag,
+} from "../../../constants/reviewTags";
 import { MAX_REVIEW_COMMENT_LENGTH } from "../../../constants/reviews";
 import { ReviewRatingAxisField } from "./ReviewRatingAxisField";
 import { reviewAxes } from "../model/reviewForm.model";
@@ -104,25 +107,8 @@ function ReviewFormContent({
 		mutation.mutate(submission);
 	};
 
-	const exclusivePartner = new Map<string, string>();
-	for (const items of [...Object.values(AXIS_TAGS), MODALITY_TAGS]) {
-		for (const item of items) {
-			if (Array.isArray(item)) {
-				exclusivePartner.set(item[0], item[1]);
-				exclusivePartner.set(item[1], item[0]);
-			}
-		}
-	}
-
-	const toggleTag = (tag: string) => {
-		const partner = exclusivePartner.get(tag);
-		updateDraft({
-			selectedTags: selectedTags.includes(tag)
-				? selectedTags.filter((t) => t !== tag)
-				: [...selectedTags.filter((t) => t !== partner), tag],
-		});
-	};
-
+	const toggleTag = (tag: string) =>
+		updateDraft({ selectedTags: toggleReviewTag(selectedTags, tag) });
 	return (
 		<Dialog
 			open={open}
@@ -165,100 +151,36 @@ function ReviewFormContent({
 							onToggleTag={toggleTag}
 						/>
 					))}
-					<Box>
-						<Typography
-							sx={{
-								fontWeight: 700,
-								fontSize: "1rem",
-								fontFamily: '"Space Grotesk", sans-serif',
-								mb: 0.25,
-							}}
-						>
-							Modalidad
-						</Typography>
-						<Typography
-							variant="caption"
-							color="text.secondary"
-							sx={{ fontSize: "0.85rem", display: "block", mb: 0.5 }}
-						>
-							¿Cómo se estructura el curso?
-						</Typography>
-						<Box
-							sx={{
-								display: "flex",
-								gap: 0.5,
-								flexWrap: "wrap",
-								alignItems: "center",
-							}}
-						>
-							{MODALITY_TAGS.map((item) =>
-								Array.isArray(item) ? (
-									<Box
-										key={item.join("|")}
-										sx={{
-											display: "inline-flex",
-											width: { xs: "100%", sm: "auto" },
-											border: 1,
-											borderColor: "divider",
-											borderRadius: 2,
-											overflow: "hidden",
-										}}
+					{REVIEW_TAG_SECTIONS.filter((section) => !section.axis).map(
+						(section) => (
+							<Box key={section.key}>
+								<Typography
+									sx={{
+										fontWeight: 700,
+										fontSize: "1rem",
+										fontFamily: '"Space Grotesk", sans-serif',
+										mb: 0.25,
+									}}
+								>
+									{section.label}
+								</Typography>
+								{section.question && (
+									<Typography
+										variant="caption"
+										color="text.secondary"
+										sx={{ fontSize: "0.85rem", display: "block", mb: 0.5 }}
 									>
-										{item.map((tag, i) => {
-											const isActive = selectedTags.includes(tag);
-											return (
-												<Box
-													key={tag}
-													component="button"
-													type="button"
-													aria-pressed={isActive}
-													onClick={() => toggleTag(tag)}
-													sx={{
-														border: 0,
-														backgroundColor: "transparent",
-														fontFamily: "inherit",
-														flex: { xs: 1, sm: "initial" },
-														minWidth: 0,
-														px: 1.25,
-														py: 0.35,
-														fontSize: "0.78rem",
-														textAlign: "center",
-														fontWeight: isActive ? 600 : 400,
-														cursor: "pointer",
-														userSelect: "none",
-														transition: "all 0.15s ease",
-														borderRight: i === 0 ? 1 : 0,
-														borderColor: "divider",
-														...(isActive
-															? { bgcolor: "primary.main", color: "#fff" }
-															: {
-																	color: "text.secondary",
-																	"&:hover": { bgcolor: "action.hover" },
-																}),
-													}}
-												>
-													{tag}
-												</Box>
-											);
-										})}
-									</Box>
-								) : (
-									<Chip
-										key={item}
-										label={item}
-										size="small"
-										variant={
-											selectedTags.includes(item) ? "filled" : "outlined"
-										}
-										color={selectedTags.includes(item) ? "primary" : "default"}
-										onClick={() => toggleTag(item)}
-										sx={{ fontSize: "0.78rem", cursor: "pointer", height: 26 }}
-									/>
-								),
-							)}
-						</Box>
-					</Box>
-
+										{section.question}
+									</Typography>
+								)}
+								<ReviewTagOptions
+									items={section.items}
+									selectedTags={selectedTags}
+									onToggleTag={toggleTag}
+								/>
+							</Box>
+						),
+					)}
 					<TextField
 						label="Comentario (opcional)"
 						placeholder="¿Qué opinas del curso? ¿Cómo fue tu experiencia? Cuéntanos..."

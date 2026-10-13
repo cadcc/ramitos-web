@@ -1,3 +1,4 @@
+import { getReviewTagLabel } from "../../../constants/reviewTags";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -27,6 +28,7 @@ interface Props {
 	showCourseName?: string;
 	accountId?: number;
 	isOwnReview?: boolean;
+	showTags?: boolean;
 	onHide?: (id: number) => void;
 }
 
@@ -96,6 +98,7 @@ function ReviewCardBase({
 	showCourseName,
 	accountId,
 	isOwnReview = false,
+	showTags = false,
 	onHide,
 }: Props) {
 	const { isAuthenticated, openLoginDialog } = useAuth();
@@ -291,51 +294,44 @@ function ReviewCardBase({
 										)}
 									</Stack>
 								)}
-								<Stack
-									direction="row"
-									spacing={0.5}
-									sx={{
-										flexWrap: "wrap",
-										gap: 0.5,
-										justifyContent: { xs: "flex-start", sm: "flex-end" },
-									}}
-								>
-									{isOwnReview && (
-										<Chip
-											label="Tu opinion"
-											size="small"
-											color="success"
-											variant="outlined"
-											sx={{ fontSize: "0.65rem", height: 20, fontWeight: 700 }}
-										/>
-									)}
-									{review.tags.map((tag) => {
-										const tagColor = getTagColor(tag);
-										return (
-											<Chip
-												key={tag}
-												label={tag}
-												size="small"
-												sx={{
-													fontSize: "0.65rem",
-													height: 20,
-													...(tagColor
-														? {
-																borderColor: alpha(tagColor, 0.5),
-																color: tagColor,
-																borderWidth: 1,
-																borderStyle: "solid",
-																bgcolor: alpha(tagColor, 0.06),
-															}
-														: {}),
-												}}
-											/>
-										);
-									})}
-								</Stack>
+								{isOwnReview && (
+									<Chip
+										label="Tu opinion"
+										size="small"
+										color="success"
+										variant="outlined"
+										sx={{ fontSize: "0.65rem", height: 20, fontWeight: 700 }}
+									/>
+								)}
 							</Stack>
 						</Box>
 
+						{showTags && review.tags.length > 0 && (
+							<Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mb: 1 }}>
+								{review.tags.map((tag) => {
+									const color = getTagColor(tag);
+									return (
+										<Chip
+											key={tag}
+											label={getReviewTagLabel(tag)}
+											size="small"
+											variant="outlined"
+											sx={{
+												fontSize: "0.65rem",
+												height: 20,
+												...(color
+													? {
+															color,
+															borderColor: alpha(color, 0.5),
+															bgcolor: alpha(color, 0.06),
+														}
+													: {}),
+											}}
+										/>
+									);
+								})}
+							</Box>
+						)}
 						{review.comment.trim() ? (
 							<Box sx={{ mb: 1 }}>
 								<ReviewCommentMarkdown>
@@ -490,6 +486,7 @@ export function AdminReviewCard({
 			review={review}
 			showCourseName={showCourseName}
 			accountId={accountId}
+			showTags
 			onHide={onHide}
 		/>
 	);

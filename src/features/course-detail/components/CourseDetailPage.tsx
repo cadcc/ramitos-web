@@ -1,3 +1,4 @@
+import { getReviewTagLabel } from "../../../constants/reviewTags";
 import { useNavigate, Link } from "@tanstack/react-router";
 import {
 	Box,
@@ -209,7 +210,7 @@ function CourseScoreSummary({ course }: { course: Curso }) {
 						return (
 							<Chip
 								key={tag}
-								label={tag}
+								label={getReviewTagLabel(tag)}
 								size="small"
 								sx={
 									tagColor
@@ -318,7 +319,7 @@ function CourseCategoryTags({ tags }: { tags: string[] }) {
 					<Chip
 						key={tag}
 						icon={<CategoryIcon category={tag} sx={{ fontSize: 14 }} />}
-						label={tag}
+						label={getReviewTagLabel(tag)}
 						size="small"
 						color="primary"
 						variant="outlined"

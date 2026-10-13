@@ -1,0 +1,421 @@
+{
+	"sections": [
+		{
+			"key": "carga",
+			"axis": "carga",
+			"label": "Carga",
+			"question": "¿Cómo se reparte el trabajo y cuánto tiempo exige?",
+			"items": [
+				{
+					"type": "tag",
+					"key": "advance_planning",
+					"label": "Requiere organización"
+				},
+				{
+					"type": "tag",
+					"key": "frequent_assignments",
+					"label": "Entregas frecuentes"
+				},
+				{
+					"type": "tag",
+					"key": "long_assignments",
+					"label": "Trabajos extensos"
+				},
+				{
+					"type": "exclusive",
+					"key": "workload_distribution",
+					"tags": [
+						{
+							"key": "distributed_workload",
+							"label": "Carga repartida"
+						},
+						{
+							"key": "concentrated_workload",
+							"label": "Carga concentrada"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "deadline_flexibility",
+					"tags": [
+						{
+							"key": "flexible_deadlines",
+							"label": "Plazos flexibles"
+						},
+						{
+							"key": "rigid_deadlines",
+							"label": "Plazos rígidos"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "dificultad",
+			"axis": "dificultad",
+			"label": "Dificultad",
+			"question": "¿Qué hace que el ramo sea fácil o desafiante?",
+			"items": [
+				{
+					"type": "tag",
+					"key": "busywork",
+					"label": "Matraquero"
+				},
+				{
+					"type": "tag",
+					"key": "heavy_memorization",
+					"label": "Memorización"
+				},
+				{
+					"type": "tag",
+					"key": "miscalibrated_tests",
+					"label": "Descalibrada"
+				},
+				{
+					"type": "collection",
+					"key": "material",
+					"label": "Materia",
+					"tags": [
+						{
+							"key": "abstract_material",
+							"label": "Abstracta"
+						},
+						{
+							"key": "cumulative_material",
+							"label": "Acumulativa"
+						},
+						{
+							"key": "dense_material",
+							"label": "Densa"
+						}
+					]
+				},
+				{
+					"type": "collection",
+					"key": "difficulty_evaluation",
+					"label": "Evaluación",
+					"tags": [
+						{
+							"key": "rubric_based",
+							"label": "Pauteable"
+						},
+						{
+							"key": "unfair_evaluation",
+							"label": "Injusto"
+						},
+						{
+							"key": "difficulty_open_notes",
+							"label": "Con apunte"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "prerequisites",
+					"tags": [
+						{
+							"key": "self_contained",
+							"label": "Autocontenido"
+						},
+						{
+							"key": "requires_foundation",
+							"label": "Exige base"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "docencia",
+			"axis": "docencia",
+			"label": "Docencia",
+			"question": "¿Cómo enseña y acompaña el equipo docente?",
+			"items": [
+				{
+					"type": "tag",
+					"key": "friendly_professor",
+					"label": "Tela"
+				},
+				{
+					"type": "tag",
+					"key": "excellent_materials",
+					"label": "Buen material"
+				},
+				{
+					"type": "tag",
+					"key": "heavy_self_study",
+					"label": "Autodidacta"
+				},
+				{
+					"type": "tag",
+					"key": "inspiring_team",
+					"label": "Motivante"
+				},
+				{
+					"type": "tag",
+					"key": "disorganized",
+					"label": "Desorganizado"
+				},
+				{
+					"type": "tag",
+					"key": "supportive",
+					"label": "Apañador"
+				},
+				{
+					"type": "exclusive",
+					"key": "explanation_clarity",
+					"tags": [
+						{
+							"key": "clear_explanations",
+							"label": "Claro"
+						},
+						{
+							"key": "confusing_explanations",
+							"label": "Confuso"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "relevancia",
+			"axis": "relevancia",
+			"label": "Utilidad",
+			"question": "¿Para qué te sirve lo que aprendes?",
+			"items": [
+				{
+					"type": "collection",
+					"key": "useful_for",
+					"label": "Útil para",
+					"tags": [
+						{
+							"key": "useful_other_courses",
+							"label": "Otros ramos"
+						},
+						{
+							"key": "useful_work",
+							"label": "Industria"
+						},
+						{
+							"key": "useful_research",
+							"label": "Academia"
+						},
+						{
+							"key": "useful_daily_life",
+							"label": "La vida"
+						},
+						{
+							"key": "filler",
+							"label": "Relleno"
+						},
+						{
+							"key": "portfolio_work",
+							"label": "Portafolio"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "currency",
+					"tags": [
+						{
+							"key": "cutting_edge",
+							"label": "Estado del arte"
+						},
+						{
+							"key": "outdated",
+							"label": "Desactualizado"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "vibes",
+			"axis": "vibes",
+			"label": "Ambiente",
+			"question": "¿Cómo se vive el ramo entre clases y compañeros?",
+			"items": [
+				{
+					"type": "tag",
+					"key": "creative_freedom",
+					"label": "Libertad creativa"
+				},
+				{
+					"type": "tag",
+					"key": "skippable",
+					"label": "Faltable"
+				},
+				{
+					"type": "exclusive",
+					"key": "peer_dynamic",
+					"tags": [
+						{
+							"key": "collaborative",
+							"label": "Colaborativo"
+						},
+						{
+							"key": "competitive",
+							"label": "Competitivo"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "stress_level",
+					"tags": [
+						{
+							"key": "relaxed",
+							"label": "Chill"
+						},
+						{
+							"key": "stressful",
+							"label": "Estresante"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "welcoming",
+					"tags": [
+						{
+							"key": "welcoming_environment",
+							"label": "Acogedor"
+						},
+						{
+							"key": "intimidating",
+							"label": "Intimidante"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "enjoyment",
+					"tags": [
+						{
+							"key": "entertaining",
+							"label": "Entretenido"
+						},
+						{
+							"key": "boring",
+							"label": "Fome"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "format",
+			"label": "Modalidad",
+			"items": [
+				{
+					"type": "exclusive",
+					"key": "collaboration_format",
+					"tags": [
+						{
+							"key": "heavy_group_work",
+							"label": "Grupal"
+						},
+						{
+							"key": "mixed_group_work",
+							"label": "Mixto"
+						},
+						{
+							"key": "individual_only",
+							"label": "Individual"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "delivery_mode",
+					"tags": [
+						{
+							"key": "online",
+							"label": "Online"
+						},
+						{
+							"key": "hybrid",
+							"label": "Híbrido"
+						},
+						{
+							"key": "in_person",
+							"label": "Presencial"
+						}
+					]
+				},
+				{
+					"type": "exclusive",
+					"key": "delivery_timing",
+					"tags": [
+						{
+							"key": "synchronous",
+							"label": "Síncrono"
+						},
+						{
+							"key": "asynchronous",
+							"label": "Asíncrono"
+						}
+					]
+				}
+			]
+		},
+		{
+			"key": "evaluation",
+			"label": "Evaluación",
+			"items": [
+				{
+					"type": "tag",
+					"key": "open_notes",
+					"label": "Con apuntes"
+				},
+				{
+					"type": "tag",
+					"key": "peer_assessment",
+					"label": "Coevaluación"
+				},
+				{
+					"type": "tag",
+					"key": "graded_participation",
+					"label": "Participación"
+				},
+				{
+					"type": "tag",
+					"key": "mandatory_attendance",
+					"label": "Asistencia"
+				},
+				{
+					"type": "tag",
+					"key": "no_final_exam",
+					"label": "Sin examen"
+				},
+				{
+					"type": "tag",
+					"key": "quizzes",
+					"label": "Controles"
+				},
+				{
+					"type": "tag",
+					"key": "assignments",
+					"label": "Tareas"
+				},
+				{
+					"type": "tag",
+					"key": "laboratories",
+					"label": "Laboratorios"
+				},
+				{
+					"type": "tag",
+					"key": "projects",
+					"label": "Proyectos"
+				},
+				{
+					"type": "tag",
+					"key": "presentations",
+					"label": "Presentaciones"
+				}
+			]
+		}
+	]
+}

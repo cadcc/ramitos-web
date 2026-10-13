@@ -82,3 +82,72 @@ it("keeps the saved draft after a failed publication", async () => {
 	expect(JSON.parse(window.localStorage.getItem(key)!)).toEqual(draft);
 	expect(view.onClose).not.toHaveBeenCalled();
 });
+
+it("selects category options independently, restores them, and submits their context", async () => {
+	window.localStorage.setItem(key, JSON.stringify(draft));
+	vi.mocked(submitCourseReview).mockResolvedValue({
+		id: 44,
+		account_id: 7,
+		course_code: "CC1000",
+		stats: draft.ratings,
+		tags: [],
+		created_at: "2026-10-12T12:00:00Z",
+	});
+	const view = setup();
+	fireEvent.click(view.getByRole("button", { name: "Industria" }));
+	fireEvent.click(view.getByRole("button", { name: "Academia" }));
+	expect(
+		view
+			.getByRole("button", { name: "Industria" })
+			.getAttribute("aria-pressed"),
+	).toBe("true");
+	expect(
+		view.getByRole("button", { name: "Academia" }).getAttribute("aria-pressed"),
+	).toBe("true");
+	fireEvent.click(view.getByRole("button", { name: "Industria" }));
+	expect(
+		view.getByRole("button", { name: "Academia" }).getAttribute("aria-pressed"),
+	).toBe("true");
+	view.unmount();
+	const restored = setup();
+	expect(
+		restored
+			.getByRole("button", { name: "Industria" })
+			.getAttribute("aria-pressed"),
+	).toBe("false");
+	expect(
+		restored
+			.getByRole("button", { name: "Academia" })
+			.getAttribute("aria-pressed"),
+	).toBe("true");
+	fireEvent.click(restored.getByRole("button", { name: "La vida" }));
+	fireEvent.click(restored.getByRole("button", { name: "Publicar" }));
+	await waitFor(() => expect(restored.onClose).toHaveBeenCalled());
+	expect(submitCourseReview).toHaveBeenCalledWith(
+		expect.objectContaining({
+			tags: ["useful_research", "useful_daily_life"],
+		}),
+		expect.anything(),
+	);
+});
+
+it("uses configured exclusive groups while preserving independent tags", () => {
+	const view = setup();
+	fireEvent.click(view.getByRole("button", { name: "Online" }));
+	fireEvent.click(view.getByRole("button", { name: "Grupal" }));
+	fireEvent.click(view.getByRole("button", { name: "Presencial" }));
+	expect(
+		view.getByRole("button", { name: "Online" }).getAttribute("aria-pressed"),
+	).toBe("false");
+	expect(
+		view
+			.getByRole("button", { name: "Presencial" })
+			.getAttribute("aria-pressed"),
+	).toBe("true");
+	expect(
+		view.getByRole("button", { name: "Grupal" }).getAttribute("aria-pressed"),
+	).toBe("true");
+	expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
+		selectedTags: ["heavy_group_work", "in_person"],
+	});
+});

@@ -1,7 +1,9 @@
-import { Box, Chip, Collapse, Typography } from "@mui/material";
+import { ReviewTagOptions } from "./ReviewTagOptions";
+import { REVIEW_TAG_SECTIONS } from "../../../constants/reviewTags";
+import { Box, Collapse, Typography } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import type { CourseRatings } from "../../../shared/types/domain";
-import { AXIS_COLORS, AXIS_TAGS } from "../../../constants/courseDisplay";
+import { AXIS_COLORS } from "../../../constants/courseDisplay";
 import type { ReviewAxisDef } from "../model/reviewForm.model";
 
 interface ReviewRatingAxisFieldProps {
@@ -20,7 +22,9 @@ export function ReviewRatingAxisField({
 	onToggleTag,
 }: ReviewRatingAxisFieldProps) {
 	const axisChosen = selected !== undefined;
-	const axisTags = AXIS_TAGS[axis.key] ?? [];
+	const section = REVIEW_TAG_SECTIONS.find(
+		(section) => section.axis === axis.key,
+	);
 	const axisColor = AXIS_COLORS[axis.key] ?? "#666";
 
 	return (
@@ -43,14 +47,14 @@ export function ReviewRatingAxisField({
 							color: axisColor,
 						}}
 					>
-						{axis.label}
+						{section?.label ?? axis.label}
 					</Typography>
 					<Typography
 						variant="caption"
 						color="text.secondary"
 						sx={{ fontSize: "0.8rem" }}
 					>
-						{axis.question}
+						{section?.question ?? axis.question}
 					</Typography>
 				</Box>
 
@@ -82,7 +86,7 @@ export function ReviewRatingAxisField({
 									role="button"
 									aria-pressed={isSelected}
 									tabIndex={0}
-									aria-label={`${axis.label}: ${value} - ${axis.levels[value - 1]}`}
+									aria-label={`${section?.label ?? axis.label}: ${value} - ${axis.levels[value - 1]}`}
 									title={`${axis.levels[value - 1]}`}
 									onClick={() => onRatingChange(axis.key, value)}
 									onKeyDown={(e) => {
@@ -151,93 +155,13 @@ export function ReviewRatingAxisField({
 			</Box>
 
 			<Collapse in={selected !== undefined}>
-				<Box
-					sx={{
-						mt: 0.75,
-						display: "flex",
-						gap: 0.5,
-						flexWrap: "wrap",
-						alignItems: "center",
-					}}
-				>
-					{axisTags.map((item) =>
-						Array.isArray(item) ? (
-							<Box
-								key={item.join("|")}
-								sx={{
-									display: "inline-flex",
-									width: { xs: "100%", sm: "auto" },
-									border: 1,
-									borderColor: alpha(axisColor, 0.35),
-									borderRadius: 2,
-									overflow: "hidden",
-								}}
-							>
-								{item.map((tag, i) => {
-									const isActive = selectedTags.includes(tag);
-									return (
-										<Box
-											key={tag}
-											component="button"
-											type="button"
-											aria-pressed={isActive}
-											onClick={() => onToggleTag(tag)}
-											sx={{
-												border: 0,
-												backgroundColor: "transparent",
-												fontFamily: "inherit",
-												flex: { xs: 1, sm: "initial" },
-												minWidth: 0,
-												px: 1.25,
-												py: 0.35,
-												fontSize: "0.78rem",
-												textAlign: "center",
-												fontWeight: isActive ? 600 : 400,
-												cursor: "pointer",
-												userSelect: "none",
-												transition: "all 0.15s ease",
-												borderRight: i === 0 ? 1 : 0,
-												borderColor: alpha(axisColor, 0.35),
-												...(isActive
-													? { bgcolor: axisColor, color: "#fff" }
-													: {
-															color: axisColor,
-															"&:hover": {
-																bgcolor: alpha(axisColor, 0.08),
-															},
-														}),
-											}}
-										>
-											{tag}
-										</Box>
-									);
-								})}
-							</Box>
-						) : (
-							<Chip
-								key={item}
-								label={item}
-								size="small"
-								variant={selectedTags.includes(item) ? "filled" : "outlined"}
-								onClick={() => onToggleTag(item)}
-								sx={{
-									fontSize: "0.78rem",
-									cursor: "pointer",
-									height: 26,
-									...(selectedTags.includes(item)
-										? {
-												bgcolor: axisColor,
-												color: "#fff",
-												"&:hover": { bgcolor: axisColor },
-											}
-										: {
-												borderColor: alpha(axisColor, 0.4),
-												color: axisColor,
-											}),
-								}}
-							/>
-						),
-					)}
+				<Box sx={{ mt: 0.75 }}>
+					<ReviewTagOptions
+						items={section?.items ?? []}
+						selectedTags={selectedTags}
+						onToggleTag={onToggleTag}
+						color={axisColor}
+					/>
 				</Box>
 			</Collapse>
 		</Box>

@@ -24,7 +24,7 @@ export function reviewDraftKey(
 ) {
 	return accountId === undefined
 		? null
-		: `ramitos:review-draft:v1:${accountId}:${encodeURIComponent(courseId)}:${reviewId ?? "new"}`;
+		: `ramitos:review-draft:v2:${accountId}:${encodeURIComponent(courseId)}:${reviewId ?? "new"}`;
 }
 
 function readDraft(
