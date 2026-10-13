@@ -18,6 +18,7 @@ vi.mock("../../../generated/api/course/courseService", () => ({
 const dynamicCourse: Course = {
 	id: "CC1000",
 	name: "Herramientas Computacionales",
+	reviewCount: 10,
 	stats: {
 		docencia: { value: 4.4 },
 		carga: { value: 7 },

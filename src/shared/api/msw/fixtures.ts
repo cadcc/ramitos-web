@@ -182,6 +182,9 @@ function courseFromSeed([
 	return {
 		id,
 		name,
+		get reviewCount() {
+			return reviewsByCourse.get(id)?.length ?? 0;
+		},
 		stats: {
 			docencia: { value: stats.docencia ?? 0 },
 			vibes: { value: stats.vibes ?? 0 },
