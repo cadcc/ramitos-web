@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useAuth } from "../../auth";
+import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
 	Box,
 	Typography,
@@ -36,33 +37,45 @@ interface Props {
 const CURRENT_YEAR = new Date().getFullYear();
 const CURRENT_SEMESTER: 1 | 2 = new Date().getMonth() < 7 ? 1 : 2;
 
-function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
+function ReviewFormBase(props: Props) {
+	const { user } = useAuth();
+	const draftKey = reviewDraftKey(
+		user?.id,
+		props.cursoId,
+		props.initialReview?.id,
+	);
+	return (
+		<ReviewFormContent
+			key={draftKey ?? `${props.cursoId}:anonymous`}
+			{...props}
+			draftKey={draftKey}
+		/>
+	);
+}
+
+function ReviewFormContent({
+	cursoId,
+	open,
+	onClose,
+	initialReview,
+	draftKey,
+}: Props & { draftKey: string | null }) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const qc = useQueryClient();
-	const [ratings, setRatings] = useState<Partial<CourseRatings>>({});
-	const [selectedTags, setSelectedTags] = useState<string[]>([]);
-	const [comment, setComment] = useState("");
+	const { ratings, selectedTags, comment, updateDraft, clearDraft } =
+		useReviewDraft(draftKey, initialReview);
 	const year = initialReview?.year ?? CURRENT_YEAR;
 	const semester = initialReview?.semester ?? CURRENT_SEMESTER;
-
-	useEffect(() => {
-		if (!open) return;
-		setRatings(initialReview?.ratings ?? {});
-		setSelectedTags(initialReview?.tags ?? []);
-		setComment(initialReview?.comment ?? "");
-	}, [initialReview, open]);
 
 	const mutation = useMutation({
 		mutationFn: submitCourseReview,
 		onSuccess: async () => {
+			clearDraft();
+			onClose();
 			await qc.invalidateQueries({ queryKey: ["reviews", cursoId] });
 			await qc.invalidateQueries({ queryKey: ["ownReview", cursoId] });
 			await qc.invalidateQueries({ queryKey: ["course", cursoId] });
-			setComment("");
-			setSelectedTags([]);
-			setRatings({});
-			onClose();
 		},
 	});
 
@@ -102,11 +115,11 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 	}
 
 	const toggleTag = (tag: string) => {
-		setSelectedTags((prev) => {
-			if (prev.includes(tag)) return prev.filter((t) => t !== tag);
-			const partner = exclusivePartner.get(tag);
-			const without = partner ? prev.filter((t) => t !== partner) : prev;
-			return [...without, tag];
+		const partner = exclusivePartner.get(tag);
+		updateDraft({
+			selectedTags: selectedTags.includes(tag)
+				? selectedTags.filter((t) => t !== tag)
+				: [...selectedTags.filter((t) => t !== partner), tag],
 		});
 	};
 
@@ -147,7 +160,7 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 							selected={ratings[axis.key]}
 							selectedTags={selectedTags}
 							onRatingChange={(key, value) =>
-								setRatings((prev) => ({ ...prev, [key]: value }))
+								updateDraft({ ratings: { ...ratings, [key]: value } })
 							}
 							onToggleTag={toggleTag}
 						/>
@@ -253,7 +266,7 @@ function ReviewFormBase({ cursoId, open, onClose, initialReview }: Props) {
 						minRows={isMobile ? 4 : 6}
 						maxRows={24}
 						value={comment}
-						onChange={(e) => setComment(e.target.value)}
+						onChange={(e) => updateDraft({ comment: e.target.value })}
 						slotProps={{ htmlInput: { maxLength: MAX_REVIEW_COMMENT_LENGTH } }}
 						size="small"
 					/>
