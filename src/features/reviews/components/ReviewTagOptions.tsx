@@ -45,11 +45,17 @@ export function ReviewTagOptions({
 	};
 	return (
 		<Box
-			sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, alignItems: "center" }}
+			sx={{
+				display: "flex",
+				flexWrap: "wrap",
+				columnGap: 0.75,
+				rowGap: 1,
+				alignItems: "center",
+			}}
 		>
 			{items.map((item) => {
 				if (item.type === "tag") return renderTag(item);
-				if (item.type === "collection")
+				if (item.type === "collection" || item.type === "group")
 					return (
 						<Box
 							key={item.key}
@@ -59,7 +65,9 @@ export function ReviewTagOptions({
 								display: "inline-flex",
 								alignItems: "center",
 								flexWrap: "wrap",
-								gap: 0.375,
+								columnGap: 0.75,
+								rowGap: 0.75,
+								width: "100%",
 								maxWidth: "100%",
 							}}
 						>
@@ -74,7 +82,26 @@ export function ReviewTagOptions({
 							>
 								{item.label}:
 							</Typography>
-							{item.tags.map(renderTag)}
+							<Box
+								sx={{
+									flex: 1,
+									minWidth: 0,
+									display: "flex",
+									flexWrap: "wrap",
+									gap: 0.75,
+								}}
+							>
+								{item.type === "collection" ? (
+									item.tags.map(renderTag)
+								) : (
+									<ReviewTagOptions
+										items={item.items}
+										selectedTags={selectedTags}
+										onToggleTag={onToggleTag}
+										color={color}
+									/>
+								)}
+							</Box>
 						</Box>
 					);
 				return (

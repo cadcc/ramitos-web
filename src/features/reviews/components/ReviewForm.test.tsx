@@ -1,5 +1,11 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, waitFor } from "@testing-library/react";
+import {
+	cleanup,
+	fireEvent,
+	render,
+	waitFor,
+	within,
+} from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { CreateReviewForm } from "./ReviewForm";
@@ -149,5 +155,27 @@ it("uses configured exclusive groups while preserving independent tags", () => {
 	).toBe("true");
 	expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
 		selectedTags: ["heavy_group_work", "in_person"],
+	});
+});
+
+it("renders a mixed content group and preserves its independent selection", () => {
+	window.localStorage.setItem(key, JSON.stringify(draft));
+	const view = setup();
+	const content = within(view.getByRole("group", { name: "Contenido" }));
+	fireEvent.click(content.getByRole("button", { name: "Relleno" }));
+	fireEvent.click(content.getByRole("button", { name: "Estado del arte" }));
+	fireEvent.click(content.getByRole("button", { name: "Desactualizado" }));
+	expect(
+		content
+			.getByRole("button", { name: "Relleno" })
+			.getAttribute("aria-pressed"),
+	).toBe("true");
+	expect(
+		content
+			.getByRole("button", { name: "Estado del arte" })
+			.getAttribute("aria-pressed"),
+	).toBe("false");
+	expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
+		selectedTags: ["filler", "outdated"],
 	});
 });

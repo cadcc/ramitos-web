@@ -3,7 +3,7 @@ import config from "./reviewTags.json";
 
 const key = z.string().regex(/^[a-z][a-z0-9_]*$/);
 const tag = z.object({ key, label: z.string().min(1) });
-const item = z.discriminatedUnion("type", [
+const leafItem = z.discriminatedUnion("type", [
 	tag.extend({ type: z.literal("tag") }),
 	z.object({
 		type: z.literal("collection"),
@@ -16,6 +16,15 @@ const item = z.discriminatedUnion("type", [
 		key,
 		label: z.string().min(1).optional(),
 		tags: z.array(tag).min(2),
+	}),
+]);
+const item = z.union([
+	leafItem,
+	z.object({
+		type: z.literal("group"),
+		key,
+		label: z.string().min(1),
+		items: z.array(leafItem).min(1),
 	}),
 ]);
 export const reviewTagConfigSchema = z
@@ -45,6 +54,12 @@ export const reviewTagConfigSchema = z
 				});
 			keys.add(value);
 		};
+		const registerItem = (entry: z.infer<typeof item>) => {
+			register(entry.key);
+			if (entry.type === "group") entry.items.forEach(registerItem);
+			else if (entry.type !== "tag")
+				entry.tags.forEach((tag) => register(tag.key));
+		};
 		for (const section of value.sections) {
 			register(section.key);
 			if (section.axis) {
@@ -55,35 +70,34 @@ export const reviewTagConfigSchema = z
 					});
 				axes.add(section.axis);
 			}
-			for (const entry of section.items) {
-				register(entry.key);
-				if (entry.type !== "tag")
-					entry.tags.forEach((tag) => register(tag.key));
-			}
+			section.items.forEach(registerItem);
 		}
 	});
 export type ReviewTagItem = z.infer<typeof item>;
 export const REVIEW_TAG_SECTIONS = reviewTagConfigSchema.parse(config).sections;
 const tagInfo = new Map<string, { label: string; axis?: string }>();
 const exclusiveGroups = new Map<string, string[]>();
-for (const section of REVIEW_TAG_SECTIONS) {
-	for (const entry of section.items) {
-		const tags = entry.type === "tag" ? [entry] : entry.tags;
-		for (const tag of tags) {
-			tagInfo.set(tag.key, {
-				label:
-					entry.type === "collection"
-						? `${entry.label}: ${tag.label}`
-						: tag.label,
-				axis: section.axis,
-			});
-			if (entry.type === "exclusive")
-				exclusiveGroups.set(
-					tag.key,
-					tags.map((tag) => tag.key),
-				);
-		}
+function indexItem(entry: ReviewTagItem, axis?: string, groupLabel?: string) {
+	if (entry.type === "group") {
+		entry.items.forEach((child) => indexItem(child, axis, entry.label));
+		return;
 	}
+	const tags = entry.type === "tag" ? [entry] : entry.tags;
+	const prefix = entry.type === "collection" ? entry.label : groupLabel;
+	for (const tag of tags) {
+		tagInfo.set(tag.key, {
+			label: prefix ? `${prefix}: ${tag.label}` : tag.label,
+			axis,
+		});
+		if (entry.type === "exclusive")
+			exclusiveGroups.set(
+				tag.key,
+				tags.map((tag) => tag.key),
+			);
+	}
+}
+for (const section of REVIEW_TAG_SECTIONS) {
+	section.items.forEach((entry) => indexItem(entry, section.axis));
 }
 export const ALL_REVIEW_TAGS = [...tagInfo.keys()];
 export function getReviewTagLabel(key: string) {

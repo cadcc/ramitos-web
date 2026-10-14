@@ -133,7 +133,7 @@ function ReviewFormContent({
 				Comparte tu experiencia ({year}-{semester})
 			</DialogTitle>
 			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
-				<Stack spacing={{ xs: 2.75, sm: 2.5 }} sx={{ mt: 0.5 }}>
+				<Stack spacing={3} sx={{ mt: 0.5 }}>
 					{initialReview && (
 						<Alert severity="info">
 							La edición de opiniones aún no está disponible.
@@ -159,7 +159,7 @@ function ReviewFormContent({
 										fontWeight: 700,
 										fontSize: "1rem",
 										fontFamily: '"Space Grotesk", sans-serif',
-										mb: 0.25,
+										mb: section.question ? 0.25 : 1.25,
 									}}
 								>
 									{section.label}

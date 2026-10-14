@@ -155,7 +155,7 @@ export function ReviewRatingAxisField({
 			</Box>
 
 			<Collapse in={selected !== undefined}>
-				<Box sx={{ mt: 0.75 }}>
+				<Box sx={{ mt: 1.25 }}>
 					<ReviewTagOptions
 						items={section?.items ?? []}
 						selectedTags={selectedTags}

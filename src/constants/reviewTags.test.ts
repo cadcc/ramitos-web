@@ -10,7 +10,7 @@ import {
 it("loads all sections with stable identities and display labels", () => {
 	expect(REVIEW_TAG_SECTIONS).toHaveLength(7);
 	expect(getReviewTagLabel("useful_work")).toBe("Útil para: Industria");
-	expect(getReviewTagAxis("distributed_workload")).toBe("carga");
+	expect(getReviewTagAxis("variable_workload")).toBe("carga");
 	expect(getReviewTagLabel("Unknown server tag")).toBe("Unknown server tag");
 });
 it("keeps collection selections independent", () => {
@@ -21,12 +21,12 @@ it("keeps collection selections independent", () => {
 it("replaces the other exclusive option without affecting unrelated selections", () => {
 	expect(
 		toggleReviewTag(
-			["distributed_workload", "useful_work"],
-			"concentrated_workload",
+			["variable_workload", "useful_work"],
+			"consistent_workload",
 		),
-	).toEqual(["useful_work", "concentrated_workload"]);
+	).toEqual(["useful_work", "consistent_workload"]);
 	expect(
-		toggleReviewTag(["concentrated_workload"], "concentrated_workload"),
+		toggleReviewTag(["consistent_workload"], "consistent_workload"),
 	).toEqual([]);
 });
 it("rejects duplicate keys and invalid grouping definitions", () => {
@@ -67,4 +67,16 @@ it("keeps three-way delivery mode and timing exclusivity independent", () => {
 	selected = toggleReviewTag(selected, "in_person");
 	selected = toggleReviewTag(selected, "asynchronous");
 	expect(selected).toEqual(["heavy_group_work", "in_person", "asynchronous"]);
+});
+
+it("keeps independent tags selected inside a group containing exclusive options", () => {
+	expect(getReviewTagLabel("filler")).toBe("Contenido: Relleno");
+	expect(getReviewTagAxis("cutting_edge")).toBe("relevancia");
+	expect(toggleReviewTag(["cutting_edge", "filler"], "outdated")).toEqual([
+		"filler",
+		"outdated",
+	]);
+	expect(toggleReviewTag(["outdated", "filler"], "filler")).toEqual([
+		"outdated",
+	]);
 });

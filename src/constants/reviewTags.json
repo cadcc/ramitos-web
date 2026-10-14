@@ -7,31 +7,16 @@
 			"question": "¿Cómo se reparte el trabajo y cuánto tiempo exige?",
 			"items": [
 				{
-					"type": "tag",
-					"key": "advance_planning",
-					"label": "Requiere organización"
-				},
-				{
-					"type": "tag",
-					"key": "frequent_assignments",
-					"label": "Entregas frecuentes"
-				},
-				{
-					"type": "tag",
-					"key": "long_assignments",
-					"label": "Trabajos extensos"
-				},
-				{
 					"type": "exclusive",
 					"key": "workload_distribution",
 					"tags": [
 						{
-							"key": "distributed_workload",
-							"label": "Carga repartida"
+							"key": "variable_workload",
+							"label": "Variable"
 						},
 						{
-							"key": "concentrated_workload",
-							"label": "Carga concentrada"
+							"key": "consistent_workload",
+							"label": "Consistente"
 						}
 					]
 				},
@@ -48,6 +33,16 @@
 							"label": "Plazos rígidos"
 						}
 					]
+				},
+				{
+					"type": "tag",
+					"key": "frequent_assignments",
+					"label": "Entregas frecuentes"
+				},
+				{
+					"type": "tag",
+					"key": "long_assignments",
+					"label": "Trabajos extensos"
 				}
 			]
 		},
@@ -58,69 +53,61 @@
 			"question": "¿Qué hace que el ramo sea fácil o desafiante?",
 			"items": [
 				{
-					"type": "tag",
-					"key": "busywork",
-					"label": "Matraquero"
-				},
-				{
-					"type": "tag",
-					"key": "heavy_memorization",
-					"label": "Memorización"
-				},
-				{
-					"type": "tag",
-					"key": "miscalibrated_tests",
-					"label": "Descalibrada"
-				},
-				{
-					"type": "collection",
+					"type": "group",
 					"key": "material",
 					"label": "Materia",
-					"tags": [
+					"items": [
 						{
+							"type": "tag",
 							"key": "abstract_material",
 							"label": "Abstracta"
 						},
 						{
+							"type": "tag",
 							"key": "cumulative_material",
 							"label": "Acumulativa"
 						},
 						{
+							"type": "tag",
 							"key": "dense_material",
 							"label": "Densa"
+						},
+						{
+							"type": "exclusive",
+							"key": "prerequisites",
+							"tags": [
+								{
+									"key": "self_contained",
+									"label": "Autocontenido"
+								},
+								{
+									"key": "requires_foundation",
+									"label": "Exige base"
+								}
+							]
 						}
 					]
 				},
 				{
 					"type": "collection",
 					"key": "difficulty_evaluation",
-					"label": "Evaluación",
+					"label": "Evaluaciones",
 					"tags": [
 						{
-							"key": "rubric_based",
-							"label": "Pauteable"
+							"key": "busywork",
+							"label": "Matraqueras"
 						},
 						{
-							"key": "unfair_evaluation",
-							"label": "Injusto"
+							"key": "rubric_based",
+							"label": "Pauteables"
+						},
+						{
+							"key": "miscalibrated_tests",
+							"label": "Descalibradas"
 						},
 						{
 							"key": "difficulty_open_notes",
 							"label": "Con apunte"
-						}
-					]
-				},
-				{
-					"type": "exclusive",
-					"key": "prerequisites",
-					"tags": [
-						{
-							"key": "self_contained",
-							"label": "Autocontenido"
-						},
-						{
-							"key": "requires_foundation",
-							"label": "Exige base"
 						}
 					]
 				}
@@ -133,46 +120,56 @@
 			"question": "¿Cómo enseña y acompaña el equipo docente?",
 			"items": [
 				{
-					"type": "tag",
-					"key": "friendly_professor",
-					"label": "Tela"
-				},
-				{
-					"type": "tag",
-					"key": "excellent_materials",
-					"label": "Buen material"
-				},
-				{
-					"type": "tag",
-					"key": "heavy_self_study",
-					"label": "Autodidacta"
-				},
-				{
-					"type": "tag",
-					"key": "inspiring_team",
-					"label": "Motivante"
-				},
-				{
-					"type": "tag",
-					"key": "disorganized",
-					"label": "Desorganizado"
-				},
-				{
-					"type": "tag",
-					"key": "supportive",
-					"label": "Apañador"
-				},
-				{
-					"type": "exclusive",
-					"key": "explanation_clarity",
+					"type": "collection",
+					"key": "teaching_team",
+					"label": "Equipo docente",
 					"tags": [
 						{
-							"key": "clear_explanations",
-							"label": "Claro"
+							"key": "friendly_professor",
+							"label": "Tela"
 						},
 						{
-							"key": "confusing_explanations",
-							"label": "Confuso"
+							"key": "supportive",
+							"label": "Apañador"
+						},
+						{
+							"key": "inspiring_team",
+							"label": "Motivante"
+						},
+						{
+							"key": "disorganized",
+							"label": "Desorganizado"
+						}
+					]
+				},
+				{
+					"type": "group",
+					"key": "learning",
+					"label": "Aprendizaje",
+					"items": [
+						{
+							"type": "tag",
+							"key": "heavy_self_study",
+							"label": "Autodidacta"
+						},
+						{
+							"type": "tag",
+							"key": "excellent_materials",
+							"label": "Buen material"
+						},
+						{
+							"type": "exclusive",
+							"key": "explanation_clarity",
+							"tags": [
+								{
+									"key": "clear_explanations",
+									"label": "Claro"
+								},
+								{
+									"key": "confusing_explanations",
+									"label": "Confuso"
+								}
+							]
 						}
 					]
 				}
@@ -206,26 +203,34 @@
 							"label": "La vida"
 						},
 						{
-							"key": "filler",
-							"label": "Relleno"
-						},
-						{
 							"key": "portfolio_work",
 							"label": "Portafolio"
 						}
 					]
 				},
 				{
-					"type": "exclusive",
-					"key": "currency",
-					"tags": [
+					"type": "group",
+					"key": "content",
+					"label": "Contenido",
+					"items": [
 						{
-							"key": "cutting_edge",
-							"label": "Estado del arte"
+							"type": "exclusive",
+							"key": "currency",
+							"tags": [
+								{
+									"key": "cutting_edge",
+									"label": "Estado del arte"
+								},
+								{
+									"key": "outdated",
+									"label": "Desactualizado"
+								}
+							]
 						},
 						{
-							"key": "outdated",
-							"label": "Desactualizado"
+							"type": "tag",
+							"key": "filler",
+							"label": "Relleno"
 						}
 					]
 				}
@@ -237,16 +242,6 @@
 			"label": "Ambiente",
 			"question": "¿Cómo se vive el ramo entre clases y compañeros?",
 			"items": [
-				{
-					"type": "tag",
-					"key": "creative_freedom",
-					"label": "Libertad creativa"
-				},
-				{
-					"type": "tag",
-					"key": "skippable",
-					"label": "Faltable"
-				},
 				{
 					"type": "exclusive",
 					"key": "peer_dynamic",
