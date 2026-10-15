@@ -14,7 +14,11 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import BackIcon from "@mui/icons-material/ArrowBack";
-import { getAverageScore, getTagColor } from "../../../constants/courseDisplay";
+import {
+	getAverageScore,
+	getRadarColor,
+	getTagColor,
+} from "../../../constants/courseDisplay";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
 import type { Curso, ReviewSort } from "../../../shared/types/domain";
@@ -44,7 +48,7 @@ export function CourseDetailPage({
 	const navigate = useNavigate({ from: "/curso/$cursoId" });
 	const courseQuery = useCourseDetail(cursoId);
 
-	if (courseQuery.isLoading) {
+	if (courseQuery.isPending) {
 		return (
 			<Box sx={{ display: "flex", justifyContent: "center", py: 12 }}>
 				<CircularProgress />
@@ -52,6 +56,13 @@ export function CourseDetailPage({
 		);
 	}
 
+	if (courseQuery.isError)
+		return (
+			<Box sx={{ py: 6, textAlign: "center" }}>
+				<Typography>No pudimos cargar el curso.</Typography>
+				<Button onClick={() => void courseQuery.refetch()}>Reintentar</Button>
+			</Box>
+		);
 	const course = courseQuery.data;
 	if (!course) {
 		return (
@@ -74,6 +85,7 @@ export function CourseDetailPage({
 				<Divider sx={{ my: 3 }} />
 
 				<CourseReviewsSection
+					reviewable={course.reviewable}
 					cursoId={cursoId}
 					reviewSort={reviewSort}
 					reviewId={reviewId}
@@ -164,6 +176,11 @@ function CourseOverview({
 function CourseScoreSummary({ course }: { course: Curso }) {
 	const avg = getAverageScore(course.ratings);
 
+	const formatter = new Intl.NumberFormat("en-US", {
+		minimumFractionDigits: 1,
+		maximumFractionDigits: 20,
+	});
+
 	return (
 		<Box
 			sx={{
@@ -182,17 +199,12 @@ function CourseScoreSummary({ course }: { course: Curso }) {
 					fontSize: "2.4rem",
 					fontWeight: 800,
 					fontFamily: '"Space Grotesk", sans-serif',
-					color:
-						avg >= 3.5
-							? "success.main"
-							: avg >= 2.5
-								? "warning.main"
-								: "error.main",
+					color: (theme) => getRadarColor(theme, avg),
 					lineHeight: 1,
 					mb: -0.5,
 				}}
 			>
-				{avg}
+				{formatter.format(avg)}
 			</Typography>
 			<Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>
 				{course.reviewCount} opiniones

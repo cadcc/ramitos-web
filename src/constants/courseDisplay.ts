@@ -1,5 +1,6 @@
 import { getReviewTagAxis } from "./reviewTags";
 import type { CourseRatings } from "../shared/types/domain";
+import type { Theme } from "@mui/material";
 
 export const AXIS_COLORS: Record<string, string> = {
 	carga: "#CB4B16",
@@ -13,15 +14,27 @@ export function getTagColor(tag: string): string | undefined {
 	const axis = getReviewTagAxis(tag);
 	return axis ? AXIS_COLORS[axis] : undefined;
 }
+
+export function getRadarColor(theme: Theme, averageScore: number) {
+    return averageScore >= 3.5
+        ? theme.palette.success.main
+        : averageScore >= 2.5
+            ? theme.palette.warning.main
+            : theme.palette.error.main;
+}
+
 export function getAverageScore(ratings: CourseRatings): number {
-	return Number(
-		(
-			(ratings.docencia +
-				ratings.relevancia +
-				ratings.vibes -
-				ratings.carga * 0.3 -
-				ratings.dificultad * 0.3) /
-			3
-		).toFixed(1),
-	);
+	const minScore = 5;
+	const maxScore = 25 - minScore;
+	const score =
+		ratings.docencia +
+		ratings.relevancia +
+		ratings.vibes +
+		(6 - ratings.carga) +
+		(6 - ratings.dificultad) -
+		minScore;
+
+	const grade = 1.0 + 6.0 * (score / maxScore);
+
+	return Number(grade.toFixed(1));
 }

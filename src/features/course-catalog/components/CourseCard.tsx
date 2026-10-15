@@ -1,8 +1,10 @@
 import { Card, CardContent, Typography, Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { Link } from "@tanstack/react-router";
 import type { CursoListItem } from "../../../shared/types/domain";
-import { getAverageScore } from "../../../constants/courseDisplay";
+import {
+	getAverageScore,
+	getRadarColor,
+} from "../../../constants/courseDisplay";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
 import {
 	COURSE_CARD_MIN_HEIGHT,
@@ -20,7 +22,6 @@ interface Props {
 }
 
 export default function CourseCard({ course, index }: Props) {
-	const theme = useTheme();
 	const isCurrent = course.lastOffered === CURRENT_SEMESTER;
 
 	return (
@@ -118,14 +119,8 @@ export default function CourseCard({ course, index }: Props) {
 						</Typography>
 						<Box
 							sx={{
-								color: (() => {
-									const avg = getAverageScore(course.ratings);
-									return avg >= 3.5
-										? theme.palette.success.main
-										: avg >= 2.5
-											? theme.palette.warning.main
-											: theme.palette.error.main;
-								})(),
+								color: (theme) =>
+									getRadarColor(theme, getAverageScore(course.ratings)),
 								lineHeight: 0,
 							}}
 						>
