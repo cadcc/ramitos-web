@@ -1,4 +1,5 @@
 import { session } from "../../auth";
+import { getCourseSummaryTags } from "../../../constants/reviewTags";
 import { faker } from "@faker-js/faker";
 import { getCourse } from "../../../generated/api/course/courseService";
 import type { GetCourseResponseContent } from "../../../generated/api/course/models";
@@ -103,7 +104,7 @@ function fallbackCredits(courseId: string): number {
 
 function fallbackDescription(course: GetCourseResponseContent): string {
 	// TODO(backend): Replace with the official course description from the API.
-	return `${course.name} aborda contenidos centrales del area, combinando fundamentos, practica y evaluaciones aplicadas para estudiantes del DCC.`;
+	return `${course.name} aborda contenidos centrales del area, combinando fundamentos, práctica y evaluaciones aplicadas para estudiantes del DCC.`;
 }
 
 function toCourseDetail(course: GetCourseResponseContent): Curso {
@@ -122,7 +123,7 @@ function toCourseDetail(course: GetCourseResponseContent): Curso {
 		department: fallbackDepartment(course.id),
 		plan: fallbackPlan(course.id),
 		categoryTags: Object.keys(course.tag_stats),
-		reviewTags: Object.keys(course.tag_stats),
+		reviewTags: getCourseSummaryTags(course.tag_stats),
 		currentlyOffered: semesters.some(
 			(term) => `${term.year}-${term.semester}` === CURRENT_SEMESTER,
 		),

@@ -2,11 +2,31 @@ import { expect, it } from "vitest";
 import config from "./reviewTags.json";
 import {
 	REVIEW_TAG_SECTIONS,
+	getCourseSummaryTags,
 	getReviewTagLabel,
 	getReviewTagAxis,
 	reviewTagConfigSchema,
 	toggleReviewTag,
 } from "./reviewTags";
+it("hides zero-value tags and keeps only the highest-valued exclusive option", () => {
+	expect(
+		getCourseSummaryTags({
+			variable_workload: { value: 2 },
+			consistent_workload: { value: 7 },
+			useful_work: { value: 0 },
+			useful_research: { value: 3 },
+		}),
+	).toEqual(["consistent_workload", "useful_research"]);
+});
+it("resolves exclusive ties consistently and omits groups with no positive values", () => {
+	expect(
+		getCourseSummaryTags({
+			consistent_workload: { value: 4 },
+			variable_workload: { value: 4 },
+		}),
+	).toEqual(["variable_workload"]);
+	expect(getCourseSummaryTags({ variable_workload: { value: 0 } })).toEqual([]);
+});
 it("loads all sections with stable identities and display labels", () => {
 	expect(REVIEW_TAG_SECTIONS).toHaveLength(7);
 	expect(getReviewTagLabel("useful_work")).toBe("Útil para: Industria");

@@ -1,5 +1,10 @@
 import { Box, Chip, Typography } from "@mui/material";
-import { alpha } from "@mui/material/styles";
+import {
+	alpha,
+	getContrastRatio,
+	lighten,
+	useTheme,
+} from "@mui/material/styles";
 import type { ReviewTagItem } from "../../../constants/reviewTags";
 
 export function ReviewTagOptions({
@@ -13,7 +18,20 @@ export function ReviewTagOptions({
 	onToggleTag: (key: string) => void;
 	color?: string;
 }) {
-	const renderTag = (tag: { key: string; label: string }) => {
+	const theme = useTheme();
+	const accent = color ?? theme.palette.primary.main;
+	const labelColor =
+		theme.palette.mode === "dark"
+			? lighten(accent, 0.5)
+			: theme.palette.text.primary;
+	const selectedText =
+		getContrastRatio(accent, "#fff") >= getContrastRatio(accent, "#000")
+			? "#fff"
+			: "#000";
+	const renderTag = (
+		tag: { key: string; label: string },
+		segmented = false,
+	) => {
 		const selected = selectedTags.includes(tag.key);
 		return (
 			<Chip
@@ -30,13 +48,37 @@ export function ReviewTagOptions({
 					height: 26,
 					fontSize: "0.78rem",
 					"& .MuiChip-label": { px: 0.75 },
-					...(color
+					color: labelColor,
+					borderColor: alpha(labelColor, 0.5),
+					...(selected
 						? {
-								color: selected ? "#fff" : color,
-								borderColor: alpha(color, 0.4),
-								...(selected
-									? { bgcolor: color, "&:hover": { bgcolor: color } }
-									: {}),
+								"&&": {
+									bgcolor: accent,
+									color: selectedText,
+									borderColor: accent,
+								},
+								"&&:hover": { bgcolor: accent, color: selectedText },
+							}
+						: {
+								"&&:hover": { color: labelColor },
+							}),
+					"&:focus-visible": {
+						outline: "2px solid",
+						outlineColor: labelColor,
+						outlineOffset: 2,
+					},
+					...(segmented
+						? {
+								flex: { xs: 1, sm: "initial" },
+								minWidth: 0,
+								"&:not(:first-of-type)": {
+									borderTopLeftRadius: 0,
+									borderBottomLeftRadius: 0,
+								},
+								"&:not(:last-of-type)": {
+									borderTopRightRadius: 0,
+									borderBottomRightRadius: 0,
+								},
 							}
 						: {}),
 				}}
@@ -76,7 +118,7 @@ export function ReviewTagOptions({
 								variant="caption"
 								sx={{
 									fontWeight: 700,
-									color: color ?? "text.secondary",
+									color: labelColor,
 									mr: 0.25,
 								}}
 							>
@@ -92,7 +134,7 @@ export function ReviewTagOptions({
 								}}
 							>
 								{item.type === "collection" ? (
-									item.tags.map(renderTag)
+									item.tags.map((tag) => renderTag(tag))
 								) : (
 									<ReviewTagOptions
 										items={item.items}
@@ -114,53 +156,12 @@ export function ReviewTagOptions({
 						sx={{
 							display: "inline-flex",
 							width: { xs: "100%", sm: "auto" },
-							border: 1,
-							borderColor: color ? alpha(color, 0.35) : "divider",
-							borderRadius: 2,
-							overflow: "hidden",
+							gap: "1px",
 							minHeight: 26,
-							boxSizing: "border-box",
+							isolation: "isolate",
 						}}
 					>
-						{item.tags.map((tag, index) => {
-							const selected = selectedTags.includes(tag.key);
-							return (
-								<Box
-									key={tag.key}
-									component="button"
-									type="button"
-									aria-pressed={selected}
-									onClick={() => onToggleTag(tag.key)}
-									sx={{
-										border: 0,
-										backgroundColor: "transparent",
-										fontFamily: "inherit",
-										flex: { xs: 1, sm: "initial" },
-										minWidth: 0,
-										px: 1.25,
-										py: 0.35,
-										fontSize: "0.78rem",
-										textAlign: "center",
-										fontWeight: selected ? 600 : 400,
-										cursor: "pointer",
-										borderRight: index < item.tags.length - 1 ? 1 : 0,
-										borderColor: color ? alpha(color, 0.35) : "divider",
-										...(selected
-											? { bgcolor: color ?? "primary.main", color: "#fff" }
-											: {
-													color: color ?? "text.secondary",
-													"&:hover": {
-														bgcolor: color
-															? alpha(color, 0.08)
-															: "action.hover",
-													},
-												}),
-									}}
-								>
-									{tag.label}
-								</Box>
-							);
-						})}
+						{item.tags.map((tag) => renderTag(tag, true))}
 					</Box>
 				);
 			})}

@@ -106,6 +106,24 @@ export function getReviewTagLabel(key: string) {
 export function getReviewTagAxis(key: string) {
 	return tagInfo.get(key)?.axis;
 }
+
+export function getCourseSummaryTags(
+	stats: Record<string, { value: number }>,
+): string[] {
+	return ALL_REVIEW_TAGS.filter((key) => {
+		const value = stats[key]?.value ?? 0;
+		if (value <= 0) return false;
+		const group = exclusiveGroups.get(key);
+		if (!group) return true;
+		// Resolve ties in configuration order so only one option is displayed.
+		const winner = group.reduce((best, candidate) =>
+			(stats[candidate]?.value ?? 0) > (stats[best]?.value ?? 0)
+				? candidate
+				: best,
+		);
+		return key === winner;
+	});
+}
 export function toggleReviewTag(selected: string[], key: string): string[] {
 	if (selected.includes(key)) return selected.filter((tag) => tag !== key);
 	const group = exclusiveGroups.get(key) ?? [];

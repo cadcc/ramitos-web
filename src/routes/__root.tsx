@@ -8,6 +8,25 @@ import Footer from "../shared/components/Footer";
 function NotFound() {
 	return (
 		<Box sx={{ textAlign: "center", py: { xs: 8, sm: 12 } }}>
+			<Box
+				component="img"
+				src="/logo.png"
+				alt="Ramitos"
+				sx={{
+					display: "block",
+					width: { xs: 120, sm: 160 },
+					height: { xs: 120, sm: 160 },
+					objectFit: "contain",
+					mx: "auto",
+					mb: 4,
+					animation: "ramitosSpin 8s linear infinite",
+					"@keyframes ramitosSpin": {
+						from: { transform: "rotate(0deg)" },
+						to: { transform: "rotate(360deg)" },
+					},
+					"@media (prefers-reduced-motion: reduce)": { animation: "none" },
+				}}
+			/>
 			<Typography
 				variant="h2"
 				sx={{ mb: 1, fontSize: { xs: "3rem", sm: "4rem" } }}

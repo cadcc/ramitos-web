@@ -1,38 +1,23 @@
-import { getReviewTagLabel } from "../../../constants/reviewTags";
 import { useNavigate, Link } from "@tanstack/react-router";
 import {
 	Box,
 	Breadcrumbs,
 	Button,
-	CardActionArea,
-	Chip,
 	CircularProgress,
 	Divider,
 	Fade,
-	Stack,
 	Typography,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
 import BackIcon from "@mui/icons-material/ArrowBack";
 import {
 	getAverageScore,
 	getRadarColor,
-	getTagColor,
 } from "../../../constants/courseDisplay";
-import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
-import CategoryIcon from "../../../shared/components/CategoryIcon";
 import type { Curso, ReviewSort } from "../../../shared/types/domain";
 import { CourseReviewsSection } from "../../reviews";
-import { CURRENT_SEMESTER, getRelatedCourses } from "../api/courseDetail.api";
 import { useCourseDetail } from "../hooks/useCourseDetail";
 import CourseRadar from "./CourseRadar";
-import SemesterGraph from "./SemesterGraph";
-
-const planLabels: Record<string, string> = {
-	obligatorio: "Obligatorio",
-	electivo_licenciatura: "Electivo Licenciatura",
-	electivo_especialidad: "Electivo Especialidad",
-};
+import { CourseTagSummary } from "./CourseTagSummary";
 
 interface CourseDetailPageProps {
 	cursoId: string;
@@ -79,8 +64,7 @@ export function CourseDetailPage({
 		<Fade in>
 			<Box sx={{ maxWidth: 860, mx: "auto" }}>
 				<CourseBreadcrumbs courseCode={course.code} />
-				<CourseHeader course={course} />
-				<CourseOverview course={course} cursoId={cursoId} />
+				<CourseOverview course={course} />
 
 				<Divider sx={{ my: 3 }} />
 
@@ -119,10 +103,16 @@ function CourseBreadcrumbs({ courseCode }: { courseCode: string }) {
 
 function CourseHeader({ course }: { course: Curso }) {
 	return (
-		<Box sx={{ mb: 3 }}>
+		<Box>
 			<Typography
 				variant="h3"
-				sx={{ mb: 0.5, lineHeight: 1.15, fontSize: { xs: "2rem", sm: "3rem" } }}
+				component="h1"
+				sx={{
+					mb: 1.5,
+					lineHeight: 1.2,
+					fontSize: { xs: "1.75rem", sm: "2.25rem" },
+					overflowWrap: "anywhere",
+				}}
 			>
 				{course.code} - {course.name}
 			</Typography>
@@ -133,19 +123,12 @@ function CourseHeader({ course }: { course: Curso }) {
 			>
 				{course.description}
 			</Typography>
+			<CourseTagSummary tags={course.reviewTags} />
 		</Box>
 	);
 }
 
-function CourseOverview({
-	course,
-	cursoId,
-}: {
-	course: Curso;
-	cursoId: string;
-}) {
-	const related = getRelatedCourses(cursoId, 3);
-
+function CourseOverview({ course }: { course: Curso }) {
 	return (
 		<Box
 			sx={{
@@ -167,8 +150,14 @@ function CourseOverview({
 				<CourseScoreSummary course={course} />
 			</Box>
 
-			<Box sx={{ flex: 1 }}>
-				<CourseFactsPanel course={course} related={related} />
+			<Box
+				sx={{
+					flex: 1,
+					minWidth: 0,
+					alignSelf: "flex-start",
+				}}
+			>
+				<CourseHeader course={course} />
 			</Box>
 		</Box>
 	);
@@ -214,204 +203,6 @@ function CourseScoreSummary({ course }: { course: Curso }) {
 				{course.reviewCount} opiniones
 			</Typography>
 			<CourseRadar ratings={course.ratings} />
-
-			{course.reviewTags.length > 0 && (
-				<Stack
-					direction="row"
-					spacing={0.5}
-					sx={{ flexWrap: "wrap", gap: 0.5, mt: 1, justifyContent: "center" }}
-				>
-					{course.reviewTags.map((tag) => {
-						const tagColor = getTagColor(tag);
-						return (
-							<Chip
-								key={tag}
-								label={getReviewTagLabel(tag)}
-								size="small"
-								sx={
-									tagColor
-										? {
-												borderColor: alpha(tagColor, 0.5),
-												color: tagColor,
-												borderWidth: 1,
-												borderStyle: "solid",
-												bgcolor: alpha(tagColor, 0.06),
-											}
-										: {}
-								}
-							/>
-						);
-					})}
-				</Stack>
-			)}
-		</Box>
-	);
-}
-
-function CourseFactsPanel({
-	course,
-	related,
-}: {
-	course: Curso;
-	related: Array<Pick<Curso, "id" | "code" | "name">>;
-}) {
-	return (
-		<Box
-			sx={{
-				bgcolor: "background.paper",
-				borderRadius: 1.5,
-				border: 1,
-				borderColor: "divider",
-				p: 2,
-			}}
-		>
-			<Stack spacing={0.75}>
-				{[
-					{ label: "Departamento", value: course.department },
-					{ label: "Plan", value: planLabels[course.plan] },
-					{ label: "Creditos", value: String(course.credits) },
-				].map(({ label, value }) => (
-					<Box
-						key={label}
-						sx={{ display: "flex", alignItems: "baseline", gap: 1 }}
-					>
-						<Typography
-							variant="caption"
-							color="text.secondary"
-							sx={{ fontSize: "0.75rem", flexShrink: 0 }}
-						>
-							{label}
-						</Typography>
-						<Typography
-							variant="caption"
-							sx={{
-								fontWeight: 600,
-								fontSize: "0.8rem",
-								minWidth: 0,
-								overflowWrap: "anywhere",
-							}}
-						>
-							{value}
-						</Typography>
-					</Box>
-				))}
-			</Stack>
-
-			<CourseCategoryTags tags={course.categoryTags} />
-
-			<Box sx={{ mt: 2 }}>
-				<Typography
-					variant="caption"
-					color="text.secondary"
-					sx={{ fontSize: "0.78rem", mb: 0.75, display: "block" }}
-				>
-					Historial de dictacion
-				</Typography>
-				<SemesterGraph
-					semesters={course.semesters}
-					currentSemester={CURRENT_SEMESTER}
-				/>
-			</Box>
-
-			<RelatedCourses courses={related} />
-		</Box>
-	);
-}
-
-function CourseCategoryTags({ tags }: { tags: string[] }) {
-	if (tags.length === 0) return null;
-
-	return (
-		<Box sx={{ mt: 1.5 }}>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={{ fontSize: "0.78rem", mb: 0.5, display: "block" }}
-			>
-				Categorias
-			</Typography>
-			<Stack direction="row" spacing={0.5} sx={{ flexWrap: "wrap", gap: 0.5 }}>
-				{tags.map((tag) => (
-					<Chip
-						key={tag}
-						icon={<CategoryIcon category={tag} sx={{ fontSize: 14 }} />}
-						label={getReviewTagLabel(tag)}
-						size="small"
-						color="primary"
-						variant="outlined"
-					/>
-				))}
-			</Stack>
-		</Box>
-	);
-}
-
-function RelatedCourses({
-	courses,
-}: {
-	courses: Array<Pick<Curso, "id" | "code" | "name">>;
-}) {
-	if (courses.length === 0) return null;
-
-	return (
-		<Box sx={{ mt: 1 }}>
-			<Typography variant="caption" color="text.secondary">
-				Relacionados
-			</Typography>
-			<Box
-				sx={{
-					display: "flex",
-					gap: 1,
-					pb: 0.5,
-					overflowX: "auto",
-					scrollSnapType: "x proximity",
-				}}
-			>
-				{courses.map((course) => (
-					<Box
-						key={course.id}
-						sx={{
-							flex: "0 0 auto",
-							scrollSnapAlign: "start",
-							maxWidth: 150,
-							borderRadius: 0.75,
-							p: 0.75,
-							border: "1px solid",
-							borderColor: "divider",
-						}}
-					>
-						<CardActionArea>
-							<Link
-								to="/curso/$cursoId"
-								params={{ cursoId: course.id }}
-								search={{ reviewSort: DEFAULT_REVIEW_SORT }}
-								style={{ textDecoration: "none", color: "inherit" }}
-							>
-								<Typography
-									sx={{
-										fontSize: "0.68rem",
-										fontWeight: 600,
-										whiteSpace: "nowrap",
-									}}
-								>
-									{course.code}
-								</Typography>
-								<Typography
-									sx={{
-										fontSize: "0.6rem",
-										color: "text.secondary",
-										whiteSpace: "nowrap",
-										overflow: "hidden",
-										textOverflow: "ellipsis",
-									}}
-								>
-									{course.name}
-								</Typography>
-							</Link>
-						</CardActionArea>
-					</Box>
-				))}
-			</Box>
 		</Box>
 	);
 }
