@@ -4,7 +4,6 @@ import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
 	Box,
 	Typography,
-	TextField,
 	Button,
 	Stack,
 	Alert,
@@ -27,7 +26,7 @@ import {
 	REVIEW_TAG_SECTIONS,
 	toggleReviewTag,
 } from "../../../constants/reviewTags";
-import { MAX_REVIEW_COMMENT_LENGTH } from "../../../constants/reviews";
+import { ReviewCommentField } from "./ReviewCommentField";
 import { ReviewRatingAxisField } from "./ReviewRatingAxisField";
 import { reviewAxes } from "../model/reviewForm.model";
 interface Props {
@@ -181,16 +180,11 @@ function ReviewFormContent({
 							</Box>
 						),
 					)}
-					<TextField
-						label="Comentario (opcional)"
-						placeholder="¿Qué opinas del curso? ¿Cómo fue tu experiencia? Cuéntanos..."
-						multiline
-						minRows={isMobile ? 4 : 6}
-						maxRows={24}
+					<ReviewCommentField
 						value={comment}
-						onChange={(e) => updateDraft({ comment: e.target.value })}
-						slotProps={{ htmlInput: { maxLength: MAX_REVIEW_COMMENT_LENGTH } }}
-						size="small"
+						onChange={(comment) => updateDraft({ comment })}
+						open={open}
+						isMobile={isMobile}
 					/>
 
 					{mutation.isSuccess && (
