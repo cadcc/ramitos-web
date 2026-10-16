@@ -11,6 +11,7 @@ export interface Course {
 	id: string;
 	name: string;
 	reviewCount: number;
+	commentReviewCount: number;
 	stats: CourseStats;
 	tag_stats: CourseTagStats;
 	enrolled?: boolean;

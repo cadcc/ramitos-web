@@ -131,6 +131,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "commentReviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
           "stats": {
             "$ref": "#/components/schemas/CourseStats"
           },
@@ -145,6 +149,7 @@
           }
         },
         "required": [
+          "commentReviewCount",
           "id",
           "name",
           "reviewCount",
@@ -258,6 +263,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "commentReviewCount": {
+            "type": "integer",
+            "format": "int32"
+          },
           "stats": {
             "$ref": "#/components/schemas/CourseStats"
           },
@@ -272,6 +281,7 @@
           }
         },
         "required": [
+          "commentReviewCount",
           "id",
           "name",
           "reviewCount",

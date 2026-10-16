@@ -23,6 +23,7 @@ export const getListCoursesResponseMock = (): ListCoursesOutputPayload =>
 		id: faker.string.alpha({ length: { min: 10, max: 20 } }),
 		name: faker.string.alpha({ length: { min: 10, max: 20 } }),
 		reviewCount: faker.number.int(),
+		commentReviewCount: faker.number.int(),
 		stats: {
 			docencia: faker.helpers.arrayElement([
 				{ value: faker.number.float({ fractionDigits: 2 }) },
@@ -95,6 +96,7 @@ export const getGetCourseResponseMock = (
 	id: faker.string.alpha({ length: { min: 10, max: 20 } }),
 	name: faker.string.alpha({ length: { min: 10, max: 20 } }),
 	reviewCount: faker.number.int(),
+	commentReviewCount: faker.number.int(),
 	stats: {
 		docencia: faker.helpers.arrayElement([
 			{ value: faker.number.float({ fractionDigits: 2 }) },
