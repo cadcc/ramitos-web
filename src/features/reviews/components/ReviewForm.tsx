@@ -1,4 +1,5 @@
 import { ReviewTagOptions } from "./ReviewTagOptions";
+import { TAG_SUGGESTION_URL } from "../../../constants/issueLinks";
 import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
@@ -180,6 +181,18 @@ function ReviewFormContent({
 							</Box>
 						),
 					)}
+					<Box sx={{ alignSelf: "flex-start", mt: "12px !important" }}>
+						<Button
+							component="a"
+							href={TAG_SUGGESTION_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							size="small"
+							sx={{ fontSize: "0.75rem", textTransform: "none", px: 0.5 }}
+						>
+							Sugerir una etiqueta
+						</Button>
+					</Box>
 					<ReviewCommentField
 						value={comment}
 						onChange={(comment) => updateDraft({ comment })}

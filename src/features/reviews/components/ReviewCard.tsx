@@ -253,13 +253,13 @@ function ReviewCardBase({
 										</Link>
 									</Typography>
 								)}
-								<Typography
+								{/* <Typography
 									variant="caption"
 									color="text.secondary"
 									sx={{ fontSize: "0.75rem", fontWeight: 700 }}
 								>
 									{review.year}-{review.semester}
-								</Typography>
+								</Typography> */}
 							</Box>
 
 							<Stack

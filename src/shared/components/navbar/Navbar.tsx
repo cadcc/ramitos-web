@@ -23,6 +23,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { LoginDialog, useAuth } from "../../../features/auth";
 import { useState } from "react";
 import ThemeSelector from "./ThemeSelector";
+import { BUG_REPORT_URL } from "../../../constants/issueLinks";
 
 function getInitials(name: string): string {
 	return name
@@ -131,6 +132,29 @@ export default function Navbar() {
 
 					<Box sx={{ flexGrow: 1 }} />
 
+					<Box
+						component="a"
+						href={BUG_REPORT_URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Issues: reportar un error"
+						sx={{
+							display: "inline-flex",
+							alignItems: "center",
+							color: "text.primary",
+							textDecoration: "none",
+							fontSize: { xs: "0.78rem", sm: "0.9rem" },
+							fontWeight: 700,
+							lineHeight: 1,
+							height: { xs: 40, sm: 32 },
+							px: 0.5,
+							borderBottom: 2,
+							borderColor: "transparent",
+							"&:hover": { color: "primary.main", borderColor: "primary.main" },
+						}}
+					>
+						Issues
+					</Box>
 					<Box
 						component={Link}
 						to="/malla"

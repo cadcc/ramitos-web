@@ -1,0 +1,37 @@
+name: Sugerir una etiqueta
+description: Propón una nueva etiqueta para el formulario de opiniones.
+body:
+  - type: input
+    id: tag
+    attributes:
+      label: Etiqueta propuesta
+      placeholder: Una etiqueta breve y clara
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: ¿En qué sección debería aparecer?
+      options:
+        - Carga
+        - Dificultad
+        - Docencia
+        - Utilidad
+        - Ambiente
+        - Modalidad
+        - Evaluación
+        - Otra / No sé
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: ¿Qué experiencia permite describir?
+      description: Explica cuándo la usarías y por qué las etiquetas actuales no bastan.
+    validations:
+      required: true
+  - type: textarea
+    id: grouping
+    attributes:
+      label: Relación con otras etiquetas (opcional)
+      description: ¿Debería pertenecer a un grupo o ser incompatible con alguna etiqueta?

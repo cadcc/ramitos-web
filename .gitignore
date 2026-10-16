@@ -149,6 +149,7 @@ GLOSSARY.md
 .scratch
 .tanstack
 docs
+production.env
 
 # Browser test output
 playwright-report/

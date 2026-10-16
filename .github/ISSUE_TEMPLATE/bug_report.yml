@@ -1,0 +1,35 @@
+name: Bug report
+description: Report something that is not working in Ramitos.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open…
+        2. Click…
+        3. Observe…
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Affected page or course
+      description: Include the page URL or course code, if relevant.
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Chrome on Windows, Safari on iPhone
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or additional context
+      description: You can paste screenshots here. Remove personal information and credentials from logs.
