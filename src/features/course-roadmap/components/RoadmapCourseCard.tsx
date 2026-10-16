@@ -35,14 +35,20 @@ function RoadmapCourseCardComponent({
 	const isDetailCourse =
 		course.type === "course" || course.type === "compactable";
 	const linkProps =
-		isDetailCourse && !editMode
+		!editMode && course.catalogCategory
 			? {
 					component: Link,
-					to: "/curso/$cursoId",
-					params: { cursoId: course.code },
-					search: { reviewSort: DEFAULT_REVIEW_SORT },
+					to: "/",
+					search: { category: course.catalogCategory },
 				}
-			: { component: "div" as const };
+			: isDetailCourse && !editMode
+				? {
+						component: Link,
+						to: "/curso/$cursoId",
+						params: { cursoId: course.code },
+						search: { reviewSort: DEFAULT_REVIEW_SORT },
+					}
+				: { component: "div" as const };
 
 	return (
 		<Box
@@ -58,7 +64,7 @@ function RoadmapCourseCardComponent({
 			onFocus={() => onSelect(course.id)}
 			onBlur={() => onSelect(null)}
 			onClick={(event) => {
-				if (editMode || !isDetailCourse) {
+				if (editMode || (!isDetailCourse && !course.catalogCategory)) {
 					event.preventDefault();
 					onClick(course.id);
 				}
@@ -106,7 +112,10 @@ function RoadmapCourseCardComponent({
 				"&:hover, &:focus-visible": {
 					transform: "translateY(-2px)",
 					boxShadow: "0 8px 18px rgba(0,0,0,0.18)",
-					borderColor: isDetailCourse && !editMode ? "primary.main" : "divider",
+					borderColor:
+						!editMode && (isDetailCourse || course.catalogCategory)
+							? "primary.main"
+							: "divider",
 				},
 			}}
 		>

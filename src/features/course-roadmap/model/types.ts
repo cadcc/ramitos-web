@@ -1,3 +1,5 @@
+import type { CourseCategory } from "../../../shared/types/domain";
+
 export type CourseEntryType = "course" | "plan" | "compactable" | "compacted";
 
 export interface RoadmapData {
@@ -16,6 +18,7 @@ export interface RoadmapSemesterData {
 }
 
 export interface RoadmapCourseData {
+	catalogCategory?: CourseCategory;
 	code: string;
 	name: string;
 	credits: number;
