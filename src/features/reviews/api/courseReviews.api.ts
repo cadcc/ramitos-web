@@ -60,10 +60,15 @@ function fallbackTerm(courseId: string, reviewId: number) {
 
 function fallbackReactionCounts(courseId: string, reviewId: number) {
 	// TODO(backend): Replace with persisted review reaction counts.
-	return withReviewSeed(courseId, reviewId, 200, () => ({
-		likes: faker.number.int({ min: 0, max: 28 }),
-		dislikes: faker.number.int({ min: 0, max: 6 }),
-		funny: faker.number.int({ min: 0, max: 10 }),
+	// return withReviewSeed(courseId, reviewId, 200, () => ({
+	// 	likes: faker.number.int({ min: 0, max: 28 }),
+	// 	dislikes: faker.number.int({ min: 0, max: 6 }),
+	// 	funny: faker.number.int({ min: 0, max: 10 }),
+	// }));
+    return withReviewSeed(courseId, reviewId, 200, () => ({
+		likes: 0,
+		dislikes: 0,
+		funny: 0,
 	}));
 }
 
