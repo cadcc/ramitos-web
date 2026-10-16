@@ -101,7 +101,7 @@ export default function FilterBar({
 				}}
 			>
 				<TextField
-					placeholder="Buscar curso..."
+					placeholder="Buscar ramo por código o nombre..."
 					size="small"
 					value={searchText}
 					onChange={(e) => setSearchText(e.target.value)}

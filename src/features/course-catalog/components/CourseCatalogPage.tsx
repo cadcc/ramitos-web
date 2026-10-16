@@ -41,6 +41,7 @@ export function CourseCatalogPage({
 	onFilterChange,
 }: CourseCatalogPageProps) {
 	const {
+		reviewableCourseIds,
 		reviewableQuery,
 		requiresLogin,
 		indexQuery,
@@ -133,7 +134,11 @@ export function CourseCatalogPage({
 				<Grid container spacing={2}>
 					{courses.map((course, index) => (
 						<Grid size={{ xs: 12, sm: 6, md: 3 }} key={course.id}>
-							<CourseCard course={course} index={index} />
+							<CourseCard
+								course={course}
+								index={index}
+								showReviewableIndicator={reviewableCourseIds.has(course.id)}
+							/>
 						</Grid>
 					))}
 				</Grid>

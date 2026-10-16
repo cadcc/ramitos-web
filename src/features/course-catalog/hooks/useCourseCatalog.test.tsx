@@ -9,6 +9,9 @@ import { getReviewableCourses } from "../api/reviewableCourses.api";
 
 const auth = vi.hoisted(() => ({ user: { id: 1 }, isAuthenticated: true }));
 vi.mock("../../auth", () => ({ useAuth: () => auth }));
+vi.mock("../../../generated/api/course/courseService", () => ({
+	listCourses: vi.fn().mockResolvedValue({ data: [] }),
+}));
 vi.mock("../api/reviewableCourses.api", () => ({
 	getReviewableCourses: vi.fn(),
 }));
@@ -101,4 +104,28 @@ it("keeps the two personal scopes separate when switching filters", async () => 
 		),
 	);
 	expect(getReviewableCourses).toHaveBeenLastCalledWith(false);
+});
+
+it("marks reviewable courses in the public catalog and clears markers on sign-out", async () => {
+	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC1000")]);
+	const view = renderHook(() => useCourseCatalog({}), { wrapper: wrapper() });
+	await waitFor(() =>
+		expect([...view.result.current.reviewableCourseIds]).toEqual(["CC1000"]),
+	);
+	expect(view.result.current.filteredTotal).toBe(2);
+	expect(getReviewableCourses).toHaveBeenCalledWith(true);
+	auth.isAuthenticated = false;
+	view.rerender();
+	expect(view.result.current.reviewableCourseIds.size).toBe(0);
+});
+
+it("suppresses indicators in the reviewable-only filter", async () => {
+	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC1000")]);
+	const view = renderHook(() => useCourseCatalog({ reviewable: true }), {
+		wrapper: wrapper(),
+	});
+	await waitFor(() =>
+		expect(view.result.current.reviewableQuery.isSuccess).toBe(true),
+	);
+	expect(view.result.current.reviewableCourseIds.size).toBe(0);
 });

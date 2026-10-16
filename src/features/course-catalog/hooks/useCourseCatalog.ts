@@ -18,11 +18,21 @@ export function useCourseCatalog(filters: CourseFilters) {
 	const queryClient = useQueryClient();
 	const { user, isAuthenticated } = useAuth();
 	const personalFilter = filters.reviewable !== undefined;
+	const reviewableScope = filters.reviewable ?? true;
 	const reviewableQuery = useQuery({
-		queryKey: ["reviewable-courses", user?.id, filters.reviewable],
-		queryFn: () => getReviewableCourses(filters.reviewable),
-		enabled: personalFilter && isAuthenticated,
+		queryKey: ["reviewable-courses", user?.id, reviewableScope],
+		queryFn: () => getReviewableCourses(reviewableScope),
+		enabled: isAuthenticated,
 	});
+	const reviewableCourseIds = useMemo(
+		() =>
+			new Set(
+				isAuthenticated && filters.reviewable === undefined
+					? reviewableQuery.data?.map((course) => course.id)
+					: [],
+			),
+		[isAuthenticated, filters.reviewable, reviewableQuery.data],
+	);
 	const indexQuery = useQuery({
 		queryKey: ["course-catalog-index"],
 		queryFn: getCourseCatalogIndex,
@@ -107,6 +117,7 @@ export function useCourseCatalog(filters: CourseFilters) {
 	});
 
 	return {
+		reviewableCourseIds,
 		reviewableQuery,
 		requiresLogin: personalFilter && !isAuthenticated,
 		indexQuery,

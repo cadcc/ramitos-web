@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, CardContent, Typography, Box, Tooltip } from "@mui/material";
 import { Link } from "@tanstack/react-router";
 import type { CursoListItem } from "../../../shared/types/domain";
 import {
@@ -19,14 +19,21 @@ const CURRENT_SEMESTER = "2026-1";
 interface Props {
 	course: CursoListItem;
 	index: number;
+	showReviewableIndicator?: boolean;
 }
 
-export default function CourseCard({ course, index }: Props) {
+export default function CourseCard({
+	course,
+	index,
+	showReviewableIndicator = false,
+}: Props) {
 	const isCurrent = course.lastOffered === CURRENT_SEMESTER;
 
 	return (
 		<Card
 			sx={{
+				position: "relative",
+				overflow: "visible",
 				height: "100%",
 				minHeight: COURSE_CARD_MIN_HEIGHT,
 				display: "flex",
@@ -44,6 +51,29 @@ export default function CourseCard({ course, index }: Props) {
 				},
 			}}
 		>
+			{showReviewableIndicator && (
+				<Tooltip title="Puedes opinar" arrow>
+					<Box
+						component="span"
+						role="img"
+						aria-label="Puedes opinar"
+						tabIndex={0}
+						sx={{
+							position: "absolute",
+							top: 0,
+							right: 0,
+							transform: "translate(35%, -35%)",
+							zIndex: 1,
+							border: "2px solid",
+							borderColor: "background.paper",
+							width: 16,
+							height: 16,
+							borderRadius: "50%",
+							bgcolor: "success.main",
+						}}
+					/>
+				</Tooltip>
+			)}
 			<Link
 				to="/curso/$cursoId"
 				params={{ cursoId: course.id }}
