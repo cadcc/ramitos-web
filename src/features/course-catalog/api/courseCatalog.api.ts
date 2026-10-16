@@ -1,3 +1,4 @@
+import { matchesCourseCategory } from "../courseCategories";
 import {
 	getCoursesStaticData,
 	listCourses,
@@ -137,9 +138,9 @@ export function filterCourseCatalog(
 	// accepts catalog filters and returns complete sort metadata.
 	let filtered = entries;
 
-	if (filters.modernOnly !== false) {
-		filtered = filtered.filter((course) => course.id.length >= 6);
-	}
+	filtered = filtered.filter((course) =>
+		matchesCourseCategory(course.id, filters.category ?? "dcc"),
+	);
 
 	if (filters.q) {
 		const query = filters.q.toLocaleLowerCase("es");

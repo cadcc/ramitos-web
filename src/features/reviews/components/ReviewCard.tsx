@@ -371,93 +371,91 @@ function ReviewCardBase({
 								mt: "auto",
 							}}
 						>
-							<Tooltip title="Coming soon...">
-								<Tooltip title="Útil" arrow>
-									<IconButton
-										disabled
-										size="small"
-										onClick={() => handleReaction("like")}
-										sx={{
-											width: { xs: 40, sm: 32 },
-											height: { xs: 40, sm: 32 },
-											...(activeReactions.has("like")
-												? { color: "success.main" }
-												: {}),
-										}}
-									>
-										<LikeIcon sx={{ fontSize: 14 }} />
-									</IconButton>
-								</Tooltip>
-								<Typography
-									variant="caption"
+							<Tooltip title="Útil" arrow>
+								<IconButton
+									disabled
+									size="small"
+									onClick={() => handleReaction("like")}
 									sx={{
-										fontSize: "0.7rem",
-										mr: 0.5,
-										color: activeReactions.has("like")
-											? "success.main"
-											: "text.secondary",
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("like")
+											? { color: "success.main" }
+											: {}),
 									}}
 								>
-									{review.likes + (activeReactions.has("like") ? 1 : 0)}
-								</Typography>
-
-								<Tooltip title="No útil" arrow>
-									<IconButton
-										disabled
-										size="small"
-										onClick={() => handleReaction("dislike")}
-										sx={{
-											width: { xs: 40, sm: 32 },
-											height: { xs: 40, sm: 32 },
-											...(activeReactions.has("dislike")
-												? { color: "error.main" }
-												: {}),
-										}}
-									>
-										<DislikeIcon sx={{ fontSize: 14 }} />
-									</IconButton>
-								</Tooltip>
-								<Typography
-									variant="caption"
-									sx={{
-										fontSize: "0.7rem",
-										mr: 0.5,
-										color: activeReactions.has("dislike")
-											? "error.main"
-											: "text.secondary",
-									}}
-								>
-									{review.dislikes + (activeReactions.has("dislike") ? 1 : 0)}
-								</Typography>
-
-								<Tooltip title="Chistoso" arrow>
-									<IconButton
-										disabled
-										size="small"
-										onClick={() => handleReaction("funny")}
-										sx={{
-											width: { xs: 40, sm: 32 },
-											height: { xs: 40, sm: 32 },
-											...(activeReactions.has("funny")
-												? { color: "warning.main" }
-												: {}),
-										}}
-									>
-										<FunnyIcon sx={{ fontSize: 14 }} />
-									</IconButton>
-								</Tooltip>
-								<Typography
-									variant="caption"
-									sx={{
-										fontSize: "0.7rem",
-										color: activeReactions.has("funny")
-											? "warning.main"
-											: "text.secondary",
-									}}
-								>
-									{review.funny + (activeReactions.has("funny") ? 1 : 0)}
-								</Typography>
+									<LikeIcon sx={{ fontSize: 14 }} />
+								</IconButton>
 							</Tooltip>
+							<Typography
+								variant="caption"
+								sx={{
+									fontSize: "0.7rem",
+									mr: 0.5,
+									color: activeReactions.has("like")
+										? "success.main"
+										: "text.secondary",
+								}}
+							>
+								{review.likes + (activeReactions.has("like") ? 1 : 0)}
+							</Typography>
+
+							<Tooltip title="No útil" arrow>
+								<IconButton
+									disabled
+									size="small"
+									onClick={() => handleReaction("dislike")}
+									sx={{
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("dislike")
+											? { color: "error.main" }
+											: {}),
+									}}
+								>
+									<DislikeIcon sx={{ fontSize: 14 }} />
+								</IconButton>
+							</Tooltip>
+							<Typography
+								variant="caption"
+								sx={{
+									fontSize: "0.7rem",
+									mr: 0.5,
+									color: activeReactions.has("dislike")
+										? "error.main"
+										: "text.secondary",
+								}}
+							>
+								{review.dislikes + (activeReactions.has("dislike") ? 1 : 0)}
+							</Typography>
+
+							<Tooltip title="Chistoso" arrow>
+								<IconButton
+									disabled
+									size="small"
+									onClick={() => handleReaction("funny")}
+									sx={{
+										width: { xs: 40, sm: 32 },
+										height: { xs: 40, sm: 32 },
+										...(activeReactions.has("funny")
+											? { color: "warning.main" }
+											: {}),
+									}}
+								>
+									<FunnyIcon sx={{ fontSize: 14 }} />
+								</IconButton>
+							</Tooltip>
+							<Typography
+								variant="caption"
+								sx={{
+									fontSize: "0.7rem",
+									color: activeReactions.has("funny")
+										? "warning.main"
+										: "text.secondary",
+								}}
+							>
+								{review.funny + (activeReactions.has("funny") ? 1 : 0)}
+							</Typography>
 
 							<Typography
 								variant="caption"

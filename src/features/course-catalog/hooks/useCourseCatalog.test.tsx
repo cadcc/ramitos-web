@@ -20,8 +20,8 @@ vi.mock("../api/courseCatalog.api", async (original) => ({
 	getCourseCatalogIndex: () =>
 		Promise.resolve({
 			items: [
-				{ id: "CC1000", name: "One", categoryTags: [] },
-				{ id: "CC2000", name: "Two", categoryTags: [] },
+				{ id: "CC3000", name: "One", categoryTags: [] },
+				{ id: "CC3001", name: "Two", categoryTags: [] },
 			],
 			categoryOptions: [],
 			total: 2,
@@ -52,14 +52,14 @@ function wrapper() {
 }
 it("uses only reviewable courses and switches the data when the account changes", async () => {
 	vi.mocked(getReviewableCourses)
-		.mockResolvedValueOnce([course("CC1000")])
-		.mockResolvedValueOnce([course("CC2000")]);
+		.mockResolvedValueOnce([course("CC3000")])
+		.mockResolvedValueOnce([course("CC3001")]);
 	const view = renderHook(() => useCourseCatalog({ reviewable: true }), {
 		wrapper: wrapper(),
 	});
 	await waitFor(() =>
 		expect(view.result.current.pagesQuery.data?.pages[0]?.items[0]?.id).toBe(
-			"CC1000",
+			"CC3000",
 		),
 	);
 	auth.user.id = 2;
@@ -67,7 +67,7 @@ it("uses only reviewable courses and switches the data when the account changes"
 	expect(view.result.current.pagesQuery.data).toBeUndefined();
 	await waitFor(() =>
 		expect(view.result.current.pagesQuery.data?.pages[0]?.items[0]?.id).toBe(
-			"CC2000",
+			"CC3001",
 		),
 	);
 });
@@ -85,32 +85,32 @@ it("does not request personal data when signed out", async () => {
 
 it("keeps the two personal scopes separate when switching filters", async () => {
 	vi.mocked(getReviewableCourses)
-		.mockResolvedValueOnce([course("CC1000")])
-		.mockResolvedValueOnce([{ ...course("CC2000"), reviewable: false }]);
+		.mockResolvedValueOnce([course("CC3000")])
+		.mockResolvedValueOnce([{ ...course("CC3001"), reviewable: false }]);
 	const view = renderHook(
 		({ reviewable }) => useCourseCatalog({ reviewable }),
 		{ wrapper: wrapper(), initialProps: { reviewable: true } },
 	);
 	await waitFor(() =>
 		expect(view.result.current.pagesQuery.data?.pages[0]?.items[0]?.id).toBe(
-			"CC1000",
+			"CC3000",
 		),
 	);
 	view.rerender({ reviewable: false });
 	expect(view.result.current.pagesQuery.data).toBeUndefined();
 	await waitFor(() =>
 		expect(view.result.current.pagesQuery.data?.pages[0]?.items[0]?.id).toBe(
-			"CC2000",
+			"CC3001",
 		),
 	);
 	expect(getReviewableCourses).toHaveBeenLastCalledWith(false);
 });
 
 it("marks reviewable courses in the public catalog and clears markers on sign-out", async () => {
-	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC1000")]);
+	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC3000")]);
 	const view = renderHook(() => useCourseCatalog({}), { wrapper: wrapper() });
 	await waitFor(() =>
-		expect([...view.result.current.reviewableCourseIds]).toEqual(["CC1000"]),
+		expect([...view.result.current.reviewableCourseIds]).toEqual(["CC3000"]),
 	);
 	expect(view.result.current.filteredTotal).toBe(2);
 	expect(getReviewableCourses).toHaveBeenCalledWith(true);
@@ -120,7 +120,7 @@ it("marks reviewable courses in the public catalog and clears markers on sign-ou
 });
 
 it("suppresses indicators in the reviewable-only filter", async () => {
-	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC1000")]);
+	vi.mocked(getReviewableCourses).mockResolvedValue([course("CC3000")]);
 	const view = renderHook(() => useCourseCatalog({ reviewable: true }), {
 		wrapper: wrapper(),
 	});

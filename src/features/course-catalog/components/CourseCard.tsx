@@ -140,15 +140,19 @@ export default function CourseCard({
 							mt: "auto",
 						}}
 					>
-						<Typography
-							variant="caption"
-							color="text.secondary"
-							sx={courseCardOpinionSx}
-						>
-							{course.reviewCount} opiniones
-						</Typography>
+						{course.reviewCount > 0 && (
+							<Typography
+								variant="caption"
+								color="text.secondary"
+								sx={courseCardOpinionSx}
+							>
+								{course.reviewCount}{" "}
+								{course.reviewCount === 1 ? "opinión" : "opiniones"}
+							</Typography>
+						)}
 						<Box
 							sx={{
+								ml: "auto",
 								color: (theme) =>
 									getRadarColor(theme, getAverageScore(course.ratings)),
 								lineHeight: 0,

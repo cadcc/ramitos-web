@@ -7,20 +7,16 @@ import {
 	InputLabel,
 	Select,
 	MenuItem,
-	ToggleButton,
-	ToggleButtonGroup,
 	IconButton,
 	Chip,
-	Button,
-	Collapse,
-	Badge,
-	FormControlLabel,
-	Switch,
+	ToggleButton,
+	ToggleButtonGroup,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import TuneIcon from "@mui/icons-material/Tune";
 import type { CourseFilters, SortOption } from "../../../shared/types/domain";
+import { COURSE_CATEGORIES } from "../courseCategories";
+import type { CourseCategory } from "../../../shared/types/domain";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
 
 const sortOptions: {
@@ -36,12 +32,6 @@ const sortOptions: {
 ];
 
 const implementedSorts = new Set<SortOption>(["alphabetical", "code"]);
-
-const planOptions = [
-	{ value: "obligatorio", label: "Obligatorio" },
-	{ value: "electivo_licenciatura", label: "Electivo Licenciatura" },
-	{ value: "electivo_especialidad", label: "Electivo Especialidad" },
-];
 
 interface Props {
 	filters: CourseFilters;
@@ -66,7 +56,6 @@ export default function FilterBar({
 	const searchText =
 		draft.source === filters.q ? draft.text : (filters.q ?? "");
 	const setSearchText = (text: string) => setDraft({ source: filters.q, text });
-	const [filtersOpen, setFiltersOpen] = useState(false);
 	const selectedSort =
 		filters.sort && implementedSorts.has(filters.sort) ? filters.sort : "code";
 
@@ -91,8 +80,8 @@ export default function FilterBar({
 				sx={{
 					display: "grid",
 					gridTemplateColumns: {
-						xs: "minmax(140px, 1fr) 110px auto auto",
-						sm: "minmax(140px, 1fr) 130px auto auto",
+						xs: "minmax(140px, 1fr) 110px auto",
+						sm: "minmax(140px, 1fr) 130px auto",
 					},
 					overflowX: "auto",
 					py: 1,
@@ -192,186 +181,120 @@ export default function FilterBar({
 						<MenuItem value="other">No cursados</MenuItem>
 					</Select>
 				</FormControl>
-
-				<Badge
-					badgeContent={activeFilterCount}
-					color="primary"
-					variant="dot"
-					invisible={activeFilterCount === 0}
-				>
-					<Button
-						size="small"
-						variant={filtersOpen ? "contained" : "outlined"}
-						startIcon={<TuneIcon sx={{ fontSize: 16 }} />}
-						onClick={() => setFiltersOpen(!filtersOpen)}
-						sx={{
-							textTransform: "none",
-							fontSize: "0.8rem",
-							borderColor: "divider",
-							minWidth: 90,
-							minHeight: 40,
-						}}
-					>
-						Filtros
-					</Button>
-				</Badge>
 			</Box>
 
-			{/* Collapsible filter options */}
-			<Collapse in={filtersOpen}>
-				<Box
+			{/* Always-visible compact filter row */}
+			<Box
+				sx={{
+					display: "flex",
+					gap: 0.75,
+					flexWrap: "wrap",
+					justifyContent: "center",
+					alignItems: "center",
+					mt: 0.5,
+				}}
+			>
+				<ToggleButtonGroup
+					exclusive
+					value={filters.category ?? "dcc"}
+					onChange={(_, value: CourseCategory | null) => {
+						if (value) onFilterChange({ ...filters, category: value });
+					}}
+					aria-label="Tipo de ramo"
+					size="small"
 					sx={{
-						display: "flex",
-						gap: 0.75,
 						flexWrap: "wrap",
-						justifyContent: { xs: "stretch", sm: "center" },
-						alignItems: "center",
-						mt: 1.5,
+						justifyContent: "center",
+						gap: 0.5,
+						"& .MuiToggleButtonGroup-grouped": {
+							m: 0,
+							border: "1px solid",
+							borderColor: "divider",
+							borderRadius: "999px !important",
+							px: 1.5,
+							py: 0.5,
+							minHeight: 32,
+							textTransform: "none",
+							fontSize: "0.75rem",
+							lineHeight: 1.2,
+							whiteSpace: "nowrap",
+						},
+						"& .MuiToggleButton-root.Mui-selected": {
+							bgcolor: "primary.main",
+							color: "primary.contrastText",
+							borderColor: "primary.main",
+							"&:hover": { bgcolor: "primary.dark" },
+						},
 					}}
 				>
-					<ToggleButtonGroup
-						value={filters.plan ?? null}
-						exclusive
-						onChange={(_, val: CourseFilters["plan"] | null) =>
-							onFilterChange({ ...filters, plan: val ?? undefined })
-						}
-						size="small"
-						sx={{
-							width: { xs: "100%", sm: "auto" },
-							"& .MuiToggleButton-root": {
-								flex: { xs: 1, sm: "initial" },
-								textTransform: "none",
-								fontSize: { xs: "0.68rem", sm: "0.75rem" },
-								lineHeight: 1.2,
-								px: { xs: 0.75, sm: 1.5 },
-								py: 0.4,
-								minHeight: 40,
-								borderColor: "divider",
-							},
-						}}
-					>
-						{planOptions.map((o) => (
-							<ToggleButton key={o.value} value={o.value} disabled>
-								{o.label}
-							</ToggleButton>
-						))}
-					</ToggleButtonGroup>
+					{COURSE_CATEGORIES.map((category) => (
+						<ToggleButton key={category.value} value={category.value}>
+							{category.label}
+						</ToggleButton>
+					))}
+				</ToggleButtonGroup>
 
-					<ToggleButtonGroup
-						value={
-							filters.currentlyOffered === undefined
-								? null
-								: filters.currentlyOffered
-									? "yes"
-									: null
-						}
-						exclusive
-						onChange={(_, val) =>
+				<FormControl
+					size="small"
+					sx={{ minWidth: 140, display: "none" }}
+					disabled={categoryOptions.length === 0}
+				>
+					<InputLabel sx={{ fontSize: "0.8rem" }}>Categoría</InputLabel>
+					<Select
+						value={filters.tags?.[0] ?? ""}
+						label="Categoría"
+						onChange={(e) => {
+							const val = e.target.value;
 							onFilterChange({
 								...filters,
-								currentlyOffered: val === "yes" ? true : undefined,
+								tags: val ? [val] : undefined,
+							});
+						}}
+						sx={{
+							bgcolor: "background.paper",
+							borderRadius: 2,
+							fontSize: "0.8rem",
+							height: 32,
+						}}
+					>
+						<MenuItem value="">Todas</MenuItem>
+						{categoryOptions.map((tag) => (
+							<MenuItem
+								key={tag}
+								value={tag}
+								sx={{
+									fontSize: "0.85rem",
+									display: "flex",
+									alignItems: "center",
+									gap: 1,
+								}}
+							>
+								<CategoryIcon
+									category={tag}
+									sx={{ fontSize: 16, color: "text.secondary" }}
+								/>
+								{tag}
+							</MenuItem>
+						))}
+					</Select>
+				</FormControl>
+
+				{activeFilterCount > 0 && (
+					<Chip
+						label="Limpiar"
+						onDelete={() =>
+							onFilterChange({
+								q: filters.q,
+								sort: selectedSort,
+								modernOnly: true,
 							})
 						}
 						size="small"
-						sx={{
-							width: { xs: "100%", sm: "auto" },
-							"& .MuiToggleButton-root": {
-								width: { xs: "100%", sm: "auto" },
-								textTransform: "none",
-								fontSize: "0.75rem",
-								px: 1.5,
-								py: 0.4,
-								minHeight: 40,
-								borderColor: "divider",
-							},
-						}}
-					>
-						<ToggleButton value="yes" disabled>
-							Dictándose
-						</ToggleButton>
-					</ToggleButtonGroup>
-
-					<FormControlLabel
-						control={
-							<Switch
-								size="small"
-								checked={filters.modernOnly !== false}
-								onChange={(event) =>
-									onFilterChange({
-										...filters,
-										modernOnly: event.target.checked,
-									})
-								}
-							/>
-						}
-						label="Modernos"
-						sx={{
-							m: 0,
-							"& .MuiFormControlLabel-label": { fontSize: "0.8rem" },
-						}}
+						variant="outlined"
+						sx={{ fontSize: "0.7rem", height: 24 }}
 					/>
-
-					<FormControl
-						size="small"
-						sx={{ minWidth: 120, width: { xs: "100%", sm: "auto" } }}
-						disabled={categoryOptions.length === 0}
-					>
-						<InputLabel sx={{ fontSize: "0.8rem" }}>Categoría</InputLabel>
-						<Select
-							value={filters.tags?.[0] ?? ""}
-							label="Categoría"
-							onChange={(e) => {
-								const val = e.target.value;
-								onFilterChange({
-									...filters,
-									tags: val ? [val] : undefined,
-								});
-							}}
-							sx={{
-								bgcolor: "background.paper",
-								borderRadius: 2,
-								fontSize: "0.8rem",
-							}}
-						>
-							<MenuItem value="">Todas</MenuItem>
-							{categoryOptions.map((tag) => (
-								<MenuItem
-									key={tag}
-									value={tag}
-									sx={{
-										fontSize: "0.85rem",
-										display: "flex",
-										alignItems: "center",
-										gap: 1,
-									}}
-								>
-									<CategoryIcon
-										category={tag}
-										sx={{ fontSize: 16, color: "text.secondary" }}
-									/>
-									{tag}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-
-					{activeFilterCount > 0 && (
-						<Chip
-							label="Limpiar"
-							onDelete={() =>
-								onFilterChange({
-									q: filters.q,
-									sort: selectedSort,
-									modernOnly: true,
-								})
-							}
-							size="small"
-							variant="outlined"
-							sx={{ fontSize: "0.7rem", height: 24 }}
-						/>
-					)}
-				</Box>
-			</Collapse>
+				)}
+			</Box>
 		</Box>
 	);
 }

@@ -110,6 +110,23 @@ export default function Navbar() {
 								DCC
 							</Typography>
 						</Box>
+						<Box
+							component="span"
+							sx={{
+								ml: 0.75,
+								px: 0.6,
+								py: 0.25,
+								border: "1px solid currentColor",
+								borderRadius: 1,
+								fontSize: "0.55rem",
+								fontWeight: 800,
+								letterSpacing: "0.08em",
+								lineHeight: 1,
+								flexShrink: 0,
+							}}
+						>
+							BETA
+						</Box>
 					</Link>
 
 					<Box sx={{ flexGrow: 1 }} />

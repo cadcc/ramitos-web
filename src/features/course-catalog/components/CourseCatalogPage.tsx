@@ -90,7 +90,7 @@ export function CourseCatalogPage({
 			{indexQuery.isSuccess && !error && !loading && !requiresLogin && (
 				<Fade in>
 					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-						{filteredTotal} {filteredTotal === 1 ? "curso" : "cursos"}
+						{filteredTotal} {filteredTotal === 1 ? "ramo" : "ramos"}
 					</Typography>
 				</Fade>
 			)}

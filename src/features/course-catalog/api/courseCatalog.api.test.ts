@@ -28,6 +28,61 @@ const dynamicCourse: Course = {
 };
 
 describe("course catalog API adapter", () => {
+	it("selects bachelor electives by exact code format, threshold, and exclusions", () => {
+		const entries = [
+			"CC2999",
+			"CC3000",
+			"CC3001",
+			"CC5601",
+			"CC5622",
+			"CC9999",
+			"CC7911",
+			"CC7912",
+			"CC4900",
+			"CC4902",
+			"CC5900",
+			"CC4310",
+			"MA3000",
+			"CC300",
+			"CC30000",
+			"CC300A",
+			"XCC3000",
+		].map((id) => ({ id, name: id, categoryTags: [] }));
+		expect(
+			filterCourseCatalog(entries, { category: "bachelor" }).map(
+				(entry) => entry.id,
+			),
+		).toEqual(["CC3000", "CC7911", "CC4310"]);
+		expect(
+			filterCourseCatalog(entries, { category: "required" }).map(
+				(entry) => entry.id,
+			),
+		).toEqual(["CC3001", "CC4900", "CC4902", "CC5900"]);
+		expect(
+			filterCourseCatalog(entries, { category: "bachelor", q: "4310" }).map(
+				(entry) => entry.id,
+			),
+		).toEqual(["CC4310"]);
+	});
+	it("filters category membership and combines it with search", () => {
+		const entries = ["MA3403", "CC5601", "IN3858", "CFIE006", "CC1001"].map(
+			(id) => ({ id, name: id, categoryTags: [] }),
+		);
+		expect(filterCourseCatalog(entries, { category: "required" })).toEqual([
+			entries[0],
+		]);
+		expect(filterCourseCatalog(entries, { category: "management" })).toEqual([
+			entries[1],
+			entries[2],
+		]);
+		expect(
+			filterCourseCatalog(entries, { category: "specialization", q: "IN" }),
+		).toEqual([entries[2]]);
+		expect(filterCourseCatalog(entries, { category: "integral" })).toEqual([
+			entries[3],
+		]);
+		expect(filterCourseCatalog(entries, { category: "bachelor" })).toEqual([]);
+	});
 	beforeEach(() => listCoursesMock.mockReset());
 
 	it("normalizes the complete static index and resolves category indexes", () => {
@@ -50,7 +105,7 @@ describe("course catalog API adapter", () => {
 
 	it("filters the static index before dynamic pages are requested", () => {
 		const entries = [
-			{ id: "CC1000", name: "Programacion", categoryTags: ["Software"] },
+			{ id: "CC3001", name: "Programacion", categoryTags: ["Software"] },
 			{ id: "CC3000", name: "Sistemas", categoryTags: ["Sistemas"] },
 		];
 
@@ -60,15 +115,31 @@ describe("course catalog API adapter", () => {
 		]);
 	});
 
-	it("shows only modern six-character course codes by default", () => {
+	it("defaults to the union of all five categories without duplicates", () => {
 		const entries = [
-			{ id: "CC10A", name: "Curso historico", categoryTags: [] },
-			{ id: "CC1000", name: "Curso moderno", categoryTags: [] },
-		];
-
-		expect(filterCourseCatalog(entries, {})).toEqual([entries[1]]);
-		expect(filterCourseCatalog(entries, { modernOnly: false })).toEqual(
-			entries,
+			"CC1001",
+			"CC1000",
+			"CC1002",
+			"CC3000",
+			"CC3001",
+			"CC5601",
+			"CC5609",
+			"EL4106",
+			"MA3403",
+			"CC9999",
+		].map((id) => ({ id, name: id, categoryTags: [] }));
+		expect(filterCourseCatalog(entries, {}).map((entry) => entry.id)).toEqual([
+			"CC1000",
+			"CC1002",
+			"CC3000",
+			"CC3001",
+			"CC5601",
+			"CC5609",
+			"EL4106",
+			"MA3403",
+		]);
+		expect(filterCourseCatalog(entries, { category: "dcc" })).toEqual(
+			filterCourseCatalog(entries, {}),
 		);
 	});
 

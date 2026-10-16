@@ -88,7 +88,16 @@ export type SortOption =
 
 export type ReviewSort = "newest" | "top";
 
+export type CourseCategory =
+	| "dcc"
+	| "required"
+	| "specialization"
+	| "bachelor"
+	| "management"
+	| "integral";
+
 export interface CourseFilters {
+	category?: CourseCategory;
 	reviewable?: boolean;
 	q?: string;
 	sort?: SortOption;

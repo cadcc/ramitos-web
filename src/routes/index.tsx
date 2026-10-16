@@ -5,6 +5,16 @@ import type { CourseFilters } from "../shared/types/domain";
 import { CourseCatalogPage } from "../features/course-catalog";
 
 const searchSchema = z.object({
+	category: z
+		.enum([
+			"dcc",
+			"required",
+			"specialization",
+			"bachelor",
+			"management",
+			"integral",
+		])
+		.optional(),
 	reviewable: z.boolean().optional(),
 	q: z.string().optional(),
 	sort: z
@@ -33,6 +43,7 @@ function HomePage() {
 			: "code";
 
 	const filters: CourseFilters = {
+		category: search.category,
 		reviewable: search.reviewable,
 		q: search.q,
 		sort: supportedSort,
@@ -48,6 +59,7 @@ function HomePage() {
 			void navigate({
 				search: {
 					q: newFilters.q,
+					category: newFilters.category,
 					reviewable: newFilters.reviewable,
 					sort: newFilters.sort,
 					modernOnly: newFilters.modernOnly === false ? false : undefined,

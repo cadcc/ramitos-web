@@ -362,11 +362,6 @@
 			"items": [
 				{
 					"type": "tag",
-					"key": "open_notes",
-					"label": "Con apuntes"
-				},
-				{
-					"type": "tag",
 					"key": "peer_assessment",
 					"label": "Coevaluación"
 				},
