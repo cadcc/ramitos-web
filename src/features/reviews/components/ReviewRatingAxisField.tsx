@@ -8,6 +8,7 @@ import type { ReviewAxisDef } from "../model/reviewForm.model";
 
 interface ReviewRatingAxisFieldProps {
 	axis: ReviewAxisDef;
+	isNext?: boolean;
 	selected: number | undefined;
 	selectedTags: string[];
 	onRatingChange: (axis: keyof CourseRatings, value: number) => void;
@@ -16,6 +17,7 @@ interface ReviewRatingAxisFieldProps {
 
 export function ReviewRatingAxisField({
 	axis,
+	isNext = false,
 	selected,
 	selectedTags,
 	onRatingChange,
@@ -28,7 +30,21 @@ export function ReviewRatingAxisField({
 	const axisColor = AXIS_COLORS[axis.key] ?? "#666";
 
 	return (
-		<Box>
+		<Box
+			sx={{
+				borderLeft: "3px solid",
+				borderColor: isNext ? axisColor : "transparent",
+				pl: 1.25,
+				ml: -1.625,
+				borderRadius: 0.5,
+				animation: axisChosen ? "axisComplete 500ms ease-out" : "none",
+				"@keyframes axisComplete": {
+					from: { backgroundColor: alpha(axisColor, 0.12) },
+					to: { backgroundColor: "transparent" },
+				},
+				"@media (prefers-reduced-motion: reduce)": { animation: "none" },
+			}}
+		>
 			<Box
 				sx={{
 					display: "flex",

@@ -1,8 +1,11 @@
+import { celebrateReviewPublication } from "./reviewConfetti";
 import { ReviewExtraTagSection } from "./ReviewExtraTagSection";
 import { TAG_SUGGESTION_URL } from "../../../constants/issueLinks";
 import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
+	Typography,
+	LinearProgress,
 	Button,
 	Stack,
 	Alert,
@@ -72,15 +75,26 @@ function ReviewFormContent({
 	const mutation = useMutation({
 		mutationFn: submitCourseReview,
 		onSuccess: async () => {
+			await Promise.all([
+				qc.invalidateQueries({ queryKey: ["reviews", cursoId] }),
+				qc.invalidateQueries({ queryKey: ["ownReview", cursoId] }),
+				qc.invalidateQueries({ queryKey: ["course", cursoId] }),
+				qc.invalidateQueries({ queryKey: ["course-catalog"] }),
+				qc.invalidateQueries({ queryKey: ["course-catalog-page"] }),
+				qc.invalidateQueries({ queryKey: ["reviewable-courses"] }),
+			]);
+			celebrateReviewPublication();
 			clearDraft();
 			onClose();
-			await qc.invalidateQueries({ queryKey: ["reviews", cursoId] });
-			await qc.invalidateQueries({ queryKey: ["ownReview", cursoId] });
-			await qc.invalidateQueries({ queryKey: ["course", cursoId] });
 		},
 	});
 
-	const filledCount = Object.keys(ratings).length;
+	const filledCount = reviewAxes.filter(
+		(axis) => ratings[axis.key] !== undefined,
+	).length;
+	const nextAxis = reviewAxes.find(
+		(axis) => ratings[axis.key] === undefined,
+	)?.key;
 	const canSubmit = filledCount === 5 && !initialReview;
 
 	const handleSubmit = () => {
@@ -118,6 +132,20 @@ function ReviewFormContent({
 				paper: { sx: { maxHeight: { xs: "100%", sm: "85vh" } } },
 			}}
 		>
+			<LinearProgress
+				variant="determinate"
+				value={filledCount * 20}
+				aria-label="Progreso de la opinión"
+				color={filledCount === 5 ? "success" : "primary"}
+				sx={{
+					height: 3,
+					flexShrink: 0,
+					borderRadius: 0,
+					"@media (prefers-reduced-motion: reduce)": {
+						"& .MuiLinearProgress-bar": { transition: "none" },
+					},
+				}}
+			/>
 			<DialogTitle
 				sx={{
 					fontFamily: '"Space Grotesk", sans-serif',
@@ -129,6 +157,21 @@ function ReviewFormContent({
 				}}
 			>
 				Comparte tu experiencia
+				<Typography
+					component="span"
+					variant="caption"
+					role="status"
+					sx={{
+						display: "block",
+						mt: 0.5,
+						color: filledCount === 5 ? "success.main" : "text.secondary",
+						fontWeight: 600,
+					}}
+				>
+					{filledCount === 5
+						? "¡Ya puedes publicar!"
+						: `${filledCount} de 5 dimensiones`}
+				</Typography>
 			</DialogTitle>
 			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
 				<Stack spacing={3} sx={{ mt: 0.5 }}>
@@ -141,6 +184,7 @@ function ReviewFormContent({
 						<ReviewRatingAxisField
 							key={axis.key}
 							axis={axis}
+							isNext={axis.key === nextAxis}
 							selected={ratings[axis.key]}
 							selectedTags={selectedTags}
 							onRatingChange={(key, value) =>
@@ -213,10 +257,18 @@ function ReviewFormContent({
 					onClick={handleSubmit}
 					disabled={!canSubmit || mutation.isPending}
 					size="small"
+					sx={{
+						transition: "background-color 240ms ease, box-shadow 240ms ease",
+						"@media (prefers-reduced-motion: reduce)": { transition: "none" },
+					}}
 				>
 					{mutation.isPending
 						? "Publicando..."
-						: `${initialReview ? "Guardar cambios" : "Publicar"}${filledCount < 5 ? ` (${filledCount}/5)` : ""}`}
+						: initialReview
+							? "Guardar cambios"
+							: filledCount === 5
+								? "Publicar opinión"
+								: `Publicar (${filledCount}/5)`}
 				</Button>
 			</DialogActions>
 		</Dialog>

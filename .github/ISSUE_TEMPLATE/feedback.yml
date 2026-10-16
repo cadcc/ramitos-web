@@ -1,0 +1,11 @@
+name: Feedback
+description: Comparte una idea, un problema o cualquier comentario sobre Ramitos.
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: ¿Qué nos quieres contar?
+      description: Este espacio es libre. Puedes compartir sugerencias, problemas, ideas o lo que quieras mejorar.
+      placeholder: Cuéntanos… También puedes adjuntar imágenes si te ayudan a explicarlo.
+    validations:
+      required: true

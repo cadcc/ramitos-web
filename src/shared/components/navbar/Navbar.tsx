@@ -23,7 +23,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { LoginDialog, useAuth } from "../../../features/auth";
 import { useState } from "react";
 import ThemeSelector from "./ThemeSelector";
-import { BUG_REPORT_URL } from "../../../constants/issueLinks";
+import { FEEDBACK_URL } from "../../../constants/issueLinks";
 
 function getInitials(name: string): string {
 	return name
@@ -134,10 +134,10 @@ export default function Navbar() {
 
 					<Box
 						component="a"
-						href={BUG_REPORT_URL}
+						href={FEEDBACK_URL}
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label="Issues: reportar un error"
+						aria-label="Enviar feedback"
 						sx={{
 							display: "inline-flex",
 							alignItems: "center",
@@ -153,7 +153,7 @@ export default function Navbar() {
 							"&:hover": { color: "primary.main", borderColor: "primary.main" },
 						}}
 					>
-						Issues
+						Feedback
 					</Box>
 					<Box
 						component={Link}

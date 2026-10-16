@@ -6,11 +6,17 @@ import {
 	waitFor,
 	within,
 } from "@testing-library/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+	QueryClient,
+	QueryClientProvider,
+	QueryObserver,
+} from "@tanstack/react-query";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { CreateReviewForm } from "./ReviewForm";
 import { submitCourseReview } from "../api/reviewSubmission.api";
 import { reviewDraftKey } from "../hooks/useReviewDraft";
+import { celebrateReviewPublication } from "./reviewConfetti";
+vi.mock("./reviewConfetti", () => ({ celebrateReviewPublication: vi.fn() }));
 vi.mock("../../auth", () => ({ useAuth: () => ({ user: { id: 7 } }) }));
 vi.mock("../api/reviewSubmission.api", () => ({ submitCourseReview: vi.fn() }));
 const key = reviewDraftKey(7, "CC1000")!;
@@ -22,6 +28,7 @@ const draft = {
 beforeEach(() => {
 	window.localStorage.clear();
 	vi.mocked(submitCourseReview).mockReset();
+	vi.mocked(celebrateReviewPublication).mockClear();
 });
 afterEach(cleanup);
 function setup() {
@@ -35,8 +42,93 @@ function setup() {
 		</QueryClientProvider>
 	);
 	const view = render(form(true));
-	return { ...view, onClose, form };
+	return { ...view, onClose, form, client };
 }
+it("refetches active reviews and course data before completing publication", async () => {
+	window.localStorage.setItem(key, JSON.stringify(draft));
+	vi.mocked(submitCourseReview).mockResolvedValue({
+		id: 44,
+		account_id: 7,
+		course_code: "CC1000",
+		stats: draft.ratings,
+		tags: [],
+		created_at: "2026-10-16T03:00:00Z",
+	});
+	const view = setup();
+	const queryKeys = [
+		["reviews", "CC1000", "newest"],
+		["ownReview", "CC1000", 7],
+		["course", "CC1000", 7],
+		["course-catalog", null, {}],
+		["course-catalog-page", null, "CC1000", 0],
+		["reviewable-courses", 7, true],
+	];
+	const queries = queryKeys.map((queryKey) => {
+		view.client.setQueryData(queryKey, "before publication");
+		const queryFn = vi.fn().mockResolvedValue("after publication");
+		const observer = new QueryObserver(view.client, {
+			queryKey,
+			queryFn,
+			staleTime: Infinity,
+		});
+		return {
+			queryKey,
+			queryFn,
+			unsubscribe: observer.subscribe(() => undefined),
+		};
+	});
+	try {
+		fireEvent.click(view.getByRole("button", { name: "Publicar opinión" }));
+		await waitFor(() => expect(view.onClose).toHaveBeenCalledOnce());
+		for (const query of queries) {
+			expect(query.queryFn).toHaveBeenCalledOnce();
+			expect(view.client.getQueryData(query.queryKey)).toBe(
+				"after publication",
+			);
+		}
+	} finally {
+		queries.forEach((query) => query.unsubscribe());
+	}
+});
+it("tracks five ratings and automatically opens the individual extra sections", () => {
+	const view = setup();
+	expect(view.getByRole("status").textContent).toBe("0 de 5 dimensiones");
+	expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe("0");
+	expect(
+		view
+			.getByRole("button", { name: "Modalidad" })
+			.getAttribute("aria-expanded"),
+	).toBe("false");
+	for (const [index, label] of [
+		"Carga",
+		"Dificultad",
+		"Docencia",
+		"Utilidad",
+		"Ambiente",
+	].entries()) {
+		fireEvent.click(
+			view.getByRole("button", { name: new RegExp(`^${label}: 3 -`) }),
+		);
+		expect(view.getByRole("status").textContent).toBe(
+			index === 4 ? "¡Ya puedes publicar!" : `${index + 1} de 5 dimensiones`,
+		);
+	}
+	expect(
+		(
+			view.getByRole("button", {
+				name: "Publicar opinión",
+			}) as HTMLButtonElement
+		).disabled,
+	).toBe(false);
+	expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
+		"100",
+	);
+	expect(
+		view
+			.getByRole("button", { name: "Modalidad" })
+			.getAttribute("aria-expanded"),
+	).toBe("true");
+});
 it("retains typed text after closing and reopening the dialog", () => {
 	const view = setup();
 	fireEvent.change(view.getByLabelText("Comentario (opcional)"), {
@@ -67,7 +159,7 @@ it("publishes restored selections and clears the saved draft only after success"
 		created_at: "2026-10-12T12:00:00Z",
 	});
 	const view = setup();
-	fireEvent.click(view.getByRole("button", { name: "Publicar" }));
+	fireEvent.click(view.getByRole("button", { name: "Publicar opinión" }));
 	await waitFor(() => expect(view.onClose).toHaveBeenCalled());
 	expect(submitCourseReview).toHaveBeenCalledWith(
 		expect.objectContaining({
@@ -78,15 +170,17 @@ it("publishes restored selections and clears the saved draft only after success"
 		expect.anything(),
 	);
 	expect(window.localStorage.getItem(key)).toBeNull();
+	expect(celebrateReviewPublication).toHaveBeenCalledTimes(1);
 });
 it("keeps the saved draft after a failed publication", async () => {
 	window.localStorage.setItem(key, JSON.stringify(draft));
 	vi.mocked(submitCourseReview).mockRejectedValue(new Error("offline"));
 	const view = setup();
-	fireEvent.click(view.getByRole("button", { name: "Publicar" }));
+	fireEvent.click(view.getByRole("button", { name: "Publicar opinión" }));
 	await view.findByText("Error al publicar. Intenta de nuevo.");
 	expect(JSON.parse(window.localStorage.getItem(key)!)).toEqual(draft);
 	expect(view.onClose).not.toHaveBeenCalled();
+	expect(celebrateReviewPublication).not.toHaveBeenCalled();
 });
 
 it("selects category options independently, restores them, and submits their context", async () => {
@@ -127,7 +221,7 @@ it("selects category options independently, restores them, and submits their con
 			.getAttribute("aria-pressed"),
 	).toBe("true");
 	fireEvent.click(restored.getByRole("button", { name: "La vida" }));
-	fireEvent.click(restored.getByRole("button", { name: "Publicar" }));
+	fireEvent.click(restored.getByRole("button", { name: "Publicar opinión" }));
 	await waitFor(() => expect(restored.onClose).toHaveBeenCalled());
 	expect(submitCourseReview).toHaveBeenCalledWith(
 		expect.objectContaining({
