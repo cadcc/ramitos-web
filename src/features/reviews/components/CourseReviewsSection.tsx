@@ -116,6 +116,7 @@ export function CourseReviewsSection({
 						color="primary"
 						startIcon={<ReviewIcon />}
 						onClick={handleOpinar}
+						disabled={Boolean(ownReview)}
 						sx={{
 							fontWeight: 700,
 							px: 3,
@@ -128,7 +129,7 @@ export function CourseReviewsSection({
 							transition: "all 0.2s ease",
 						}}
 					>
-						{ownReview ? "Editar opinion" : "Opinar"}
+						{ownReview ? "Editar opinión" : "Opinar"}
 					</Button>
 				) : null}
 			</Box>

@@ -1,10 +1,8 @@
-import { ReviewTagOptions } from "./ReviewTagOptions";
+import { ReviewExtraTagSection } from "./ReviewExtraTagSection";
 import { TAG_SUGGESTION_URL } from "../../../constants/issueLinks";
 import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
-	Box,
-	Typography,
 	Button,
 	Stack,
 	Alert,
@@ -130,7 +128,7 @@ function ReviewFormContent({
 					fontSize: { xs: "1.1rem", sm: "1.25rem" },
 				}}
 			>
-				Comparte tu experiencia ({year}-{semester})
+				Comparte tu experiencia
 			</DialogTitle>
 			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
 				<Stack spacing={3} sx={{ mt: 0.5 }}>
@@ -153,46 +151,16 @@ function ReviewFormContent({
 					))}
 					{REVIEW_TAG_SECTIONS.filter((section) => !section.axis).map(
 						(section) => (
-							<Box key={section.key}>
-								<Typography
-									sx={{
-										fontWeight: 700,
-										fontSize: "1rem",
-										fontFamily: '"Space Grotesk", sans-serif',
-										mb: section.question ? 0.25 : 1.25,
-									}}
-								>
-									{section.label}
-								</Typography>
-								{section.question && (
-									<Typography
-										variant="caption"
-										color="text.secondary"
-										sx={{ fontSize: "0.85rem", display: "block", mb: 0.5 }}
-									>
-										{section.question}
-									</Typography>
-								)}
-								<ReviewTagOptions
-									items={section.items}
-									selectedTags={selectedTags}
-									onToggleTag={toggleTag}
-								/>
-							</Box>
+							<ReviewExtraTagSection
+								key={section.key}
+								section={section}
+								allAxesRated={filledCount === 5}
+								selectedTags={selectedTags}
+								onToggleTag={toggleTag}
+							/>
 						),
 					)}
-					<Box sx={{ alignSelf: "flex-start", mt: "12px !important" }}>
-						<Button
-							component="a"
-							href={TAG_SUGGESTION_URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							size="small"
-							sx={{ fontSize: "0.75rem", textTransform: "none", px: 0.5 }}
-						>
-							Sugerir una etiqueta
-						</Button>
-					</Box>
+
 					<ReviewCommentField
 						value={comment}
 						onChange={(comment) => updateDraft({ comment })}
@@ -228,6 +196,16 @@ function ReviewFormContent({
 			>
 				<Button onClick={onClose} size="small">
 					Cerrar
+				</Button>
+				<Button
+					component="a"
+					href={TAG_SUGGESTION_URL}
+					target="_blank"
+					rel="noopener noreferrer"
+					size="small"
+					sx={{ fontSize: "0.75rem", textTransform: "none", px: 0.5 }}
+				>
+					Sugerir una etiqueta
 				</Button>
 				<Button
 					variant="contained"

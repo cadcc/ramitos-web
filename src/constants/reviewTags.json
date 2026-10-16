@@ -362,23 +362,13 @@
 			"items": [
 				{
 					"type": "tag",
-					"key": "peer_assessment",
-					"label": "Coevaluación"
-				},
-				{
-					"type": "tag",
-					"key": "graded_participation",
-					"label": "Participación"
-				},
-				{
-					"type": "tag",
 					"key": "mandatory_attendance",
 					"label": "Asistencia"
 				},
 				{
 					"type": "tag",
-					"key": "no_final_exam",
-					"label": "Sin examen"
+					"key": "peer_assessment",
+					"label": "Coevaluación"
 				},
 				{
 					"type": "tag",
@@ -387,8 +377,8 @@
 				},
 				{
 					"type": "tag",
-					"key": "assignments",
-					"label": "Tareas"
+					"key": "exercises",
+					"label": "Ejercicios"
 				},
 				{
 					"type": "tag",
@@ -397,13 +387,28 @@
 				},
 				{
 					"type": "tag",
-					"key": "projects",
-					"label": "Proyectos"
+					"key": "graded_participation",
+					"label": "Participación"
 				},
 				{
 					"type": "tag",
 					"key": "presentations",
 					"label": "Presentaciones"
+				},
+				{
+					"type": "tag",
+					"key": "projects",
+					"label": "Proyectos"
+				},
+				{
+					"type": "tag",
+					"key": "no_final_exam",
+					"label": "Sin examen"
+				},
+				{
+					"type": "tag",
+					"key": "assignments",
+					"label": "Tareas"
 				}
 			]
 		}

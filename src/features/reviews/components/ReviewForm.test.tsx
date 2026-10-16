@@ -139,6 +139,7 @@ it("selects category options independently, restores them, and submits their con
 
 it("uses configured exclusive groups while preserving independent tags", () => {
 	const view = setup();
+	fireEvent.click(view.getByRole("button", { name: "Modalidad" }));
 	fireEvent.click(view.getByRole("button", { name: "Online" }));
 	fireEvent.click(view.getByRole("button", { name: "Grupal" }));
 	fireEvent.click(view.getByRole("button", { name: "Presencial" }));

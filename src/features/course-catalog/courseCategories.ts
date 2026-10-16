@@ -45,6 +45,7 @@ export function matchesCourseCategory(
 	if (category === "bachelor") {
 		return (
 			/^CC\d{4}$/.test(code) &&
+			code !== "CC3003" &&
 			Number(code.slice(2)) >= 3000 &&
 			Number(code.slice(2)) <= 7911 &&
 			!(["required", "management", "integral"] as const).some((excluded) =>

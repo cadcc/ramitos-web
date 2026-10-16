@@ -31,6 +31,7 @@ describe("course catalog API adapter", () => {
 	it("selects bachelor electives by exact code format, threshold, and exclusions", () => {
 		const entries = [
 			"CC2999",
+			"CC3003",
 			"CC3000",
 			"CC3001",
 			"CC5601",

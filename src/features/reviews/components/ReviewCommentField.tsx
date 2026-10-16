@@ -72,14 +72,6 @@ export function ReviewCommentField({ value, onChange, open, isMobile }: Props) {
 		<Box>
 			<Typography sx={{ fontWeight: 700, fontSize: "1rem", mb: 1.25 }}>
 				Comentario
-				<Typography
-					component="span"
-					variant="caption"
-					color="text.secondary"
-					sx={{ ml: 1 }}
-				>
-					Opcional
-				</Typography>
 			</Typography>
 			<TextField
 				fullWidth
