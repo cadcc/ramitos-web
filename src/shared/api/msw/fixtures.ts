@@ -182,6 +182,12 @@ function courseFromSeed([
 	return {
 		id,
 		name,
+		get commentReviewCount() {
+			return (
+				reviewsByCourse.get(id)?.filter((review) => review.comments?.trim())
+					.length ?? 0
+			);
+		},
 		get reviewCount() {
 			return reviewsByCourse.get(id)?.length ?? 0;
 		},

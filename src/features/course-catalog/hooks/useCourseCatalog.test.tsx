@@ -36,6 +36,7 @@ const course = (id: string) => ({
 	stats: {},
 	tag_stats: {},
 	reviewCount: 0,
+	commentReviewCount: 0,
 	reviewable: true,
 });
 function wrapper() {

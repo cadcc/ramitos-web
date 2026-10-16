@@ -32,10 +32,16 @@ afterEach(() => {
 	auth.isAuthenticated = true;
 });
 const props = {
+	commentReviewCount: 23,
 	cursoId: "CC1000",
 	reviewSort: "newest" as const,
 	onReviewSortChange: vi.fn(),
 };
+
+it("shows the backend comment count independently of loaded reviews", () => {
+	const view = render(<CourseReviewsSection {...props} />);
+	expect(view.getByRole("heading", { name: "Comentarios (23)" })).toBeTruthy();
+});
 
 it("replaces the action when the course is not reviewable", () => {
 	const view = render(<CourseReviewsSection {...props} reviewable={false} />);

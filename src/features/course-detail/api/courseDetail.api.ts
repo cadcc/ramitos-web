@@ -106,20 +106,6 @@ function fallbackDescription(course: GetCourseResponseContent): string {
 	return `${course.name} aborda contenidos centrales del area, combinando fundamentos, practica y evaluaciones aplicadas para estudiantes del DCC.`;
 }
 
-function fallbackReviewCount(course: GetCourseResponseContent): number {
-	// TODO(backend): Replace with aggregate review count from the API.
-	const values = Object.values(
-		course.stats as Record<string, { value: number }>,
-	)
-		.map((stat) => stat?.value)
-		.filter((value): value is number => typeof value === "number" && value > 0);
-	return values.length > 0
-		? withCourseSeed(course.id, 500, () =>
-				faker.number.int({ min: 4, max: 48 }),
-			)
-		: 0;
-}
-
 function toCourseDetail(course: GetCourseResponseContent): Curso {
 	// TODO(backend): Once getCourse returns the full course detail view model, replace this adapter with the generated useGetCourse hook.
 	const semesters = fallbackSemesters(course.id);
@@ -148,7 +134,8 @@ function toCourseDetail(course: GetCourseResponseContent): Curso {
 			relevancia: statValue(course, "relevancia"),
 			vibes: statValue(course, "vibes"),
 		},
-		reviewCount: fallbackReviewCount(course),
+		reviewCount: course.reviewCount,
+		commentReviewCount: course.commentReviewCount,
 		semesters,
 	};
 }

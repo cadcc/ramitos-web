@@ -158,7 +158,7 @@ export default function FilterBar({
 					</Select>
 				</FormControl>
 
-				<FormControl size="small" sx={{ minWidth: 170 }}>
+				<FormControl size="small" sx={{ minWidth: 130 }}>
 					<InputLabel id="course-scope-label" sx={{ fontSize: "0.85rem" }}>
 						Ramos
 					</InputLabel>

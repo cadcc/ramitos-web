@@ -17,7 +17,7 @@ interface Props {
 
 const axisLabels: { key: keyof CourseRatings; label: string }[] = [
 	{ key: "docencia", label: "Docencia" },
-	{ key: "vibes", label: "Vibes" },
+	{ key: "vibes", label: "Ambiente" },
 	{ key: "relevancia", label: "Relevancia" },
 	{ key: "carga", label: "Carga" },
 	{ key: "dificultad", label: "Dificultad" },

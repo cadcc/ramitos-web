@@ -53,7 +53,11 @@ const axisEntries: {
 		abbr: "REL",
 		tooltip: "Relevancia — Utilidad profesional",
 	},
-	{ key: "vibes", abbr: "VIB", tooltip: "Vibes — Ambiente general del curso" },
+	{
+		key: "vibes",
+		abbr: "AMB",
+		tooltip: "Ambiente — Ambiente general del curso",
+	},
 ];
 
 function formatDate(d: string) {

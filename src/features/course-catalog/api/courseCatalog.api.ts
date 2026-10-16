@@ -79,7 +79,7 @@ export function toCourseCatalogItem(
 	);
 
 	// TODO(backend): Replace the remaining catalog defaults when credits,
-	// offering history, plan membership, and review counts are exposed.
+	// offering history and plan membership are exposed.
 	return {
 		id: entry.id,
 		name: entry.name,
@@ -97,7 +97,7 @@ export function toCourseCatalogItem(
 			relevancia: statValue(course, "relevancia"),
 			vibes: statValue(course, "vibes"),
 		},
-		reviewCount: 0,
+		reviewCount: course?.reviewCount ?? 0,
 	};
 }
 

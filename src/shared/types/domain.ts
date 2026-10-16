@@ -27,6 +27,7 @@ export interface Curso {
 	lastOffered: string;
 	ratings: CourseRatings;
 	reviewCount: number;
+	commentReviewCount: number;
 	semesters: RamoSummary[];
 }
 

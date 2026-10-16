@@ -86,6 +86,7 @@ export function CourseDetailPage({
 
 				<CourseReviewsSection
 					reviewable={course.reviewable}
+					commentReviewCount={course.commentReviewCount}
 					cursoId={cursoId}
 					reviewSort={reviewSort}
 					reviewId={reviewId}

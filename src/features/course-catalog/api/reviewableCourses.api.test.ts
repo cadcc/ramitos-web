@@ -19,6 +19,7 @@ it("authenticates and follows the cursor beyond the first 50 reviewable courses"
 		stats: {},
 		tag_stats: {},
 		reviewCount: 0,
+		commentReviewCount: 0,
 		reviewable: true,
 	}));
 	vi.mocked(listCourses)

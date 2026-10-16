@@ -20,13 +20,16 @@ it("loads authenticated eligibility and preserves a false reviewable value", asy
 			name: "Curso",
 			stats: {},
 			tag_stats: {},
-			reviewCount: 0,
+			reviewCount: 42,
+			commentReviewCount: 17,
 			enrolled: false,
 			reviewable: false,
 		},
 		headers: new Headers(),
 	});
 	expect(await getCourseDetail("CC1000", true)).toMatchObject({
+		reviewCount: 42,
+		commentReviewCount: 17,
 		enrolled: false,
 		reviewable: false,
 	});
@@ -44,6 +47,7 @@ it("keeps missing eligibility unknown on a public request", async () => {
 			stats: {},
 			tag_stats: {},
 			reviewCount: 0,
+			commentReviewCount: 0,
 		},
 		headers: new Headers(),
 	});

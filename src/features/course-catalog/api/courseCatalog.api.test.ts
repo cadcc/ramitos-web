@@ -19,6 +19,7 @@ const dynamicCourse: Course = {
 	id: "CC1000",
 	name: "Herramientas Computacionales",
 	reviewCount: 10,
+	commentReviewCount: 0,
 	stats: {
 		docencia: { value: 4.4 },
 		carga: { value: 7 },
@@ -84,6 +85,7 @@ describe("course catalog API adapter", () => {
 		];
 
 		const result = await getCourseCatalogPage(entries);
+		expect(result.items.map((course) => course.reviewCount)).toEqual([10, 10]);
 
 		expect(listCoursesMock).toHaveBeenCalledWith({
 			codes: ["CC1000", "CC2000"],
@@ -103,6 +105,7 @@ describe("course catalog API adapter", () => {
 
 		expect(result.name).toBe("Curso sin opiniones");
 		expect(result.ratings.docencia).toBe(0);
+		expect(result.reviewCount).toBe(0);
 		expect(
 			toCourseCatalogItem(
 				{ id: "CC1000", name: "A", categoryTags: [] },

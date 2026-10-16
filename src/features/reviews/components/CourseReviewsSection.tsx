@@ -20,6 +20,7 @@ import {
 } from "../hooks/useCourseReviews";
 
 interface CourseReviewsSectionProps {
+	commentReviewCount: number;
 	reviewable?: boolean;
 	cursoId: string;
 	reviewSort: ReviewSort;
@@ -28,6 +29,7 @@ interface CourseReviewsSectionProps {
 }
 
 export function CourseReviewsSection({
+	commentReviewCount,
 	reviewable,
 	cursoId,
 	reviewSort,
@@ -36,8 +38,11 @@ export function CourseReviewsSection({
 }: CourseReviewsSectionProps) {
 	const { user, isAuthenticated, openLoginDialog } = useAuth();
 	const [reviewFormOpen, setReviewFormOpen] = useState(false);
-	const { reviewsQuery, loadMoreRef, reviews, total, targetFound } =
-		useCourseReviews(cursoId, reviewSort, reviewId);
+	const { reviewsQuery, loadMoreRef, reviews, targetFound } = useCourseReviews(
+		cursoId,
+		reviewSort,
+		reviewId,
+	);
 	const ownReviewQuery = useOwnCourseReview(cursoId, user?.id, isAuthenticated);
 	const ownReview = ownReviewQuery.data ?? null;
 
@@ -70,7 +75,7 @@ export function CourseReviewsSection({
 						variant="h5"
 						sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" } }}
 					>
-						Opiniones ({total})
+						Comentarios ({commentReviewCount})
 					</Typography>
 					<ToggleButtonGroup
 						value={reviewSort}
