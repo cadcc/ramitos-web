@@ -1,3 +1,4 @@
+import { CourseCardTitle } from "./CourseCardTitle";
 import { Card, CardContent, Typography, Box, Tooltip } from "@mui/material";
 import { Link } from "@tanstack/react-router";
 import type { CursoListItem } from "../../../shared/types/domain";
@@ -10,7 +11,6 @@ import {
 	COURSE_CARD_MIN_HEIGHT,
 	courseCardCodeSx,
 	courseCardOpinionSx,
-	courseCardTitleSx,
 } from "./courseCard.styles";
 import { MiniRadar } from "./MiniRadar";
 
@@ -24,7 +24,6 @@ interface Props {
 
 export default function CourseCard({
 	course,
-	index,
 	showReviewableIndicator = false,
 }: Props) {
 	const isCurrent = course.lastOffered === CURRENT_SEMESTER;
@@ -38,12 +37,6 @@ export default function CourseCard({
 				minHeight: COURSE_CARD_MIN_HEIGHT,
 				display: "flex",
 				flexDirection: "column",
-				animation: "fadeInUp 0.35s ease both",
-				animationDelay: `${(index % 8) * 20}ms`,
-				"@keyframes fadeInUp": {
-					from: { opacity: 0, transform: "translateY(8px)" },
-					to: { opacity: 1, transform: "translateY(0)" },
-				},
 				"&:hover": {
 					borderColor: "primary.main",
 					transform: "translateY(-2px)",
@@ -109,18 +102,18 @@ export default function CourseCard({
 							<Typography
 								variant="overline"
 								color="primary"
-								sx={courseCardCodeSx}
+								sx={{ ...courseCardCodeSx, pr: 7 }}
 							>
 								{course.code}
 							</Typography>
-							<Typography variant="body1" sx={courseCardTitleSx}>
-								{course.name}
-							</Typography>
+							<CourseCardTitle title={course.name} />
 						</Box>
 						<Typography
 							variant="caption"
 							sx={{
-								flexShrink: 0,
+								position: "absolute",
+								top: 16,
+								right: 16,
 								fontSize: "0.7rem",
 								fontWeight: 700,
 								color: isCurrent ? "success.main" : "text.secondary",
@@ -158,7 +151,11 @@ export default function CourseCard({
 								lineHeight: 0,
 							}}
 						>
-							<MiniRadar ratings={course.ratings} />
+							{course.reviewCount > 0 ? (
+								<MiniRadar ratings={course.ratings} />
+							) : (
+								<Box aria-hidden sx={{ width: 38, height: 38 }} />
+							)}
 						</Box>
 					</Box>
 				</CardContent>

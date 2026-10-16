@@ -1,13 +1,8 @@
+import { CourseCardTitle } from "./CourseCardTitle";
 import { Box, Card, CardContent, Skeleton, Typography } from "@mui/material";
 import { Link } from "@tanstack/react-router";
 import { DEFAULT_REVIEW_SORT } from "../../../constants/reviews";
-import {
-	COURSE_CARD_MIN_HEIGHT,
-	courseCardCodeSx,
-	courseCardOpinionSx,
-	courseCardTitleSx,
-} from "./courseCard.styles";
-import { MiniRadarSkeleton } from "./MiniRadar";
+import { COURSE_CARD_MIN_HEIGHT, courseCardCodeSx } from "./courseCard.styles";
 
 interface CourseCardSkeletonProps {
 	code?: string;
@@ -45,65 +40,24 @@ export function CourseCardSkeleton({ code, title }: CourseCardSkeletonProps) {
 							>
 								{code}
 							</Typography>
-							<Typography variant="body1" sx={courseCardTitleSx}>
-								{title}
-							</Typography>
+							<CourseCardTitle title={title!} />
 						</>
 					) : (
 						<>
-							<Skeleton variant="text" width={54} height={14} />
-							<Skeleton variant="text" width="88%" height={22} />
-							<Skeleton
-								variant="text"
-								width="58%"
-								height={22}
-								sx={{ mt: -0.5 }}
-							/>
+							<Box sx={{ height: "0.91rem" }}>
+								<Skeleton variant="text" width={54} height="100%" />
+							</Box>
+							<Box sx={{ height: "2.375rem" }}>
+								<Skeleton variant="text" width="88%" height="50%" />
+								<Skeleton variant="text" width="58%" height="50%" />
+							</Box>
 						</>
 					)}
 				</Box>
 			</Box>
 
-			<Box
-				sx={{
-					display: "flex",
-					alignItems: "flex-end",
-					justifyContent: "space-between",
-					mt: "auto",
-				}}
-			>
-				{hasCourseLayout ? (
-					<Typography
-						variant="caption"
-						color="text.secondary"
-						sx={{
-							...courseCardOpinionSx,
-							display: "inline-flex",
-							alignItems: "baseline",
-						}}
-					>
-						<Skeleton
-							component="span"
-							variant="text"
-							width="1ch"
-							height="1em"
-							sx={{
-								display: "inline-block",
-								transform: "none",
-								mr: "0.35ch",
-							}}
-						/>
-						opiniones
-					</Typography>
-				) : (
-					<Skeleton variant="text" width={72} height={16} />
-				)}
-				{hasCourseLayout ? (
-					<MiniRadarSkeleton />
-				) : (
-					<Skeleton variant="circular" width={38} height={38} />
-				)}
-			</Box>
+			{/* Reserve the loaded footer without flashing placeholder statistics. */}
+			<Box aria-hidden sx={{ height: 38, mt: "auto" }} />
 		</CardContent>
 	);
 

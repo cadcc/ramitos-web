@@ -1,4 +1,6 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { zipSync } from "fflate";
 import { parseEnv } from "node:util";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath, URL } from "node:url";
@@ -22,3 +24,16 @@ for (const [script, args] of [
 	if (result.error) throw result.error;
 	if (result.status !== 0) process.exit(result.status ?? 1);
 }
+
+const files = {};
+function collectFiles(directory, prefix = "") {
+	for (const entry of readdirSync(directory, { withFileTypes: true })) {
+		const path = join(directory, entry.name);
+		const archivePath = `${prefix}${entry.name}`;
+		if (entry.isDirectory()) collectFiles(path, `${archivePath}/`);
+		else if (entry.isFile()) files[archivePath] = readFileSync(path);
+	}
+}
+collectFiles(join(root, "dist"));
+writeFileSync(join(root, "dist.zip"), zipSync(files));
+console.log("Created dist.zip with the contents of dist/.");
