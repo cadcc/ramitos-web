@@ -200,12 +200,15 @@ function CourseScoreSummary({ course }: { course: Curso }) {
 					fontSize: "2.4rem",
 					fontWeight: 800,
 					fontFamily: '"Space Grotesk", sans-serif',
-					color: (theme) => getRadarColor(theme, avg),
+					color: (theme) =>
+						course.reviewCount > 0
+							? getRadarColor(theme, avg)
+							: theme.palette.text.secondary,
 					lineHeight: 1,
 					mb: -0.5,
 				}}
 			>
-				{formatter.format(avg)}
+				{course.reviewCount > 0 ? formatter.format(avg) : "-.-"}
 			</Typography>
 			<Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>
 				{course.reviewCount} opiniones

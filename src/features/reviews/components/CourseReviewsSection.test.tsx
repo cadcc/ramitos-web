@@ -58,6 +58,17 @@ it("opens the form for an eligible user", () => {
 	fireEvent.click(view.getByRole("button", { name: "Opinar" }));
 	expect(view.getByText("Review form opened")).toBeTruthy();
 });
+it("shows one prominent action below the invitation for an eligible empty course", () => {
+	const view = render(
+		<CourseReviewsSection {...props} commentReviewCount={0} reviewable />,
+	);
+	const invitation = view.getByText("¡Sé la primera persona en opinar!");
+	const buttons = view.getAllByRole("button", { name: "Opinar" });
+	expect(buttons).toHaveLength(1);
+	expect(invitation.parentElement?.contains(buttons[0]!)).toBe(true);
+	fireEvent.click(buttons[0]!);
+	expect(view.getByText("Review form opened")).toBeTruthy();
+});
 it("still invites signed-out users to log in", () => {
 	auth.isAuthenticated = false;
 	const view = render(<CourseReviewsSection {...props} />);

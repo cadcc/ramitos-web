@@ -45,6 +45,14 @@ export function CourseReviewsSection({
 	);
 	const ownReviewQuery = useOwnCourseReview(cursoId, user?.id, isAuthenticated);
 	const ownReview = ownReviewQuery.data ?? null;
+	const showEmptyReviewAction =
+		isAuthenticated &&
+		reviewable === true &&
+		!ownReview &&
+		commentReviewCount === 0 &&
+		reviews.length === 0 &&
+		!reviewsQuery.isLoading &&
+		!reviewsQuery.isError;
 
 	const handleOpinar = () => {
 		if (!isAuthenticated) openLoginDialog();
@@ -102,7 +110,7 @@ export function CourseReviewsSection({
 							? "No has cursado este ramo."
 							: "No pudimos verificar si puedes opinar."}
 					</Typography>
-				) : (
+				) : !showEmptyReviewAction ? (
 					<Button
 						variant="contained"
 						color="primary"
@@ -122,7 +130,7 @@ export function CourseReviewsSection({
 					>
 						{ownReview ? "Editar opinion" : "Opinar"}
 					</Button>
-				)}
+				) : null}
 			</Box>
 
 			<Stack spacing={1.5} sx={{ mb: 4 }}>
@@ -157,13 +165,38 @@ export function CourseReviewsSection({
 						No pudimos cargar las opiniones. Inténtalo de nuevo.
 					</Alert>
 				) : reviews.length === 0 ? (
-					<Typography
-						variant="body1"
-						color="text.secondary"
-						sx={{ textAlign: "center", py: 4 }}
+					<Stack
+						spacing={2.5}
+						sx={{ textAlign: "center", py: 5, alignItems: "center" }}
 					>
-						Aun no hay opiniones para este curso.
-					</Typography>
+						<Typography
+							variant="body1"
+							color="text.secondary"
+							sx={{ fontStyle: showEmptyReviewAction ? "italic" : "normal" }}
+						>
+							{showEmptyReviewAction
+								? "¡Sé la primera persona en opinar!"
+								: "Aún no hay opiniones para este curso."}
+						</Typography>
+						{showEmptyReviewAction && (
+							<Button
+								variant="contained"
+								size="large"
+								startIcon={<ReviewIcon />}
+								onClick={handleOpinar}
+								sx={{
+									minWidth: 200,
+									minHeight: 56,
+									px: 5,
+									borderRadius: 3,
+									fontWeight: 700,
+									fontSize: "1.1rem",
+								}}
+							>
+								Opinar
+							</Button>
+						)}
+					</Stack>
 				) : (
 					reviews.map((review) => (
 						<ReviewTarget
