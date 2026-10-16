@@ -5,6 +5,7 @@ import type { CourseFilters } from "../shared/types/domain";
 import { CourseCatalogPage } from "../features/course-catalog";
 
 const searchSchema = z.object({
+	reviewable: z.boolean().optional(),
 	q: z.string().optional(),
 	sort: z
 		.enum(["rating", "reviews", "recent", "alphabetical", "code"])
@@ -32,6 +33,7 @@ function HomePage() {
 			: "code";
 
 	const filters: CourseFilters = {
+		reviewable: search.reviewable,
 		q: search.q,
 		sort: supportedSort,
 		modernOnly: search.modernOnly ?? true,
@@ -46,6 +48,7 @@ function HomePage() {
 			void navigate({
 				search: {
 					q: newFilters.q,
+					reviewable: newFilters.reviewable,
 					sort: newFilters.sort,
 					modernOnly: newFilters.modernOnly === false ? false : undefined,
 					plan: newFilters.plan,

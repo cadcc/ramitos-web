@@ -12,6 +12,8 @@ export interface User {
 }
 
 export interface Curso {
+	enrolled?: boolean;
+	reviewable?: boolean;
 	id: string;
 	name: string;
 	code: string;
@@ -86,6 +88,7 @@ export type SortOption =
 export type ReviewSort = "newest" | "top";
 
 export interface CourseFilters {
+	reviewable?: boolean;
 	q?: string;
 	sort?: SortOption;
 	modernOnly?: boolean;

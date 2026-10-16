@@ -16,9 +16,9 @@ export function getTagColor(tag: string): string | undefined {
 }
 
 export function getRadarColor(theme: Theme, averageScore: number) {
-    return averageScore >= 3.5
+    return averageScore >= 6.0
         ? theme.palette.success.main
-        : averageScore >= 2.5
+        : averageScore >= 4.0
             ? theme.palette.warning.main
             : theme.palette.error.main;
 }

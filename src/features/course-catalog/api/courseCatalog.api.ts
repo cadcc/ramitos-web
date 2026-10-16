@@ -104,15 +104,20 @@ export function toCourseCatalogItem(
 export async function getCourseCatalogPage(
 	entries: CourseCatalogEntry[],
 	cursor = 0,
+	reviewableCourses?: Course[],
 ): Promise<CourseCatalogPage> {
 	const pageEntries = entries.slice(cursor, cursor + COURSE_CATALOG_PAGE_SIZE);
 	if (pageEntries.length === 0) return { items: [], nextCursor: null };
 
-	const response = await listCourses({
-		codes: pageEntries.map((course) => course.id),
-	});
+	const courses =
+		reviewableCourses ??
+		(
+			await listCourses({
+				codes: pageEntries.map((course) => course.id),
+			})
+		).data;
 	const coursesById = new Map(
-		response.data.map((course) => [course.id, course] as const),
+		courses.map((course) => [course.id, course] as const),
 	);
 	const nextCursor = cursor + pageEntries.length;
 

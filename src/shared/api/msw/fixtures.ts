@@ -345,17 +345,33 @@ function courseByParam(info: RequestInfo): Course {
 	);
 }
 
+function withEligibility(course: Course, info: RequestInfo): Course {
+	if (!info.request.headers.has("Authorization")) return course;
+	const enrolled =
+		(Array.from(course.id).reduce((sum, char) => sum + char.charCodeAt(0), 0) +
+			authAccount(info).id) %
+			2 ===
+		0;
+	return { ...course, enrolled, reviewable: enrolled };
+}
+
 export function mockListCourses(info: RequestInfo): ListCoursesOutputPayload {
 	const params = new URL(info.request.url).searchParams;
 	const requestedCodes = params.getAll("codes");
-	if (requestedCodes.length > 0) {
-		const requested = new Set(requestedCodes);
-		return courses.filter((course) => requested.has(course.id));
+	let result = courses.map((course) => withEligibility(course, info));
+	if (requestedCodes.length)
+		result = result.filter((course) => requestedCodes.includes(course.id));
+	for (const flag of ["reviewable", "enrolled"] as const) {
+		if (params.has(flag))
+			result = result.filter(
+				(course) => course[flag] === (params.get(flag) === "true"),
+			);
 	}
-
-	const limit = Number(searchParam(info, "limit") ?? 24);
-	const after = searchParam(info, "after");
-	return pageByCursor(courses, limit, after);
+	return pageByCursor(
+		result,
+		Number(params.get("limit") ?? 50),
+		params.get("after"),
+	);
 }
 
 export function mockGetCoursesStaticData(): CoursesStaticDataContainer {
@@ -373,7 +389,7 @@ export function mockGetCoursesStaticData(): CoursesStaticDataContainer {
 }
 
 export function mockGetCourse(info: RequestInfo): Course {
-	return courseByParam(info);
+	return withEligibility(courseByParam(info), info);
 }
 
 export function mockListCourseReviews(

@@ -1,3 +1,4 @@
+import { session } from "../../auth";
 import { faker } from "@faker-js/faker";
 import { getCourse } from "../../../generated/api/course/courseService";
 import type { GetCourseResponseContent } from "../../../generated/api/course/models";
@@ -127,6 +128,8 @@ function toCourseDetail(course: GetCourseResponseContent): Curso {
 	return {
 		id: course.id,
 		name: course.name,
+		enrolled: course.enrolled,
+		reviewable: course.reviewable,
 		code: course.id,
 		credits: fallbackCredits(course.id),
 		description: fallbackDescription(course),
@@ -172,9 +175,15 @@ function toRelatedCourse(
 	};
 }
 
-export async function getCourseDetail(courseId: string): Promise<Curso | null> {
-	const response = await getCourse(courseId);
+export async function getCourseDetail(
+	courseId: string,
+	authenticated = false,
+): Promise<Curso | null> {
+	const response = authenticated
+		? await session.authenticated((headers) => getCourse(courseId, { headers }))
+		: await getCourse(courseId);
 	if ((response as { status: number }).status === 404) return null;
+	if (response.status !== 200) throw new Error("Unable to load course");
 	return toCourseDetail(response.data);
 }
 

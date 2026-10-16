@@ -1,5 +1,6 @@
+import { useAuth } from "../../auth";
 import { useInfiniteScroll } from "../../../shared/hooks/useInfiniteScroll";
-import { Box, Fade, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Button, Fade, Grid, Skeleton, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
 import type { CourseCatalogEntry } from "../api/courseCatalog.api";
 import { COURSE_CATALOG_PAGE_SIZE } from "../api/courseCatalog.api";
@@ -40,6 +41,8 @@ export function CourseCatalogPage({
 	onFilterChange,
 }: CourseCatalogPageProps) {
 	const {
+		reviewableQuery,
+		requiresLogin,
 		indexQuery,
 		pagesQuery,
 		filteredTotal,
@@ -47,6 +50,7 @@ export function CourseCatalogPage({
 		initialSkeletonEntries,
 		nextSkeletonEntries,
 	} = useCourseCatalog(filters);
+	const { openLoginDialog } = useAuth();
 	const {
 		data,
 		fetchNextPage,
@@ -63,8 +67,16 @@ export function CourseCatalogPage({
 	});
 
 	const courses = data?.pages.flatMap((page) => page.items) ?? [];
-	const loading = indexQuery.isLoading || isLoading;
-	const error = indexQuery.isError || isError;
+	const loading =
+		indexQuery.isLoading ||
+		isLoading ||
+		(filters.reviewable !== undefined &&
+			!requiresLogin &&
+			reviewableQuery.isPending);
+	const error =
+		indexQuery.isError ||
+		isError ||
+		(filters.reviewable !== undefined && reviewableQuery.isError);
 
 	return (
 		<Box>
@@ -74,7 +86,7 @@ export function CourseCatalogPage({
 				categoryOptions={categoryOptions}
 			/>
 
-			{indexQuery.isSuccess && !error && (
+			{indexQuery.isSuccess && !error && !loading && !requiresLogin && (
 				<Fade in>
 					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
 						{filteredTotal} {filteredTotal === 1 ? "curso" : "cursos"}
@@ -85,7 +97,12 @@ export function CourseCatalogPage({
 				<Skeleton width={86} height={20} sx={{ mb: 2 }} />
 			)}
 
-			{loading ? (
+			{requiresLogin ? (
+				<Box sx={{ textAlign: "center", py: 8 }}>
+					<Typography>Inicia sesión para ver tus cursos.</Typography>
+					<Button onClick={openLoginDialog}>Iniciar sesión</Button>
+				</Box>
+			) : loading ? (
 				<CourseSkeletonGrid
 					entries={indexQuery.isSuccess ? initialSkeletonEntries : undefined}
 				/>
@@ -94,6 +111,16 @@ export function CourseCatalogPage({
 					<Typography color="error">
 						Error al cargar los cursos. Intenta de nuevo.
 					</Typography>
+					<Button
+						onClick={() => {
+							void indexQuery.refetch();
+							if (filters.reviewable !== undefined)
+								void reviewableQuery.refetch();
+							void pagesQuery.refetch();
+						}}
+					>
+						Reintentar
+					</Button>
 				</Box>
 			) : courses.length === 0 ? (
 				<Box sx={{ textAlign: "center", py: 8 }}>

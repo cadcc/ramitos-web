@@ -20,6 +20,7 @@ import {
 } from "../hooks/useCourseReviews";
 
 interface CourseReviewsSectionProps {
+	reviewable?: boolean;
 	cursoId: string;
 	reviewSort: ReviewSort;
 	reviewId?: number;
@@ -27,6 +28,7 @@ interface CourseReviewsSectionProps {
 }
 
 export function CourseReviewsSection({
+	reviewable,
 	cursoId,
 	reviewSort,
 	reviewId,
@@ -40,8 +42,8 @@ export function CourseReviewsSection({
 	const ownReview = ownReviewQuery.data ?? null;
 
 	const handleOpinar = () => {
-		if (isAuthenticated) setReviewFormOpen(true);
-		else openLoginDialog();
+		if (!isAuthenticated) openLoginDialog();
+		else if (ownReview || reviewable === true) setReviewFormOpen(true);
 	};
 
 	return (
@@ -89,25 +91,33 @@ export function CourseReviewsSection({
 						<ToggleButton value="top">Top</ToggleButton>
 					</ToggleButtonGroup>
 				</Box>
-				<Button
-					variant="contained"
-					color="primary"
-					startIcon={<ReviewIcon />}
-					onClick={handleOpinar}
-					sx={{
-						fontWeight: 700,
-						px: 3,
-						borderRadius: 3,
-						width: { xs: "100%", sm: "auto" },
-						minHeight: 44,
-						"&:hover": {
-							transform: "translateY(-1px)",
-						},
-						transition: "all 0.2s ease",
-					}}
-				>
-					{ownReview ? "Editar opinion" : "Opinar"}
-				</Button>
+				{isAuthenticated && !ownReview && reviewable !== true ? (
+					<Typography variant="body2" color="text.secondary">
+						{reviewable === false
+							? "No has cursado este ramo."
+							: "No pudimos verificar si puedes opinar."}
+					</Typography>
+				) : (
+					<Button
+						variant="contained"
+						color="primary"
+						startIcon={<ReviewIcon />}
+						onClick={handleOpinar}
+						sx={{
+							fontWeight: 700,
+							px: 3,
+							borderRadius: 3,
+							width: { xs: "100%", sm: "auto" },
+							minHeight: 44,
+							"&:hover": {
+								transform: "translateY(-1px)",
+							},
+							transition: "all 0.2s ease",
+						}}
+					>
+						{ownReview ? "Editar opinion" : "Opinar"}
+					</Button>
+				)}
 			</Box>
 
 			<Stack spacing={1.5} sx={{ mb: 4 }}>
@@ -186,7 +196,7 @@ export function CourseReviewsSection({
 					initialReview={ownReview}
 				/>
 			)}
-			{isAuthenticated && !ownReview && (
+			{isAuthenticated && !ownReview && reviewable === true && (
 				<CreateReviewForm
 					cursoId={cursoId}
 					open={reviewFormOpen}

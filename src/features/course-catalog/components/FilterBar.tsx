@@ -86,14 +86,16 @@ export default function FilterBar({
 
 	return (
 		<Box sx={{ mb: 2 }}>
-			{/* Top row: search + sort + filter toggle */}
+			{/* Keep the toolbar on one row; narrow screens can scroll it. */}
 			<Box
 				sx={{
 					display: "grid",
 					gridTemplateColumns: {
-						xs: "minmax(0, 1fr) auto",
-						sm: "minmax(0, 1fr) 130px auto",
+						xs: "minmax(140px, 1fr) 110px auto auto",
+						sm: "minmax(140px, 1fr) 130px auto auto",
 					},
+					overflowX: "auto",
+					py: 1,
 					gap: 1,
 					alignItems: "center",
 				}}
@@ -105,7 +107,6 @@ export default function FilterBar({
 					onChange={(e) => setSearchText(e.target.value)}
 					sx={{
 						minWidth: 0,
-						gridColumn: { xs: "1 / -1", sm: "auto" },
 						"& .MuiOutlinedInput-root": {
 							borderRadius: 2,
 							bgcolor: "background.paper",
@@ -154,6 +155,41 @@ export default function FilterBar({
 								{o.label}
 							</MenuItem>
 						))}
+					</Select>
+				</FormControl>
+
+				<FormControl size="small" sx={{ minWidth: 170 }}>
+					<InputLabel id="course-scope-label" sx={{ fontSize: "0.85rem" }}>
+						Ramos
+					</InputLabel>
+					<Select
+						labelId="course-scope-label"
+						label="Ramos"
+						value={
+							filters.reviewable === undefined
+								? "all"
+								: filters.reviewable
+									? "mine"
+									: "other"
+						}
+						onChange={(event) =>
+							onFilterChange({
+								...filters,
+								reviewable:
+									event.target.value === "all"
+										? undefined
+										: event.target.value === "mine",
+							})
+						}
+						sx={{
+							bgcolor: "background.paper",
+							borderRadius: 2,
+							fontSize: "0.85rem",
+						}}
+					>
+						<MenuItem value="all">Todos</MenuItem>
+						<MenuItem value="mine">Cursados</MenuItem>
+						<MenuItem value="other">No cursados</MenuItem>
 					</Select>
 				</FormControl>
 
