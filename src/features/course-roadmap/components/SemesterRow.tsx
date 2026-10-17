@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { roadmapColors } from "../model/tokens";
+import { roadmapColors, roadmapSizes } from "../model/tokens";
 import type {
 	RoadmapMarkColor,
 	RoadmapMarks,
@@ -57,9 +57,6 @@ export function SemesterRow({
 				sx={{
 					minWidth: { xs: "auto", sm: 42 },
 					alignSelf: { xs: "stretch", sm: "center" },
-					position: { xs: "sticky", sm: "static" },
-					top: { xs: 56, sm: "auto" },
-					zIndex: 3,
 					borderRadius: 1,
 					px: 1,
 					py: 0.75,
@@ -83,7 +80,12 @@ export function SemesterRow({
 				role="list"
 				aria-label="Cursos"
 				direction="row"
-				sx={{ flexWrap: "wrap", gap: 1 }}
+				sx={{
+					display: { xs: "grid", sm: "flex" },
+					gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${roadmapSizes.courseWidthSmall}), 1fr))`,
+					flexWrap: "wrap",
+					gap: 1,
+				}}
 			>
 				{visibleCourses.map((course) => (
 					<RoadmapCourseCard

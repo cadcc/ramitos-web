@@ -73,7 +73,7 @@ function RoadmapCourseCardComponent({
 				position: "relative",
 				zIndex: 1,
 				width: {
-					xs: roadmapSizes.courseWidthSmall,
+					xs: "100%",
 					sm: roadmapSizes.courseWidth,
 				},
 				height: roadmapSizes.courseHeight,
