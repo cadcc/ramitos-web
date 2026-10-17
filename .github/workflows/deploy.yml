@@ -31,6 +31,8 @@ jobs:
         run: npm install --global "$(node -p 'require("./package.json").packageManager')"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Check package-manager guard
+        run: node --test scripts/check-package-manager.test.mjs
       - name: Build production distributables
         run: |
           cp build.env production.env
