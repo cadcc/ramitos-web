@@ -1,0 +1,52 @@
+name: Build and publish frontend
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-frontend
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26.8.1"
+          package-manager-cache: false
+      - name: Install pinned pnpm
+        run: npm install --global "$(node -p 'require("./package.json").packageManager')"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build production distributables
+        run: |
+          cp build.env production.env
+          pnpm build:prod
+          test -s dist/index.html
+          tar -czf dist.tar.gz -C dist .
+          sha256sum dist.tar.gz > dist.tar.gz.sha256
+      - name: Publish complete release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: frontend-${{ github.run_number }}-${{ github.run_attempt }}
+        run: |
+          printf 'Production frontend from commit %s\nWorkflow run: %s/%s/actions/runs/%s\n' \
+            "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > release-notes.md
+          gh release create "$RELEASE_TAG" dist.tar.gz dist.tar.gz.sha256 dist.zip \
+            --draft --target "$GITHUB_SHA" \
+            --title "Frontend $RELEASE_TAG" --notes-file release-notes.md
+          gh release edit "$RELEASE_TAG" --draft=false --latest=false

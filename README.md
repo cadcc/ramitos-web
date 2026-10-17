@@ -69,4 +69,6 @@ Do not hand-edit `src/generated/` or `src/routeTree.gen.ts`. Keep mock overrides
 
 ## Deployment
 
+Pushes to `main` build and publish production release assets.
+
 Deploy `dist/` to a static host with an SPA fallback to `index.html` for routes such as `/curso/CC1001`, `/malla`, and `/auth/dcc/callback`. Serve real assets normally and route `/api/*` to the backend before applying the SPA fallback.

@@ -152,6 +152,7 @@ GLOSSARY.md
 docs
 production.env
 roadmap.md
+deployment
 
 # Browser test output
 playwright-report/
