@@ -300,7 +300,7 @@ function ReviewCardBase({
 								)}
 								{isOwnReview && (
 									<Chip
-										label="Tu opinion"
+										label="Tu opinión"
 										size="small"
 										color="success"
 										variant="outlined"

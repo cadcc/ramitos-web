@@ -14,11 +14,11 @@ export const CURRENT_SEMESTER = "2026-1";
 
 const RELATED_COURSE_POOL: Array<Pick<CursoListItem, "id" | "code" | "name">> =
 	[
-		{ id: "CC100", code: "CC100", name: "Computacion I" },
-		{ id: "CC1001", code: "CC1001", name: "Computacion I" },
-		{ id: "CC1002", code: "CC1002", name: "Introduccion a la Programacion" },
+		{ id: "CC100", code: "CC100", name: "Computación I" },
+		{ id: "CC1001", code: "CC1001", name: "Computación I" },
+		{ id: "CC1002", code: "CC1002", name: "Introducción a la Programación" },
 		{ id: "CC3001", code: "CC3001", name: "Algoritmos y Estructuras de Datos" },
-		{ id: "CC4102", code: "CC4102", name: "Diseno y Analisis de Algoritmos" },
+		{ id: "CC4102", code: "CC4102", name: "Diseño y Análisis de Algoritmos" },
 		{ id: "CC4301", code: "CC4301", name: "Arquitectura de Software" },
 	];
 
@@ -87,9 +87,9 @@ function fallbackDepartment(courseId: string): string {
 	// TODO(backend): Replace with course department metadata from the API.
 	return withCourseSeed(courseId, 300, () =>
 		faker.helpers.arrayElement([
-			"Ciencias de la Computacion",
-			"Matematicas",
-			"Ingenieria Electrica",
+			"Ciencias de la Computación",
+			"Matemáticas",
+			"Ingeniería Eléctrica",
 			"Humanidades",
 		]),
 	);
@@ -104,7 +104,7 @@ function fallbackCredits(courseId: string): number {
 
 function fallbackDescription(course: GetCourseResponseContent): string {
 	// TODO(backend): Replace with the official course description from the API.
-	return `${course.name} aborda contenidos centrales del area, combinando fundamentos, práctica y evaluaciones aplicadas para estudiantes del DCC.`;
+	return `${course.name} aborda contenidos centrales del área, combinando fundamentos, práctica y evaluaciones aplicadas para estudiantes del DCC.`;
 }
 
 function toCourseDetail(course: GetCourseResponseContent): Curso {

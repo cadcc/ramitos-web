@@ -35,7 +35,7 @@ export function CourseFactsPanel({
 				{[
 					{ label: "Departamento", value: course.department },
 					{ label: "Plan", value: planLabels[course.plan] },
-					{ label: "Creditos", value: String(course.credits) },
+					{ label: "Créditos", value: String(course.credits) },
 				].map(({ label, value }) => (
 					<Box
 						key={label}

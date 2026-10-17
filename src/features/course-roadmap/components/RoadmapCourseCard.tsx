@@ -140,7 +140,7 @@ function RoadmapCourseCardComponent({
 				</Typography>
 				<Typography
 					component="span"
-					aria-label={`${course.credits} creditos`}
+					aria-label={`${course.credits} créditos`}
 					sx={{ fontSize: "0.7rem", fontWeight: 800 }}
 				>
 					{course.credits}

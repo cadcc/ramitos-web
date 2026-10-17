@@ -127,7 +127,7 @@ export function CourseCatalogPage({
 				<Box sx={{ textAlign: "center", py: 8 }}>
 					<Typography variant="h5">No se encontraron cursos</Typography>
 					<Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-						Prueba ajustando los filtros o el termino de busqueda.
+						Prueba ajustando los filtros o el término de búsqueda.
 					</Typography>
 				</Box>
 			) : (

@@ -43,7 +43,7 @@ export function RoadmapSettingsMenu({
 			}}
 		>
 			<Stack spacing={1.5}>
-				<Typography variant="h6">Configuracion</Typography>
+				<Typography variant="h6">Configuración</Typography>
 				<DepthControl
 					label="Profundidad requisitos"
 					value={settings.depthpre}
@@ -56,12 +56,12 @@ export function RoadmapSettingsMenu({
 				/>
 				<Divider />
 				<SettingSwitch
-					label="Mostrar lineas"
+					label="Mostrar líneas"
 					checked={settings.showLines}
 					onChange={(value) => onSettingChange("showLines", value)}
 				/>
 				<SettingSwitch
-					label="Mostrar cursos de 0 creditos"
+					label="Mostrar cursos de 0 créditos"
 					checked={settings.showZeros}
 					onChange={(value) => onSettingChange("showZeros", value)}
 				/>
