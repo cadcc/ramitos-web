@@ -17,6 +17,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      BUILD_VERSION: v${{ github.run_number }}
     permissions:
       contents: write
     steps:
@@ -36,6 +38,7 @@ jobs:
       - name: Build production distributables
         run: |
           cp build.env production.env
+          printf '\nVITE_APP_VERSION=%s\n' "$BUILD_VERSION" >> production.env
           pnpm build:prod
           test -s dist/index.html
           tar -czf dist.tar.gz -C dist .
@@ -46,9 +49,9 @@ jobs:
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: frontend-${{ github.run_number }}-${{ github.run_attempt }}
         run: |
-          printf 'Production frontend from commit %s\nWorkflow run: %s/%s/actions/runs/%s\n' \
-            "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > release-notes.md
+          printf 'Production frontend %s from commit %s\nWorkflow run: %s/%s/actions/runs/%s\n' \
+            "$BUILD_VERSION" "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > release-notes.md
           gh release create "$RELEASE_TAG" dist.tar.gz dist.tar.gz.sha256 dist.zip \
             --draft --target "$GITHUB_SHA" \
-            --title "Frontend $RELEASE_TAG" --notes-file release-notes.md
+            --title "Frontend $BUILD_VERSION (attempt $GITHUB_RUN_ATTEMPT)" --notes-file release-notes.md
           gh release edit "$RELEASE_TAG" --draft=false --latest=false

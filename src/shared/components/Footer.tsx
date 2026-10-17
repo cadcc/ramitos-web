@@ -36,6 +36,11 @@ export default function Footer() {
 				>
 					Frontend
 				</MuiLink>
+				{import.meta.env.VITE_APP_VERSION && (
+					<Box component="span" sx={{ whiteSpace: "nowrap" }}>
+						{import.meta.env.VITE_APP_VERSION}
+					</Box>
+				)}
 				//
 				<GitHubIcon sx={{ fontSize: 16 }} />
 				<MuiLink
