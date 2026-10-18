@@ -2,7 +2,13 @@ import { z } from "zod";
 import { faker } from "@faker-js/faker";
 import type { HttpResponseResolver } from "msw";
 import {
+	ALL_REVIEW_TAGS,
+	toggleReviewTag,
+} from "../../../constants/reviewTags";
+import {
 	AccountRole,
+	type CreateAccountRequestContent,
+	type UpdateAccountRequestContent,
 	type GetSelfResponseContent,
 } from "../../../generated/api/account/models";
 import type {
@@ -43,36 +49,9 @@ const COURSE_TAGS = [
 	"NLP",
 ];
 
-const REVIEW_TAGS = [
-	"Carga liviana",
-	"Mucha tarea",
-	"Muchas pruebas",
-	"Proyecto grande",
-	"Labs largos",
-	"Contenido accesible",
-	"Materia compleja",
-	"Examenes dificiles",
-	"Requiere base previa",
-	"Buen material",
-	"Profe amigable",
-	"Buen auxiliar",
-	"Clases entretenidas",
-	"Aplicable al trabajo",
-	"Clave para otros cursos",
-	"Ambiente grato",
-	"Companerismo",
-	"Motivante",
-	"Trabajo en equipo",
-	"Mucha programacion",
-	"Autoaprendizaje",
-	"Evaluaciones justas",
-	"Laboratorios",
-	"Proyecto semestral",
-];
-
 const COURSE_SEEDS = [
 	["CC100", "Computacion I", ["Programación", "Algoritmos"]],
-	["CC1001", "Introduccion a la Programacion", ["Programación"]],
+	["CC1000", "Introducción a la Programación", ["Programación"]],
 	["CC1002", "Programacion Avanzada", ["Programación", "Lenguajes"]],
 	["CC3001", "Algoritmos y Estructuras de Datos", ["Algoritmos"]],
 	["CC3101", "Matematicas Discretas", ["Teoría"]],
@@ -88,6 +67,7 @@ const COURSE_SEEDS = [
 	["CC5401", "Inteligencia Artificial", ["Inteligencia Artificial"]],
 	["CC5508", "Procesamiento de Lenguaje Natural", ["NLP", "Machine Learning"]],
 	["CC5601", "Computacion Grafica", ["Computación Gráfica"]],
+	["CC5609", "Taller de Desarrollo Personal", ["HCI"]],
 	["CC5901", "Desarrollo Web", ["Desarrollo Web", "HCI"]],
 ] satisfies Array<[string, string, string[]]>;
 const FALLBACK_COURSE_SEED = COURSE_SEEDS[0] as [string, string, string[]];
@@ -118,8 +98,16 @@ const ACCOUNTS: GetSelfResponseContent[] = [
 	},
 ];
 
-let nextReviewId = 9000;
+let nextReviewId = 1;
+let nextAccountId = 1000;
+const accountOverrides = new Map<number, GetSelfResponseContent>();
+const credentials = new Map([
+	["admin", { password: "mock", account: TEST_ACCOUNT }],
+	["student", { password: "mock", account: ACCOUNTS[1]! }],
+	["moderator", { password: "mock", account: ACCOUNTS[2]! }],
+]);
 const reviewsByCourse = new Map<string, Review[]>();
+const categoriesByCourse = new Map<string, string[]>();
 
 function numberFromText(value: string): number {
 	let hash = 0;
@@ -178,7 +166,7 @@ function courseFromSeed([
 	name,
 	tags,
 ]: (typeof COURSE_SEEDS)[number]): Course {
-	const stats = statsForCourse(id);
+	categoriesByCourse.set(id, tags);
 	return {
 		id,
 		name,
@@ -191,23 +179,36 @@ function courseFromSeed([
 		get reviewCount() {
 			return reviewsByCourse.get(id)?.length ?? 0;
 		},
-		stats: {
-			docencia: { value: stats.docencia ?? 0 },
-			vibes: { value: stats.vibes ?? 0 },
-			relevancia: { value: stats.relevancia ?? 0 },
-			carga: { value: stats.carga ?? 0 },
-			dificultad: { value: stats.dificultad ?? 0 },
+		get stats() {
+			const result: Course["stats"] = {};
+			for (const axis of [
+				"docencia",
+				"vibes",
+				"relevancia",
+				"carga",
+				"dificultad",
+			] as const) {
+				const values = (reviewsByCourse.get(id) ?? []).flatMap((review) =>
+					review.stats[axis] === undefined ? [] : [review.stats[axis]],
+				);
+				if (values.length)
+					result[axis] = {
+						value:
+							values.reduce((sum, value) => sum + value, 0) / values.length,
+					};
+			}
+			return result;
 		},
-		tag_stats: Object.fromEntries(
-			tags.map((tag) => [
-				tag,
-				{
-					value: withSeed(`${id}:${tag}`, () =>
-						faker.number.int({ min: 4, max: 42 }),
-					),
-				},
-			]),
-		),
+		get tag_stats() {
+			const counts: Course["tag_stats"] = {};
+			for (const review of reviewsByCourse.get(id) ?? []) {
+				for (const tag of review.tags) {
+					counts[tag] ??= { value: 0 };
+					counts[tag].value += 1;
+				}
+			}
+			return counts;
+		},
 	};
 }
 
@@ -250,17 +251,19 @@ function makeReview(course: Course, index: number, accountId?: number): Review {
 	return withSeed(`${course.id}:review:${index}:${accountId ?? "anon"}`, () => {
 		const stats = statsForCourse(`${course.id}:${index}`);
 		return {
-			id: numberFromText(`${course.id}:${index}:${accountId ?? 0}`) % 100000,
-			account_id: accountId ?? faker.helpers.arrayElement(ACCOUNTS).id,
+			id: nextReviewId++,
+			account_id: accountId ?? 100 + index,
 			course_code: course.id,
-			comments: commentFor(course, stats),
+			comments: index % 4 === 0 ? undefined : commentFor(course, stats),
 			stats,
-			tags: faker.helpers.arrayElements(
-				REVIEW_TAGS,
-				faker.number.int({ min: 2, max: 5 }),
-			),
+			tags: faker.helpers
+				.arrayElements(ALL_REVIEW_TAGS, faker.number.int({ min: 2, max: 5 }))
+				.reduce(toggleReviewTag, [] as string[]),
 			created_at:
-				faker.date.recent({ days: 180 }).toISOString().slice(0, 19) + "Z",
+				faker.date
+					.recent({ days: 180, refDate: "2026-10-18T12:00:00Z" })
+					.toISOString()
+					.slice(0, 19) + "Z",
 		};
 	});
 }
@@ -325,16 +328,33 @@ function authAccount(info: RequestInfo): GetSelfResponseContent {
 					})
 					.optional(),
 			})
-			.parse(JSON.parse(atob(token.split(".")[1] ?? "")));
+			.parse(
+				JSON.parse(
+					new TextDecoder().decode(
+						Uint8Array.from(
+							atob(
+								(token.split(".")[1] ?? "")
+									.replace(/-/g, "+")
+									.replace(/_/g, "/"),
+							),
+							(char) => char.charCodeAt(0),
+						),
+					),
+				),
+			);
 		const account = payload.account;
 		if (account?.id) {
-			return {
-				id: Number(account.id),
-				name: String(account.displayName ?? account.name ?? TEST_ACCOUNT.name),
-				role: account.role ?? TEST_ACCOUNT.role,
-				created_at: String(account.createdAt ?? TEST_ACCOUNT.created_at),
-				updated_at: new Date().toISOString().slice(0, 19) + "Z",
-			};
+			return (
+				accountOverrides.get(account.id) ?? {
+					id: Number(account.id),
+					name: String(
+						account.displayName ?? account.name ?? TEST_ACCOUNT.name,
+					),
+					role: account.role ?? TEST_ACCOUNT.role,
+					created_at: String(account.createdAt ?? TEST_ACCOUNT.created_at),
+					updated_at: new Date().toISOString().slice(0, 19) + "Z",
+				}
+			);
 		}
 	} catch {
 		/* use the stable mock account */
@@ -387,7 +407,7 @@ export function mockGetCoursesStaticData(): CoursesStaticDataContainer {
 		courses: courses.map((course) => ({
 			code: course.id,
 			name: course.name,
-			categories: Object.keys(course.tag_stats)
+			categories: (categoriesByCourse.get(course.id) ?? [])
 				.map((tag) => COURSE_TAGS.indexOf(tag))
 				.filter((index) => index >= 0),
 		})),
@@ -402,24 +422,25 @@ export function mockListCourseReviews(
 	info: RequestInfo,
 ): ListCourseReviewsOutputPayload {
 	const course = courseByParam(info);
-	const limit = Number(searchParam(info, "limit") ?? 10);
+	const limit = Number(searchParam(info, "limit") ?? 50);
 	const after = searchParam(info, "after");
-	return pageByCursor(reviewsByCourse.get(course.id) ?? [], limit, after).map(
-		(review) => ({
-			id: review.id,
-			comments: review.comments ?? "",
-			stats: review.stats,
-			tags: review.tags,
-			created_at: review.created_at,
-		}),
+	const comments = (reviewsByCourse.get(course.id) ?? []).filter((review) =>
+		review.comments?.trim(),
 	);
+	return pageByCursor(comments, limit, after).map((review) => ({
+		id: review.id,
+		comments: review.comments ?? "",
+		stats: review.stats,
+		tags: review.tags,
+		created_at: review.created_at,
+	}));
 }
 
 export function mockListReviews(info: RequestInfo): ListReviewsOutputPayload {
 	const params = new URL(info.request.url).searchParams;
 	const courseId = params.get("course_id");
 	const accountId = params.get("account_id");
-	const limit = Number(params.get("limit") ?? 10);
+	const limit = Number(params.get("limit") ?? 50);
 	const after = params.get("after");
 	const allReviews = Array.from(reviewsByCourse.values()).flat();
 	const filtered = allReviews.filter((review) => {
@@ -428,10 +449,12 @@ export function mockListReviews(info: RequestInfo): ListReviewsOutputPayload {
 		return true;
 	});
 	return pageByCursor(
-		filtered.sort(
-			(a, b) =>
-				new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-		),
+		filtered.sort((a, b) => {
+			const difference =
+				new Date(a.created_at).getTime() - new Date(b.created_at).getTime() ||
+				a.id - b.id;
+			return params.get("created_order") === "asc" ? difference : -difference;
+		}),
 		limit,
 		after,
 	);
@@ -484,4 +507,60 @@ export function mockGetReview(info: RequestInfo): GetReviewResponseContent {
 
 export function mockGetSelf(info: RequestInfo): GetSelfResponseContent {
 	return authAccount(info);
+}
+
+function tokenFor(account: GetSelfResponseContent) {
+	const payload = { exp: Math.floor(Date.now() / 1000) + 3600, account };
+	const encoded = btoa(
+		String.fromCharCode(...new TextEncoder().encode(JSON.stringify(payload))),
+	)
+		.replace(/=/g, "")
+		.replace(/\+/g, "-")
+		.replace(/\//g, "_");
+	return { accessToken: `e30.${encoded}.mock` };
+}
+
+export async function mockPasswordLogin(info: RequestInfo) {
+	const body = (await info.request.json()) as {
+		username: string;
+		password: string;
+	};
+	const entry = credentials.get(body.username);
+	return entry && entry.password === body.password
+		? tokenFor(accountOverrides.get(entry.account.id) ?? entry.account)
+		: null;
+}
+
+export function mockDccLogin() {
+	return tokenFor(ACCOUNTS[1]!);
+}
+
+export async function mockCreateAccount(info: RequestInfo) {
+	const body = (await info.request.json()) as CreateAccountRequestContent;
+	const now = new Date().toISOString();
+	const account: GetSelfResponseContent = {
+		id: nextAccountId++,
+		name: body.name,
+		role: body.role,
+		created_at: now,
+		updated_at: now,
+	};
+	accountOverrides.set(account.id, account);
+	credentials.set(body.username, { password: body.password, account });
+	return account;
+}
+
+export async function mockUpdateAccount(info: RequestInfo) {
+	const id = Number(info.params.userId);
+	const account =
+		accountOverrides.get(id) ?? ACCOUNTS.find((account) => account.id === id);
+	if (!account) return null;
+	const body = (await info.request.json()) as UpdateAccountRequestContent;
+	const updated = {
+		...account,
+		name: body.name ?? account.name,
+		updated_at: new Date().toISOString(),
+	};
+	accountOverrides.set(id, updated);
+	return updated;
 }
