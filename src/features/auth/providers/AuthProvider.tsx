@@ -84,7 +84,9 @@ export function AuthProvider({
 	const closeLoginDialog = useCallback(() => {
 		setLoginError(null);
 		setLoginDialogOpen(false);
-	}, []);
+		// Invalidate the attempt so a late response cannot sign in after Cancel.
+		if (owner.getSnapshot().pending) void owner.logout();
+	}, [owner]);
 	const value = useMemo<AuthContextValue>(
 		() => ({
 			user: state.user,
