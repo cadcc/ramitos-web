@@ -1,0 +1,5 @@
+codigo: CC5325
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=67522
+resumen: Este taller busca despertar el interés y profundizar la comprensión de la ciberseguridad a través de competencias tipo Capture the Flag, donde equipos resuelven desafíos usando programación, ingenio, deducción lógica y matemática básica. Se abordan problemas de esteganografía, criptografía clásica y moderna, vulnerabilidades en aplicaciones web, análisis forense, ingeniería reversa, explotación de programas para escalar privilegios e inteligencia de fuentes abiertas, siempre con énfasis en el uso ético y autorizado de estos conocimientos. Las clases se centran en discutir y resolver problemas, y se evalúa con tareas resueltas en equipo pero entregadas individualmente con código y un writeup del razonamiento, además de una competencia grupal final en vivo. Requiere sólidas bases de algoritmos, estructuras de datos y programación.
+tags: Ciberseguridad, Criptografía, Programación de Sistemas, Ética y Regulación Tecnológica

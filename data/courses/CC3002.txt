@@ -1,0 +1,5 @@
+codigo: CC3002
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174814
+resumen: Este curso te prepara para desarrollar software orientado a objetos de pequeña y mediana complejidad que sea flexible, extensible y robusto. Se estudian los fundamentos de objetos, clases, tipos y polimorfismo; herramientas de desarrollo como entornos integrados, control de versiones y refactorización; metodologías de testeo, diseño por contratos y modelado con UML; patrones de diseño, y tópicos como interfaces gráficas, excepciones, concurrencia, genéricos y rendimiento. También se analizan dilemas éticos del desarrollo, como la propiedad intelectual, las licencias, el software libre y los sistemas de escritura inclusivos. Se evalúa con controles, tareas y un examen integrador. Para aprovecharlo necesitas programar con soltura y manejar algoritmos y estructuras de datos fundamentales.
+tags: Programación Orientada a Objetos, Calidad y Pruebas de Software, Requisitos y Arquitectura de Software, Ética y Regulación Tecnológica

@@ -1,0 +1,5 @@
+codigo: CC7920
+creditos: 18
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154874
+resumen: Este curso constituye una primera experiencia real de investigación, semestral y guiada por un profesor del claustro, en la que se aplican las nociones de metodología de la investigación en computación. Se trabaja en un área específica, primero con una revisión sistemática de la literatura y luego con una investigación breve sobre un tema dentro de ella. El trabajo es personal, con reuniones periódicas con el profesor guía, y se evalúa a partir de dos documentos escritos en inglés, un estudio bibliográfico y un artículo científico breve pero completo, y del desempeño; estos documentos sirven además para acceder al examen de calificación del doctorado. Requiere formación previa en metodología de investigación, autonomía y buen inglés escrito.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

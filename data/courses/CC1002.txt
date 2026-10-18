@@ -1,0 +1,5 @@
+codigo: CC1002
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242634
+resumen: Aquí aprendes a resolver problemas mediante la programación siguiendo una metodología rigurosa: analizar el enunciado, descomponerlo en subproblemas, implementar funciones documentadas con ejemplos de uso y verificarlas con pruebas. Se recorren los fundamentos de expresiones, funciones, condicionales y recursión, para luego abordar la programación funcional con datos compuestos y estructuras recursivas, la programación imperativa con mutación, estructuras indexadas y archivos, y finalmente la programación orientada a objetos. Las clases combinan exposición, ejercicios en papel y casos de estudio cotidianos, y se evalúa mediante controles escritos, un examen y tareas de programación desarrolladas en el computador. No exige experiencia previa programando, pero sí disposición al razonamiento lógico y algorítmico y a trabajar con honestidad académica.
+tags: Fundamentos de Programación, Programación Funcional, Programación Orientada a Objetos, Calidad y Pruebas de Software

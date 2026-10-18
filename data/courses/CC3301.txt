@@ -1,0 +1,5 @@
+codigo: CC3301
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174826
+resumen: Aquí aprendes a escribir programas en C eficientes en tiempo de ejecución y uso de memoria, entendiendo cómo el hardware y el sistema operativo influyen en su desempeño. Se profundiza en el lenguaje C, con su sistema de tipos, punteros, manejo de memoria, archivos y etapas de compilación; luego en arquitectura de computadores, desde los sistemas digitales y el assembler hasta el diseño del procesador y la memoria caché; y finalmente en la programación con la interfaz del sistema operativo Linux, incluyendo procesos, pipes y señales. Se trabaja con depuradores y con lectura de textos técnicos en inglés. Se evalúa con controles, un examen final y varias mini-tareas de programación. Requiere buen manejo de algoritmos y estructuras de datos.
+tags: Programación de Sistemas, Arquitectura de Computadores, Sistemas Operativos y Concurrencia

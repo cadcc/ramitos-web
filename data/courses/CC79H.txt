@@ -1,0 +1,5 @@
+codigo: CC79H
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33973
+resumen: Este curso te acompaña en la escritura del documento de tesis de magíster, donde reportas la investigación aplicada realizada con todos los elementos que exige un informe científico-técnico. En reuniones periódicas con tu profesor guía refinas el problema, los objetivos y la solución, defines la estructura del documento, redactas cada capítulo y abordas los tópicos que hayan quedado pendientes, dimensionando además la contribución del trabajo, su posible generalización y el trabajo futuro. Al cierre entregas el documento de tesis, que evalúa tu profesor guía o un miembro del Comité Académico y que te entrega retroalimentación para preparar la versión final. Necesitas haber completado la investigación aplicada y contar con sus resultados, además de buena capacidad de redacción técnica.
+tags: Tesis de Posgrado, Escritura y Comunicación Científica, Sistemas de Información

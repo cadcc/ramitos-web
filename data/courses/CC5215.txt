@@ -1,0 +1,5 @@
+codigo: CC5215
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128670
+resumen: Este curso te enseña a analizar datos con información sensible sobre personas sin comprometer su privacidad, reconociendo los escenarios que provocan filtraciones y aplicando técnicas para hacer el análisis de forma segura. Se parte con las técnicas tradicionales de anonimización y los ataques que buscan evitar, para luego profundizar en la privacidad diferencial, sus mecanismos, variantes y propiedades de composición, el manejo de la sensibilidad y su uso para generar datos sintéticos, combinando teoría formal y práctica. Las clases incluyen programación en vivo, y se evalúa con laboratorios frecuentes y un proyecto final grupal con informe y presentación oral. Necesitas una base sólida de probabilidades y estadística, bases de datos y análisis de datos.
+tags: Privacidad y Protección de Datos, Probabilidad y Estadística, Ciberseguridad, Minería de Datos

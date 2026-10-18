@@ -1,0 +1,5 @@
+codigo: CC5115
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=92410
+resumen: Este curso introduce la programación funcional usando un lenguaje puramente funcional, mostrando cómo este estilo declarativo facilita razonar algebraicamente sobre programas, abstraer patrones recurrentes y paralelizar la ejecución. Se recorren los fundamentos del lenguaje, funciones de alto orden, recursión y pruebas por inducción, sistemas de tipos avanzados y tipos recursivos, evaluación perezosa, transformaciones para mejorar la eficiencia, efectos y mónadas, testing automático basado en propiedades y paralelización. Las cátedras combinan programación en vivo con mini-problemas grupales, auxiliares de resolución de problemas y casos de estudio, y se evalúa con tareas periódicas teóricas y prácticas, una presentación oral individual y un examen. Necesitas programar con soltura, conocer algoritmos y estructuras de datos, y sentirte cómodo con el razonamiento matemático formal.
+tags: Programación Funcional, Métodos Formales y Verificación, Calidad y Pruebas de Software, Computación Paralela y GPU

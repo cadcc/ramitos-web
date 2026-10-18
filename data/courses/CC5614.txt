@@ -1,0 +1,5 @@
+codigo: CC5614
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=226073
+resumen: Este curso entrega herramientas de psicología y comunicación para desenvolverte en entornos colaborativos y fortalecer tu desempeño profesional. Se abordan el autoconocimiento, la seguridad psicológica, la escucha activa y la gestión del tiempo, la retroalimentación constructiva, la cultura organizacional y los procesos de selección laboral, además de la toma de decisiones éticas, la resolución de conflictos, el liderazgo y temas de inclusión y bienestar. Las clases son talleres, con discusiones, simulaciones y reflexión grupal, más acompañamiento tutorial. La evaluación gira en torno a un plan de mejora personal y profesional, con informes, actas de reunión, una presentación oral coevaluada, participación en clases y una entrevista a un profesional de la computación. Requiere una base de diseño y programación de software.
+tags: Liderazgo y Trabajo en Equipo, Psicología y Cognición, Habilidades Comunicacionales, Desarrollo Profesional y Empleabilidad, Ética y Regulación Tecnológica

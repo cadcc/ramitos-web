@@ -1,0 +1,5 @@
+codigo: CC6204
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=30074
+resumen: Este curso introduce el aprendizaje basado en redes neuronales profundas, clave en los avances recientes de la inteligencia artificial, con énfasis en visión computacional y procesamiento de lenguaje natural. Se estudian los fundamentos de las redes neuronales y su entrenamiento, técnicas de regularización y optimización, aspectos prácticos para diseñar, depurar y ajustar modelos, redes convolucionales para imágenes, redes recurrentes para secuencias y tópicos avanzados como modelos generativos. Aunque la teoría es importante, el enfoque es marcadamente práctico: hay clases teóricas, revisión y presentación de artículos del estado del arte, tareas de programación, un proyecto o tareas adicionales, un control de mitad de semestre y un examen. Requiere buena base en algoritmos y estructuras de datos y soltura programando.
+tags: Aprendizaje Profundo, Visión Computacional, Procesamiento de Lenguaje Natural, IA Generativa y Modelos de Lenguaje

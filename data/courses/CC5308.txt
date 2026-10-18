@@ -1,0 +1,5 @@
+codigo: CC5308
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5133
+resumen: Aquí aprendes las bases de la administración de servicios en sistemas Linux, con criterio para evaluar plataformas técnicas y para exigir, proveer y responsabilizarte de niveles de servicio. Se parte por la instalación y configuración básica de distintas distribuciones, se revisan labores profesionales como control de acceso, sistemas de archivo, respaldos y actualizaciones, y luego la configuración de servicios típicos de servidor, como red, bases de datos, web y correo, para cerrar con seguridad y gestión de riesgos. Las clases expositivas, a cargo de distintos especialistas, incluyen práctica en máquinas virtuales, y se evalúa con tareas de configuración o programación shell, actividades grupales en aula y un control teórico. Necesitas conocimientos base de programación de sistemas y sistemas operativos.
+tags: Infraestructura TI y Administración de Sistemas, Sistemas Operativos y Concurrencia, Redes de Computadores, Ciberseguridad

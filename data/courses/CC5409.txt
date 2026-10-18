@@ -1,0 +1,5 @@
+codigo: CC5409
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128662
+resumen: En este taller implementas en equipo un videojuego multijugador online, usando un motor de videojuegos y herramientas para producir recursos gráficos y de sonido, hasta publicarlo para que la comunidad pueda jugarlo. Como este paradigma introduce la arquitectura cliente-servidor, el proceso es guiado e incorpora gradualmente conceptos de redes y comunicación, lobby, replicación y sincronización, manejo de latencia y desconexiones, balance y testing con usuarios, elementos sociales como rankings y servicios de backend, y la conectividad necesaria para distribuir el juego. Las clases expositivas se combinan con trabajo de proyecto, y se evalúa con hitos incrementales que consideran calidad técnica, presentación y coevaluación del equipo. Conviene llegar con base sólida en diseño y programación orientada a objetos.
+tags: Desarrollo de Videojuegos, Redes de Computadores, Sistemas Distribuidos y Big Data, Proyectos de Software en Equipo

@@ -1,0 +1,5 @@
+codigo: CC66V
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=211586
+resumen: Este curso enseña a comprender y aplicar técnicas modernas de inteligencia artificial generativa para crear y manipular texto, imágenes, audio y contenido multimodal. Se estudian los principios de los principales modelos generativos de imágenes, los modelos de lenguaje de gran escala con su alineamiento, ajuste eficiente y despliegue, los modelos multimodales y de audio, y técnicas de prompting, razonamiento, agentes y generación aumentada por recuperación. También se aborda cómo evaluar lo generado, problemas como el sesgo y la alucinación, y las implicancias éticas de estas tecnologías. Combina clases teóricas, revisión de artículos, trabajos prácticos con bibliotecas especializadas y un proyecto, y se evalúa con tareas, trabajo práctico y cuestionarios. Conviene llegar con bases de aprendizaje profundo y soltura programando.
+tags: IA Generativa y Modelos de Lenguaje, Aprendizaje Profundo, Procesamiento de Lenguaje Natural, IA y Sociedad

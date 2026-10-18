@@ -1,0 +1,5 @@
+codigo: CC5602
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=230989
+resumen: Aquí aprenderás a analizar una organización desde la perspectiva de las tecnologías de la información, evaluando su impacto y su aporte estratégico, para luego proponer mejoras concretas. Se estudian los modelos de negocio, la formulación de estrategias de negocio basadas en TI y el alineamiento entre ambos, incluyendo el uso de la información y los proyectos de soporte necesarios para ejecutar el plan. Las clases expositivas se complementan con estudios de caso de empresas reales. La evaluación se basa en análisis de casos, donde construyes el modelo y la estrategia de una organización, y en un proyecto final presentado en formato de video. Conviene llegar con nociones de formulación, evaluación y gestión de proyectos.
+tags: Estrategia y Transformación Digital, Sistemas de Información, Gestión de Proyectos TI

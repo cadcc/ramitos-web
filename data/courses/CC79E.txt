@@ -1,0 +1,5 @@
+codigo: CC79E
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27886
+resumen: Este seminario te prepara para detectar, en la organización donde trabajas, un problema que pueda dar origen a un proyecto de tecnologías de la información con enfoque ingenieril, y para identificarlo, analizarlo, dimensionarlo y delimitarlo. Las clases presenciales entregan directrices sobre cómo se concibe y estructura una propuesta de proyecto, revisan ejemplos y sirven para resolver dudas y validar las ideas que traen los estudiantes. A lo largo del semestre entregas informes escritos sobre la definición de tu proyecto, que un tutor revisa para darte retroalimentación temprana, y el informe final con la formulación preliminar lo evalúa el Comité Académico. Te conviene tener experiencia laboral en un entorno de TI y capacidad de análisis y redacción técnica.
+tags: Gestión de Proyectos TI, Tesis de Posgrado, Sistemas de Información

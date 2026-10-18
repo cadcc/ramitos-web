@@ -1,0 +1,5 @@
+codigo: CC5201
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=71917
+resumen: Este curso aborda el manejo eficiente y eficaz de grandes volúmenes de información multimedia, con énfasis en la búsqueda por similitud sobre datos como imágenes, formas, objetos tridimensionales, documentos y grafos. Se estudian el modelamiento de estos datos en espacios métricos y vectoriales con sus funciones de distancia, los modelos de similitud para distintos tipos de contenido, los algoritmos de búsqueda por rango y de vecinos más cercanos, las técnicas de indexamiento multidimensional y métrico, y algunos tópicos avanzados. Las clases son expositivas con ejercicios en clase, y se evalúa mediante controles, tareas y un examen final. Necesitas conocimientos base de bases de datos y comodidad con herramientas matemáticas como álgebra lineal y estadística.
+tags: Bases de Datos, Recuperación de Información, Estructuras de Datos

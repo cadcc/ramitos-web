@@ -1,0 +1,5 @@
+codigo: CC7025
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207910
+resumen: Orientado a estudiantes de doctorado, este curso reconoce la participación en una escuela temática internacional, realizada en el extranjero o dictada en inglés, con una carga lectiva sustancial. Su propósito es que aprendas o te actualices en un área vigente de la computación, mientras fortaleces tu internacionalización y construyes redes con estudiantes de otras partes del mundo. Antes de asistir presentas al comité académico una solicitud formal con el lugar, las fechas, el programa detallado, la carga de trabajo, la forma de aprobación y el visto bueno de tu profesor guía. Si la escuela es aceptada, al terminar entregas su certificado de aprobación y el curso se califica como aprobado o reprobado. Requiere haber superado el examen de calificación.
+tags: Formación Doctoral, Movilidad Internacional, Formación en Investigación

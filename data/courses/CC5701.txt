@@ -1,0 +1,5 @@
+codigo: CC5701
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5211
+resumen: Este curso introduce la informática aplicada al área de la salud, un dominio con dificultades propias frente a otros contextos de desarrollo de software. Se revisan el funcionamiento del sistema de salud chileno, la ética profesional en salud e informática, los vocabularios y clasificaciones para estructurar datos clínicos, el registro clínico electrónico, los sistemas de información hospitalarios y sus estándares, la telemedicina y el uso de tecnología en diagnóstico. Combina clases expositivas e interactivas, charlas de especialistas, seminarios bibliográficos y visitas a centros de salud. Se evalúa con un trabajo de investigación, controles de lectura, trabajos en clase y un control final. Requiere conocimientos base de bases de datos y disposición a comunicarse con usuarios clínicos.
+tags: Sistemas de Información, Ética y Regulación Tecnológica, Bases de Datos

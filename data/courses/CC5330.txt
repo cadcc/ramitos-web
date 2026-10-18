@@ -1,0 +1,5 @@
+codigo: CC5330
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213310
+resumen: Este curso te prepara para diseñar e implementar sistemas y aplicaciones que consideren la ciberseguridad desde su concepción, evitando errores comunes de desarrollo, despliegue y configuración. Se recorren los fundamentos de riesgo, autenticación y control de acceso, la criptografía moderna y sus aplicaciones, la seguridad de bajo nivel, de sistemas operativos, redes y aplicaciones web, el desarrollo seguro, la seguridad defensiva con inteligencia de amenazas, y el marco legal, social y ético de la disciplina. Además de cátedras, hay clases prácticas, casos de estudio y laboratorios en el bloque auxiliar, y se evalúa mediante laboratorios prácticos con informe y código, junto con casos de estudio con sus reportes. Necesitas buena base en sistemas operativos y en ingeniería de software.
+tags: Ciberseguridad, Criptografía, Ética y Regulación Tecnológica, Redes de Computadores

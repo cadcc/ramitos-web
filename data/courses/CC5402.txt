@@ -1,0 +1,5 @@
+codigo: CC5402
+creditos: 12
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174862
+resumen: Este curso integra lo aprendido durante la carrera en un proyecto que refleja la práctica profesional: en equipo, desarrollas una solución de software para un problema real de una organización externa, interactuando con clientes y usuarios. El trabajo sigue metodologías ágiles con una estrategia incremental en iteraciones, e implica planificar y negociar alcances, autogestionar el equipo, construir software de alta calidad técnica y considerar sus impactos éticos y ambientales. Cada iteración cierra con una presentación pública, y se evalúan la calidad del software, la gestión del proyecto, la comunicación oral, el valor aportado al cliente y la coevaluación. Como es integrador, requiere tener avanzada la carrera, con formación en minería de datos y gestión de proyectos.
+tags: Proyectos de Software en Equipo, Metodologías Ágiles, Gestión de Proyectos TI, Ética y Regulación Tecnológica

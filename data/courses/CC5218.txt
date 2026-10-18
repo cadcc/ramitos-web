@@ -1,0 +1,5 @@
+codigo: CC5218
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=245422
+resumen: Este curso busca que analices críticamente los fundamentos conceptuales de la inteligencia artificial contemporánea, integrando perspectivas computacionales, científicas y filosóficas. Se recorren las grandes tradiciones del campo, como los enfoques simbólico, conexionista y estadístico, las arquitecturas de agentes, el estatus epistemológico del aprendizaje profundo, la percepción, el control y el aprendizaje por refuerzo, el lenguaje y el razonamiento en modelos fundacionales, y finalmente los límites, sesgos e impactos éticos y sociales de la IA. Las clases combinan exposiciones, lectura crítica, debates y estudios de caso, y se evalúa con controles sobre las lecturas y un estudio de caso grupal presentado oralmente. Requiere base previa en aprendizaje de máquinas o modelación probabilística y estadística, y lectura fluida en inglés.
+tags: IA y Sociedad, Aprendizaje de Máquinas, IA Generativa y Modelos de Lenguaje, Aprendizaje Profundo, Psicología y Cognición

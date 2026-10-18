@@ -1,0 +1,5 @@
+codigo: CC5615
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5198
+resumen: Este curso te prepara para diseñar e implementar soluciones de inteligencia de negocios que apoyen la gestión y la toma de decisiones en empresas e instituciones. Se estudian los conceptos y aplicaciones de la inteligencia de negocios en distintas industrias, la diferencia entre ambientes analíticos y transaccionales, el modelamiento multidimensional y la identificación de necesidades de gestión, para luego diseñar y construir data warehouses, procesos de extracción y carga de datos, cubos, reportes y dashboards usando una herramienta de código abierto. Las clases son teórico-prácticas y se aplican a problemas reales, y la evaluación considera un control, un trabajo y un examen. Necesitas una base sólida en bases de datos y modelamiento de datos.
+tags: Gestión de Datos en Organizaciones, Bases de Datos, Visualización de Datos, Sistemas de Información

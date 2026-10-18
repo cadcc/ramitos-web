@@ -1,0 +1,5 @@
+codigo: CC5221
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256098
+resumen: Este curso propone mirar los sistemas de inteligencia artificial como sistemas sociotécnicos, analizando sus beneficios y daños a partir de la interacción entre factores técnicos y humanos, para luego diseñar intervenciones que respondan a esos problemas. Se abordan los fundamentos sociotécnicos de la IA, los sesgos, la justicia y la transparencia algorítmica, y la confianza, la supervisión humana, la colaboración persona-IA y la rendición de cuentas, aplicando todo al estudio de un sistema real. Las clases combinan exposiciones con análisis de casos en grupo, y se evalúa con quizzes individuales sobre las lecturas y un proyecto grupal de diagnóstico y rediseño. Conviene llegar con bases de minería de datos y disposición a leer y discutir literatura académica.
+tags: IA y Sociedad, Interacción Humano-Computador, Aprendizaje de Máquinas, Ética y Regulación Tecnológica

@@ -1,0 +1,5 @@
+codigo: CC5401
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5230
+resumen: Aquí vives de cerca el desarrollo de un sistema de software real: formular, planificar y gestionar un proyecto, trabajar coordinadamente en equipo asumiendo un rol específico, administrar riesgos y asegurar la calidad del producto. Se abordan modelos de desarrollo y estándares de la industria, estimación de esfuerzo, ingeniería de requisitos, diseño arquitectónico, detallado y de interfaces, aseguramiento de calidad, pruebas e implantación. Cátedras y auxiliares apoyan un proyecto en equipos grandes que dura todo el semestre, y se evalúa con controles, un examen, el desempeño en el rol asignado, la fase de implantación y una coevaluación entre pares. Necesitas una base sólida en lenguajes de programación e ingeniería de software.
+tags: Proyectos de Software en Equipo, Requisitos y Arquitectura de Software, Calidad y Pruebas de Software, Gestión de Proyectos TI

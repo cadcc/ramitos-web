@@ -1,0 +1,5 @@
+codigo: CC5623
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192906
+resumen: Este taller reflexivo y práctico ayuda a proyectar tu carrera profesional, ya sea en una empresa o emprendiendo, a partir del reconocimiento de tus propias fortalezas y recursos personales. Se trabajan el perfil psicolaboral y las competencias profesionales, el análisis del mercado laboral para un ingeniero en computación, el marketing personal y la elaboración del currículum, y la preparación para procesos de selección y entrevistas. La metodología es activa, con bitácoras, cuestionarios, análisis de casos, juegos de roles, simulaciones de entrevista, presentaciones tipo pitch y lecturas en español e inglés. Se evalúa con actividades en clase, tareas en casa y controles de lectura. Basta la formación base en programación; lo esencial es la apertura a la autorreflexión.
+tags: Desarrollo Profesional y Empleabilidad, Habilidades Comunicacionales, Innovación y Emprendimiento

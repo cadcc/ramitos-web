@@ -1,0 +1,5 @@
+codigo: CC4006
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54742
+resumen: Este taller entrena para resolver en poco tiempo problemas de programación de alta complejidad con exigencias extremas de tiempo y memoria, como los de las competencias y los procesos de selección de empresas tecnológicas. Se abordan búsqueda binaria y búsqueda exhaustiva con poda, estructuras de datos para consultas y actualizaciones eficientes sobre rangos, algoritmos sobre strings y geometría computacional, cerrando con problemas que combinan varias estrategias. Funciona con aula invertida: se estudia con videos y lecturas, y luego se resuelven desafíos en laboratorios grupales. Se evalúa el trabajo en laboratorio, la exposición y discusión de soluciones y tareas individuales periódicas. No exige cursos previos, pero para sacarle provecho conviene programar con soltura y tener disposición para aprender de forma autónoma.
+tags: Programación Competitiva, Diseño y Análisis de Algoritmos, Estructuras de Datos, Geometría Computacional

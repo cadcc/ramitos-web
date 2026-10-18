@@ -1,0 +1,5 @@
+codigo: CC1000
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242566
+resumen: Este curso, eminentemente práctico, busca que adquieras un manejo sólido de herramientas computacionales básicas para resolver problemas simples de ingeniería y ciencias, sin importar tu experiencia previa. Se trabaja el uso crítico y ético de la IA generativa, la preparación de documentos científicos y la interpretación de datos de fuentes públicas, el procesamiento y visualización de datos tabulados en planillas de cálculo, y la programación de scripts con vectores y matrices para cálculos estadísticos y numéricos. Funciona con aula invertida y laboratorios semanales en pareja, evaluados mediante un test de entrada, la resolución del problema planteado y una reflexión oral o escrita sobre los resultados. No requiere conocimientos previos, solo disposición a preparar cada sesión con anticipación.
+tags: Fundamentos de Programación, Computación Científica y Simulación, Visualización de Datos, IA y Sociedad

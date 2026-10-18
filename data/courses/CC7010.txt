@@ -1,0 +1,5 @@
+codigo: CC7010
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154850
+resumen: Este curso de doctorado reconoce una pasantía de investigación de al menos dos meses en una institución de prestigio en el extranjero, idealmente en un entorno de habla inglesa. La experiencia busca fortalecer tus habilidades científicas y de colaboración, y exponerte a una cultura y prácticas de investigación distintas. Antes de partir debes presentar al comité académico del programa una solicitud formal con la institución, el investigador a cargo, las fechas, el plan de trabajo y el entregable que validará la estadía, como un artículo enviado o un reporte técnico. Al volver entregas ese documento, que se evalúa como aprobado o reprobado. Necesitas tener superada la etapa de calificación doctoral y autonomía para investigar.
+tags: Formación Doctoral, Movilidad Internacional, Formación en Investigación, Escritura y Comunicación Científica

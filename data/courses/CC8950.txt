@@ -1,0 +1,5 @@
+codigo: CC8950
+creditos: 30
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154894
+resumen: En esta etapa avanzada de la tesis doctoral se espera que cierres la investigación propiamente tal, terminando de diseñar y aplicar herramientas originales para probar tu hipótesis, analizando los resultados y publicándolos en conferencias y revistas internacionales, y que comiences la escritura del documento de tesis. El trabajo es personal y guiado por un profesor guía del programa, que fija el nivel de avance esperado y con quien sostienes reuniones periódicas para monitorear el progreso y discutir cómo continuar. Apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de la tesis, incluida la propuesta aprobada, y autonomía para conducir investigación original.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

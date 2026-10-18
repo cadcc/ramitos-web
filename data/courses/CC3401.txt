@@ -1,0 +1,5 @@
+codigo: CC3401
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209518
+resumen: Este curso enseña a analizar las necesidades de usuarios finales en su contexto de negocio, técnico y social, para diseñar sistemas interactivos que realmente las resuelvan. Se abordan la usabilidad y la experiencia de usuario, técnicas de levantamiento de necesidades y Design Thinking, la responsabilidad ética y la accesibilidad en el diseño, el prototipado incremental de interfaces web y móviles desde bocetos hasta alta fidelidad, y métodos para evaluar empíricamente la usabilidad con personas. El trabajo es teórico-práctico y gira en torno a un proyecto de diseño en equipo, evaluado mediante hitos de avance, además de controles conceptuales que deben aprobarse por separado. Requiere bases de programación y disposición para trabajar en equipo e interactuar con personas.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Desarrollo Web, Proyectos de Software en Equipo

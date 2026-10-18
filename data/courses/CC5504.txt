@@ -1,0 +1,5 @@
+codigo: CC5504
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54750
+resumen: Este curso explora los fundamentos cognitivos, de diseño y computacionales de la interacción entre personas y computadores, para analizar críticamente y construir interfaces gráficas pensadas en quienes las usan. Se recorren la psicología de los objetos cotidianos y los principios de diseño, los aportes de la neurociencia y la cognición humana, el análisis de errores, el diseño centrado en el usuario con sus métodos de usabilidad y el diseño detallado de interfaces para escritorio, web y dispositivos portátiles. Las clases incluyen exposiciones, discusión de artículos y estudio de casos, y se evalúa con controles de lectura, tareas basadas en casos y un proyecto final de desarrollo de una interfaz. Requiere base en ingeniería de software y lectura en inglés.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Psicología y Cognición

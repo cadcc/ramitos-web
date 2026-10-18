@@ -1,0 +1,5 @@
+codigo: CC7126
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=30618
+resumen: Este curso entrega una visión general de las técnicas formales para razonar con rigor matemático sobre el comportamiento de los programas, comprendiendo sus fundamentos, alcances y limitaciones. Se estudia cómo dar un significado preciso a un programa mediante semántica formal, cómo demostrar su corrección funcional con lógicas de programas, incluso cuando manipulan memoria dinámica, y cómo inferir propiedades automáticamente en tiempo de compilación mediante análisis estático, junto con los algoritmos que mecanizan estas técnicas. Se evalúa con tareas individuales, una presentación oral sobre un tema estudiado de forma independiente y, según el desempeño en las tareas, un examen final. Necesitas conocimientos sólidos de lenguajes de programación y cierta madurez matemática, especialmente en álgebra.
+tags: Métodos Formales y Verificación, Lenguajes y Compiladores, Calidad y Pruebas de Software

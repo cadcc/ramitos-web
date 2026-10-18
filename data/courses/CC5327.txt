@@ -1,0 +1,5 @@
+codigo: CC5327
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=117482
+resumen: Este curso ofrece una visión transversal de la seguridad computacional, para que puedas evaluar con criterio qué tan seguro es un sistema y cómo atacarlo o protegerlo. Se parte por la criptografía simétrica y asimétrica y los principios de seguridad y modelamiento de amenazas, para luego abordar vulnerabilidades de software de bajo nivel, seguridad web, de redes, sistemas operativos y dispositivos móviles, testeo e ingeniería reversa, malware y seguridad de hardware, cerrando con privacidad, anonimato y reporte responsable de vulnerabilidades. Hay cátedras expositivas y auxiliares con laboratorios guiados, y se evalúa con ejercicios en clase, laboratorios individuales y un proyecto grupal dirigido. Necesitas buen manejo de programación y conocimientos sólidos de sistemas operativos.
+tags: Ciberseguridad, Criptografía, Programación de Sistemas, Privacidad y Protección de Datos

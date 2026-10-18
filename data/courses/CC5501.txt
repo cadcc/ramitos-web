@@ -1,0 +1,5 @@
+codigo: CC5501
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177402
+resumen: Aquí desarrollas habilidades para modelar, analizar y resolver problemas aplicados que requieren mallas geométricas sobre geometrías planas, superficies y volúmenes, combinando fundamentos teóricos con implementaciones prácticas. Se estudian polígonos y triangulaciones, la triangulación de Delaunay y sus algoritmos, la generación de mallas de buena calidad y su refinamiento, aplicaciones en computación gráfica, modelación de terrenos y elementos finitos, otros métodos de generación de mallas, los desafíos del caso tridimensional y la paralelización de estos algoritmos. Las clases expositivas resuelven problemas geométricos y su implementación, y se evalúa con ejercicios, un control, tareas de programación y un trabajo de investigación. Necesitas programar con soltura y tener una base sólida en algoritmos y estructuras de datos.
+tags: Geometría Computacional, Computación Gráfica, Computación Científica y Simulación, Computación Paralela y GPU, Diseño y Análisis de Algoritmos

@@ -1,0 +1,5 @@
+codigo: CC4901
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177474
+resumen: Esta práctica te permite incorporarte a la dinámica de trabajo de una organización real y demostrar en un contexto laboral auténtico lo aprendido en la carrera. Antes de partir se completan módulos en línea sobre competencias genéricas como comunicación profesional, compromiso ético, trabajo en equipo e innovación, y se diseña un plan de práctica que el departamento debe aprobar. Durante la estadía se espera realizar tareas como probar y evaluar software, implementar o modificar sistemas con buenas prácticas, o modelar bases de datos y extraer información. Se evalúa mediante la evaluación del supervisor en la empresa y un informe escrito sobre el problema, la solución y una reflexión personal. Necesitas buena base de programación y diseño de software.
+tags: Práctica Profesional, Desarrollo Profesional y Empleabilidad, Calidad y Pruebas de Software, Bases de Datos

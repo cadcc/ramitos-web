@@ -1,0 +1,5 @@
+codigo: CC5205
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174846
+resumen: Aquí aprendes a generar conocimiento a partir de datos de dominios diversos mediante el proceso de descubrimiento de conocimiento en bases de datos, y a elegir la técnica de análisis adecuada según el problema. Se recorren la preparación y limpieza de datos con apoyo de estadística básica, el aprendizaje supervisado y su evaluación, el clustering, el análisis de asociación y tópicos como modelos lineales, redes neuronales, reducción de atributos y privacidad de datos, con atención al sobreajuste y a la ética profesional. Se evalúa con laboratorios prácticos en parejas y un proyecto grupal sobre un área de tu interés, entregado por hitos con presentaciones orales e informes. Necesitas buena base de programación y estructuras de datos.
+tags: Minería de Datos, Aprendizaje de Máquinas, Privacidad y Protección de Datos, Probabilidad y Estadística

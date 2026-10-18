@@ -1,0 +1,5 @@
+codigo: CC4303
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174854
+resumen: Este curso enseña a diseñar e implementar aplicaciones en red, protocolos de transporte y redes de datos eficientes y correctas, además de usar los principios de Internet para diagnosticar y resolver problemas de operación de una red. Se recorre el modelo de capas desde las aplicaciones y la programación con sockets, pasando por los protocolos de transporte confiable, el protocolo IP con su direccionamiento y ruteo y la seguridad de redes, hasta llegar a las redes físicas. Las clases son expositivas y se complementan con tareas de programación que construyen y optimizan un protocolo propio; se evalúa con controles, un examen final y dichas tareas. Requiere conocimientos de sistemas operativos y comodidad leyendo documentación técnica en inglés.
+tags: Redes de Computadores, Ciberseguridad, Programación de Sistemas

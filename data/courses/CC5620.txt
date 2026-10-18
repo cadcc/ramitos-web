@@ -1,0 +1,5 @@
+codigo: CC5620
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=180530
+resumen: Este curso entrega una visión base del derecho informático en Chile, la disciplina que estudia las implicancias legales y regulatorias de la tecnología digital, para que puedas reconocer y resolver los problemas legales que enfrentarás en el ejercicio profesional. Tras unas nociones generales del derecho, se abordan la protección de datos personales y sus próximos cambios normativos, la criminalidad informática y la ciberseguridad, el documento y la firma electrónica, y los medios de prueba digitales, con referencias a marcos internacionales. Las clases son expositivas y se complementan con discusión y estudio de casos. Se evalúa con una evaluación teórica, análisis de casos expuestos oralmente en grupo y un examen. Está pensado para estudiantes con alguna experiencia práctica profesional.
+tags: Ética y Regulación Tecnológica, Privacidad y Protección de Datos, Ciberseguridad

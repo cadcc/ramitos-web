@@ -1,0 +1,5 @@
+codigo: CC5101
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=15338
+resumen: Este curso enseña a analizar con precisión matemática cómo se comportan algoritmos y estructuras de datos frente a entradas aleatorias, usando métodos basados en funciones generatrices. Primero se desarrollan las herramientas matemáticas, como el modelamiento de estructuras combinatorias y la probabilidad discreta, y luego se aplican a estructuras clásicas como tablas de hashing, árboles de búsqueda y skip lists, buscando no solo el costo promedio sino también la varianza y la distribución completa. Las cátedras usan intensivamente un sistema de álgebra computacional, y la evaluación se basa exclusivamente en tareas donde aplicas los métodos y presentas el trabajo por escrito de manera profesional. Necesitas manejar algoritmos y estructuras de datos, además de probabilidades.
+tags: Diseño y Análisis de Algoritmos, Estructuras de Datos, Probabilidad y Estadística, Matemáticas Discretas y Lógica

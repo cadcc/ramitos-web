@@ -1,0 +1,5 @@
+codigo: CC6409
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192366
+resumen: Este taller enseña a formular un proyecto de inteligencia artificial que resuelva un problema real y a llevarlo hasta producción como software que integra modelos de aprendizaje automático. Se abordan la formulación y planificación de proyectos de IA, los patrones de arquitectura para integrar modelos en sistemas de software, la preparación de datos y el entrenamiento y evaluación de modelos, las prácticas DevOps y MLOps para desplegarlos y mantenerlos, y la evaluación de su impacto económico, social y ético. Todo gira en torno a un proyecto en equipo ligado a la innovación, evaluado mediante presentaciones de propuesta, avances y resultados, junto con ejercicios breves. Se requiere base en ingeniería de software y minería de datos.
+tags: Aprendizaje de Máquinas, Requisitos y Arquitectura de Software, Infraestructura TI y Administración de Sistemas, Gestión de Proyectos TI, IA y Sociedad

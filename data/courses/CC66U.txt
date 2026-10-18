@@ -1,0 +1,5 @@
+codigo: CC66U
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=83001
+resumen: Este curso enseña a modelar y resolver problemas con técnicas modernas de aprendizaje de máquinas basadas en redes neuronales profundas, desde concebir la solución hasta implementarla, compararla y optimizarla. Se estudian los fundamentos de las redes neuronales y su entrenamiento con descenso de gradiente y retropropagación, los aspectos prácticos de generalización, métricas, optimizadores e inicialización, y las arquitecturas convolucionales y recurrentes aplicadas a la clasificación de imágenes, la detección de objetos y el procesamiento de secuencias y documentos con librerías especializadas. Se trabaja con clases teóricas, revisión de artículos de investigación, trabajos prácticos y un proyecto, y se evalúa con tareas, trabajo práctico y cuestionarios. Conviene programar con soltura y manejar cálculo diferencial, especialmente la regla de la cadena.
+tags: Aprendizaje Profundo, Aprendizaje de Máquinas, Visión Computacional

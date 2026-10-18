@@ -1,0 +1,5 @@
+codigo: CC5404
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5219
+resumen: Este taller práctico busca que comprendas los conceptos centrales del modelamiento orientado a objetos usando UML como lenguaje común a lo largo de todo el semestre. Tras revisar el origen del lenguaje y una metodología de desarrollo basada en el Proceso Unificado, se trabaja con los distintos artefactos de UML, como diagramas de casos de uso, actividades, interacción, estados, clases y componentes, además del uso de una herramienta de modelamiento. En cada clase se presenta un artefacto con un ejemplo y un ejercicio a resolver en el momento, y se evalúa mediante esos ejercicios y un proyecto con entregas sucesivas que va desde los requerimientos hasta la implementación. Conviene llegar con base en diseño y programación orientada a objetos.
+tags: Requisitos y Arquitectura de Software, Programación Orientada a Objetos, Proyectos de Software en Equipo

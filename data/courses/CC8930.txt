@@ -1,0 +1,5 @@
+codigo: CC8930
+creditos: 30
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154886
+resumen: Esta etapa del trabajo de tesis doctoral culmina con el examen de propuesta, donde debes demostrar que comprendes el proceso científico en tu área, que tienes un tema viable con avances que cuentan con alguna validación internacional y un plan creíble para terminar la tesis. Para ello se espera que tengas definidos el problema, la revisión del trabajo previo y la hipótesis, y que hayas avanzado en diseñar y aplicar herramientas originales para probarla y en publicar resultados. Trabajas de forma personal con reuniones periódicas con tu profesor guía, y apruebas entregando el informe para el examen de propuesta, validado por el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de tu tesis.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

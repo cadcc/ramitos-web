@@ -1,0 +1,5 @@
+codigo: CC7125
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27134
+resumen: Este curso entrega las bases matemáticas para construir software confiable usando un asistente de pruebas, con el que aprendes a definir programas y lenguajes, enunciar propiedades precisas y producir demostraciones verificadas por la máquina. Se recorren la programación funcional y el razonamiento por inducción, la lógica y su conexión con los tipos, la semántica y equivalencia de programas imperativos, la verificación con lógica de Hoare, la semántica operacional y los sistemas de tipos estáticos. Las clases combinan teoría con ejemplos en vivo. La evaluación es continua mediante minicontroles y minitareas, más un proyecto final sobre un tema avanzado, y un examen eximible. No se exige saber lógica, pero ayudan la madurez matemática y la experiencia con lenguajes.
+tags: Métodos Formales y Verificación, Programación Funcional, Matemáticas Discretas y Lógica, Lenguajes y Compiladores

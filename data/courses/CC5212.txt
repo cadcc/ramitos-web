@@ -1,0 +1,5 @@
+codigo: CC5212
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4591
+resumen: Aquí comprendes cómo se procesan y almacenan datos a escala masiva, al estilo de las grandes empresas tecnológicas y laboratorios de investigación, conectando los principios clásicos de la computación distribuida con la computación en la nube moderna. Se revisan los fundamentos de los sistemas distribuidos y el paralelismo, los modelos de comunicación y abstracciones de procesamiento distribuido como MapReduce y el procesamiento de grafos, las bases de datos distribuidas con particionamiento, replicación y sus garantías, y los distintos modelos de almacenamiento NoSQL. Hay cátedras y sesiones prácticas, y se evalúa con controles, examen y actividades complementarias, incluyendo tareas de programación de aplicaciones distribuidas. Requiere conocimientos de bases de datos y un manejo intermedio de Java.
+tags: Sistemas Distribuidos y Big Data, Bases de Datos, Computación Paralela y GPU, Infraestructura TI y Administración de Sistemas

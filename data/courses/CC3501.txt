@@ -1,0 +1,5 @@
+codigo: CC3501
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174806
+resumen: Este curso introduce la computación gráfica y sus aplicaciones en ciencias e ingeniería, con el objetivo de modelar, simular y visualizar computacionalmente problemas que involucran geometrías y escenas en 2D y 3D, programando directamente la GPU. Se estudian el pipeline de renderizado, las transformaciones geométricas, texturas, modelación jerárquica y curvas, la visualización tridimensional con mallas, iluminación y sombreado, las simulaciones físicas con detección de colisiones y métodos numéricos para ecuaciones diferenciales, y la visualización científica. Se evalúa con controles, tareas computacionales con reportes, una presentación oral y un examen, que pueden incluir lecturas complementarias. Para que te vaya bien necesitas programar con soltura y manejar cálculo en varias variables, ecuaciones diferenciales y mecánica.
+tags: Computación Gráfica, Computación Científica y Simulación, Visualización de Datos, Computación Paralela y GPU

@@ -1,0 +1,5 @@
+codigo: CC5609
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242562
+resumen: Este taller busca desarrollar habilidades de comunicación oral y escrita útiles tanto en la vida académica como en el mundo laboral, especialmente para relacionarse con clientes y equipos. Se trabaja la presencia profesional y la comunicación asertiva, el levantamiento de requerimientos, la conducción de reuniones y las presentaciones efectivas, además de la negociación, el manejo de objeciones, los procesos comerciales y la preparación para entrevistas laborales. Las clases combinan marcos conceptuales breves con estudios de caso y juegos de rol. Se evalúa con ejercicios de improvisación, presentaciones e informes individuales, y con propuestas técnicas y comerciales grupales escritas y expuestas oralmente. Más que contenidos técnicos avanzados, requiere una base de diseño y programación de software y disposición a participar activamente.
+tags: Habilidades Comunicacionales, Liderazgo y Trabajo en Equipo, Desarrollo Profesional y Empleabilidad

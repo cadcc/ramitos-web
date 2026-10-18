@@ -1,0 +1,5 @@
+codigo: CC5618
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54758
+resumen: Este taller busca que comprendas cómo la digitalización y las nuevas tecnologías transforman el modelo y la estrategia de gestión de las organizaciones, y que aprendas a diagnosticar su madurez digital para proponer un plan de acción ágil. Se abordan la cuarta revolución industrial y los modelos de negocio digitales, la gestión de proyectos y del talento digital, el diseño de productos y servicios con enfoques como design thinking, lean startup y agile, la experiencia del cliente y la gestión del cambio cultural. Se trabaja con aprendizaje basado en proyectos, cátedras con casos y discusiones, workshops de innovación y presentaciones, evaluándose mediante trabajos grupales. Conviene llegar con una base en ingeniería de software y gestión de proyectos de desarrollo.
+tags: Estrategia y Transformación Digital, Innovación y Emprendimiento, Metodologías Ágiles, Sistemas de Información

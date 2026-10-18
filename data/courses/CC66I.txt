@@ -1,0 +1,5 @@
+codigo: CC66I
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33569
+resumen: Este curso entrega los fundamentos de la gestión de datos a gran escala y del procesamiento distribuido, con el objetivo de entender cómo funcionan por dentro grandes sitios web y motores de búsqueda. Se estudian el diseño de sistemas distribuidos y sus sistemas de archivos, los marcos de procesamiento masivo y los lenguajes para analizar datos sobre múltiples máquinas, la recuperación de información con indexación y técnicas de ranking, y los almacenes NoSQL diseñados para escalar, junto con sus garantías y formas de distribuir los datos. Las clases expositivas se complementan con sesiones prácticas, y la evaluación se basa íntegramente en laboratorios. Conviene programar con soltura, ya que se implementan tareas sobre plataformas distribuidas.
+tags: Sistemas Distribuidos y Big Data, Bases de Datos, Recuperación de Información

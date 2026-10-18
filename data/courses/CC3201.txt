@@ -1,0 +1,5 @@
+codigo: CC3201
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174822
+resumen: Este curso enseña a modelar, gestionar, consultar y analizar datos estructurados para construir aplicaciones eficientes y seguras. Se parte por la adquisición de datos desde fuentes externas y su modelamiento conceptual, para luego pasar al modelo relacional, el diseño de esquemas y la consulta mediante álgebra relacional y SQL. Se abordan también índices, optimización de consultas, transacciones e interfaces programáticas, junto con modelos de datos no tradicionales basados en árboles y grafos, siempre considerando la seguridad y la privacidad de los usuarios. Se evalúa con laboratorios teóricos individuales, laboratorios prácticos en grupo y un proyecto grupal a lo largo del semestre, con entregas parciales e informe final. Requiere manejo previo de algoritmos y estructuras de datos.
+tags: Bases de Datos, Privacidad y Protección de Datos, Proyectos de Software en Equipo

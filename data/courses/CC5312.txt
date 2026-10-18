@@ -1,0 +1,5 @@
+codigo: CC5312
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=152490
+resumen: Este curso entrega los conceptos fundamentales de la seguridad computacional, como amenazas, vulnerabilidades y ataques, para que puedas evaluar de forma informada la seguridad de un sistema y proponer formas de protegerlo. Se revisan los principios básicos de la seguridad, el uso correcto de la criptografía para confidencialidad y autentificación, las técnicas de ataque y defensa sobre software vulnerable, el malware y la ingeniería social, la seguridad de sistemas operativos y redes, la seguridad web y móvil, y temas como respuesta a incidentes, privacidad y anonimato. Las clases son expositivas y se evalúa con controles, un examen y tareas de programación y teóricas, individuales o grupales. Necesitas bases sólidas de bases de datos y sistemas operativos.
+tags: Ciberseguridad, Criptografía, Redes de Computadores, Privacidad y Protección de Datos

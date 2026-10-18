@@ -1,0 +1,5 @@
+codigo: CC8940
+creditos: 30
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154890
+resumen: Este taller marca el inicio del cierre de la tesis doctoral, tras la aprobación de la propuesta. Mediante trabajo personal guiado por tu profesor guía, se espera que trabajes intensamente en diseñar herramientas originales para probar tu hipótesis, sean demostraciones, métodos, algoritmos, software o experimentos, en aplicarlas y analizar los resultados, y en publicarlos en conferencias y revistas internacionales, aunque el nivel de avance exacto lo fija tu profesor guía. La metodología consiste en reuniones periódicas donde se monitorea tu progreso y se discute cómo continuar, y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Requiere haber aprobado el examen de propuesta doctoral.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

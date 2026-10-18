@@ -1,0 +1,5 @@
+codigo: CC79G
+creditos: 21
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=32142
+resumen: En esta etapa ejecutas la investigación aplicada de tu proyecto de grado, abordando un problema real y práctico de tecnologías de la información con un enfoque científico. Con el apoyo de tu profesor guía, en reuniones periódicas de seguimiento, planificas en detalle las tareas, desarrollas las actividades, recoges los datos necesarios para evaluar si la solución resuelve el problema planteado e interpretas los resultados. El trabajo culmina con una presentación oral en formato científico sobre el problema, la metodología, los resultados y su interpretación, que el Comité Académico evalúa considerando también la calidad y claridad de la exposición. Para avanzar bien necesitas contar con una propuesta de proyecto ya formulada y aprobada, además de autonomía para organizar tu trabajo.
+tags: Tesis de Posgrado, Formación en Investigación, Escritura y Comunicación Científica, Sistemas de Información

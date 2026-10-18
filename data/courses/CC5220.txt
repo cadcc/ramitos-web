@@ -1,0 +1,5 @@
+codigo: CC5220
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256094
+resumen: Este curso te enseña a formalizar problemas de optimización y a resolverlos con metaheurísticas, comparando algoritmos estocásticos mediante experimentos rigurosos y reproducibles. Se parte por los fundamentos de la optimización de caja negra y la metodología experimental, para luego implementar desde cero métodos de estado único, algoritmos evolutivos poblacionales y métodos de enjambre con manejo de restricciones, cerrando con optimización multiobjetivo, diversidad y tendencias actuales del área. Se trabaja en torno a un proyecto en equipo sobre un problema escogido por cada grupo, evaluado mediante tareas prácticas grupales con informes breves y una presentación final de un artículo reciente. Para que te vaya bien necesitas buenas bases de diseño y programación, además de comodidad con las matemáticas discretas.
+tags: Optimización, Diseño y Análisis de Algoritmos, Probabilidad y Estadística

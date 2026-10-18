@@ -1,0 +1,5 @@
+codigo: CC5619
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=59758
+resumen: Aquí aprenderás a abordar necesidades reales de empresas y organizaciones diseñando y construyendo prototipos digitales con herramientas de desarrollo rápido, NoCode y LowCode. Se trabajan los principios de diseño centrado en el usuario y de interfaces, la accesibilidad y el diseño para distintas plataformas, la construcción y evaluación de prototipos web y móviles, y metodologías de levantamiento de requisitos y diseño como Design Sprint, Event Storming y el diseño guiado por el dominio, con miras a proponer productos mínimos viables. Las clases combinan teoría, ejercicios prácticos individuales y un proyecto grupal propuesto por los estudiantes, evaluado con una propuesta, una presentación de avance y una final. Necesitas una base sólida en ingeniería de software y conocimientos básicos de programación.
+tags: Diseño Centrado en el Usuario, Desarrollo Web, Requisitos y Arquitectura de Software, Innovación y Emprendimiento

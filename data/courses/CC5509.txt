@@ -1,0 +1,5 @@
+codigo: CC5509
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=15366
+resumen: Este curso estudia métodos del estado del arte para representar y clasificar patrones, con foco principal en aplicaciones de visión por computador como el reconocimiento de rostros, dígitos manuscritos o imágenes en general. Se tratan la extracción de características visuales y la reducción de dimensionalidad, las métricas para evaluar sistemas de reconocimiento, la clasificación supervisada y el clustering, y finalmente la codificación dispersa, las redes neuronales convolucionales y los modelos para patrones secuenciales. Las clases son expositivas e incluyen la presentación obligatoria y la discusión grupal de artículos técnicos; se evalúa con tareas individuales, un proyecto en parejas, un control y un examen. Para aprovecharlo necesitas programar con soltura y tener buena base en diseño de software.
+tags: Visión Computacional, Aprendizaje de Máquinas, Aprendizaje Profundo

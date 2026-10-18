@@ -1,0 +1,5 @@
+codigo: CC4001
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=8338
+resumen: Este taller práctico te prepara para competir en grupos pequeños en competencias de programación al estilo ACM, desarrollando la capacidad de identificar rápidamente una técnica algorítmica adecuada para un problema nuevo, elegir el lenguaje más conveniente e implementar una solución correcta bajo presión de tiempo y con formatos de salida estrictos. Los contenidos abarcan técnicas de diseño de algoritmos básicas y avanzadas, junto con las características distintivas de distintos lenguajes de programación. Se trabaja en sesiones grupales que simulan una competencia, donde cada equipo debe resolver al menos un problema, y en sesiones de discusión donde los grupos presentan y fundamentan sus estrategias de solución. Requiere conocimientos base de programación.
+tags: Programación Competitiva, Diseño y Análisis de Algoritmos, Estructuras de Datos

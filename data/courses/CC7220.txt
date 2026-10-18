@@ -1,0 +1,5 @@
+codigo: CC7220
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=95770
+resumen: Este curso estudia los fundamentos de la revolución en la creación, manejo, procesamiento y consumo de datos impulsada por la Web y por los avances en procesamiento, comunicación y almacenamiento, con especial atención a los datos enlazados. Se revisan las tendencias en la generación y uso de datos a gran escala, con casos de estudio en gobierno y ciencia, y los modelos y técnicas básicas para desarrollar en la Web de datos; luego cada estudiante profundiza en un área particular con enfoque teórico o aplicado. El trabajo se basa en lecturas, informes escritos, presentaciones de los estudiantes y un proyecto final de investigación individual o grupal. Requiere autonomía y disposición para leer y discutir literatura científica.
+tags: Bases de Datos, Recuperación de Información, Formación en Investigación

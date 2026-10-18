@@ -1,0 +1,5 @@
+codigo: CC5003
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213318
+resumen: Aquí aprendes a diseñar y construir aplicaciones web reactivas de página única, con énfasis en el frontend pero abarcando también el backend, usando un stack unificado basado en un lenguaje con tipado opcional. Se trabajan la programación reactiva y el manejo del estado de interfaces, APIs seguras integradas con bases de datos, autenticación y protección contra ataques, pruebas automatizadas, y temas avanzados como comunicación bidireccional, contenedores e integración continua. Las clases combinan exposición con programación en vivo, y se evalúa mediante laboratorios prácticos y un proyecto grupal semestral con avances sucesivos y una presentación oral final. Necesitas una base sólida de programación y metodologías de diseño de software, además de disposición para trabajar en equipo.
+tags: Desarrollo Web, Ciberseguridad, Calidad y Pruebas de Software, Infraestructura TI y Administración de Sistemas, Proyectos de Software en Equipo

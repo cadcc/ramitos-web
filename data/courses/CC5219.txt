@@ -1,0 +1,5 @@
+codigo: CC5219
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256058
+resumen: Aquí aprendes a comparar, adaptar y combinar modelos generativos para construir sistemas que procesan y generan texto, imagen y audio. Se recorren las principales familias de arquitecturas generativas para visión, los grandes modelos de lenguaje y su ajuste fino eficiente, los modelos de audio, la multimodalidad y, finalmente, los LLM como sistemas con recuperación aumentada, agentes, razonamiento e interpretabilidad, siempre evaluando calidad, sesgos y riesgos éticos. Las clases expositivas se complementan con laboratorios en parejas usando bibliotecas especializadas, y se evalúa con esos laboratorios, mini evaluaciones teóricas, una tarea con defensa oral y la presentación de un paper reciente. Necesitas bases de probabilidades y estadística, experiencia en minería de datos y soltura para leer artículos técnicos en inglés.
+tags: IA Generativa y Modelos de Lenguaje, Aprendizaje Profundo, Procesamiento de Lenguaje Natural, Visión Computacional, IA y Sociedad

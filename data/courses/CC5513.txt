@@ -1,0 +1,5 @@
+codigo: CC5513
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=113966
+resumen: Este curso introduce los algoritmos y estructuras de datos para procesar y analizar información 3D, presente en áreas como el diseño asistido por computador, el entretenimiento y la medicina. Se estudian las representaciones de datos 3D como mallas, nubes de puntos y volúmenes, fundamentos de geometría diferencial, técnicas de procesamiento geométrico como reconstrucción de superficies, registro, simplificación, remallado y deformación, y métodos de análisis de formas basados en el operador Laplaciano y la difusión de calor, con aplicaciones en recuperación, correspondencias y simetrías. Las clases expositivas se complementan con demos y auxiliares prácticas, y se evalúa con tareas, presentaciones de artículos del estado del arte y un proyecto por iteraciones. Requiere sólida base en diseño de algoritmos y computación gráfica.
+tags: Computación Gráfica, Geometría Computacional, Recuperación de Información, Diseño y Análisis de Algoritmos

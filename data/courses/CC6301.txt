@@ -1,0 +1,5 @@
+codigo: CC6301
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5136
+resumen: Este curso entrega herramientas para proponer y evaluar formalmente modelos de seguridad, algoritmos y protocolos criptográficos dentro de una sub-área de investigación actual de la criptografía, que varía según la versión del curso. Tras una introducción a la criptografía demostrable, la mayor parte del semestre se dedica a la lectura crítica y discusión de artículos recientes en temas como computación multipartita segura, criptografía funcional, votación electrónica, criptografía post-cuántica o de curvas elípticas. La metodología combina clases expositivas, presentaciones de artículos por parte de los estudiantes y discusión, y se evalúa con presentaciones de papers y un proyecto de investigación desarrollado durante el semestre. Requiere base en algoritmos, teoría de la computación y probabilidades, o bien conocimientos introductorios de criptografía.
+tags: Criptografía, Ciberseguridad, Formación en Investigación, Teoría de la Computación

@@ -1,0 +1,5 @@
+codigo: CC5216
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128666
+resumen: Aquí aprendes a aplicar ciencia de datos a problemas urbanos y geográficos donde la componente espacial es clave, desde la concepción del proyecto hasta la transferencia de la solución a quienes deben adoptarla. Se trabajan los fundamentos de los datos geográficos y las trazas digitales, el modelamiento espacial con autocorrelación, regresión, clustering y clasificación espacial, el análisis de redes, flujos y accesibilidad urbana, y la visualización con Python y JavaScript, cerrando con estrategias de comunicación hacia contrapartes. Todo gira en torno a un proyecto en equipos sobre un problema real, evaluado por hitos de avance, una presentación oral final y un informe escrito. Necesitas una base sólida en diseño y análisis de algoritmos y soltura programando.
+tags: Minería de Datos, Visualización de Datos, Aprendizaje de Máquinas, Teoría de Grafos

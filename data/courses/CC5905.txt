@@ -1,0 +1,5 @@
+codigo: CC5905
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5207
+resumen: Este curso permite trabajar en un tema aplicado de ciencias de la computación bajo la guía directa de un profesor, profundizando en técnicas específicas del área elegida y desarrollando un proyecto acotado de investigación aplicada. El trabajo incluye formular el proyecto, construir prototipos, demostraciones o pruebas de concepto, y evaluar críticamente desarrollos previos para mejorarlos; los temas pueden ir desde metodologías de ingeniería de software hasta computación gráfica, software educativo o aplicaciones a la ingeniería. Se organiza mediante tutorías, lecturas, búsqueda de artículos, reuniones de trabajo y presentaciones de avance, y se evalúa tanto el proceso como los productos comprometidos. Para aprovecharlo necesitas autonomía, autorregulación, compromiso con la tarea y una base sólida de programación.
+tags: Formación en Investigación, Escritura y Comunicación Científica, Gestión de Proyectos TI

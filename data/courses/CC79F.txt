@@ -1,0 +1,5 @@
+codigo: CC79F
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27890
+resumen: Aquí formulas la propuesta completa del proyecto de TI que luego desarrollarás como proyecto de grado del magíster. Trabajas la presentación del contexto y del problema, la justificación organizacional y tecnológica, la definición de objetivos, la metodología y el plan de trabajo. Combina clases presenciales de acompañamiento, con directrices para definir y validar cada componente de la propuesta, y reuniones periódicas con un profesor guía que asesora en el contenido, mientras un tutor apoya en lo estructural. Entregas informes escritos durante el semestre y, al final, la propuesta avalada por tu profesor guía, que evalúa el Comité Académico según su calidad, claridad y pertinencia. Necesitas haber identificado y delimitado previamente un proyecto de TI en tu organización.
+tags: Gestión de Proyectos TI, Tesis de Posgrado, Escritura y Comunicación Científica, Sistemas de Información

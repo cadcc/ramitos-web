@@ -1,0 +1,5 @@
+codigo: CC5601
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5235
+resumen: Este curso prepara para formular, evaluar y gestionar la adquisición de proyectos de tecnologías de la información en un ambiente de negocios. Se aprende a preparar un proyecto de este tipo, evaluarlo financieramente y presentarlo ante un directorio, y luego a conducir su compra en un proceso competitivo, desarrollando bases administrativas y técnicas, pautas de evaluación de propuestas, adjudicación, negociación y nociones básicas de contratos. Las clases teóricas y prácticas usan ejemplos reales y actuales, y se evalúa con controles y un proyecto en grupos pequeños que incluye un trabajo escrito y una presentación en público. Requiere conocimientos de ingeniería de software y de evaluación económica de proyectos.
+tags: Evaluación Económica de Proyectos, Gestión de Proyectos TI, Habilidades Comunicacionales, Estrategia y Transformación Digital

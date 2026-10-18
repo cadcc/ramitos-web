@@ -1,0 +1,5 @@
+codigo: CC5301
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5225
+resumen: Aquí aprendes a razonar matemáticamente sobre la seguridad de los algoritmos criptográficos, modelarlos formalmente y usarlos para resolver problemas prácticos de confidencialidad y autentificación en redes. Se parte de los objetivos de seguridad, los adversarios y la criptografía clásica, para luego estudiar la criptografía simétrica con cifradores de bloque, funciones de hash y autentificación de mensajes, la criptografía de clave pública basada en teoría de números, y su uso práctico mediante infraestructura de clave pública, acuerdos de claves y canales seguros. Se trabaja con clases teóricas y se evalúa con un control, un examen, tareas cortas de demostraciones y problemas, y un proyecto semestral. Requiere bases de algoritmos, teoría de la computación y probabilidades.
+tags: Criptografía, Ciberseguridad, Redes de Computadores, Matemáticas Discretas y Lógica

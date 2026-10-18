@@ -1,0 +1,5 @@
+codigo: CC4402
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=220162
+resumen: Este curso enseña a formular, gestionar y evaluar proyectos de software dentro de organizaciones, tanto para implantar nueva tecnología como para renovar sistemas existentes. Se recorre el ciclo completo de un proyecto: analizar el problema del cliente y la relación cliente-proveedor, definir el alcance, planificar, cotizar y negociar una propuesta, monitorear y controlar la ejecución gestionando cambios y riesgos, y evaluar la factibilidad y el impacto antes, durante y después, proponiendo la evolución del producto. Con clases expositivas, discusiones y aprendizaje basado en proyectos, se evalúa mediante controles, un examen, tareas que desarrollan un proyecto en equipo y coevaluaciones. Requiere conocimientos de ingeniería de software y habilidades de comunicación escrita y oral para presentar y defender propuestas.
+tags: Gestión de Proyectos TI, Evaluación Económica de Proyectos, Habilidades Comunicacionales

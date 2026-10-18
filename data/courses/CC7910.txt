@@ -1,0 +1,5 @@
+codigo: CC7910
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=152910
+resumen: Este curso desarrolla las habilidades para investigar en ciencia y tecnología, con énfasis en las particularidades de la computación frente a las ciencias clásicas. Se reflexiona sobre la computación como disciplina científica y sobre la ciencia desde la filosofía, la economía y la sociología, y se practica cómo plantear un problema de investigación, construir el estado del arte, formular hipótesis, objetivos y metodología, y planificar un proyecto. También se ejercitan la lectura crítica, la búsqueda de fuentes, la escritura científica y la presentación de resultados, junto con la ética en la investigación y en el uso de datos. Se evalúa con un informe de lectura, una presentación oral, un proyecto y actividades semanales; exige leer, escribir y exponer.
+tags: Formación en Investigación, Escritura y Comunicación Científica, Ética y Regulación Tecnológica

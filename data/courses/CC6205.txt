@@ -1,0 +1,5 @@
+codigo: CC6205
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=258846
+resumen: Este curso introduce los fundamentos, métodos y aplicaciones del procesamiento de lenguaje natural, recorriendo la evolución de la disciplina desde los enfoques estadísticos clásicos hasta los grandes modelos de lenguaje. Se trabajan el preprocesamiento y la representación de texto, la clasificación y el modelado estadístico del lenguaje, los modelos neuronales y la arquitectura Transformer, los modelos preentrenados y su adaptación, la ingeniería de prompts, la generación aumentada por recuperación y la evaluación de modelos, además de ética, sesgos y equidad. Combina clases expositivas, laboratorios de programación y discusión de artículos científicos, y se evalúa con tareas individuales de programación, actividades breves en clase y un proyecto grupal con informe tipo artículo. Requiere base en algoritmos, estructuras de datos y probabilidades.
+tags: Procesamiento de Lenguaje Natural, IA Generativa y Modelos de Lenguaje, Aprendizaje Profundo, IA y Sociedad

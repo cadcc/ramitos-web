@@ -1,0 +1,5 @@
+codigo: CC4302
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=181846
+resumen: Este curso enseña a escribir programas que aprovechen eficientemente los procesadores multi-core y a evaluar cómo la arquitectura del hardware y las estrategias del núcleo del sistema operativo afectan el desempeño del software. Se estudian procesos, threads y su sincronización evitando errores como dataraces y deadlocks, la administración del procesador y el scheduling, la memoria virtual con paginamiento y máquinas virtuales, y la entrada/salida, incluyendo drivers, discos, SSD y sistemas de archivos. Las clases son expositivas con resolución de problemas, y se evalúa con controles, un examen final y varias tareas prácticas de paralelización, sincronización e implementación de un driver en Linux. Requiere experiencia en programación de sistemas a bajo nivel y disposición para leer textos técnicos en inglés.
+tags: Sistemas Operativos y Concurrencia, Programación de Sistemas, Computación Paralela y GPU, Arquitectura de Computadores

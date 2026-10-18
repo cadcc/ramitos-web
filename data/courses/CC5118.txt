@@ -1,0 +1,5 @@
+codigo: CC5118
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=232721
+resumen: Este curso entrega los fundamentos teóricos de las redes complejas como herramienta matemática para analizar, caracterizar y modelar sistemas formados por entidades y sus relaciones, como redes sociales, cerebrales, de transporte o de propagación de enfermedades, considerando el costo computacional de los algoritmos involucrados. Se trabajan los fundamentos de grafos, las medidas de centralidad, los grafos aleatorios y el fenómeno de mundo pequeño, y los modelos de redes libres de escala y de propagación. Las clases son expositivas y las auxiliares guían el trabajo práctico, que se evalúa con tareas de análisis sobre datos reales y un proyecto grupal con hitos y presentaciones. Necesitas base en matemáticas discretas y minería de datos, y comodidad leyendo artículos en inglés.
+tags: Teoría de Grafos, Minería de Datos, Probabilidad y Estadística

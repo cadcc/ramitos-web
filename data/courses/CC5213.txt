@@ -1,0 +1,5 @@
+codigo: CC5213
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=142134
+resumen: Aquí aprendes cómo funcionan los sistemas que buscan contenido multimedia por similitud, como encontrar fotos duplicadas, identificar una canción a partir de un fragmento de audio o detectar apariciones de una persona en un video. Se estudian las dos fases centrales de estos sistemas: la extracción de descriptores de contenido para imágenes, audio, texto y video, y los algoritmos e índices que permiten búsquedas eficientes y efectivas sobre grandes colecciones, además de cómo evaluar su desempeño. Se evalúa con controles breves en clase, tareas de programación y un proyecto personal final que resuelve un problema real, presentado oralmente; no hay examen final. Necesitas buena base de programación, algoritmos y estructuras de datos.
+tags: Recuperación de Información, Visión Computacional, Estructuras de Datos

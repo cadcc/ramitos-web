@@ -1,0 +1,5 @@
+codigo: CC5116
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54738
+resumen: Aquí construyes de forma incremental tu propio compilador para un lenguaje de alto nivel, desde el análisis sintáctico hasta la generación de código assembler, entendiendo cómo cada mecanismo del lenguaje impacta su diseño. Se abordan la representación de datos, convenciones de llamado e interacción con código de bajo nivel, funciones, verificación e inferencia de tipos, estructuras de datos en memoria, funciones de primera clase, objetos, recolección de basura y optimizaciones. El trabajo se centra en un proyecto en grupos pequeños con entregas sucesivas del compilador que enfatizan testing y documentación, complementado con quizzes individuales. Necesitas una base sólida en lenguajes de programación y arquitectura de computadores, y el desarrollo se hace en un lenguaje funcional tipado.
+tags: Lenguajes y Compiladores, Programación Funcional, Arquitectura de Computadores, Calidad y Pruebas de Software

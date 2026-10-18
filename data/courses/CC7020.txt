@@ -1,0 +1,5 @@
+codigo: CC7020
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154862
+resumen: Este curso de postgrado te permite realizar una investigación anexa a tu tesis bajo la supervisión de un profesor del programa distinto de tu guía. La idea es abrir tu campo de acción más allá de tu área específica, aplicar resultados de tu tesis en otro dominio y vivir la experiencia de investigar con otra persona a cargo. El trabajo se organiza en torno a lecturas, búsqueda de artículos y material relacionado, reuniones de trabajo y una presentación de la investigación. Se evalúa mediante un artículo o informe técnico aprobado por el profesor supervisor y validado por el comité académico. Para aprovecharlo necesitas autonomía, autorregulación, compromiso con la investigación y una base sólida en tu propio tema de tesis.
+tags: Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

@@ -1,0 +1,5 @@
+codigo: CC5303
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=246070
+resumen: Este curso te entrega los conceptos centrales para comprender, diseñar y construir sistemas computacionales que funcionan de manera distribuida. Se estudian los modelos y la evolución de los sistemas distribuidos, los esquemas de comunicación entre procesos, la identificación y localización de entidades, la migración de procesos y código, la sincronización y coordinación con tolerancia a fallas, la consistencia y replicación de datos, y los sistemas de archivos distribuidos. Las clases son expositivas y se evalúa con controles, un examen y tareas de programación incrementales, donde cada entrega reutiliza las anteriores y todo debe funcionar correctamente. Para que te vaya bien necesitas dominar los fundamentos de redes de computadores y programar con soltura.
+tags: Sistemas Distribuidos y Big Data, Redes de Computadores, Sistemas Operativos y Concurrencia

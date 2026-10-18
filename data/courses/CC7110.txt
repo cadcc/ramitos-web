@@ -1,0 +1,5 @@
+codigo: CC7110
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=149134
+resumen: Este curso entrega las herramientas técnicas y formales para garantizar que los programas cumplen lo especificado y detectar errores lo antes posible, con foco especial en los sistemas de tipos. Partiendo del lambda cálculo y su semántica operacional, se estudia cómo formalizar y extender lenguajes, demostrar la coherencia de sus sistemas de tipos, la conexión entre tipos y lógica constructiva, el polimorfismo, modelos formales de lenguajes orientados a objetos e inferencia de tipos. Las cátedras combinan teoría con demostraciones en vivo; se evalúa con controles, un examen y tareas individuales donde implementas sistemas de tipos e intérpretes. Necesitas conocimientos previos de lenguajes de programación y comodidad con las demostraciones formales.
+tags: Métodos Formales y Verificación, Lenguajes y Compiladores, Matemáticas Discretas y Lógica, Programación Funcional

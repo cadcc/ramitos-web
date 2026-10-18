@@ -1,0 +1,5 @@
+codigo: CC6501
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5202
+resumen: Este taller se centra en diseñar o rediseñar la interfaz y la interacción de un dispositivo o software, trabajando en equipo y evaluando los resultados con usuarios finales. A partir de un caso de estudio, se analizan en profundidad las interfaces existentes para detectar sus fortalezas y debilidades, se elabora una propuesta de rediseño y se implementa mediante prototipos rápidos que se prueban y mejoran iterativamente con usuarios, siguiendo un enfoque de diseño centrado en el usuario. La metodología combina lectura y discusión de papers, trabajo colaborativo y presentaciones orales, y se evalúa con informes y presentaciones del análisis y la propuesta, controles de lectura, y el informe y presentación del prototipo final. Requiere conocimientos previos de interfaces humano-computador.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Proyectos de Software en Equipo

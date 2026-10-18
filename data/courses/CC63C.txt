@@ -1,0 +1,5 @@
+codigo: CC63C
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=95798
+resumen: Este curso desarrolla las habilidades para identificar, analizar y gestionar creativamente los conflictos que surgen al dirigir proyectos tecnológicos, ya sea con clientes, proveedores o el propio equipo. Se abordan la naturaleza y el contexto emocional de los conflictos, los principios y etapas de la negociación como estrategia de generación de valor, y competencias de comunicación como organizar argumentos, generar rapport, usar preguntas y manejar objeciones en conversaciones difíciles. Las clases combinan conceptos, demostración de técnicas y ejercicios prácticos con casos reales y juegos de roles, y se evalúa con controles de contenido, guías de ejercicios y un trabajo final sobre un caso de estudio. Más que conocimientos técnicos, pide disposición a participar activamente y reflexionar sobre la propia comunicación.
+tags: Liderazgo y Trabajo en Equipo, Habilidades Comunicacionales, Gestión de Proyectos TI, Psicología y Cognición

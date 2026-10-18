@@ -1,0 +1,5 @@
+codigo: CC5511
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=84105
+resumen: Este curso entrega los conceptos centrales de la interacción humano-computador y las herramientas para concebir, construir y evaluar aplicaciones con interfaz gráfica de usuario. Se estudian las capacidades físicas, cognitivas y sociales de las personas que influyen en el diseño, los principios de las interfaces gráficas y del buen diseño, incluida la accesibilidad, el desarrollo centrado en el usuario, la prevención de fallas de interacción, arquitecturas y patrones de software para sistemas interactivos, métodos de evaluación con y sin usuarios, y los estándares del área. Las cátedras se complementan con clases auxiliares y ejercicios, y se evalúa mediante controles, un examen y ejercicios individuales o grupales. Requiere una base sólida en ingeniería de software.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Psicología y Cognición, Requisitos y Arquitectura de Software

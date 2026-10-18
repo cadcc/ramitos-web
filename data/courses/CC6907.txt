@@ -1,0 +1,5 @@
+codigo: CC6907
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=252090
+resumen: Este curso te prepara para abordar con éxito tu memoria de título: aquí eliges un tema, consigues un profesor guía y dejas planificado el trabajo que desarrollarás después. A partir de un problema de computación, identificas su contexto, defines objetivos, revisas el estado del arte, esbozas una solución con su forma de evaluarla y das los primeros pasos de su desarrollo. Fuera de un par de clases informativas, todo es trabajo autónomo con reuniones periódicas con tu guía. Se evalúa con una propuesta de tema y un informe final, calificados como aprobado o reprobado. Para que te vaya bien necesitas autonomía, buena gestión del tiempo, escritura técnica clara y capacidad de integrar lo aprendido en la carrera.
+tags: Memoria de Título, Formación en Investigación, Escritura y Comunicación Científica

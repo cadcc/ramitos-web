@@ -1,0 +1,5 @@
+codigo: CC5304
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54746
+resumen: Este curso introduce la infraestructura de tecnologías de información desde la perspectiva de la alta disponibilidad, preparándote para diseñar soluciones institucionales, dialogar con especialistas en hardware y software, y negociar con proveedores externos. Se revisa el rol de la infraestructura en una organización moderna y la diferencia entre arquitectura e infraestructura, para luego estudiar data centers, servidores, almacenamiento y respaldo, redes y sistemas operativos, siempre considerando disponibilidad, desempeño y seguridad, y cerrar con administración de sistemas, continuidad operacional y principios de alta disponibilidad. Las clases son expositivas y se evalúa mediante controles durante el semestre y un examen final. Para aprovecharlo necesitas conocimientos base de bases de datos y de sistemas operativos.
+tags: Infraestructura TI y Administración de Sistemas, Sistemas Distribuidos y Big Data, Redes de Computadores, Ciberseguridad

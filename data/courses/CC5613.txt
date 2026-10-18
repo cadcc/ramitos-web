@@ -1,0 +1,5 @@
+codigo: CC5613
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=7134
+resumen: Crear un software o dispositivo excelente no basta: también hay que saber venderlo y lanzarlo. En este taller aprenderás a estructurar un plan de lanzamiento de producto centrado en la historia que quieres contar, distinguiendo entre audiencias técnicas y comerciales. Se trabajan el storytelling y el uso de la voz, la construcción de la narrativa, la preparación de datos y momentos memorables que refuercen el mensaje clave, y la revisión y ensayo de la presentación, junto con nociones básicas de marketing. Las sesiones son semanales y de asistencia obligatoria, con trabajos personales o grupales presentados en clase. Se evalúa la asistencia y una presentación final donde lanzas un producto tecnológico. Requiere una base de diseño y programación de software.
+tags: Habilidades Comunicacionales, Innovación y Emprendimiento, Desarrollo Profesional y Empleabilidad

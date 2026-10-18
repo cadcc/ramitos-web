@@ -1,0 +1,5 @@
+codigo: CC5510
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=31798
+resumen: Este curso introduce los desafíos de diseñar sistemas computacionales interactivos que respondan a necesidades concretas de usuarios reales, siguiendo una ruta metodológica que va desde entender el problema en su contexto hasta evaluar formalmente la solución. Se trabajan la usabilidad y la experiencia de usuario, técnicas para levantar y analizar necesidades, prototipado de baja y alta fidelidad, factores humanos, cognitivos, sociales y emocionales en el diseño, métodos cualitativos y cuantitativos de evaluación con usuarios, ética en estudios con personas y tendencias actuales del área. Las clases son teórico-prácticas, apoyadas en casos reales, y se evalúa con ejercicios en clase, análisis de casos y un proyecto en equipo con hitos de avance y presentación final. Basta con conocimientos introductorios de programación.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Psicología y Cognición, Proyectos de Software en Equipo

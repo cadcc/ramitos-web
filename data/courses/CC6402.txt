@@ -1,0 +1,5 @@
+codigo: CC6402
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=115682
+resumen: Este taller profundiza en las metodologías ágiles y lean, explorando temas en la frontera del área como el desarrollo de productos innovadores sin un problema de negocio bien definido, la usabilidad con enfoques ágiles, la automatización de pruebas de aceptación, la mantención de sistemas con flujo continuo y el escalamiento de la agilidad a grandes organizaciones. Tras una breve introducción teórica, los estudiantes investigan y presentan tópicos avanzados, y luego desarrollan en conjunto un proyecto de software donde aplican y evalúan esos enfoques. Se evalúan la calidad del producto y la opinión del cliente, la aplicación de las prácticas con co-evaluación de pares, y la comprensión demostrada en presentaciones. Requiere experiencia previa en ingeniería de software.
+tags: Metodologías Ágiles, Proyectos de Software en Equipo, Innovación y Emprendimiento, Calidad y Pruebas de Software

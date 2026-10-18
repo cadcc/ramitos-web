@@ -1,0 +1,5 @@
+codigo: CC7320
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154866
+resumen: Este curso entrega herramientas algorítmicas y de teoría de la información para diseñar estructuras de datos que operan en espacio reducido, algo clave cuando la memoria es jerárquica o limitada. Se parte de las nociones de compresibilidad y entropía junto con métodos clásicos de compresión, para luego estudiar representaciones compactas de secuencias, permutaciones, árboles, grafos y grillas, y estructuras comprimidas para indexar colecciones de texto, contrastando siempre teoría y práctica. Las clases las dictan el profesor y los propios estudiantes bajo su tutoría, y se evalúa con esas presentaciones y un trabajo final individual en que se estudia, implementa y compara una estructura contra el estado del arte. Requiere una base sólida en diseño y análisis de algoritmos.
+tags: Estructuras de Datos, Diseño y Análisis de Algoritmos, Recuperación de Información

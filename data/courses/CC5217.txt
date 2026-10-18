@@ -1,0 +1,5 @@
+codigo: CC5217
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128650
+resumen: Este curso te prepara para analizar y evaluar proyectos de software desde la perspectiva de la privacidad, frente a un escenario ético y legal cambiante. Se abordan el concepto de privacidad y el enfoque de privacidad desde el diseño, los marcos legales y normativas de distintos países, la relación entre seguridad y privacidad con fundamentos de criptografía, la gobernanza y clasificación de datos, los derechos de los usuarios y los métodos técnicos para compartir datos reduciendo riesgos, cerrando con evaluación de impacto y nociones de privacidad diferencial. Combina clases expositivas con análisis de casos, y se evalúa mediante un proyecto semestral en equipo entregado en tareas sucesivas con exposiciones. Requiere bases de ingeniería de software y de probabilidades y estadística.
+tags: Privacidad y Protección de Datos, Ética y Regulación Tecnológica, Criptografía, Requisitos y Arquitectura de Software

@@ -1,0 +1,5 @@
+codigo: CC5516
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256106
+resumen: Este taller propone desarrollar software interactivo que resuelva problemas concretos de usuarios reales en su propio contexto, trabajando en equipos multidisciplinarios junto a estudiantes de comunicación e imagen y en diálogo con conocimientos de dominios como salud, educación o periodismo. Se revisan el pensamiento transdisciplinar y la evolución de la interacción humano-computador, el diseño participativo, la etnografía y la investigación contextual, para luego dedicar la mayor parte del semestre a un proyecto que abarca modelamiento del dominio, requisitos, prototipado y evaluación de usabilidad y aceptación, con atención a la ética en la investigación con personas. Se evalúa mediante presentaciones de avance del proyecto, que consideran calidad técnica, integración disciplinar y coevaluación. Requiere base en ingeniería de software.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Proyectos de Software en Equipo, Ética y Regulación Tecnológica

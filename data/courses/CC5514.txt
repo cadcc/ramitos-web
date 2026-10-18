@@ -1,0 +1,5 @@
+codigo: CC5514
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=232729
+resumen: Este curso enseña a aplicar técnicas de análisis topológico de datos para limpiar, clasificar y procesar datos en distintos formatos, eligiendo con criterio las herramientas algorítmicas y bibliotecas de código abierto adecuadas. Se parte de las limitaciones de los métodos clásicos de reducción de dimensión, para luego estudiar complejos simpliciales, homología persistente y diagramas de persistencia, herramientas como Mapper y construcciones escalables, y aplicaciones actuales como la clasificación de datos y el análisis de redes neuronales. La topología se presenta intuitivamente, con foco computacional. Se trabaja con cátedras, laboratorios y casos de estudio, y se evalúa con preguntas en clase, laboratorios y un proyecto grupal sobre datos reales. Requiere buena programación en Python y conocimientos de minería de datos.
+tags: Minería de Datos, Aprendizaje de Máquinas, Aprendizaje Profundo

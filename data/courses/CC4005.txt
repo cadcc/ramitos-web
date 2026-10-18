@@ -1,0 +1,5 @@
+codigo: CC4005
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=16618
+resumen: Este taller entrena para resolver rápidamente problemas de programación complejos con exigencias extremas de tiempo y memoria, como los de las competencias y los procesos de selección de empresas tecnológicas. Se trabajan el análisis de complejidad para estimar tiempos de ejecución, estrategias como búsqueda binaria y programación dinámica, algoritmos numéricos y de teoría de números, y una amplia variedad de algoritmos sobre árboles y grafos, terminando con problemas que combinan varias técnicas. Funciona con aula invertida: se estudia con videos y lecturas, y luego se resuelven desafíos en laboratorios grupales. Se evalúa el trabajo en laboratorio, la exposición y discusión de soluciones y tareas individuales periódicas. Requiere conocimientos base de programación y buena disposición al aprendizaje autónomo.
+tags: Programación Competitiva, Diseño y Análisis de Algoritmos, Estructuras de Datos, Teoría de Grafos

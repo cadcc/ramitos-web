@@ -1,0 +1,5 @@
+codigo: CC6502
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5201
+resumen: Este taller profundiza en la usabilidad en la interacción humano-computador: qué es, por qué, cuándo y cómo evaluarla, y cómo se relaciona con el diseño de interfaces. Se estudian sus atributos, las diferencias entre usuarios y diversos métodos de evaluación, desde el testeo con usuarios y sus aspectos éticos hasta la observación, los cuestionarios y la evaluación heurística. Gran parte del curso consiste en diseñar y ejecutar una evaluación de usabilidad sobre un software o sitio web real, con análisis estadístico de los datos. Combina clases expositivas, taller y discusión de papers, y se evalúa con controles de lectura, un proyecto de usabilidad y un proyecto final. Requiere bases en ingeniería de software e interfaces humano-computador.
+tags: Interacción Humano-Computador, Diseño Centrado en el Usuario, Probabilidad y Estadística

@@ -1,0 +1,5 @@
+codigo: CC6603
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128658
+resumen: Este curso práctico aplica el ciclo de innovación y emprendimiento para desarrollar, en equipos interdisciplinarios, un producto mínimo viable que responda a necesidades reales de usuarios o clientes. Se recorren la detección de oportunidades con herramientas centradas en el usuario, la generación de ideas y el estudio de mercado, la construcción de la propuesta de valor y del modelo de negocios, la comunicación mediante pitch y storytelling, y el prototipado, testeo e iteración de la solución junto con el análisis de riesgos. Las clases se basan en estudio de casos, workshops y aprendizaje basado en proyecto, y se evalúa con trabajos y presentaciones grupales que culminan en un elevator pitch. Requiere nociones previas de formulación, evaluación y gestión de proyectos.
+tags: Innovación y Emprendimiento, Diseño Centrado en el Usuario, Habilidades Comunicacionales, Evaluación Económica de Proyectos

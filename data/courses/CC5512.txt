@@ -1,0 +1,5 @@
+codigo: CC5512
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=176570
+resumen: Este curso busca que entiendas las componentes técnicas de un videojuego y aprendas a analizar, modificar y extender motores de videojuegos en 2D y 3D, algo clave para la industria. Se parte programando juegos simples en un lenguaje cercano al hardware con bibliotecas de terceros, para luego estudiar modelos de objetos de juego, módulos de soporte como recursos, scripting y manejo del tiempo, y subsistemas especializados como renderizado, audio, colisiones, física, animación, inteligencia artificial y networking, apoyándose en depuradores y perfiladores. Se trabaja con cátedras, aprendizaje basado en proyectos y estudio de casos, y se evalúa con tareas computacionales individuales, una evaluación teórica y reportes técnicos. Requiere base en computación gráfica, programación de sistemas y diseño de software.
+tags: Desarrollo de Videojuegos, Computación Gráfica, Programación de Sistemas, Requisitos y Arquitectura de Software

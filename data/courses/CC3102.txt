@@ -1,0 +1,5 @@
+codigo: CC3102
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174818
+resumen: Este curso estudia los fundamentos de los lenguajes formales, la computabilidad y la complejidad computacional para entender qué puede y qué no puede resolverse con un computador, y a qué costo. Se trabajan los lenguajes regulares y libres del contexto mediante autómatas, expresiones regulares y gramáticas, con aplicaciones prácticas al procesamiento de texto y al parsing; luego las máquinas de Turing como modelo de computación, los problemas indecidibles y las reducciones, y finalmente las clases P y NP y la NP-completitud. Se evalúa con controles, tareas teóricas y prácticas con reportes escritos, y un examen integrador. Para tener éxito necesitas soltura en matemáticas discretas, especialmente en lógica y demostraciones formales.
+tags: Teoría de la Computación, Matemáticas Discretas y Lógica, Lenguajes y Compiladores

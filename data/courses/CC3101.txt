@@ -1,0 +1,5 @@
+codigo: CC3101
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209146
+resumen: Este curso entrega las herramientas matemáticas formales para modelar y resolver con rigor problemas computacionales que involucran elementos discretos. Se trabaja la lógica proposicional y de primer orden, incluyendo deducción natural con apoyo de un asistente de pruebas, las principales técnicas de demostración e inducción, relaciones, combinatoria y conteo, relaciones de recurrencia y teoría de grafos con sus algoritmos clásicos. Las clases expositivas se complementan con resolución de problemas en que se modela, se elige la técnica adecuada y se demuestra formalmente. Se evalúa mediante controles, tareas y un examen. Para que te vaya bien necesitas bases de programación y de álgebra introductoria, además de comodidad con el razonamiento abstracto y la lectura cuidadosa de enunciados.
+tags: Matemáticas Discretas y Lógica, Teoría de Grafos, Métodos Formales y Verificación

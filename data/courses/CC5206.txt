@@ -1,0 +1,5 @@
+codigo: CC5206
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4589
+resumen: Este curso te enseña a extraer conocimiento útil de distintos tipos de datos aplicando el proceso de descubrimiento de conocimiento en bases de datos, y a seleccionar la técnica de análisis más adecuada según el dominio del problema, con casos de áreas como astronomía, medicina o marketing. Los contenidos abarcan una introducción general a la disciplina, el aprendizaje supervisado con la evaluación y comparación de clasificadores, el aprendizaje no supervisado mediante clustering y el análisis de reglas de asociación, además de alertar sobre el sobreajuste como problema ético y profesional. Se trabaja con discusión de casos, actividades prácticas en clase y un proyecto grupal evaluado mediante presentaciones e informes sucesivos. Requiere conocimientos base de programación y estructuras de datos.
+tags: Minería de Datos, Aprendizaje de Máquinas, Probabilidad y Estadística

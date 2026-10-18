@@ -1,0 +1,5 @@
+codigo: CC8960
+creditos: 30
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154898
+resumen: Esta es la etapa final del trabajo de tesis doctoral, en la que te preparas para defender tu investigación. El foco está principalmente en escribir el documento de tesis que reporta tu trabajo y resultados, aunque todavía es posible seguir publicando en conferencias y revistas internacionales. El trabajo es personal y guiado por un profesor guía del programa, con reuniones periódicas en las que se monitorea tu avance y se discute cómo continuar. Apruebas entregando el borrador de tesis, validado por el profesor guía y la coordinación del doctorado, que luego se envía a la comisión ante la cual defenderás la tesis para graduarte. Necesitas haber cerrado la investigación en las etapas previas y buena capacidad de redacción científica.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

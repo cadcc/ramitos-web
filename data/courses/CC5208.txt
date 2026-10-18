@@ -1,0 +1,5 @@
+codigo: CC5208
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4366
+resumen: Aquí aprendes a transformar grandes volúmenes de datos en representaciones visuales eficaces, y a analizar y diseñar sistemas de visualización según su expresividad y eficacia. El recorrido parte por los tipos de datos y su preprocesamiento, sigue con los fundamentos de la percepción humana y las variables visuales, y luego aborda técnicas para datos espaciales y multidimensionales, jerarquías, grafos y redes, junto con la visualización de datos geoespaciales, temporales y textuales. Las clases son principalmente expositivas, complementadas con trabajo personal, y la evaluación combina controles, un proyecto semestral y un examen final. Para aprovecharlo conviene tener experiencia manejando y consultando datos, como la que entrega un curso de bases de datos, además de soltura programando.
+tags: Visualización de Datos, Interacción Humano-Computador, Computación Gráfica

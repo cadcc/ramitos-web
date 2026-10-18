@@ -1,0 +1,5 @@
+codigo: CC5002
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=144438
+resumen: Este curso práctico enseña a diseñar y construir aplicaciones web completas siguiendo buenas prácticas y estándares. Partiendo de un prototipo funcional, desarrollas un proyecto personal al que vas sumando funcionalidades: fundamentos de la web, desarrollo de interfaces, programación del lado del servidor con bases de datos y archivos, sesiones de usuario, programación asíncrona, frameworks de desarrollo, seguridad web y criterios de usabilidad, responsividad y accesibilidad. Las clases combinan cátedras con ejemplos prácticos y auxiliares con ejercicios semanales, y se evalúa con tareas de programación incrementales y ejercicios, más una tarea final que funciona como examen. Para que te vaya bien necesitas programar con soltura y manejar algoritmos y estructuras de datos básicas.
+tags: Desarrollo Web, Bases de Datos, Ciberseguridad, Diseño Centrado en el Usuario

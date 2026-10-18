@@ -1,0 +1,5 @@
+codigo: CC5322
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=34561
+resumen: Este taller lleva a la práctica el funcionamiento de las redes de datos de gran tamaño, mostrando las dificultades reales que aparecen en ellas y en la Internet actual. Se trabajan las redes virtuales y sus escenarios de uso, el ruteo dinámico con protocolos y políticas para propagar prefijos IPv4 e IPv6, el diseño de sistemas de alta disponibilidad mediante distribución de carga y servicios replicados, y aspectos de seguridad en la red como cortafuegos y traducción de direcciones. Las clases lectivas se combinan con laboratorio en clases, y se evalúa mediante controles y un examen. Para aprovecharlo necesitas dominar los fundamentos de redes de computadores, en especial protocolos y direccionamiento.
+tags: Redes de Computadores, Infraestructura TI y Administración de Sistemas, Ciberseguridad

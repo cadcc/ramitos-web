@@ -1,0 +1,5 @@
+codigo: CC8920
+creditos: 30
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154882
+resumen: Este taller continúa el trabajo de tesis doctoral, orientado a que desarrolles la capacidad de hacer investigación original en un área de tu elección mediante trabajo personal guiado por un profesor guía del programa. En esta etapa se espera haber avanzado buena parte en identificar el problema, revisar el trabajo previo y plantear la hipótesis de investigación, y comenzar a diseñar herramientas originales para probarla, como teoremas, algoritmos, software o experimentos, aunque el nivel de avance lo fija tu profesor guía. Trabajas con reuniones periódicas de seguimiento y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado la etapa inicial de tu tesis y autonomía investigativa.
+tags: Tesis de Posgrado, Formación Doctoral, Formación en Investigación, Escritura y Comunicación Científica

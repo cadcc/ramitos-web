@@ -1,0 +1,5 @@
+codigo: CC5209
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213302
+resumen: Este curso entrega los fundamentos matemáticos y computacionales para que un computador interprete imágenes y escenas reales, y te prepara para construir aplicaciones de visión basadas en técnicas clásicas y en aprendizaje profundo. Se estudian el procesamiento de imágenes y la detección de características, la geometría de cámaras y la reconstrucción tridimensional, las redes convolucionales con transferencia de aprendizaje y, finalmente, tópicos avanzados como detección, segmentación, transformers visuales, modelos generativos y aprendizaje sobre datos 3D. Se evalúa con tareas prácticas, cuestionarios de teoría y análisis, y un proyecto grupal entregado en iteraciones con informes. Necesitas base en aprendizaje de máquinas o minería de datos, buena programación, comodidad con el álgebra lineal y lectura técnica en inglés.
+tags: Visión Computacional, Aprendizaje Profundo, IA Generativa y Modelos de Lenguaje

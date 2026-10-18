@@ -1,0 +1,5 @@
+codigo: CC5326
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=166190
+resumen: Aquí aprendes a diseñar e implementar sistemas basados en internet de las cosas, desde el dispositivo hasta la aplicación que lo gestiona, con un enfoque orientado a problemas reales de la industria como domótica, wearables o salud. Se revisan arquitecturas y protocolos de red para IoT, el prototipado de dispositivos con firmware y su visualización y almacenamiento de datos, el ecosistema de productos actuales, edge y cloud computing con aprendizaje de máquinas aplicado, ciberseguridad y modelos de negocio. Las clases expositivas se complementan con un proyecto en equipo desarrollado en varias iteraciones, evaluado mediante informes y presentaciones. Conviene llegar con experiencia en programación de sistemas cercana al hardware y conocimientos base de redes de computadores.
+tags: Internet de las Cosas y Sistemas Embebidos, Redes de Computadores, Innovación y Emprendimiento, Aprendizaje de Máquinas, Ciberseguridad

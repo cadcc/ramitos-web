@@ -1,0 +1,5 @@
+codigo: CC5502
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5216
+resumen: Este curso enseña a diseñar, analizar e implementar algoritmos geométricos en dos y tres dimensiones para modelar objetos reales de forma discreta, con aplicaciones en visualización, simulación, juegos y otras áreas de la ciencia y la ingeniería. Se abordan operaciones geométricas básicas, problemas de búsqueda e intersección, cerraduras convexas, diagramas de Voronoi y triangulaciones de Delaunay, generación de mallas, partición del espacio y planificación de movimientos, siempre atendiendo los casos degenerados y la robustez. Las clases combinan cátedras con aprendizaje basado en problemas, y se evalúa mediante controles, controles de lectura de artículos en inglés, una presentación, evaluaciones grupales y un proyecto computacional. Conviene llegar con buena base en algoritmos y estructuras de datos y soltura en matemáticas discretas.
+tags: Geometría Computacional, Diseño y Análisis de Algoritmos, Computación Gráfica, Estructuras de Datos

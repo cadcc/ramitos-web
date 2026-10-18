@@ -1,0 +1,5 @@
+codigo: CC5119
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256090
+resumen: Este curso desarrolla habilidades para diseñar e implementar aplicaciones eficientes, seguras y concurrentes en un lenguaje de sistemas moderno, centrado en su modelo de propiedad y préstamos y en su sistema de tipos avanzado para evitar errores típicos de punteros, memoria y concurrencia. Se trabajan los fundamentos del lenguaje y la abstracción con genéricos, la gestión de memoria con punteros inteligentes, la concurrencia segura con threads y programación asíncrona, y la interoperabilidad con código externo junto al análisis de comportamiento indefinido. Las clases combinan exposición con programación en vivo, y se evalúa con laboratorios prácticos, evaluaciones escritas breves y un proyecto grupal semestral con demostración final. Necesitas sólidos conocimientos de sistemas operativos.
+tags: Programación de Sistemas, Sistemas Operativos y Concurrencia, Lenguajes y Compiladores, Proyectos de Software en Equipo

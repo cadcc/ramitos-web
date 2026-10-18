@@ -1,0 +1,5 @@
+codigo: CC7515
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242942
+resumen: Este curso enseña a aprovechar las tarjetas gráficas como plataforma de cómputo paralelo de alto rendimiento, tanto en computación gráfica como en aplicaciones científicas, de ingeniería y de propósito general. Aprenderás a reconocer qué problemas son paralelizables, a diseñar, programar y optimizar soluciones paralelas y a evaluar su desempeño, recorriendo modelos de computación paralela, arquitecturas de GPU frente a CPU, modelos de programación para cómputo general y programación de shaders. Incluye lectura de artículos en inglés, y se evalúa con controles de lectura, evaluaciones grupales, tareas de programación y un proyecto computacional con presentación oral, sin examen. Requiere programar con soltura en C/C++ y conocimientos de programación de sistemas y computación gráfica.
+tags: Computación Paralela y GPU, Computación Gráfica, Computación Científica y Simulación, Arquitectura de Computadores

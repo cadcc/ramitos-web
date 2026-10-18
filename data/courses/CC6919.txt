@@ -1,0 +1,5 @@
+codigo: CC6919
+creditos: 24
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=252066
+resumen: En esta etapa ejecutas el proyecto de memoria definido previamente: resuelves el problema planteado aplicando la tecnología seleccionada y sigues la metodología acordada para comprobar que la solución funciona. Todo culmina en un informe que reporta de forma clara y concisa la motivación, el estado del arte, el desarrollo de la solución, los resultados y las conclusiones. No hay clases regulares; el curso se basa en trabajo personal y reuniones frecuentes con tu profesor guía, respetando los plazos del calendario de titulación. Se califica con nota sobre el informe final, y su aprobación queda condicionada a superar el examen de título. Necesitas autonomía, buena planificación, escritura técnica sólida y los conocimientos integrados de la carrera, además de experiencia práctica profesional.
+tags: Memoria de Título, Escritura y Comunicación Científica, Formación en Investigación

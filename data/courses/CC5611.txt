@@ -1,0 +1,5 @@
+codigo: CC5611
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=221370
+resumen: Aquí reflexionarás sobre los criterios éticos que deben guiar la conducta profesional y social de quien trabaja en computación, y aprenderás a aplicarlos de manera responsable, con especial atención a la inteligencia artificial. Se recorren los fundamentos de la ética y sus principales corrientes, los códigos de ética profesional, la propiedad intelectual en el software, la ética de datos, la privacidad y la legislación de protección de datos personales, y los principios, normativas y marcos de gestión de riesgo para sistemas de IA. Las clases expositivas se combinan con estudios de caso e investigación grupal. Se evalúa mediante controles, análisis de casos y un trabajo de investigación final con informe y presentación. Basta con una base de programación.
+tags: Ética y Regulación Tecnológica, IA y Sociedad, Privacidad y Protección de Datos

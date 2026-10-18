@@ -1,0 +1,5 @@
+codigo: CC5328
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128654
+resumen: Aquí aprendes a diseñar e implementar sistemas de sensorización basados en sistemas embebidos, orientados al monitoreo de condiciones de maquinaria industrial en el contexto de la industria 4.0 y los sistemas ciberfísicos. Se abordan los fundamentos de sistemas embebidos, la programación de microcontroladores y sensores con protocolos de comunicación serial, el prototipado de dispositivos con nociones de electrónica digital, la generación y análisis de datos con edge sensors y aprendizaje de máquinas, y los modelos de negocio asociados. Las clases expositivas se combinan con un proyecto en equipo con entregas sucesivas, y se evalúa mediante tareas, trabajo en clases, informes técnicos y presentaciones. Te ayudará manejar programación de bajo nivel y conocimientos sólidos de sistemas operativos.
+tags: Internet de las Cosas y Sistemas Embebidos, Arquitectura de Computadores, Programación de Sistemas, Aprendizaje de Máquinas, Innovación y Emprendimiento

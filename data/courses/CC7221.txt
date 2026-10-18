@@ -1,0 +1,5 @@
+codigo: CC7221
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=68490
+resumen: Este curso recorre el estado del arte en reconocimiento visual basado en aprendizaje profundo, para que puedas entender, analizar y proponer modelos que interpreten imágenes automáticamente. Tras sentar los fundamentos de las redes convolucionales y sus arquitecturas modernas, se abordan la búsqueda de imágenes por similitud, la detección de objetos, la segmentación semántica y los modelos generativos. Las cátedras se complementan con la lectura de artículos recientes de conferencias del área, y se evalúa con tareas computacionales, presentaciones de papers y un examen práctico similar a una tarea, del que es posible eximirse. Requiere base sólida en programación y estructuras de datos, experiencia previa con redes neuronales o aprendizaje de máquinas y lectura fluida de textos técnicos en inglés.
+tags: Visión Computacional, Aprendizaje Profundo, IA Generativa y Modelos de Lenguaje, Recuperación de Información

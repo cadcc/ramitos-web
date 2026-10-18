@@ -1,0 +1,5 @@
+codigo: CC6909
+creditos: 21
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5232
+resumen: Aquí desarrollas el proyecto de memoria que planificaste previamente, llevándolo desde el diseño hasta una solución concreta y validada. El trabajo consiste en implementar la solución propuesta, comprobar que efectivamente resuelve el problema planteado, idealmente con mediciones que muestren en qué medida se logran los objetivos, y escribir un documento formal que presente el contexto, las alternativas, la solución escogida, su validación, los resultados y las conclusiones. Avanzas mediante reuniones periódicas con tu profesor guía y entregas parciales del documento. El informe final es revisado por una comisión de profesores que entrega retroalimentación y lo califica. Para tener éxito necesitas autonomía, experiencia en proyectos de software, buena escritura técnica y manejo de inglés para la literatura del área.
+tags: Memoria de Título, Escritura y Comunicación Científica, Formación en Investigación

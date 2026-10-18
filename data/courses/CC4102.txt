@@ -1,0 +1,5 @@
+codigo: CC4102
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209154
+resumen: Este curso profundiza en el diseño y análisis riguroso de algoritmos y estructuras de datos para resolver eficientemente problemas computacionales. Se estudian técnicas para demostrar cotas inferiores y establecer optimalidad, algoritmos para memoria secundaria, análisis amortizado, aprovechamiento de dominios discretos y algoritmos en línea con su competitividad, además de modelos no convencionales como los algoritmos aleatorizados, aproximados y paralelos. Las clases combinan exposición participativa, resolución de problemas y aula invertida, y se evalúa con controles, tareas de implementación cuyos resultados deben analizarse por escrito y un examen. Para que te vaya bien necesitas dominar algoritmos y estructuras de datos básicos, fundamentos de teoría de la computación y probabilidades, y sentirte cómodo con demostraciones matemáticas.
+tags: Diseño y Análisis de Algoritmos, Estructuras de Datos, Teoría de la Computación, Probabilidad y Estadística

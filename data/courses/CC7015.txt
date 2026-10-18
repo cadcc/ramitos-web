@@ -1,0 +1,5 @@
+codigo: CC7015
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154854
+resumen: Dirigido a estudiantes de doctorado, este curso permite validar una nueva pasantía de investigación de al menos dos meses en una institución de prestigio fuera de Chile, idealmente de habla inglesa. Su propósito es desarrollar tus habilidades científicas y de colaboración y darte la experiencia de trabajar en otro entorno de investigación, con cultura y prácticas diferentes. Con al menos un mes de anticipación debes solicitar formalmente su aprobación al comité académico, indicando institución, investigador responsable, fechas, programa de trabajo y el entregable que acreditará los resultados, por ejemplo un artículo o un reporte técnico. A tu regreso presentas ese documento, que se califica como aprobado o reprobado. Requiere haber aprobado el examen de calificación y autonomía para investigar.
+tags: Formación Doctoral, Movilidad Internacional, Formación en Investigación, Escritura y Comunicación Científica

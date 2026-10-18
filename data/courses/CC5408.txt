@@ -1,0 +1,5 @@
+codigo: CC5408
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54762
+resumen: En este taller diseñas e implementas un videojuego completo en equipo, usando un motor de videojuegos y herramientas complementarias para producir sus recursos, con foco en el usuario final. Se abordan la estructura de un videojuego y la creación de la experiencia, el diseño de mecánicas, historia, desafíos y controles, la incorporación de inteligencia artificial, interfaces y coherencia audiovisual, el balance y las pruebas con usuarios, y finalmente la publicación y el funcionamiento de la industria. La metodología se basa en proyectos, combinando clases expositivas, trabajo guiado y presentaciones de avance, y se evalúa mediante hitos incrementales que consideran calidad técnica, presentación, evaluación entre pares y coevaluación. Basta con conocimientos introductorios de programación y disposición para trabajar en equipo.
+tags: Desarrollo de Videojuegos, Diseño Centrado en el Usuario, Computación Gráfica, Proyectos de Software en Equipo

@@ -1,0 +1,5 @@
+codigo: CC5117
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=142862
+resumen: Este curso entrega herramientas teóricas y prácticas para modelar y analizar sistemas sociotécnicos, entendiendo cómo los algoritmos presentes en redes sociales, búsqueda, recomendaciones o decisiones automatizadas afectan a las personas y a la sociedad. Se estudian la teoría de grafos y las dinámicas en redes sociales, la equidad y los sesgos en el aprendizaje de máquinas junto con la auditoría de sistemas algorítmicos, y los sistemas de recomendación y la web como red. Las clases son expositivas, cada estudiante presenta un artículo científico avanzado, y un proyecto grupal con propuesta, implementación, informe y presentación oral integra lo aprendido. Necesitas base en matemáticas discretas o probabilidades y disposición para leer literatura científica en inglés.
+tags: IA y Sociedad, Teoría de Grafos, Recuperación de Información, Aprendizaje de Máquinas

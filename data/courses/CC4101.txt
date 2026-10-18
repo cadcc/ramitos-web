@@ -1,0 +1,5 @@
+codigo: CC4101
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174850
+resumen: Este curso enseña a entender cómo funcionan los lenguajes de programación por dentro, definiéndolos paso a paso mediante la construcción de intérpretes en Scheme. Tras una base de programación funcional, se estudian la sintaxis y la semántica de un lenguaje, sustitución y alcance, las funciones de primera clase, las estrategias de evaluación temprana y perezosa, la recursión, el estado y la mutación, la extensión sintáctica con macros y los mecanismos de la orientación a objetos. Las clases combinan exposición con demostraciones en vivo y auxiliares de resolución de problemas, y se evalúa con controles, tareas de diseño e implementación de lenguajes y un examen. Requiere fundamentos de teoría de la computación y comodidad leyendo material técnico en inglés.
+tags: Lenguajes y Compiladores, Programación Funcional, Programación Orientada a Objetos

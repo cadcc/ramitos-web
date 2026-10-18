@@ -1,0 +1,5 @@
+codigo: CC5901
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177478
+resumen: Esta práctica consiste en integrarse a una organización real para desempeñarse en labores propias de un ingeniero en computación, demostrando las competencias técnicas y genéricas adquiridas en la carrera. Antes de iniciarla se completan módulos en línea sobre comunicación, ética, trabajo en equipo e innovación, y se elabora un plan de práctica que debe ser aprobado. Durante la práctica se espera abordar tareas como diseñar, implementar o modificar software, evaluar su calidad, modelar bases de datos o desarrollar aplicaciones web. Se evalúa con la apreciación del supervisor en la organización y un informe final que describe el problema, la solución y una reflexión sobre el desempeño. Requiere sólida formación en programación, ingeniería de software y bases de datos.
+tags: Práctica Profesional, Desarrollo Profesional y Empleabilidad, Desarrollo Web, Bases de Datos

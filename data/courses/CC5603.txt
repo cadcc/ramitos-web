@@ -1,0 +1,5 @@
+codigo: CC5603
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=180526
+resumen: Este curso entrega una formación integral para definir estrategias que garanticen la disponibilidad, integridad, calidad y seguridad de los datos dentro de una organización. Se abordan los fundamentos de la gestión y gobernanza de datos y sus modelos de madurez, la gestión de la calidad de datos, la operativización de la gobernanza mediante metadatos y datos maestros, una introducción a la analítica y al aprendizaje automático, y la gestión del cambio cultural hacia el dato. Combina clases expositivas, estudios de caso y un proyecto en equipo sobre un problema real, evaluado mediante exposiciones orales de casos, diagnóstico y propuesta de solución, más una evaluación formativa del trabajo en equipo. Ayuda contar con bases en gestión de proyectos.
+tags: Gestión de Datos en Organizaciones, Estrategia y Transformación Digital, Privacidad y Protección de Datos, Bases de Datos

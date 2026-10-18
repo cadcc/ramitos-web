@@ -1,0 +1,5 @@
+codigo: CC66H
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33565
+resumen: Este curso desarrolla competencias para modelar y resolver problemas reales con aprendizaje de máquinas y, en especial, con redes neuronales profundas. Parte por los fundamentos de las redes neuronales y su entrenamiento mediante descenso de gradiente y retropropagación, sigue con aspectos prácticos como la generalización, las métricas de desempeño y el ajuste de hiperparámetros, y luego aborda redes convolucionales para imágenes y redes recurrentes para secuencias, implementadas con librerías especializadas. La metodología combina clases teóricas, revisión de artículos de investigación, trabajos prácticos y un proyecto, y se evalúa con tareas, trabajo práctico y una prueba escrita. Para aprovecharlo conviene programar con soltura y manejar cálculo diferencial, en particular derivadas y la regla de la cadena.
+tags: Aprendizaje Profundo, Aprendizaje de Máquinas, Visión Computacional

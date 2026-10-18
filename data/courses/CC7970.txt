@@ -1,0 +1,5 @@
+codigo: CC7970
+creditos: 18
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207298
+resumen: Este curso acompaña la elaboración de la propuesta de tesis, que debe establecer con claridad los antecedentes técnicos, el estado del arte, los objetivos, la metodología y el aporte esperado del trabajo. Se aprende cómo se estructura una buena propuesta, se presentan y discuten los posibles temas con retroalimentación del coordinador del programa, y se prepara la defensa oral del tema con apoyo audiovisual. Hay una clase semanal en que cada estudiante comenta su avance ante el grupo, además de reuniones periódicas con el profesor guía; para aprobar, la propuesta debe ser aceptada por un profesor evaluador distinto del guía y luego presentada oralmente. Conviene llegar con tema y profesor guía definidos, y con formación en metodología de investigación.
+tags: Tesis de Posgrado, Escritura y Comunicación Científica, Formación en Investigación

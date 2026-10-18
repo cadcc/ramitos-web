@@ -1,0 +1,5 @@
+codigo: CC6104
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174374
+resumen: Este curso desarrolla el pensamiento estadístico, una forma sistemática de describir fenómenos reales considerando su incertidumbre y usando datos para tomar decisiones. Parte con análisis descriptivo y visualización de datos, programación estadística en R y fundamentos de probabilidades, para luego estudiar las dos grandes escuelas de inferencia, frecuentista y bayesiana, incluyendo estimación, pruebas de hipótesis y regresión. Cierra con temas avanzados como evaluación de modelos con teoría de la información, modelos gráficos y modelos multinivel. Las clases son expositivas con resolución de problemas, y se evalúa mediante tareas individuales con preguntas teóricas, problemas aplicados y lectura de artículos en inglés, más un examen teórico. Requiere conocimientos previos de probabilidades y estadística o análisis de datos.
+tags: Probabilidad y Estadística, Visualización de Datos, Aprendizaje de Máquinas

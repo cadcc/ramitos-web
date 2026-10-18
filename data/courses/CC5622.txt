@@ -1,0 +1,5 @@
+codigo: CC5622
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192902
+resumen: Este taller desarrolla las habilidades interpersonales que marcan la diferencia en el desempeño profesional de un ingeniero dentro de una organización. Se abordan la comunicación efectiva y la gestión de las emociones, los estilos de liderazgo, el trabajo en equipo y los equipos de alto desempeño, y el manejo de conflictos. La metodología es activa y participativa, con análisis de casos y discusión grupal, juegos de roles, ejercicios prácticos y lecturas semanales en español e inglés. Se evalúa mediante actividades grupales e individuales en clase, tareas de reflexión y controles de lectura. Basta la formación base en diseño y programación; lo central es la disposición a participar, reflexionar sobre la propia práctica y leer en inglés.
+tags: Liderazgo y Trabajo en Equipo, Habilidades Comunicacionales, Psicología y Cognición, Desarrollo Profesional y Empleabilidad

@@ -1,0 +1,5 @@
+codigo: CC6908
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5231
+resumen: Aquí aprendes a establecer con claridad los antecedentes técnicos, objetivos y metodología de tu futuro proyecto de memoria. Primero identificas un problema relevante para la ingeniería en computación y justificas el valor de abordarlo; luego estudias la bibliografía del área, sitúas tu tema respecto de otros trabajos y construyes prototipos para validar su factibilidad técnica; finalmente describes la solución propuesta, sus etapas y la metodología a seguir. El trabajo se desarrolla en reuniones periódicas con un profesor guía, complementadas con charlas sobre escritura de documentos y proyectos de ingeniería. Se evalúa con una propuesta inicial de tema y un informe final del proyecto. Necesitas la formación completa de la carrera y buen dominio del inglés técnico.
+tags: Memoria de Título, Formación en Investigación, Escritura y Comunicación Científica

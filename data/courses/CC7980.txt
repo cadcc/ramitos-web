@@ -1,0 +1,5 @@
+codigo: CC7980
+creditos: 18
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207302
+resumen: Este curso corresponde al desarrollo y la escritura de la tesis, donde se resuelve el problema planteado en la propuesta aplicando una perspectiva científica. Se construye el estado del arte, se integran y profundizan los conocimientos adquiridos en los cursos, se desarrolla y valida una solución identificando sus aportes, y se documenta en un texto formal que describe el problema, las técnicas disponibles, la solución y su validación, destacando la contribución al conocimiento. El trabajo es autónomo, con reuniones periódicas con el profesor guía, y se evalúa a partir del documento escrito y de una charla pública similar a una defensa de grado. Requiere haber elaborado previamente la propuesta de tesis y capacidad para investigar de manera independiente.
+tags: Tesis de Posgrado, Escritura y Comunicación Científica, Formación en Investigación

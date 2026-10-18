@@ -1,0 +1,5 @@
+codigo: CC3001
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192166
+resumen: Este curso entrega las bases para diseñar algoritmos eficientes, analizarlos con rigor y elegir la estructura de datos adecuada para cada problema. Se trabajan la correctitud de programas y el análisis de eficiencia, las principales técnicas de diseño como recursividad, dividir para reinar, programación dinámica y algoritmos avaros, y luego estructuras de datos, tipos de datos abstractos y diccionarios, y finalmente algoritmos de ordenación, búsqueda en texto, compresión y grafos. Las clases combinan cátedras con clases auxiliares de resolución de problemas, y se evalúa con tareas y ejercicios de programación individuales, evaluaciones de hito y una evaluación final. Para que te vaya bien necesitas programar con soltura y sentirte cómodo con el razonamiento matemático, sobre todo con la inducción.
+tags: Diseño y Análisis de Algoritmos, Estructuras de Datos, Teoría de Grafos

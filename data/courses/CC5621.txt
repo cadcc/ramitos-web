@@ -1,0 +1,5 @@
+codigo: CC5621
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192946
+resumen: Este curso enseña a analizar y rediseñar procesos dentro de organizaciones reales, usando herramientas de modelamiento, optimización y programación para proponer soluciones tecnológicas a sus problemas. Se parte por entender por qué rediseñar procesos en la industria, luego se diagnostica la situación actual de una organización considerando su estrategia y comportamiento organizacional, y finalmente se modela la situación deseada aplicando modelos de optimización para problemas como colas de espera, inventario, transporte y planificación de tareas. Las clases combinan exposición y resolución de problemas, y la evaluación se centra en un proyecto semestral grupal con presentaciones orales de avance, más coevaluación entre pares. Conviene llegar con nociones de formulación y gestión de proyectos y disposición para trabajar en equipo.
+tags: Optimización, Estrategia y Transformación Digital, Gestión de Proyectos TI, Sistemas de Información

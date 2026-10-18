@@ -1,0 +1,5 @@
+codigo: CC73J
+creditos: 3
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=84893
+resumen: Este taller busca que apliques lo aprendido en gestión informática formulando y gestionando un proyecto de TI frente a un desafío organizacional, ya sea de renovación, desarrollo o implantación de tecnología. El trabajo recorre las fases de un proyecto: identificar el problema u oportunidad, definir el alcance del producto, preparar, cotizar y negociar una propuesta con un cliente, acordar recursos e hitos, y luego monitorear, gestionar riesgos y replanificar ante situaciones ficticias planteadas por el profesor. Se trabaja en equipos, con exposiciones breves del profesor y trabajo grupal guiado, y se evalúa mediante entregas de avance del proyecto, cada una con su presentación oral. Requiere los conocimientos de los cursos del diploma de postítulo en gestión informática.
+tags: Gestión de Proyectos TI, Evaluación Económica de Proyectos, Habilidades Comunicacionales, Sistemas de Información

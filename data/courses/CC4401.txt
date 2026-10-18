@@ -1,0 +1,5 @@
+codigo: CC4401
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=206426
+resumen: Este curso enseña a construir software de manera sistemática trabajando en equipo, mediante el desarrollo de un sistema web con varios perfiles de usuario usando frameworks. Se abordan conceptos y atributos de calidad del software, modelos de ciclo de vida y metodologías como Scrum, elicitación y especificación de requisitos, diseño arquitectónico basado en patrones, diseño y evaluación de interfaces de usuario, mantención y evolución de código, y verificación y validación mediante pruebas. Las clases combinan exposición, demostraciones de herramientas y auxiliares, y se evalúa con controles, un examen final y un proyecto iterativo con entregas de requisitos, interfaces, programación y pruebas. Requiere dominar el diseño y la programación orientados a objetos y tener nociones de bases de datos.
+tags: Requisitos y Arquitectura de Software, Metodologías Ágiles, Calidad y Pruebas de Software, Desarrollo Web, Proyectos de Software en Equipo

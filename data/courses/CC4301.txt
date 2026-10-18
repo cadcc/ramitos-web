@@ -1,0 +1,5 @@
+codigo: CC4301
+creditos: 6
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=3503
+resumen: Este curso explica cómo funciona un computador desde los circuitos digitales hasta las optimizaciones de un procesador moderno. Se aprende a diseñar circuitos combinacionales y secuenciales de forma modular, a representar enteros en binario y a leer y escribir código ensamblador de arquitecturas CISC y RISC. Luego se estudian el funcionamiento de las memorias y de la CPU, los dispositivos de entrada/salida e interfaces de comunicación, y arquitecturas avanzadas como memorias caché, jerarquías de memoria, pipelines, ejecución superescalar y fuera de orden. Las clases son expositivas y se complementan con tareas individuales de diseño de hardware y de programación a bajo nivel; además se evalúa con controles y un examen. Requiere experiencia previa en programación de sistemas cercana al hardware.
+tags: Arquitectura de Computadores, Programación de Sistemas, Computación Paralela y GPU
