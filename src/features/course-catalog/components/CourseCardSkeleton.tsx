@@ -44,9 +44,21 @@ export function CourseCardSkeleton({ code, title }: CourseCardSkeletonProps) {
 						</>
 					) : (
 						<>
-							<Box sx={{ height: "0.91rem" }}>
-								<Skeleton variant="text" width={54} height="100%" />
-							</Box>
+							<Typography
+								variant="overline"
+								sx={{ ...courseCardCodeSx, position: "relative" }}
+							>
+								{/* Preserve the code's inline line box before it is known. */}
+								<Box component="span" sx={{ visibility: "hidden" }}>
+									CC0000
+								</Box>
+								<Skeleton
+									variant="text"
+									width={54}
+									height="100%"
+									sx={{ position: "absolute", top: 0, left: 0 }}
+								/>
+							</Typography>
 							<Box sx={{ height: "2.375rem" }}>
 								<Skeleton variant="text" width="88%" height="50%" />
 								<Skeleton variant="text" width="58%" height="50%" />
