@@ -1,4 +1,4 @@
-import { Box, Collapse, Typography } from "@mui/material";
+import { Box, Collapse, Divider, Typography } from "@mui/material";
 import { REVIEW_TAG_SECTIONS } from "../../../constants/reviewTags";
 import { AXIS_COLORS } from "../../../constants/courseDisplay";
 import type { CourseRatings } from "../../../shared/types/domain";
@@ -26,7 +26,7 @@ export function ReviewRatingAxisField({
 	);
 	const axisColor = AXIS_COLORS[axis.key]!;
 	return (
-		<Box sx={{ mb: selected !== undefined ? -1 : 0 }}>
+		<Box sx={{ position: "relative", mb: selected !== undefined ? 0 : 1 }}>
 			<Box
 				sx={{
 					display: "grid",
@@ -73,6 +73,16 @@ export function ReviewRatingAxisField({
 					/>
 				</Box>
 			</Collapse>
+			<Divider
+				aria-hidden="true"
+				sx={{
+					position: "absolute",
+					bottom: selected !== undefined ? -12 : -16,
+					opacity: 0.5,
+					left: 0,
+					right: 0,
+				}}
+			/>
 		</Box>
 	);
 }

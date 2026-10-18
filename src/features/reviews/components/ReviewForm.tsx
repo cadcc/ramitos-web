@@ -5,6 +5,8 @@ import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
 	LinearProgress,
+	Box,
+	Divider,
 	Button,
 	Stack,
 	Alert,
@@ -175,13 +177,24 @@ function ReviewFormContent({
 					))}
 					{REVIEW_TAG_SECTIONS.filter((section) => !section.axis).map(
 						(section) => (
-							<ReviewExtraTagSection
-								key={section.key}
-								section={section}
-								allAxesRated={filledCount === 5}
-								selectedTags={selectedTags}
-								onToggleTag={toggleTag}
-							/>
+							<Box key={section.key} sx={{ position: "relative" }}>
+								<ReviewExtraTagSection
+									section={section}
+									allAxesRated={filledCount === 5}
+									selectedTags={selectedTags}
+									onToggleTag={toggleTag}
+								/>
+								<Divider
+									aria-hidden="true"
+									sx={{
+										position: "absolute",
+										bottom: -12,
+										left: 0,
+										right: 0,
+										opacity: 0.5,
+									}}
+								/>
+							</Box>
 						),
 					)}
 

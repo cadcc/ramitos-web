@@ -46,6 +46,8 @@ export function ReviewTagOptions({
 				onClick={() => onToggleTag(tag.key)}
 				sx={{
 					height: 26,
+					flex: { xs: "1 1 auto", sm: "0 0 auto" },
+					minWidth: 0,
 					fontSize: "0.78rem",
 					"& .MuiChip-label": { px: 0.75 },
 					color: labelColor,
@@ -89,6 +91,8 @@ export function ReviewTagOptions({
 		<Box
 			sx={{
 				display: "flex",
+				width: "100%",
+				minWidth: 0,
 				flexWrap: "wrap",
 				columnGap: 0.75,
 				rowGap: 1,
@@ -117,7 +121,7 @@ export function ReviewTagOptions({
 								component="span"
 								variant="caption"
 								sx={{
-									fontWeight: 700,
+									fontWeight: 400,
 									color: labelColor,
 									mr: 0.25,
 								}}
