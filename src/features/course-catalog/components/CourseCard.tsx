@@ -27,6 +27,47 @@ export default function CourseCard({
 	showReviewableIndicator = false,
 }: Props) {
 	const isCurrent = course.lastOffered === CURRENT_SEMESTER;
+	if (course.isPlaceholder) {
+		return (
+			<Card
+				aria-disabled="true"
+				sx={{
+					height: "100%",
+					minHeight: COURSE_CARD_MIN_HEIGHT,
+					bgcolor: "action.disabledBackground",
+					color: "text.secondary",
+					boxShadow: "none",
+					backgroundImage: "none",
+					borderColor: "divider",
+					filter: "grayscale(1)",
+					cursor: "default",
+					"&:hover": { transform: "none", boxShadow: "none" },
+				}}
+			>
+				<CardContent
+					sx={{
+						display: "flex",
+						flexDirection: "column",
+						gap: 0.75,
+						height: "100%",
+						p: 2,
+						"&:last-child": { pb: 2 },
+					}}
+				>
+					<Typography variant="overline" sx={courseCardCodeSx}>
+						{course.code}
+					</Typography>
+					<CourseCardTitle title={course.name} />
+					<Typography
+						variant="caption"
+						sx={{ ...courseCardOpinionSx, mt: "auto" }}
+					>
+						Aún no disponible
+					</Typography>
+				</CardContent>
+			</Card>
+		);
+	}
 
 	return (
 		<Card

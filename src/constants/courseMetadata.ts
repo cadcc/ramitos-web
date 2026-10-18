@@ -21,3 +21,5 @@ export const COURSE_TOPIC_OPTIONS = tags
 export function getCourseMetadata(code: string) {
 	return coursesByCode.get(code);
 }
+
+export const COURSE_METADATA_CODES = [...coursesByCode.keys()];

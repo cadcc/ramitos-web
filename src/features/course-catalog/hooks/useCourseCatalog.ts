@@ -61,7 +61,13 @@ export function useCourseCatalog(filters: CourseFilters) {
 		reviewableQuery.data,
 	]);
 	const entriesFingerprint = useMemo(
-		() => filteredEntries.map((course) => course.id).join(","),
+		() =>
+			filteredEntries
+				.map(
+					(course) =>
+						`${course.id}:${course.isPlaceholder ? "placeholder" : "available"}`,
+				)
+				.join(","),
 		[filteredEntries],
 	);
 	const pageQueryOptions = (cursor: number) => ({

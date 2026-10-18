@@ -96,7 +96,26 @@ describe("course catalog API adapter", () => {
 			],
 		});
 
-		expect(result.total).toBe(2);
+		expect(result.total).toBe(result.items.length);
+		expect(result.total).toBeGreaterThan(2);
+		expect(result.items.filter((entry) => entry.id === "CC1000")).toHaveLength(
+			1,
+		);
+		expect(
+			result.items.find((entry) => entry.id === "CC1000")?.isPlaceholder,
+		).not.toBe(true);
+		expect(result.items.find((entry) => entry.id === "CC4900")).toMatchObject({
+			isPlaceholder: true,
+		});
+		expect(
+			filterCourseCatalog(result.items, { category: "required", q: "CC4900" }),
+		).toHaveLength(1);
+		expect(
+			filterCourseCatalog(result.items, {
+				tags: ["Programación Funcional"],
+				q: "CC1002",
+			})[0],
+		).toMatchObject({ id: "CC1002", isPlaceholder: true });
 		expect(result.items[0]).toEqual({
 			id: "CC1000",
 			name: "Herramientas",
@@ -182,6 +201,38 @@ describe("course catalog API adapter", () => {
 			"CC1000",
 			"CC2000",
 		]);
+	});
+
+	it("skips placeholder codes in mixed pages and makes no request for placeholder-only pages", async () => {
+		const placeholder = {
+			id: "CC1002",
+			name: "Introducción a la Programación",
+			categoryTags: ["Programación Funcional"],
+			isPlaceholder: true,
+		};
+		listCoursesMock.mockResolvedValue({ data: [dynamicCourse] });
+		const mixed = await getCourseCatalogPage([
+			{ id: "CC1000", name: "Herramientas", categoryTags: [] },
+			placeholder,
+		]);
+		expect(listCoursesMock).toHaveBeenCalledWith({ codes: ["CC1000"] });
+		expect(mixed.items[1]).toMatchObject({
+			id: "CC1002",
+			isPlaceholder: true,
+			reviewCount: 0,
+		});
+		listCoursesMock.mockClear();
+		const entries = Array.from({ length: 25 }, (_, index) => ({
+			...placeholder,
+			id: `LOCAL${index}`,
+		}));
+		const first = await getCourseCatalogPage(entries);
+		expect(first.items).toHaveLength(24);
+		expect(first.nextCursor).toBe(24);
+		const last = await getCourseCatalogPage(entries, first.nextCursor!);
+		expect(last.items).toHaveLength(1);
+		expect(last.nextCursor).toBeNull();
+		expect(listCoursesMock).not.toHaveBeenCalled();
 	});
 
 	it("keeps static courses when dynamic statistics are missing", () => {

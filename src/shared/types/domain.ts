@@ -51,6 +51,7 @@ export interface SeccionSummary {
 }
 
 export interface CursoListItem {
+	isPlaceholder?: boolean;
 	id: string;
 	name: string;
 	code: string;

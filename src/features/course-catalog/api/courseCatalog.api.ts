@@ -1,6 +1,11 @@
-import { matchesCourseCategory } from "../courseCategories";
+import {
+	COURSE_CATEGORY_CODES,
+	matchesCourseCategory,
+} from "../courseCategories";
+import localCourses from "../../../../data/courses/courses.json";
 import {
 	COURSE_TOPIC_OPTIONS,
+	COURSE_METADATA_CODES,
 	getCourseMetadata,
 } from "../../../constants/courseMetadata";
 import {
@@ -20,6 +25,7 @@ import type {
 export const COURSE_CATALOG_PAGE_SIZE = 24;
 
 export interface CourseCatalogEntry {
+	isPlaceholder?: boolean;
 	id: string;
 	name: string;
 	categoryTags: string[];
@@ -52,11 +58,30 @@ export function normalizeCourseCatalog(
 		name: course.name,
 		categoryTags: getCourseMetadata(course.code)?.categories ?? [],
 	}));
+	const backendCodes = new Set(items.map((course) => course.id));
+	const localNames = new Map(
+		localCourses.courses.map((course) => [course.code, course.name]),
+	);
+	const classifiedCodes = new Set([
+		...Object.values(COURSE_CATEGORY_CODES).flatMap((codes) => [...codes]),
+		...localCourses.courses
+			.filter((course) => matchesCourseCategory(course.code, "dcc"))
+			.map((course) => course.code),
+		...COURSE_METADATA_CODES,
+	]);
+	const placeholders: CourseCatalogEntry[] = [...classifiedCodes]
+		.filter((code) => !backendCodes.has(code))
+		.map((code) => ({
+			id: code,
+			name: localNames.get(code) ?? "Nombre no disponible",
+			categoryTags: getCourseMetadata(code)?.categories ?? [],
+			isPlaceholder: true,
+		}));
 
 	return {
-		items,
+		items: [...items, ...placeholders],
 		categoryOptions: COURSE_TOPIC_OPTIONS,
-		total: data.count,
+		total: items.length + placeholders.length,
 	};
 }
 
@@ -71,6 +96,7 @@ export function toCourseCatalogItem(
 	// TODO(backend): Replace the remaining catalog defaults when credits,
 	// offering history and plan membership are exposed.
 	return {
+		isPlaceholder: entry.isPlaceholder,
 		id: entry.id,
 		name: entry.name,
 		code: entry.id,
@@ -98,14 +124,17 @@ export async function getCourseCatalogPage(
 ): Promise<CourseCatalogPage> {
 	const pageEntries = entries.slice(cursor, cursor + COURSE_CATALOG_PAGE_SIZE);
 	if (pageEntries.length === 0) return { items: [], nextCursor: null };
+	const availableEntries = pageEntries.filter((entry) => !entry.isPlaceholder);
 
 	const courses =
 		reviewableCourses ??
-		(
-			await listCourses({
-				codes: pageEntries.map((course) => course.id),
-			})
-		).data;
+		(availableEntries.length === 0
+			? []
+			: (
+					await listCourses({
+						codes: availableEntries.map((course) => course.id),
+					})
+				).data);
 	const coursesById = new Map(
 		courses.map((course) => [course.id, course] as const),
 	);
