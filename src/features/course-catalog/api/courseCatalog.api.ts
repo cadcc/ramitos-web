@@ -1,6 +1,8 @@
 import { matchesCourseCategory } from "../courseCategories";
-import tags from "../../../../data/courses/tags.json";
-import combinedCourses from "../../../../data/courses/combined.json";
+import {
+	COURSE_TOPIC_OPTIONS,
+	getCourseMetadata,
+} from "../../../constants/courseMetadata";
 import {
 	getCoursesStaticData,
 	listCourses,
@@ -42,30 +44,18 @@ function statValue(
 	return Math.max(0, Math.min(5, value));
 }
 
-const tagNames = new Map(tags.map((tag) => [tag.id, tag.name]));
-const categoriesByCode = new Map(
-	combinedCourses.map((course) => [
-		course.codigo,
-		course.tags
-			.map((id) => tagNames.get(id))
-			.filter((name): name is string => name !== undefined),
-	]),
-);
-
 export function normalizeCourseCatalog(
 	data: CoursesStaticDataContainer,
 ): CourseCatalogIndex {
 	const items = data.courses.map((course) => ({
 		id: course.code,
 		name: course.name,
-		categoryTags: categoriesByCode.get(course.code) ?? [],
+		categoryTags: getCourseMetadata(course.code)?.categories ?? [],
 	}));
 
 	return {
 		items,
-		categoryOptions: tags
-			.map((tag) => tag.name)
-			.sort((a, b) => a.localeCompare(b, "es")),
+		categoryOptions: COURSE_TOPIC_OPTIONS,
 		total: data.count,
 	};
 }

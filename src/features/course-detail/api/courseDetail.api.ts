@@ -1,5 +1,6 @@
 import { session } from "../../auth";
 import { getCourseSummaryTags } from "../../../constants/reviewTags";
+import { getCourseMetadata } from "../../../constants/courseMetadata";
 import { faker } from "@faker-js/faker";
 import { getCourse } from "../../../generated/api/course/courseService";
 import type { GetCourseResponseContent } from "../../../generated/api/course/models";
@@ -102,15 +103,11 @@ function fallbackCredits(courseId: string): number {
 	);
 }
 
-function fallbackDescription(course: GetCourseResponseContent): string {
-	// TODO(backend): Replace with the official course description from the API.
-	return `${course.name} aborda contenidos centrales del área, combinando fundamentos, práctica y evaluaciones aplicadas para estudiantes del DCC.`;
-}
-
 function toCourseDetail(course: GetCourseResponseContent): Curso {
 	// TODO(backend): Once getCourse returns the full course detail view model, replace this adapter with the generated useGetCourse hook.
 	const semesters = fallbackSemesters(course.id);
 	const lastTerm = semesters[semesters.length - 1];
+	const metadata = getCourseMetadata(course.id);
 
 	return {
 		id: course.id,
@@ -119,10 +116,10 @@ function toCourseDetail(course: GetCourseResponseContent): Curso {
 		reviewable: course.reviewable,
 		code: course.id,
 		credits: fallbackCredits(course.id),
-		description: fallbackDescription(course),
+		description: metadata?.summary ?? "Resumen no disponible.",
 		department: fallbackDepartment(course.id),
 		plan: fallbackPlan(course.id),
-		categoryTags: Object.keys(course.tag_stats),
+		categoryTags: metadata?.categories ?? [],
 		reviewTags: getCourseSummaryTags(course.tag_stats),
 		currentlyOffered: semesters.some(
 			(term) => `${term.year}-${term.semester}` === CURRENT_SEMESTER,

@@ -1,6 +1,8 @@
 import { expect, it, vi } from "vitest";
 import { getCourse } from "../../../generated/api/course/courseService";
 import { getCourseDetail } from "./courseDetail.api";
+import combinedCourses from "../../../../data/courses/combined.json";
+import tags from "../../../../data/courses/tags.json";
 
 vi.mock("../../auth", () => ({
 	session: {
@@ -32,9 +34,33 @@ it("loads authenticated eligibility and preserves a false reviewable value", asy
 		commentReviewCount: 17,
 		enrolled: false,
 		reviewable: false,
+		description: combinedCourses.find((course) => course.codigo === "CC1000")
+			?.resumen,
+		categoryTags: [10, 11, 2, 39, 41].map(
+			(id) => tags.find((tag) => tag.id === id)?.name,
+		),
 	});
 	expect(getCourse).toHaveBeenLastCalledWith("CC1000", {
 		headers: { Authorization: "Bearer test" },
+	});
+});
+
+it("shows an honest empty state when local course metadata is missing", async () => {
+	vi.mocked(getCourse).mockResolvedValueOnce({
+		status: 200,
+		data: {
+			id: "UNKNOWN",
+			name: "Curso sin datos locales",
+			stats: {},
+			tag_stats: { Programacion: { value: 1 } },
+			reviewCount: 1,
+			commentReviewCount: 0,
+		},
+		headers: new Headers(),
+	});
+	expect(await getCourseDetail("UNKNOWN")).toMatchObject({
+		description: "Resumen no disponible.",
+		categoryTags: [],
 	});
 });
 
