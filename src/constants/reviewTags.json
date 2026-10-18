@@ -8,20 +8,6 @@
 			"items": [
 				{
 					"type": "exclusive",
-					"key": "workload_distribution",
-					"tags": [
-						{
-							"key": "variable_workload",
-							"label": "Variable"
-						},
-						{
-							"key": "consistent_workload",
-							"label": "Consistente"
-						}
-					]
-				},
-				{
-					"type": "exclusive",
 					"key": "deadline_flexibility",
 					"tags": [
 						{

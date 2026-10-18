@@ -4,7 +4,6 @@ import { TAG_SUGGESTION_URL } from "../../../constants/issueLinks";
 import { useAuth } from "../../auth";
 import { reviewDraftKey, useReviewDraft } from "../hooks/useReviewDraft";
 import {
-	Typography,
 	LinearProgress,
 	Button,
 	Stack,
@@ -92,9 +91,6 @@ function ReviewFormContent({
 	const filledCount = reviewAxes.filter(
 		(axis) => ratings[axis.key] !== undefined,
 	).length;
-	const nextAxis = reviewAxes.find(
-		(axis) => ratings[axis.key] === undefined,
-	)?.key;
 	const canSubmit = filledCount === 5 && !initialReview;
 
 	const handleSubmit = () => {
@@ -157,24 +153,9 @@ function ReviewFormContent({
 				}}
 			>
 				Comparte tu experiencia
-				<Typography
-					component="span"
-					variant="caption"
-					role="status"
-					sx={{
-						display: "block",
-						mt: 0.5,
-						color: filledCount === 5 ? "success.main" : "text.secondary",
-						fontWeight: 600,
-					}}
-				>
-					{filledCount === 5
-						? "¡Ya puedes publicar!"
-						: `${filledCount} de 5 dimensiones`}
-				</Typography>
 			</DialogTitle>
 			<DialogContent sx={{ px: { xs: 2, sm: 3 }, pt: 1.5 }}>
-				<Stack spacing={3} sx={{ mt: 0.5 }}>
+				<Stack spacing={3} useFlexGap sx={{ mt: 0.5 }}>
 					{initialReview && (
 						<Alert severity="info">
 							La edición de opiniones aún no está disponible.
@@ -184,7 +165,6 @@ function ReviewFormContent({
 						<ReviewRatingAxisField
 							key={axis.key}
 							axis={axis}
-							isNext={axis.key === nextAxis}
 							selected={ratings[axis.key]}
 							selectedTags={selectedTags}
 							onRatingChange={(key, value) =>

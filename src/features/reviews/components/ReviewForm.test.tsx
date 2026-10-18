@@ -92,7 +92,6 @@ it("refetches active reviews and course data before completing publication", asy
 });
 it("tracks five ratings and automatically opens the individual extra sections", () => {
 	const view = setup();
-	expect(view.getByRole("status").textContent).toBe("0 de 5 dimensiones");
 	expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe("0");
 	expect(
 		view
@@ -106,11 +105,11 @@ it("tracks five ratings and automatically opens the individual extra sections", 
 		"Utilidad",
 		"Ambiente",
 	].entries()) {
-		fireEvent.click(
-			view.getByRole("button", { name: new RegExp(`^${label}: 3 -`) }),
-		);
-		expect(view.getByRole("status").textContent).toBe(
-			index === 4 ? "¡Ya puedes publicar!" : `${index + 1} de 5 dimensiones`,
+		fireEvent.keyDown(view.getByRole("slider", { name: label }), {
+			key: "Enter",
+		});
+		expect(view.getByRole("progressbar").getAttribute("aria-valuenow")).toBe(
+			String((index + 1) * 20),
 		);
 	}
 	expect(
@@ -181,6 +180,45 @@ it("keeps the saved draft after a failed publication", async () => {
 	expect(JSON.parse(window.localStorage.getItem(key)!)).toEqual(draft);
 	expect(view.onClose).not.toHaveBeenCalled();
 	expect(celebrateReviewPublication).not.toHaveBeenCalled();
+});
+
+it("restores slider positions quietly, persists new ratings and tags, and submits them", async () => {
+	window.localStorage.setItem(key, JSON.stringify(draft));
+	vi.mocked(submitCourseReview).mockResolvedValue({
+		id: 44,
+		account_id: 7,
+		course_code: "CC1000",
+		stats: draft.ratings,
+		tags: [],
+		created_at: "2026-10-18T12:00:00Z",
+	});
+	const view = setup();
+	const slider = view.getByRole("slider", { name: "Carga" });
+	expect(view.getAllByRole("slider")).toHaveLength(5);
+	expect(slider.getAttribute("aria-valuenow")).toBe("1");
+	expect(
+		(
+			view.getByRole("slider", { name: "Ambiente" })
+				.firstElementChild as HTMLElement
+		).style.getPropertyValue("--slider-position"),
+	).toBe("100%");
+	expect(document.querySelector(".level-bubble")).toBeNull();
+	fireEvent.keyDown(slider, { key: "End" });
+	fireEvent.click(view.getByRole("button", { name: "Plazos flexibles" }));
+	expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
+		ratings: { carga: 5 },
+		selectedTags: ["flexible_deadlines"],
+	});
+	fireEvent.click(view.getByRole("button", { name: "Publicar opinión" }));
+	await waitFor(() =>
+		expect(submitCourseReview).toHaveBeenCalledWith(
+			expect.objectContaining({
+				ratings: { ...draft.ratings, carga: 5 },
+				tags: ["flexible_deadlines"],
+			}),
+			expect.anything(),
+		),
+	);
 });
 
 it("selects category options independently, restores them, and submits their context", async () => {
