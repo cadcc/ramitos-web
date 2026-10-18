@@ -86,7 +86,7 @@ describe("course catalog API adapter", () => {
 	});
 	beforeEach(() => listCoursesMock.mockReset());
 
-	it("normalizes the complete static index and resolves category indexes", () => {
+	it("resolves local tag IDs by course code instead of backend category indexes", () => {
 		const result = normalizeCourseCatalog({
 			count: 2,
 			categories: ["Programacion", "Sistemas"],
@@ -100,8 +100,24 @@ describe("course catalog API adapter", () => {
 		expect(result.items[0]).toEqual({
 			id: "CC1000",
 			name: "Herramientas",
-			categoryTags: ["Programacion", "Sistemas"],
+			categoryTags: [
+				"Computación Científica y Simulación",
+				"Visualización de Datos",
+				"IA Generativa y LLMs",
+				"Ética, Privacidad y Regulación",
+				"Investigación, Escritura Científica y Tesis",
+			],
 		});
+		expect(result.items[1]?.categoryTags).toEqual([]);
+		expect(result.categoryOptions).toHaveLength(42);
+		expect(result.categoryOptions).toContain("Machine Learning");
+		expect(
+			filterCourseCatalog(result.items, {
+				tags: ["IA Generativa y LLMs"],
+				q: "herramientas",
+				category: "required",
+			}).map((course) => course.id),
+		).toEqual(["CC1000"]);
 	});
 
 	it("filters the static index before dynamic pages are requested", () => {

@@ -1,4 +1,6 @@
 import { matchesCourseCategory } from "../courseCategories";
+import tags from "../../../../data/courses/tags.json";
+import combinedCourses from "../../../../data/courses/combined.json";
 import {
 	getCoursesStaticData,
 	listCourses,
@@ -40,18 +42,15 @@ function statValue(
 	return Math.max(0, Math.min(5, value));
 }
 
-function categoryNames(
-	indexes: number[] | undefined,
-	categories: string[],
-): string[] {
-	return Array.from(
-		new Set(
-			(indexes ?? [])
-				.map((index) => categories[index])
-				.filter((category): category is string => Boolean(category)),
-		),
-	);
-}
+const tagNames = new Map(tags.map((tag) => [tag.id, tag.name]));
+const categoriesByCode = new Map(
+	combinedCourses.map((course) => [
+		course.codigo,
+		course.tags
+			.map((id) => tagNames.get(id))
+			.filter((name): name is string => name !== undefined),
+	]),
+);
 
 export function normalizeCourseCatalog(
 	data: CoursesStaticDataContainer,
@@ -59,14 +58,14 @@ export function normalizeCourseCatalog(
 	const items = data.courses.map((course) => ({
 		id: course.code,
 		name: course.name,
-		categoryTags: categoryNames(course.categories, data.categories),
+		categoryTags: categoriesByCode.get(course.code) ?? [],
 	}));
 
 	return {
 		items,
-		categoryOptions: [...data.categories].sort((a, b) =>
-			a.localeCompare(b, "es"),
-		),
+		categoryOptions: tags
+			.map((tag) => tag.name)
+			.sort((a, b) => a.localeCompare(b, "es")),
 		total: data.count,
 	};
 }

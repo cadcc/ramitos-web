@@ -2,10 +2,52 @@
 import { act, cleanup, fireEvent, render } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import FilterBar from "./FilterBar";
+import tags from "../../../../data/courses/tags.json";
 
 afterEach(() => {
 	cleanup();
 	vi.useRealTimers();
+});
+
+it("shows every local category and preserves other filters when selecting or clearing it", () => {
+	const onFilterChange = vi.fn();
+	const filters = {
+		q: "datos",
+		category: "specialization" as const,
+		reviewable: true,
+	};
+	const categoryOptions = tags.map((tag) => tag.name);
+	const view = render(
+		<FilterBar
+			filters={filters}
+			onFilterChange={onFilterChange}
+			categoryOptions={categoryOptions}
+		/>,
+	);
+	const select = view.getByRole("combobox", { name: "Categoría" });
+	fireEvent.mouseDown(select);
+	expect(view.getAllByRole("option")).toHaveLength(43);
+	for (const tag of tags) {
+		expect(view.getByRole("option", { name: tag.name })).toBeDefined();
+	}
+	fireEvent.click(view.getByRole("option", { name: "Machine Learning" }));
+	expect(onFilterChange).toHaveBeenLastCalledWith({
+		...filters,
+		tags: ["Machine Learning"],
+	});
+	view.rerender(
+		<FilterBar
+			filters={{ ...filters, tags: ["Machine Learning"] }}
+			onFilterChange={onFilterChange}
+			categoryOptions={categoryOptions}
+		/>,
+	);
+	fireEvent.mouseDown(select);
+	fireEvent.click(view.getByRole("option", { name: "Todas" }));
+	expect(onFilterChange).toHaveBeenLastCalledWith({
+		...filters,
+		tags: undefined,
+	});
 });
 
 it("debounces typing and follows URL changes without restoring an old draft", () => {

@@ -236,13 +236,21 @@ export default function FilterBar({
 
 				<FormControl
 					size="small"
-					sx={{ minWidth: 140, display: "none" }}
+					sx={{ width: { xs: "100%", sm: 280 }, minWidth: 0 }}
 					disabled={categoryOptions.length === 0}
 				>
-					<InputLabel sx={{ fontSize: "0.8rem" }}>Categoría</InputLabel>
+					<InputLabel id="course-category-label" sx={{ fontSize: "0.8rem" }}>
+						Categoría
+					</InputLabel>
 					<Select
+						labelId="course-category-label"
 						value={filters.tags?.[0] ?? ""}
 						label="Categoría"
+						MenuProps={{
+							slotProps: {
+								paper: { sx: { maxHeight: 360, maxWidth: "100%" } },
+							},
+						}}
 						onChange={(e) => {
 							const val = e.target.value;
 							onFilterChange({
@@ -267,6 +275,7 @@ export default function FilterBar({
 									display: "flex",
 									alignItems: "center",
 									gap: 1,
+									whiteSpace: "normal",
 								}}
 							>
 								<CategoryIcon
@@ -285,6 +294,8 @@ export default function FilterBar({
 						onDelete={() =>
 							onFilterChange({
 								q: filters.q,
+								category: filters.category,
+								reviewable: filters.reviewable,
 								sort: selectedSort,
 								modernOnly: true,
 							})
