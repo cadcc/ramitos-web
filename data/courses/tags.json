@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "Machine Learning",
+    "shortname": "ML"
+  },
+  {
+    "id": 2,
+    "name": "IA Generativa y LLMs",
+    "shortname": "GenAI"
+  },
+  {
+    "id": 3,
+    "name": "Bases de Datos",
+    "shortname": "BDD"
+  },
+  {
+    "id": 4,
+    "name": "Minería de Datos",
+    "shortname": "Minería"
+  },
+  {
+    "id": 5,
+    "name": "Procesamiento de Lenguaje Natural",
+    "shortname": "PLN"
+  },
+  {
+    "id": 6,
+    "name": "Visión Computacional",
+    "shortname": "Visión Comp."
+  },
+  {
+    "id": 7,
+    "name": "Recuperación de Información",
+    "shortname": "Recuperación de Info."
+  },
+  {
+    "id": 8,
+    "name": "Probabilidad y Estadística",
+    "shortname": "Proba y Esta"
+  },
+  {
+    "id": 9,
+    "name": "Computación Gráfica",
+    "shortname": "Gráfica"
+  },
+  {
+    "id": 10,
+    "name": "Computación Científica y Simulación",
+    "shortname": "Simulación"
+  },
+  {
+    "id": 11,
+    "name": "Visualización de Datos",
+    "shortname": "Visualización"
+  },
+  {
+    "id": 12,
+    "name": "Interacción Humano-Computador y Experiencia de Usuario",
+    "shortname": "HCI & UX"
+  },
+  {
+    "id": 13,
+    "name": "Ingeniería de Software",
+    "shortname": "Ing. de Software"
+  },
+  {
+    "id": 14,
+    "name": "Desarrollo Web",
+    "shortname": "Web"
+  },
+  {
+    "id": 15,
+    "name": "Desarrollo de Videojuegos",
+    "shortname": "Videojuegos"
+  },
+  {
+    "id": 16,
+    "name": "Programación Orientada a Objetos",
+    "shortname": "OOP"
+  },
+  {
+    "id": 17,
+    "name": "Programación Funcional",
+    "shortname": "Prog. Funcional"
+  },
+  {
+    "id": 18,
+    "name": "Lenguajes y Compiladores",
+    "shortname": "Lenguajes"
+  },
+  {
+    "id": 19,
+    "name": "Metodos Formales y Verificacion",
+    "shortname": "Métodos Formales"
+  },
+  {
+    "id": 20,
+    "name": "Arquitectura de Computadores",
+    "shortname": "Arqui"
+  },
+  {
+    "id": 21,
+    "name": "Programación de Sistemas",
+    "shortname": "Sistemas"
+  },
+  {
+    "id": 22,
+    "name": "Sistemas Operativos",
+    "shortname": "OS"
+  },
+  {
+    "id": 23,
+    "name": "Computación Paralela y GPU",
+    "shortname": "GPU"
+  },
+  {
+    "id": 24,
+    "name": "Infraestructura TI y Administración de Sistemas",
+    "shortname": "Infra TI"
+  },
+  {
+    "id": 25,
+    "name": "Sistemas Distribuidos",
+    "shortname": "Sistemas Distribuidos"
+  },
+  {
+    "id": 26,
+    "name": "Big Data",
+    "shortname": "Big Data"
+  },
+  {
+    "id": 27,
+    "name": "Redes",
+    "shortname": "Redes"
+  },
+  {
+    "id": 28,
+    "name": "Ciberseguridad",
+    "shortname": "Ciberseguridad"
+  },
+  {
+    "id": 29,
+    "name": "Criptografía",
+    "shortname": "Cripto"
+  },
+  {
+    "id": 30,
+    "name": "IoT y Sistemas Embebidos",
+    "shortname": "IoT"
+  },
+  {
+    "id": 31,
+    "name": "Diseño y Análisis de Algoritmos",
+    "shortname": "Algoritmos"
+  },
+  {
+    "id": 32,
+    "name": "Estructuras de Datos",
+    "shortname": "Estructuras de Datos"
+  },
+  {
+    "id": 33,
+    "name": "Matemáticas Discretas y Lógica",
+    "shortname": "Discretas"
+  },
+  {
+    "id": 34,
+    "name": "Teoría de Grafos",
+    "shortname": "Grafos"
+  },
+  {
+    "id": 35,
+    "name": "Geometría Computacional",
+    "shortname": "Geometría"
+  },
+  {
+    "id": 36,
+    "name": "Programación Competitiva",
+    "shortname": "Progcomp"
+  },
+  {
+    "id": 37,
+    "name": "Teoría de la Computación",
+    "shortname": "Teoría"
+  },
+  {
+    "id": 38,
+    "name": "Gestión de Proyectos y Estrategia TI",
+    "shortname": "Gestión TI"
+  },
+  {
+    "id": 39,
+    "name": "Ética, Privacidad y Regulación",
+    "shortname": "Ética y Privacidad"
+  },
+  {
+    "id": 40,
+    "name": "Habilidades Profesionales y Liderazgo",
+    "shortname": "Habilidades y Liderazgo"
+  },
+  {
+    "id": 41,
+    "name": "Investigación, Escritura Científica y Tesis",
+    "shortname": "Investigación y Tesis"
+  },
+  {
+    "id": 42,
+    "name": "Innovación y Emprendimiento",
+    "shortname": "Emprendimiento"
+  }
+]
