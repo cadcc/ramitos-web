@@ -1,0 +1,5 @@
+codigo: <course code>
+creditos: <sct as int>
+plan: https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=<course id>
+resumen: <single paragraph summary>
+tags: <tag1>, <tag2>, ...
