@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
-import { renderHook, waitFor, cleanup } from "@testing-library/react";
+import { act, renderHook, waitFor, cleanup } from "@testing-library/react";
+import { setPreviewFeature } from "../../../shared/hooks/usePreviewFeatures";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { afterEach, expect, it, vi } from "vitest";
 import type { ReactNode } from "react";
@@ -22,16 +23,70 @@ vi.mock("../api/courseCatalog.api", async (original) => ({
 			items: [
 				{ id: "CC3000", name: "One", categoryTags: [] },
 				{ id: "CC3001", name: "Two", categoryTags: [] },
+				{
+					id: "CC3002",
+					name: "Unavailable",
+					categoryTags: [],
+					isPlaceholder: true,
+				},
 			],
 			categoryOptions: [],
-			total: 2,
+			total: 3,
 		}),
 }));
 afterEach(() => {
 	cleanup();
+	localStorage.clear();
 	auth.user.id = 1;
 	auth.isAuthenticated = true;
 	vi.mocked(getReviewableCourses).mockReset();
+});
+
+it("hides placeholders from counts and pages by default and updates when toggled", async () => {
+	vi.mocked(getReviewableCourses).mockResolvedValue([]);
+	const view = renderHook(() => useCourseCatalog({}), { wrapper: wrapper() });
+	await waitFor(() =>
+		expect(view.result.current.pagesQuery.isSuccess).toBe(true),
+	);
+	expect(view.result.current.filteredTotal).toBe(2);
+	expect(
+		view.result.current.pagesQuery.data?.pages
+			.flatMap((page) => page.items)
+			.map((course) => course.id),
+	).toEqual(["CC3000", "CC3001"]);
+	act(() => setPreviewFeature("placeholderCourses", true));
+	await waitFor(() =>
+		expect(view.result.current.pagesQuery.data?.pages[0]?.items).toHaveLength(
+			3,
+		),
+	);
+	expect(view.result.current.filteredTotal).toBe(3);
+	expect(view.result.current.pagesQuery.data?.pages[0]?.items[2]).toMatchObject(
+		{ id: "CC3002", isPlaceholder: true },
+	);
+	act(() => setPreviewFeature("placeholderCourses", false));
+	await waitFor(() =>
+		expect(view.result.current.pagesQuery.data?.pages[0]?.items).toHaveLength(
+			2,
+		),
+	);
+	expect(view.result.current.filteredTotal).toBe(2);
+});
+
+it("ignores hidden preview URL filters and activates them immediately when enabled", async () => {
+	localStorage.clear();
+	vi.mocked(getReviewableCourses).mockResolvedValue([]);
+	const view = renderHook(
+		() => useCourseCatalog({ acmArea: "IA", tags: ["Missing category"] }),
+		{ wrapper: wrapper() },
+	);
+	await waitFor(() => expect(view.result.current.filteredTotal).toBe(2));
+	act(() => setPreviewFeature("acmCategories", true));
+	await waitFor(() => expect(view.result.current.filteredTotal).toBe(0));
+	act(() => setPreviewFeature("acmCategories", false));
+	await waitFor(() => expect(view.result.current.filteredTotal).toBe(2));
+	act(() => setPreviewFeature("categories", true));
+	await waitFor(() => expect(view.result.current.filteredTotal).toBe(0));
 });
 const course = (id: string) => ({
 	id,

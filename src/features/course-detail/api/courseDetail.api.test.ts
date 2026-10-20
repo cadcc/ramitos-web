@@ -36,6 +36,9 @@ it("loads authenticated eligibility and preserves a false reviewable value", asy
 		reviewable: false,
 		description: combinedCourses.find((course) => course.codigo === "CC1000")
 			?.resumen,
+		syllabusUrl: combinedCourses.find((course) => course.codigo === "CC1000")
+			?.plan,
+		acmUnits: combinedCourses.find((course) => course.codigo === "CC1000")?.acm,
 		categoryTags: [10, 11, 2, 39, 41].map(
 			(id) => tags.find((tag) => tag.id === id)?.name,
 		),
@@ -60,7 +63,9 @@ it("shows an honest empty state when local course metadata is missing", async ()
 	});
 	expect(await getCourseDetail("UNKNOWN")).toMatchObject({
 		description: "Resumen no disponible.",
+		syllabusUrl: undefined,
 		categoryTags: [],
+		acmUnits: [],
 	});
 });
 

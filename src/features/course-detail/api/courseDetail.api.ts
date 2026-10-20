@@ -117,9 +117,11 @@ function toCourseDetail(course: GetCourseResponseContent): Curso {
 		code: course.id,
 		credits: fallbackCredits(course.id),
 		description: metadata?.summary ?? "Resumen no disponible.",
+		syllabusUrl: metadata?.syllabusUrl,
 		department: fallbackDepartment(course.id),
 		plan: fallbackPlan(course.id),
 		categoryTags: metadata?.categories ?? [],
+		acmUnits: metadata?.acmUnits ?? [],
 		reviewTags: getCourseSummaryTags(course.tag_stats),
 		currentlyOffered: semesters.some(
 			(term) => `${term.year}-${term.semester}` === CURRENT_SEMESTER,

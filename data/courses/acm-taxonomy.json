@@ -1,0 +1,861 @@
+{
+    "titulo": "Planes de estudios de Informática 2023 (CS2023)",
+    "organizaciones": [
+        "Association for Computing Machinery (ACM)",
+        "IEEE-Computer Society (IEEE-CS)",
+        "Association for the Advancement of Artificial Intelligence (AAAI)"
+    ],
+    "fecha_publicacion": "Junio 2024",
+    "total_horas_troncales_inf": 270,
+    "areas_competenciales": [
+        {
+            "id": "SOFTWARE",
+            "nombre": "Desarrollo de Software",
+            "descripcion": "Áreas de conocimiento que preparan a un estudiante para ser un programador profesional.",
+            "areas_conocimiento": [
+                "FDS",
+                "AL",
+                "FLP",
+                "IS"
+            ]
+        },
+        {
+            "id": "SISTEMAS",
+            "nombre": "Desarrollo de Sistemas",
+            "descripcion": "Áreas de conocimiento que preparan a un estudiante para proporcionar servicios esenciales con requisitos no funcionales.",
+            "areas_conocimiento": [
+                "AR",
+                "SO",
+                "RC",
+                "CPD",
+                "FS",
+                "GD",
+                "SEG"
+            ]
+        },
+        {
+            "id": "APLICACIONES",
+            "nombre": "Desarrollo de Aplicaciones",
+            "descripcion": "Áreas de conocimiento que preparan a un estudiante con conocimientos específicos de ciertos problemas o soluciones.",
+            "areas_conocimiento": [
+                "IA",
+                "GTI",
+                "IPO",
+                "DPE",
+                "GD",
+                "SEG"
+            ]
+        },
+        {
+            "id": "TRANSVERSALES",
+            "nombre": "Temas Troncales Transversales",
+            "descripcion": "Áreas que forman parte y benefician a todas las áreas competenciales.",
+            "areas_conocimiento": [
+                "SEP",
+                "FME"
+            ]
+        }
+    ],
+    "cuerpo_de_conocimientos": [
+        {
+            "id": "AL",
+            "nombre": "Fundamentos Algorítmicos",
+            "horas_troncales_inf": 32,
+            "horas_troncales_ac": 32,
+            "unidades_conocimiento": [
+                {
+                    "id": "AL-Fundamentales",
+                    "nombre": "Estructuras de Datos y Algoritmos Fundamentales"
+                },
+                {
+                    "id": "AL-Estrategias",
+                    "nombre": "Estrategias Algorítmicas"
+                },
+                {
+                    "id": "AL-Complejidad",
+                    "nombre": "Análisis de Complejidad"
+                },
+                {
+                    "id": "AL-Modelos",
+                    "nombre": "Modelos Computacionales y Lenguajes Formales"
+                },
+                {
+                    "id": "AL-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "AR",
+            "nombre": "Arquitectura y Organización",
+            "horas_troncales_inf": 9,
+            "horas_troncales_ac": 16,
+            "unidades_conocimiento": [
+                {
+                    "id": "AR-Lógica",
+                    "nombre": "Lógica Digital y Sistemas Digitales"
+                },
+                {
+                    "id": "AR-Representación",
+                    "nombre": "Representación de Datos al Nivel de Máquina"
+                },
+                {
+                    "id": "AR-Ensamblador",
+                    "nombre": "Organización de Máquina al Nivel de Ensamblador"
+                },
+                {
+                    "id": "AR-Memoria",
+                    "nombre": "Jerarquía de Memoria"
+                },
+                {
+                    "id": "AR-ES",
+                    "nombre": "Interfaz y Comunicación"
+                },
+                {
+                    "id": "AR-Organización",
+                    "nombre": "Organización Funcional"
+                },
+                {
+                    "id": "AR-Energía",
+                    "nombre": "Rendimiento y Eficiencia Energética"
+                },
+                {
+                    "id": "AR-Heterogeneidad",
+                    "nombre": "Arquitecturas Heterogéneas"
+                },
+                {
+                    "id": "AR-Seguridad",
+                    "nombre": "Arquitecturas de Procesadores Seguros"
+                },
+                {
+                    "id": "AR-Cuánticas",
+                    "nombre": "Arquitecturas Cuánticas"
+                },
+                {
+                    "id": "AR-SEP",
+                    "nombre": "Cuestiones de Sostenibilidad"
+                }
+            ]
+        },
+        {
+            "id": "CPD",
+            "nombre": "Computación Paralela y Distribuida",
+            "horas_troncales_inf": 9,
+            "horas_troncales_ac": 26,
+            "unidades_conocimiento": [
+                {
+                    "id": "CPD-Programas",
+                    "nombre": "Programas"
+                },
+                {
+                    "id": "CPD-Comunicación",
+                    "nombre": "Comunicación"
+                },
+                {
+                    "id": "CPD-Coordinación",
+                    "nombre": "Coordinación"
+                },
+                {
+                    "id": "CPD-Evaluación",
+                    "nombre": "Evaluación"
+                },
+                {
+                    "id": "CPD-Algoritmos",
+                    "nombre": "Algoritmos"
+                }
+            ]
+        },
+        {
+            "id": "DPE",
+            "nombre": "Desarrollo para Plataformas Especializadas",
+            "horas_troncales_inf": 4,
+            "horas_troncales_ac": null,
+            "unidades_conocimiento": [
+                {
+                    "id": "DPE-Común",
+                    "nombre": "Aspectos Comunes / Cuestiones Compartidas"
+                },
+                {
+                    "id": "DPE-Web",
+                    "nombre": "Plataformas Web"
+                },
+                {
+                    "id": "DPE-Móviles",
+                    "nombre": "Plataformas para Móviles"
+                },
+                {
+                    "id": "DPE-Robots",
+                    "nombre": "Plataformas Robóticas"
+                },
+                {
+                    "id": "DPE-Empotradas",
+                    "nombre": "Plataformas Empotradas"
+                },
+                {
+                    "id": "DPE-Juegos",
+                    "nombre": "Plataformas de Juegos"
+                },
+                {
+                    "id": "DPE-Interactivas",
+                    "nombre": "Plataformas Informáticas Interactivas"
+                },
+                {
+                    "id": "DPE-SEP/Móviles",
+                    "nombre": "Sociedad, Ética y Profesión en Móviles"
+                },
+                {
+                    "id": "DPE-SEP/Web",
+                    "nombre": "Sociedad, Ética y Profesión en Web"
+                },
+                {
+                    "id": "DPE-SEP/Juegos",
+                    "nombre": "Sociedad, Ética y Profesión en Juegos"
+                },
+                {
+                    "id": "DPE-SEP/Robótica",
+                    "nombre": "Sociedad, Ética y Profesión en Robótica"
+                },
+                {
+                    "id": "DPE-SEP/Interactivas",
+                    "nombre": "Sociedad, Ética y Profesión en Plataformas Interactivas"
+                }
+            ]
+        },
+        {
+            "id": "FDS",
+            "nombre": "Fundamentos de Desarrollo de Software",
+            "horas_troncales_inf": 43,
+            "horas_troncales_ac": null,
+            "unidades_conocimiento": [
+                {
+                    "id": "FDS-Fundamentos",
+                    "nombre": "Conceptos y Prácticas Básicas de Programación"
+                },
+                {
+                    "id": "FDS-EstructurasDatos",
+                    "nombre": "Estructuras de Datos Básicas"
+                },
+                {
+                    "id": "FDS-Algoritmos",
+                    "nombre": "Algoritmos"
+                },
+                {
+                    "id": "FDS-Prácticas",
+                    "nombre": "Prácticas de Desarrollo de Software"
+                },
+                {
+                    "id": "FDS-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "FLP",
+            "nombre": "Fundamentos de Lenguajes de Programación",
+            "horas_troncales_inf": 21,
+            "horas_troncales_ac": 19,
+            "unidades_conocimiento": [
+                {
+                    "id": "FLP-POO",
+                    "nombre": "Programación Orientada a Objetos"
+                },
+                {
+                    "id": "FLP-Funcional",
+                    "nombre": "Programación Funcional"
+                },
+                {
+                    "id": "FLP-Lógica",
+                    "nombre": "Programación Lógica"
+                },
+                {
+                    "id": "FLP-Scripting",
+                    "nombre": "Shell Scripting"
+                },
+                {
+                    "id": "FLP-Eventos",
+                    "nombre": "Programación Dirigida por Eventos y Reactiva"
+                },
+                {
+                    "id": "FLP-Paralela",
+                    "nombre": "Computación Paralela y Distribuida"
+                },
+                {
+                    "id": "FLP-Aspectos",
+                    "nombre": "Programación Orientada a Aspectos"
+                },
+                {
+                    "id": "FLP-Tipos",
+                    "nombre": "Sistemas de Tipos"
+                },
+                {
+                    "id": "FLP-Sistemas",
+                    "nombre": "Ejecución de Sistemas y Modelo de Memoria"
+                },
+                {
+                    "id": "FLP-Traducción",
+                    "nombre": "Traducción y Ejecución de Lenguajes"
+                },
+                {
+                    "id": "FLP-Abstracción",
+                    "nombre": "Abstracción y Representación de Programas"
+                },
+                {
+                    "id": "FLP-Sintaxis",
+                    "nombre": "Análisis Sintáctico"
+                },
+                {
+                    "id": "FLP-Semántica",
+                    "nombre": "Análisis Semántico en Compilación"
+                },
+                {
+                    "id": "FLP-Análisis",
+                    "nombre": "Análisis y Analizadores de Programas"
+                },
+                {
+                    "id": "FLP-Código",
+                    "nombre": "Generación de Código"
+                },
+                {
+                    "id": "FLP-Ejecución",
+                    "nombre": "Comportamiento y Sistemas de Ejecución"
+                },
+                {
+                    "id": "FLP-Construcciones",
+                    "nombre": "Construcciones de Programación Avanzadas"
+                },
+                {
+                    "id": "FLP-Pragmática",
+                    "nombre": "Pragmática de Lenguajes"
+                },
+                {
+                    "id": "FLP-Formalismos",
+                    "nombre": "Semántica Formal"
+                },
+                {
+                    "id": "FLP-Metodologías",
+                    "nombre": "Metodologías Formales de Desarrollo"
+                },
+                {
+                    "id": "FLP-Diseño",
+                    "nombre": "Principios de Diseño de Lenguajes de Programación"
+                },
+                {
+                    "id": "FLP-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "FME",
+            "nombre": "Fundamentos Matemáticos y Estadísticos",
+            "horas_troncales_inf": 55,
+            "horas_troncales_ac": 145,
+            "unidades_conocimiento": [
+                {
+                    "id": "FME-Discretas",
+                    "nombre": "Matemáticas Discretas"
+                },
+                {
+                    "id": "FME-Probabilidad",
+                    "nombre": "Probabilidad"
+                },
+                {
+                    "id": "FME-Estadística",
+                    "nombre": "Estadística"
+                },
+                {
+                    "id": "FME-Lineal",
+                    "nombre": "Álgebra Lineal"
+                },
+                {
+                    "id": "FME-Cálculo",
+                    "nombre": "Cálculo"
+                }
+            ]
+        },
+        {
+            "id": "FS",
+            "nombre": "Fundamentos de Sistemas",
+            "horas_troncales_inf": 18,
+            "horas_troncales_ac": 8,
+            "unidades_conocimiento": [
+                {
+                    "id": "FS-VisiónGeneral",
+                    "nombre": "Visión General de los Sistemas Informáticos"
+                },
+                {
+                    "id": "FS-Fundamentos",
+                    "nombre": "Conceptos Básicos"
+                },
+                {
+                    "id": "FS-Recursos",
+                    "nombre": "Gestión de Recursos"
+                },
+                {
+                    "id": "FS-Rendimiento",
+                    "nombre": "Rendimiento de Sistemas"
+                },
+                {
+                    "id": "FS-Evaluación",
+                    "nombre": "Evaluación del Rendimiento"
+                },
+                {
+                    "id": "FS-Fiabilidad",
+                    "nombre": "Fiabilidad de Sistemas"
+                },
+                {
+                    "id": "FS-Seguridad",
+                    "nombre": "Seguridad de Sistemas"
+                },
+                {
+                    "id": "FS-Diseño",
+                    "nombre": "Diseño de Sistemas"
+                },
+                {
+                    "id": "FS-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "GD",
+            "nombre": "Gestión de Datos",
+            "horas_troncales_inf": 10,
+            "horas_troncales_ac": 26,
+            "unidades_conocimiento": [
+                {
+                    "id": "GD-Datos",
+                    "nombre": "El Papel y el Ciclo de Vida de los Datos"
+                },
+                {
+                    "id": "GD-Básico",
+                    "nombre": "Conceptos Básicos de un Sistema de Bases de Datos"
+                },
+                {
+                    "id": "GD-Modelado",
+                    "nombre": "Modelado de Datos"
+                },
+                {
+                    "id": "GD-Relacional",
+                    "nombre": "Bases de Datos Relacionales"
+                },
+                {
+                    "id": "GD-Consultas",
+                    "nombre": "Creación de Consultas"
+                },
+                {
+                    "id": "GD-Procesamiento",
+                    "nombre": "Procesamiento de Consultas"
+                },
+                {
+                    "id": "GD-Interiores",
+                    "nombre": "El Interior de un SGBD"
+                },
+                {
+                    "id": "GD-NoSQL",
+                    "nombre": "Sistemas NoSQL"
+                },
+                {
+                    "id": "GD-Seguridad",
+                    "nombre": "Seguridad y Privacidad de los Datos"
+                },
+                {
+                    "id": "GD-Analítica",
+                    "nombre": "Analítica de Datos"
+                },
+                {
+                    "id": "GD-Distribuidas",
+                    "nombre": "Bases de Datos Distribuidas / Computación en la Nube"
+                },
+                {
+                    "id": "GD-NoEstructuradas",
+                    "nombre": "Bases de Datos Semiestructuradas y No Estructuradas"
+                },
+                {
+                    "id": "GD-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "GTI",
+            "nombre": "Gráficos y Técnicas Interactivas",
+            "horas_troncales_inf": 4,
+            "horas_troncales_ac": 70,
+            "unidades_conocimiento": [
+                {
+                    "id": "GTI-Fundamentos",
+                    "nombre": "Conceptos Fundamentales"
+                },
+                {
+                    "id": "GTI-Visualización",
+                    "nombre": "Visualización"
+                },
+                {
+                    "id": "GTI-Renderizado",
+                    "nombre": "Renderizado y Técnicas Aplicadas"
+                },
+                {
+                    "id": "GTI-Modelado",
+                    "nombre": "Modelado Geométrico"
+                },
+                {
+                    "id": "GTI-Sombreado",
+                    "nombre": "Sombreado y Renderizado Avanzado"
+                },
+                {
+                    "id": "GTI-Animación",
+                    "nombre": "Animación por Ordenador"
+                },
+                {
+                    "id": "GTI-Simulación",
+                    "nombre": "Simulación"
+                },
+                {
+                    "id": "GTI-Inmersión",
+                    "nombre": "Inmersión"
+                },
+                {
+                    "id": "GTI-Interacción",
+                    "nombre": "Interacción"
+                },
+                {
+                    "id": "GTI-Imagen",
+                    "nombre": "Procesamiento de Imágenes"
+                },
+                {
+                    "id": "GTI-Física",
+                    "nombre": "Informática Tangible/Física"
+                },
+                {
+                    "id": "GTI-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "IA",
+            "nombre": "Inteligencia Artificial",
+            "horas_troncales_inf": 12,
+            "horas_troncales_ac": 18,
+            "unidades_conocimiento": [
+                {
+                    "id": "IA-Introducción",
+                    "nombre": "Cuestiones Básicas"
+                },
+                {
+                    "id": "IA-Búsqueda",
+                    "nombre": "Búsqueda"
+                },
+                {
+                    "id": "IA-RCR",
+                    "nombre": "Fundamentos de Representación del Conocimiento y Razonamiento"
+                },
+                {
+                    "id": "IA-AA",
+                    "nombre": "Aprendizaje Automático"
+                },
+                {
+                    "id": "IA-SEP",
+                    "nombre": "Aplicaciones e Impacto Social"
+                },
+                {
+                    "id": "IA-RRL",
+                    "nombre": "Representación y Razonamiento Lógicos"
+                },
+                {
+                    "id": "IA-Probabilidad",
+                    "nombre": "Representación y Razonamiento Probabilísticos"
+                },
+                {
+                    "id": "IA-Planificación",
+                    "nombre": "Planificación"
+                },
+                {
+                    "id": "IA-Agentes",
+                    "nombre": "Agentes y Sistemas Cognitivos"
+                },
+                {
+                    "id": "IA-PLN",
+                    "nombre": "Procesamiento del Lenguaje Natural"
+                },
+                {
+                    "id": "IA-Robótica",
+                    "nombre": "Robótica"
+                },
+                {
+                    "id": "IA-Visión",
+                    "nombre": "Percepción y Visión por Ordenador"
+                }
+            ]
+        },
+        {
+            "id": "IPO",
+            "nombre": "Interacción Persona-Ordenador",
+            "horas_troncales_inf": 8,
+            "horas_troncales_ac": 16,
+            "unidades_conocimiento": [
+                {
+                    "id": "IPO-Usuario",
+                    "nombre": "Comprendiendo al Usuario: objetivos individuales e interacciones con los demás"
+                },
+                {
+                    "id": "IPO-Responsabilidad",
+                    "nombre": "Rendición de Cuentas y Responsabilidad en el Diseño"
+                },
+                {
+                    "id": "IPO-Accesibilidad",
+                    "nombre": "Accesibilidad y Diseño Inclusivo"
+                },
+                {
+                    "id": "IPO-Evaluación",
+                    "nombre": "Evaluación del Diseño"
+                },
+                {
+                    "id": "IPO-Diseño",
+                    "nombre": "Diseño de Sistemas"
+                },
+                {
+                    "id": "IPO-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        },
+        {
+            "id": "IS",
+            "nombre": "Ingeniería del Software",
+            "horas_troncales_inf": 6,
+            "horas_troncales_ac": 21,
+            "unidades_conocimiento": [
+                {
+                    "id": "IS-TrabajoEquipo",
+                    "nombre": "Trabajo en Equipo"
+                },
+                {
+                    "id": "IS-Herramientas",
+                    "nombre": "Herramientas y Entornos"
+                },
+                {
+                    "id": "IS-Requisitos",
+                    "nombre": "Requisitos del Producto"
+                },
+                {
+                    "id": "IS-Diseño",
+                    "nombre": "Diseño del Software"
+                },
+                {
+                    "id": "IS-Construcción",
+                    "nombre": "Construcción del Software"
+                },
+                {
+                    "id": "IS-Validación",
+                    "nombre": "Verificación y Validación del Software"
+                },
+                {
+                    "id": "IS-Refactorización",
+                    "nombre": "Refactorización y Evolución del Código"
+                },
+                {
+                    "id": "IS-Fiabilidad",
+                    "nombre": "Fiabilidad del Software"
+                },
+                {
+                    "id": "IS-Formales",
+                    "nombre": "Métodos Formales"
+                }
+            ]
+        },
+        {
+            "id": "RC",
+            "nombre": "Redes y Comunicaciones",
+            "horas_troncales_inf": 7,
+            "horas_troncales_ac": 24,
+            "unidades_conocimiento": [
+                {
+                    "id": "RC-Fundamentos",
+                    "nombre": "Fundamentos"
+                },
+                {
+                    "id": "RC-Aplicaciones",
+                    "nombre": "Aplicaciones en Red"
+                },
+                {
+                    "id": "RC-Fiabilidad",
+                    "nombre": "Soporte a la Fiabilidad"
+                },
+                {
+                    "id": "RC-Enrutamiento",
+                    "nombre": "Enrutamiento y Reenvío"
+                },
+                {
+                    "id": "RC-UnSoloSalto",
+                    "nombre": "Comunicación de un Solo Salto"
+                },
+                {
+                    "id": "RC-Seguridad",
+                    "nombre": "Seguridad en las Redes"
+                },
+                {
+                    "id": "RC-Movilidad",
+                    "nombre": "Movilidad"
+                },
+                {
+                    "id": "RC-Emergentes",
+                    "nombre": "Temas Emergentes"
+                }
+            ]
+        },
+        {
+            "id": "SEG",
+            "nombre": "Seguridad",
+            "horas_troncales_inf": 6,
+            "horas_troncales_ac": 35,
+            "unidades_conocimiento": [
+                {
+                    "id": "SEG-Fundamentos",
+                    "nombre": "Fundamentos de Seguridad"
+                },
+                {
+                    "id": "SEG-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                },
+                {
+                    "id": "SEG-Codificación",
+                    "nombre": "Codificación Segura"
+                },
+                {
+                    "id": "SEG-Cripto",
+                    "nombre": "Criptografía"
+                },
+                {
+                    "id": "SEG-Ingeniería",
+                    "nombre": "Análisis, Diseño e Ingeniería de la Seguridad"
+                },
+                {
+                    "id": "SEG-Forense",
+                    "nombre": "Forense Digital"
+                },
+                {
+                    "id": "SEG-Gobernanza",
+                    "nombre": "Gobernanza de la Seguridad"
+                }
+            ]
+        },
+        {
+            "id": "SEP",
+            "nombre": "Sociedad, Ética y Profesión",
+            "horas_troncales_inf": 18,
+            "horas_troncales_ac": 14,
+            "unidades_conocimiento": [
+                {
+                    "id": "SEP-Contexto",
+                    "nombre": "Contexto Social"
+                },
+                {
+                    "id": "SEP-AnálisisÉtico",
+                    "nombre": "Métodos de Análisis Ético"
+                },
+                {
+                    "id": "SEP-Deontología",
+                    "nombre": "Deontología"
+                },
+                {
+                    "id": "SEP-PI",
+                    "nombre": "Propiedad Intelectual"
+                },
+                {
+                    "id": "SEP-Privacidad",
+                    "nombre": "Privacidad y Libertades Civiles"
+                },
+                {
+                    "id": "SEP-Comunicación",
+                    "nombre": "Comunicación"
+                },
+                {
+                    "id": "SEP-Sostenibilidad",
+                    "nombre": "Sostenibilidad"
+                },
+                {
+                    "id": "SEP-Historia",
+                    "nombre": "Historia de la Informática"
+                },
+                {
+                    "id": "SEP-Economía",
+                    "nombre": "El Sector Económico de la Informática"
+                },
+                {
+                    "id": "SEP-Seguridad",
+                    "nombre": "Políticas de Seguridad, Leyes y Delitos Informáticos"
+                },
+                {
+                    "id": "SEP-DIIA",
+                    "nombre": "Diversidad, Igualdad, Inclusividad y Accesibilidad"
+                }
+            ]
+        },
+        {
+            "id": "SO",
+            "nombre": "Sistemas Operativos",
+            "horas_troncales_inf": 8,
+            "horas_troncales_ac": 13,
+            "unidades_conocimiento": [
+                {
+                    "id": "SO-Propósito",
+                    "nombre": "Propósito de los Sistemas Operativos"
+                },
+                {
+                    "id": "SO-Principios",
+                    "nombre": "Principios de Sistemas Operativos"
+                },
+                {
+                    "id": "SO-Concurrencia",
+                    "nombre": "Concurrencia"
+                },
+                {
+                    "id": "SO-Protección",
+                    "nombre": "Protección y Seguridad"
+                },
+                {
+                    "id": "SO-Planificación",
+                    "nombre": "Planificación"
+                },
+                {
+                    "id": "SO-Procesos",
+                    "nombre": "Modelos de Procesos"
+                },
+                {
+                    "id": "SO-Memoria",
+                    "nombre": "Gestión de Memoria"
+                },
+                {
+                    "id": "SO-Dispositivos",
+                    "nombre": "Gestión de Dispositivos"
+                },
+                {
+                    "id": "SO-Ficheros",
+                    "nombre": "API e Implementación de Sistemas de Ficheros"
+                },
+                {
+                    "id": "SO-FicherosAvanzados",
+                    "nombre": "Sistemas de Ficheros Avanzados"
+                },
+                {
+                    "id": "SO-Virtualización",
+                    "nombre": "Virtualización"
+                },
+                {
+                    "id": "SO-TiempoReal",
+                    "nombre": "Sistemas en Tiempo Real y Empotrados"
+                },
+                {
+                    "id": "SO-Fallos",
+                    "nombre": "Tolerancia a Fallos"
+                },
+                {
+                    "id": "SO-SEP",
+                    "nombre": "Sociedad, Ética y Profesión"
+                }
+            ]
+        }
+    ]
+}

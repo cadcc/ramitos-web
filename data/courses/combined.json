@@ -10,6 +10,13 @@
       2,
       39,
       41
+    ],
+    "acm": [
+      "FDS-Fundamentos",
+      "GD-Analítica",
+      "GTI-Visualización",
+      "IA-SEP",
+      "SEP-Comunicación"
     ]
   },
   {
@@ -21,6 +28,13 @@
       17,
       16,
       13
+    ],
+    "acm": [
+      "FDS-Fundamentos",
+      "FDS-EstructurasDatos",
+      "FDS-Algoritmos",
+      "FLP-Funcional",
+      "FLP-POO"
     ]
   },
   {
@@ -32,6 +46,11 @@
       31,
       32,
       34
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
     ]
   },
   {
@@ -43,6 +62,14 @@
       16,
       13,
       39
+    ],
+    "acm": [
+      "FLP-POO",
+      "IS-Herramientas",
+      "IS-Diseño",
+      "IS-Validación",
+      "IS-Refactorización",
+      "SEP-PI"
     ]
   },
   {
@@ -54,6 +81,10 @@
       33,
       34,
       19
+    ],
+    "acm": [
+      "FME-Discretas",
+      "IS-Formales"
     ]
   },
   {
@@ -65,6 +96,11 @@
       37,
       33,
       18
+    ],
+    "acm": [
+      "AL-Modelos",
+      "AL-Complejidad",
+      "FME-Discretas"
     ]
   },
   {
@@ -75,6 +111,15 @@
     "tags": [
       3,
       39
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Relacional",
+      "GD-Consultas",
+      "GD-Procesamiento",
+      "GD-Interiores",
+      "GD-NoEstructuradas",
+      "GD-Seguridad"
     ]
   },
   {
@@ -86,6 +131,14 @@
       21,
       20,
       22
+    ],
+    "acm": [
+      "FLP-Sistemas",
+      "AR-Lógica",
+      "AR-Ensamblador",
+      "AR-Memoria",
+      "SO-Procesos",
+      "SO-Ficheros"
     ]
   },
   {
@@ -97,6 +150,13 @@
       12,
       14,
       39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Accesibilidad",
+      "IPO-Responsabilidad"
     ]
   },
   {
@@ -109,6 +169,14 @@
       10,
       11,
       23
+    ],
+    "acm": [
+      "GTI-Fundamentos",
+      "GTI-Renderizado",
+      "GTI-Modelado",
+      "GTI-Sombreado",
+      "GTI-Simulación",
+      "GTI-Visualización"
     ]
   },
   {
@@ -120,6 +188,10 @@
       36,
       31,
       32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias"
     ]
   },
   {
@@ -131,6 +203,10 @@
       36,
       31,
       32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias"
     ]
   },
   {
@@ -143,6 +219,11 @@
       31,
       32,
       34
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
     ]
   },
   {
@@ -155,6 +236,11 @@
       31,
       32,
       35
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
     ]
   },
   {
@@ -166,6 +252,14 @@
       18,
       17,
       16
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Abstracción",
+      "FLP-Traducción",
+      "FLP-Ejecución",
+      "FLP-POO",
+      "FLP-Diseño"
     ]
   },
   {
@@ -179,6 +273,12 @@
       37,
       8,
       23
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad",
+      "CPD-Algoritmos"
     ]
   },
   {
@@ -189,6 +289,15 @@
     "tags": [
       20,
       21
+    ],
+    "acm": [
+      "AR-Lógica",
+      "AR-Representación",
+      "AR-Ensamblador",
+      "AR-Organización",
+      "AR-Memoria",
+      "AR-ES",
+      "AR-Energía"
     ]
   },
   {
@@ -201,6 +310,16 @@
       21,
       23,
       20
+    ],
+    "acm": [
+      "SO-Principios",
+      "SO-Concurrencia",
+      "SO-Planificación",
+      "SO-Procesos",
+      "SO-Memoria",
+      "SO-Dispositivos",
+      "SO-Ficheros",
+      "SO-Virtualización"
     ]
   },
   {
@@ -212,6 +331,14 @@
       27,
       28,
       21
+    ],
+    "acm": [
+      "RC-Fundamentos",
+      "RC-Aplicaciones",
+      "RC-Fiabilidad",
+      "RC-Enrutamiento",
+      "RC-UnSoloSalto",
+      "RC-Seguridad"
     ]
   },
   {
@@ -223,6 +350,16 @@
       13,
       14,
       12
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Validación",
+      "IS-Refactorización",
+      "DPE-Web",
+      "IPO-Diseño"
     ]
   },
   {
@@ -233,6 +370,12 @@
     "tags": [
       38,
       40
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-TrabajoEquipo",
+      "IS-Fiabilidad",
+      "SEP-Economía"
     ]
   },
   {
@@ -244,6 +387,13 @@
       40,
       13,
       3
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo",
+      "IS-Construcción",
+      "IS-Validación"
     ]
   },
   {
@@ -256,6 +406,13 @@
       3,
       28,
       12
+    ],
+    "acm": [
+      "DPE-Web",
+      "IS-Construcción",
+      "GD-Relacional",
+      "SEG-Codificación",
+      "IPO-Accesibilidad"
     ]
   },
   {
@@ -269,6 +426,13 @@
       13,
       24,
       3
+    ],
+    "acm": [
+      "DPE-Web",
+      "FLP-Eventos",
+      "IS-Validación",
+      "IS-Herramientas",
+      "SEG-Codificación"
     ]
   },
   {
@@ -281,6 +445,12 @@
       32,
       8,
       33
+    ],
+    "acm": [
+      "AL-Complejidad",
+      "AL-Fundamentales",
+      "FME-Probabilidad",
+      "FME-Discretas"
     ]
   },
   {
@@ -293,6 +463,13 @@
       19,
       13,
       23
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Tipos",
+      "FLP-Construcciones",
+      "FLP-Paralela",
+      "IS-Validación"
     ]
   },
   {
@@ -305,6 +482,14 @@
       17,
       20,
       13
+    ],
+    "acm": [
+      "FLP-Traducción",
+      "FLP-Sintaxis",
+      "FLP-Semántica",
+      "FLP-Código",
+      "FLP-Ejecución",
+      "FLP-Tipos"
     ]
   },
   {
@@ -317,6 +502,12 @@
       34,
       7,
       1
+    ],
+    "acm": [
+      "FME-Discretas",
+      "IA-AA",
+      "IA-SEP",
+      "SEP-DIIA"
     ]
   },
   {
@@ -328,6 +519,12 @@
       34,
       4,
       8
+    ],
+    "acm": [
+      "FME-Discretas",
+      "FME-Probabilidad",
+      "AL-Fundamentales",
+      "GD-Analítica"
     ]
   },
   {
@@ -339,6 +536,13 @@
       21,
       22,
       18
+    ],
+    "acm": [
+      "FLP-Tipos",
+      "FLP-Sistemas",
+      "FLP-Paralela",
+      "SO-Concurrencia",
+      "SEG-Codificación"
     ]
   },
   {
@@ -350,6 +554,11 @@
       3,
       7,
       32
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Procesamiento",
+      "AL-Fundamentales"
     ]
   },
   {
@@ -362,6 +571,12 @@
       1,
       39,
       8
+    ],
+    "acm": [
+      "GD-Datos",
+      "GD-Analítica",
+      "IA-AA",
+      "GD-Seguridad"
     ]
   },
   {
@@ -374,6 +589,11 @@
       1,
       8,
       39
+    ],
+    "acm": [
+      "GD-Analítica",
+      "IA-AA",
+      "IA-SEP"
     ]
   },
   {
@@ -384,6 +604,10 @@
     "tags": [
       11,
       12
+    ],
+    "acm": [
+      "GTI-Visualización",
+      "IPO-Usuario"
     ]
   },
   {
@@ -395,6 +619,12 @@
       6,
       1,
       2
+    ],
+    "acm": [
+      "IA-Visión",
+      "IA-AA",
+      "GTI-Imagen",
+      "GTI-Modelado"
     ]
   },
   {
@@ -408,6 +638,13 @@
       3,
       23,
       24
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Comunicación",
+      "CPD-Coordinación",
+      "GD-Distribuidas",
+      "GD-NoSQL"
     ]
   },
   {
@@ -419,6 +656,11 @@
       7,
       6,
       32
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Procesamiento",
+      "GTI-Imagen"
     ]
   },
   {
@@ -431,6 +673,11 @@
       8,
       28,
       4
+    ],
+    "acm": [
+      "GD-Seguridad",
+      "SEP-Privacidad",
+      "FME-Probabilidad"
     ]
   },
   {
@@ -443,6 +690,12 @@
       11,
       1,
       34
+    ],
+    "acm": [
+      "GD-Analítica",
+      "IA-AA",
+      "GTI-Visualización",
+      "FME-Estadística"
     ]
   },
   {
@@ -454,6 +707,12 @@
       39,
       29,
       13
+    ],
+    "acm": [
+      "GD-Seguridad",
+      "SEG-Gobernanza",
+      "SEP-Privacidad",
+      "SEG-Ingeniería"
     ]
   },
   {
@@ -465,6 +724,13 @@
       39,
       1,
       2
+    ],
+    "acm": [
+      "IA-Introducción",
+      "IA-RCR",
+      "IA-AA",
+      "IA-Agentes",
+      "IA-SEP"
     ]
   },
   {
@@ -479,6 +745,13 @@
       6,
       39,
       7
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-PLN",
+      "IA-Visión",
+      "IA-Agentes",
+      "IA-SEP"
     ]
   },
   {
@@ -489,6 +762,11 @@
     "tags": [
       31,
       8
+    ],
+    "acm": [
+      "IA-Búsqueda",
+      "AL-Estrategias",
+      "FME-Estadística"
     ]
   },
   {
@@ -500,6 +778,12 @@
       39,
       12,
       1
+    ],
+    "acm": [
+      "IA-SEP",
+      "IPO-Responsabilidad",
+      "IPO-Usuario",
+      "SEP-DIIA"
     ]
   },
   {
@@ -512,6 +796,10 @@
       28,
       27,
       33
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto"
     ]
   },
   {
@@ -523,6 +811,13 @@
       25,
       27,
       22
+    ],
+    "acm": [
+      "CPD-Comunicación",
+      "CPD-Coordinación",
+      "CPD-Programas",
+      "GD-Distribuidas",
+      "SO-FicherosAvanzados"
     ]
   },
   {
@@ -536,6 +831,13 @@
       27,
       28,
       22
+    ],
+    "acm": [
+      "FS-Diseño",
+      "FS-Fiabilidad",
+      "FS-Rendimiento",
+      "FS-Recursos",
+      "FS-Seguridad"
     ]
   },
   {
@@ -548,6 +850,14 @@
       22,
       27,
       28
+    ],
+    "acm": [
+      "SO-Principios",
+      "SO-Protección",
+      "SO-Ficheros",
+      "SO-Dispositivos",
+      "RC-Aplicaciones",
+      "FS-Recursos"
     ]
   },
   {
@@ -560,6 +870,14 @@
       29,
       27,
       39
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "RC-Seguridad",
+      "SO-Protección",
+      "SEP-Privacidad"
     ]
   },
   {
@@ -572,6 +890,12 @@
       24,
       28,
       25
+    ],
+    "acm": [
+      "RC-Enrutamiento",
+      "RC-Fiabilidad",
+      "RC-Seguridad",
+      "FS-Fiabilidad"
     ]
   },
   {
@@ -584,6 +908,12 @@
       29,
       21,
       39
+    ],
+    "acm": [
+      "SEG-Cripto",
+      "SEG-Forense",
+      "SEG-Codificación",
+      "SEG-SEP"
     ]
   },
   {
@@ -597,6 +927,12 @@
       1,
       28,
       42
+    ],
+    "acm": [
+      "DPE-Empotradas",
+      "RC-Emergentes",
+      "DPE-Común",
+      "FS-Diseño"
     ]
   },
   {
@@ -610,6 +946,14 @@
       21,
       39,
       27
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "SEG-Forense",
+      "RC-Seguridad",
+      "SEP-Privacidad"
     ]
   },
   {
@@ -623,6 +967,12 @@
       21,
       1,
       42
+    ],
+    "acm": [
+      "DPE-Empotradas",
+      "AR-ES",
+      "GTI-Física",
+      "IA-AA"
     ]
   },
   {
@@ -636,6 +986,14 @@
       39,
       27,
       13
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "SEG-Ingeniería",
+      "SEG-Gobernanza",
+      "SEP-Seguridad"
     ]
   },
   {
@@ -646,6 +1004,14 @@
     "tags": [
       13,
       38
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Validación",
+      "IS-Fiabilidad"
     ]
   },
   {
@@ -658,6 +1024,14 @@
       38,
       39,
       40
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Construcción",
+      "IS-Validación",
+      "SEP-Comunicación",
+      "SEP-Sostenibilidad"
     ]
   },
   {
@@ -668,6 +1042,12 @@
     "tags": [
       13,
       16
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Herramientas",
+      "FLP-POO"
     ]
   },
   {
@@ -679,6 +1059,12 @@
       15,
       12,
       9
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IA-Agentes"
     ]
   },
   {
@@ -690,6 +1076,12 @@
       15,
       27,
       25
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "RC-Aplicaciones",
+      "CPD-Coordinación",
+      "IPO-Evaluación"
     ]
   },
   {
@@ -703,6 +1095,12 @@
       10,
       23,
       31
+    ],
+    "acm": [
+      "GTI-Modelado",
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "CPD-Algoritmos"
     ]
   },
   {
@@ -715,6 +1113,11 @@
       31,
       9,
       32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "GTI-Modelado"
     ]
   },
   {
@@ -724,6 +1127,11 @@
     "resumen": "Este curso explora los fundamentos cognitivos, de diseño y computacionales de la interacción entre personas y computadores, para analizar críticamente y construir interfaces gráficas pensadas en quienes las usan. Se recorren la psicología de los objetos cotidianos y los principios de diseño, los aportes de la neurociencia y la cognición humana, el análisis de errores, el diseño centrado en el usuario con sus métodos de usabilidad y el diseño detallado de interfaces para escritorio, web y dispositivos portátiles. Las clases incluyen exposiciones, discusión de artículos y estudio de casos, y se evalúa con controles de lectura, tareas basadas en casos y un proyecto final de desarrollo de una interfaz. Requiere base en ingeniería de software y lectura en inglés.",
     "tags": [
       12
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
     ]
   },
   {
@@ -734,6 +1142,11 @@
     "tags": [
       6,
       1
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "GTI-Imagen"
     ]
   },
   {
@@ -744,6 +1157,12 @@
     "tags": [
       12,
       39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Responsabilidad"
     ]
   },
   {
@@ -754,6 +1173,13 @@
     "tags": [
       12,
       13
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Accesibilidad",
+      "IS-Diseño"
     ]
   },
   {
@@ -766,6 +1192,13 @@
       9,
       21,
       13
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "GTI-Renderizado",
+      "GTI-Animación",
+      "GTI-Simulación",
+      "IS-Diseño"
     ]
   },
   {
@@ -779,6 +1212,11 @@
       7,
       31,
       32
+    ],
+    "acm": [
+      "GTI-Modelado",
+      "AL-Fundamentales",
+      "FME-Lineal"
     ]
   },
   {
@@ -789,6 +1227,10 @@
     "tags": [
       4,
       1
+    ],
+    "acm": [
+      "GD-Analítica",
+      "AL-Fundamentales"
     ]
   },
   {
@@ -800,6 +1242,13 @@
       12,
       13,
       39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Responsabilidad",
+      "IS-TrabajoEquipo"
     ]
   },
   {
@@ -810,6 +1259,11 @@
     "tags": [
       38,
       40
+    ],
+    "acm": [
+      "SEP-Economía",
+      "IS-Requisitos",
+      "SEP-Comunicación"
     ]
   },
   {
@@ -819,6 +1273,10 @@
     "resumen": "Aquí aprenderás a analizar una organización desde la perspectiva de las tecnologías de la información, evaluando su impacto y su aporte estratégico, para luego proponer mejoras concretas. Se estudian los modelos de negocio, la formulación de estrategias de negocio basadas en TI y el alineamiento entre ambos, incluyendo el uso de la información y los proyectos de soporte necesarios para ejecutar el plan. Las clases expositivas se complementan con estudios de caso de empresas reales. La evaluación se basa en análisis de casos, donde construyes el modelo y la estrategia de una organización, y en un proyecto final presentado en formato de video. Conviene llegar con nociones de formulación, evaluación y gestión de proyectos.",
     "tags": [
       38
+    ],
+    "acm": [
+      "SEP-Economía",
+      "GD-Datos"
     ]
   },
   {
@@ -831,6 +1289,12 @@
       3,
       39,
       1
+    ],
+    "acm": [
+      "GD-Datos",
+      "GD-Seguridad",
+      "GD-Analítica",
+      "SEG-Gobernanza"
     ]
   },
   {
@@ -840,6 +1304,11 @@
     "resumen": "Este taller busca desarrollar habilidades de comunicación oral y escrita útiles tanto en la vida académica como en el mundo laboral, especialmente para relacionarse con clientes y equipos. Se trabaja la presencia profesional y la comunicación asertiva, el levantamiento de requerimientos, la conducción de reuniones y las presentaciones efectivas, además de la negociación, el manejo de objeciones, los procesos comerciales y la preparación para entrevistas laborales. Las clases combinan marcos conceptuales breves con estudios de caso y juegos de rol. Se evalúa con ejercicios de improvisación, presentaciones e informes individuales, y con propuestas técnicas y comerciales grupales escritas y expuestas oralmente. Más que contenidos técnicos avanzados, requiere una base de diseño y programación de software y disposición a participar activamente.",
     "tags": [
       40
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "IS-Requisitos",
+      "IS-TrabajoEquipo"
     ]
   },
   {
@@ -849,6 +1318,13 @@
     "resumen": "Aquí reflexionarás sobre los criterios éticos que deben guiar la conducta profesional y social de quien trabaja en computación, y aprenderás a aplicarlos de manera responsable, con especial atención a la inteligencia artificial. Se recorren los fundamentos de la ética y sus principales corrientes, los códigos de ética profesional, la propiedad intelectual en el software, la ética de datos, la privacidad y la legislación de protección de datos personales, y los principios, normativas y marcos de gestión de riesgo para sistemas de IA. Las clases expositivas se combinan con estudios de caso e investigación grupal. Se evalúa mediante controles, análisis de casos y un trabajo de investigación final con informe y presentación. Basta con una base de programación.",
     "tags": [
       39
+    ],
+    "acm": [
+      "SEP-AnálisisÉtico",
+      "SEP-Deontología",
+      "SEP-PI",
+      "SEP-Privacidad",
+      "IA-SEP"
     ]
   },
   {
@@ -859,6 +1335,10 @@
     "tags": [
       40,
       42
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "SEP-Economía"
     ]
   },
   {
@@ -869,6 +1349,12 @@
     "tags": [
       40,
       39
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación",
+      "SEP-DIIA",
+      "SEP-Deontología"
     ]
   },
   {
@@ -879,6 +1365,12 @@
     "tags": [
       3,
       11
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Analítica",
+      "GD-Datos",
+      "GTI-Visualización"
     ]
   },
   {
@@ -890,6 +1382,11 @@
       38,
       12,
       42
+    ],
+    "acm": [
+      "SEP-Economía",
+      "IS-TrabajoEquipo",
+      "IPO-Diseño"
     ]
   },
   {
@@ -902,6 +1399,14 @@
       14,
       13,
       42
+    ],
+    "acm": [
+      "IPO-Diseño",
+      "IPO-Accesibilidad",
+      "IPO-Evaluación",
+      "DPE-Web",
+      "DPE-Móviles",
+      "IS-Requisitos"
     ]
   },
   {
@@ -912,6 +1417,11 @@
     "tags": [
       39,
       28
+    ],
+    "acm": [
+      "SEP-Privacidad",
+      "SEP-Seguridad",
+      "SEG-Gobernanza"
     ]
   },
   {
@@ -921,6 +1431,12 @@
     "resumen": "Este curso enseña a analizar y rediseñar procesos dentro de organizaciones reales, usando herramientas de modelamiento, optimización y programación para proponer soluciones tecnológicas a sus problemas. Se parte por entender por qué rediseñar procesos en la industria, luego se diagnostica la situación actual de una organización considerando su estrategia y comportamiento organizacional, y finalmente se modela la situación deseada aplicando modelos de optimización para problemas como colas de espera, inventario, transporte y planificación de tareas. Las clases combinan exposición y resolución de problemas, y la evaluación se centra en un proyecto semestral grupal con presentaciones orales de avance, más coevaluación entre pares. Conviene llegar con nociones de formulación y gestión de proyectos y disposición para trabajar en equipo.",
     "tags": [
       38
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-Diseño",
+      "AL-Estrategias",
+      "SEP-Economía"
     ]
   },
   {
@@ -930,6 +1446,10 @@
     "resumen": "Este taller desarrolla las habilidades interpersonales que marcan la diferencia en el desempeño profesional de un ingeniero dentro de una organización. Se abordan la comunicación efectiva y la gestión de las emociones, los estilos de liderazgo, el trabajo en equipo y los equipos de alto desempeño, y el manejo de conflictos. La metodología es activa y participativa, con análisis de casos y discusión grupal, juegos de roles, ejercicios prácticos y lecturas semanales en español e inglés. Se evalúa mediante actividades grupales e individuales en clase, tareas de reflexión y controles de lectura. Basta la formación base en diseño y programación; lo central es la disposición a participar, reflexionar sobre la propia práctica y leer en inglés.",
     "tags": [
       40
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación"
     ]
   },
   {
@@ -940,6 +1460,11 @@
     "tags": [
       40,
       42
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "SEP-Economía"
     ]
   },
   {
@@ -951,6 +1476,12 @@
       13,
       3,
       39
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Datos",
+      "SEP-Deontología",
+      "SEP-Privacidad"
     ]
   },
   {
@@ -963,6 +1494,13 @@
       13,
       14,
       3
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo",
+      "IS-Construcción",
+      "IS-Validación"
     ]
   },
   {
@@ -973,6 +1511,9 @@
     "tags": [
       41,
       38
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -984,6 +1525,11 @@
       8,
       11,
       1
+    ],
+    "acm": [
+      "FME-Estadística",
+      "FME-Probabilidad",
+      "GTI-Visualización"
     ]
   },
   {
@@ -996,6 +1542,11 @@
       6,
       5,
       2
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "IA-PLN"
     ]
   },
   {
@@ -1009,6 +1560,11 @@
       1,
       39,
       7
+    ],
+    "acm": [
+      "IA-PLN",
+      "IA-AA",
+      "IA-SEP"
     ]
   },
   {
@@ -1020,6 +1576,9 @@
       29,
       28,
       41
+    ],
+    "acm": [
+      "SEG-Cripto"
     ]
   },
   {
@@ -1030,6 +1589,10 @@
     "tags": [
       40,
       38
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo"
     ]
   },
   {
@@ -1041,6 +1604,12 @@
       13,
       12,
       42
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Validación",
+      "IS-Refactorización",
+      "IPO-Evaluación"
     ]
   },
   {
@@ -1054,6 +1623,13 @@
       24,
       38,
       39
+    ],
+    "acm": [
+      "IA-AA",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Fiabilidad",
+      "IA-SEP"
     ]
   },
   {
@@ -1063,6 +1639,11 @@
     "resumen": "Este taller se centra en diseñar o rediseñar la interfaz y la interacción de un dispositivo o software, trabajando en equipo y evaluando los resultados con usuarios finales. A partir de un caso de estudio, se analizan en profundidad las interfaces existentes para detectar sus fortalezas y debilidades, se elabora una propuesta de rediseño y se implementa mediante prototipos rápidos que se prueban y mejoran iterativamente con usuarios, siguiendo un enfoque de diseño centrado en el usuario. La metodología combina lectura y discusión de papers, trabajo colaborativo y presentaciones orales, y se evalúa con informes y presentaciones del análisis y la propuesta, controles de lectura, y el informe y presentación del prototipo final. Requiere conocimientos previos de interfaces humano-computador.",
     "tags": [
       12
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
     ]
   },
   {
@@ -1074,6 +1655,11 @@
       12,
       8,
       39
+    ],
+    "acm": [
+      "IPO-Evaluación",
+      "IPO-Responsabilidad",
+      "FME-Estadística"
     ]
   },
   {
@@ -1086,6 +1672,13 @@
       40,
       38,
       42
+    ],
+    "acm": [
+      "SEP-Economía",
+      "SEP-Comunicación",
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
     ]
   },
   {
@@ -1096,6 +1689,10 @@
     "tags": [
       1,
       6
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión"
     ]
   },
   {
@@ -1108,6 +1705,13 @@
       26,
       3,
       7
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Comunicación",
+      "GD-Distribuidas",
+      "GD-NoSQL",
+      "GD-Procesamiento"
     ]
   },
   {
@@ -1119,6 +1723,11 @@
       1,
       6,
       5
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "IA-PLN"
     ]
   },
   {
@@ -1133,6 +1742,13 @@
       6,
       39,
       7
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-PLN",
+      "IA-Visión",
+      "IA-Agentes",
+      "IA-SEP"
     ]
   },
   {
@@ -1142,6 +1758,9 @@
     "resumen": "Este curso te prepara para abordar con éxito tu memoria de título: aquí eliges un tema, consigues un profesor guía y dejas planificado el trabajo que desarrollarás después. A partir de un problema de computación, identificas su contexto, defines objetivos, revisas el estado del arte, esbozas una solución con su forma de evaluarla y das los primeros pasos de su desarrollo. Fuera de un par de clases informativas, todo es trabajo autónomo con reuniones periódicas con tu guía. Se evalúa con una propuesta de tema y un informe final, calificados como aprobado o reprobado. Para que te vaya bien necesitas autonomía, buena gestión del tiempo, escritura técnica clara y capacidad de integrar lo aprendido en la carrera.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1151,6 +1770,9 @@
     "resumen": "Aquí aprendes a establecer con claridad los antecedentes técnicos, objetivos y metodología de tu futuro proyecto de memoria. Primero identificas un problema relevante para la ingeniería en computación y justificas el valor de abordarlo; luego estudias la bibliografía del área, sitúas tu tema respecto de otros trabajos y construyes prototipos para validar su factibilidad técnica; finalmente describes la solución propuesta, sus etapas y la metodología a seguir. El trabajo se desarrolla en reuniones periódicas con un profesor guía, complementadas con charlas sobre escritura de documentos y proyectos de ingeniería. Se evalúa con una propuesta inicial de tema y un informe final del proyecto. Necesitas la formación completa de la carrera y buen dominio del inglés técnico.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1160,6 +1782,9 @@
     "resumen": "Aquí desarrollas el proyecto de memoria que planificaste previamente, llevándolo desde el diseño hasta una solución concreta y validada. El trabajo consiste en implementar la solución propuesta, comprobar que efectivamente resuelve el problema planteado, idealmente con mediciones que muestren en qué medida se logran los objetivos, y escribir un documento formal que presente el contexto, las alternativas, la solución escogida, su validación, los resultados y las conclusiones. Avanzas mediante reuniones periódicas con tu profesor guía y entregas parciales del documento. El informe final es revisado por una comisión de profesores que entrega retroalimentación y lo califica. Para tener éxito necesitas autonomía, experiencia en proyectos de software, buena escritura técnica y manejo de inglés para la literatura del área.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1169,6 +1794,9 @@
     "resumen": "En esta etapa ejecutas el proyecto de memoria definido previamente: resuelves el problema planteado aplicando la tecnología seleccionada y sigues la metodología acordada para comprobar que la solución funciona. Todo culmina en un informe que reporta de forma clara y concisa la motivación, el estado del arte, el desarrollo de la solución, los resultados y las conclusiones. No hay clases regulares; el curso se basa en trabajo personal y reuniones frecuentes con tu profesor guía, respetando los plazos del calendario de titulación. Se califica con nota sobre el informe final, y su aprobación queda condicionada a superar el examen de título. Necesitas autonomía, buena planificación, escritura técnica sólida y los conocimientos integrados de la carrera, además de experiencia práctica profesional.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1178,6 +1806,9 @@
     "resumen": "Este curso de doctorado reconoce una pasantía de investigación de al menos dos meses en una institución de prestigio en el extranjero, idealmente en un entorno de habla inglesa. La experiencia busca fortalecer tus habilidades científicas y de colaboración, y exponerte a una cultura y prácticas de investigación distintas. Antes de partir debes presentar al comité académico del programa una solicitud formal con la institución, el investigador a cargo, las fechas, el plan de trabajo y el entregable que validará la estadía, como un artículo enviado o un reporte técnico. Al volver entregas ese documento, que se evalúa como aprobado o reprobado. Necesitas tener superada la etapa de calificación doctoral y autonomía para investigar.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1187,6 +1818,9 @@
     "resumen": "Dirigido a estudiantes de doctorado, este curso permite validar una nueva pasantía de investigación de al menos dos meses en una institución de prestigio fuera de Chile, idealmente de habla inglesa. Su propósito es desarrollar tus habilidades científicas y de colaboración y darte la experiencia de trabajar en otro entorno de investigación, con cultura y prácticas diferentes. Con al menos un mes de anticipación debes solicitar formalmente su aprobación al comité académico, indicando institución, investigador responsable, fechas, programa de trabajo y el entregable que acreditará los resultados, por ejemplo un artículo o un reporte técnico. A tu regreso presentas ese documento, que se califica como aprobado o reprobado. Requiere haber aprobado el examen de calificación y autonomía para investigar.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1196,6 +1830,9 @@
     "resumen": "Este curso de postgrado te permite realizar una investigación anexa a tu tesis bajo la supervisión de un profesor del programa distinto de tu guía. La idea es abrir tu campo de acción más allá de tu área específica, aplicar resultados de tu tesis en otro dominio y vivir la experiencia de investigar con otra persona a cargo. El trabajo se organiza en torno a lecturas, búsqueda de artículos y material relacionado, reuniones de trabajo y una presentación de la investigación. Se evalúa mediante un artículo o informe técnico aprobado por el profesor supervisor y validado por el comité académico. Para aprovecharlo necesitas autonomía, autorregulación, compromiso con la investigación y una base sólida en tu propio tema de tesis.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1205,6 +1842,9 @@
     "resumen": "Orientado a estudiantes de doctorado, este curso reconoce la participación en una escuela temática internacional, realizada en el extranjero o dictada en inglés, con una carga lectiva sustancial. Su propósito es que aprendas o te actualices en un área vigente de la computación, mientras fortaleces tu internacionalización y construyes redes con estudiantes de otras partes del mundo. Antes de asistir presentas al comité académico una solicitud formal con el lugar, las fechas, el programa detallado, la carga de trabajo, la forma de aprobación y el visto bueno de tu profesor guía. Si la escuela es aceptada, al terminar entregas su certificado de aprobación y el curso se califica como aprobado o reprobado. Requiere haber superado el examen de calificación.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1217,6 +1857,12 @@
       18,
       33,
       17
+    ],
+    "acm": [
+      "FLP-Tipos",
+      "FLP-Formalismos",
+      "FLP-Funcional",
+      "FLP-POO"
     ]
   },
   {
@@ -1229,6 +1875,14 @@
       17,
       33,
       18
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Tipos",
+      "FLP-Formalismos",
+      "FLP-Metodologías",
+      "IS-Formales",
+      "FME-Discretas"
     ]
   },
   {
@@ -1240,6 +1894,12 @@
       19,
       18,
       13
+    ],
+    "acm": [
+      "FLP-Formalismos",
+      "FLP-Análisis",
+      "FLP-Metodologías",
+      "IS-Formales"
     ]
   },
   {
@@ -1252,6 +1912,11 @@
       7,
       41,
       26
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Datos",
+      "GD-Distribuidas"
     ]
   },
   {
@@ -1264,6 +1929,11 @@
       1,
       2,
       7
+    ],
+    "acm": [
+      "IA-Visión",
+      "IA-AA",
+      "GD-Procesamiento"
     ]
   },
   {
@@ -1275,6 +1945,11 @@
       32,
       31,
       7
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Complejidad",
+      "GD-Procesamiento"
     ]
   },
   {
@@ -1285,6 +1960,12 @@
     "tags": [
       38,
       40
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación",
+      "SEP-Economía"
     ]
   },
   {
@@ -1297,6 +1978,13 @@
       9,
       10,
       20
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Algoritmos",
+      "CPD-Evaluación",
+      "AR-Heterogeneidad",
+      "GTI-Sombreado"
     ]
   },
   {
@@ -1307,6 +1995,11 @@
     "tags": [
       41,
       39
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "SEP-AnálisisÉtico",
+      "SEP-Historia"
     ]
   },
   {
@@ -1316,6 +2009,9 @@
     "resumen": "Este curso constituye una primera experiencia real de investigación, semestral y guiada por un profesor del claustro, en la que se aplican las nociones de metodología de la investigación en computación. Se trabaja en un área específica, primero con una revisión sistemática de la literatura y luego con una investigación breve sobre un tema dentro de ella. El trabajo es personal, con reuniones periódicas con el profesor guía, y se evalúa a partir de dos documentos escritos en inglés, un estudio bibliográfico y un artículo científico breve pero completo, y del desempeño; estos documentos sirven además para acceder al examen de calificación del doctorado. Requiere formación previa en metodología de investigación, autonomía y buen inglés escrito.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1325,6 +2021,9 @@
     "resumen": "Este curso acompaña la elaboración de la propuesta de tesis, que debe establecer con claridad los antecedentes técnicos, el estado del arte, los objetivos, la metodología y el aporte esperado del trabajo. Se aprende cómo se estructura una buena propuesta, se presentan y discuten los posibles temas con retroalimentación del coordinador del programa, y se prepara la defensa oral del tema con apoyo audiovisual. Hay una clase semanal en que cada estudiante comenta su avance ante el grupo, además de reuniones periódicas con el profesor guía; para aprobar, la propuesta debe ser aceptada por un profesor evaluador distinto del guía y luego presentada oralmente. Conviene llegar con tema y profesor guía definidos, y con formación en metodología de investigación.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1334,6 +2033,9 @@
     "resumen": "Este curso corresponde al desarrollo y la escritura de la tesis, donde se resuelve el problema planteado en la propuesta aplicando una perspectiva científica. Se construye el estado del arte, se integran y profundizan los conocimientos adquiridos en los cursos, se desarrolla y valida una solución identificando sus aportes, y se documenta en un texto formal que describe el problema, las técnicas disponibles, la solución y su validación, destacando la contribución al conocimiento. El trabajo es autónomo, con reuniones periódicas con el profesor guía, y se evalúa a partir del documento escrito y de una charla pública similar a una defensa de grado. Requiere haber elaborado previamente la propuesta de tesis y capacidad para investigar de manera independiente.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1344,6 +2046,10 @@
     "tags": [
       38,
       41
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1354,6 +2060,10 @@
     "tags": [
       38,
       41
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1363,6 +2073,9 @@
     "resumen": "En esta etapa ejecutas la investigación aplicada de tu proyecto de grado, abordando un problema real y práctico de tecnologías de la información con un enfoque científico. Con el apoyo de tu profesor guía, en reuniones periódicas de seguimiento, planificas en detalle las tareas, desarrollas las actividades, recoges los datos necesarios para evaluar si la solución resuelve el problema planteado e interpretas los resultados. El trabajo culmina con una presentación oral en formato científico sobre el problema, la metodología, los resultados y su interpretación, que el Comité Académico evalúa considerando también la calidad y claridad de la exposición. Para avanzar bien necesitas contar con una propuesta de proyecto ya formulada y aprobada, además de autonomía para organizar tu trabajo.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1372,6 +2085,9 @@
     "resumen": "Este curso te acompaña en la escritura del documento de tesis de magíster, donde reportas la investigación aplicada realizada con todos los elementos que exige un informe científico-técnico. En reuniones periódicas con tu profesor guía refinas el problema, los objetivos y la solución, defines la estructura del documento, redactas cada capítulo y abordas los tópicos que hayan quedado pendientes, dimensionando además la contribución del trabajo, su posible generalización y el trabajo futuro. Al cierre entregas el documento de tesis, que evalúa tu profesor guía o un miembro del Comité Académico y que te entrega retroalimentación para preparar la versión final. Necesitas haber completado la investigación aplicada y contar con sus resultados, además de buena capacidad de redacción técnica.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1381,6 +2097,9 @@
     "resumen": "Este taller inicia el trabajo de tesis doctoral, en el que desarrollas la capacidad de hacer investigación original en un área de tu elección mediante trabajo personal guiado por un profesor guía del programa. En esta primera etapa lo esperable es identificar un problema de investigación relevante y recopilar el trabajo previo del área, detectando oportunidades para mejorar el estado del arte, aunque el nivel de avance exacto lo fija tu profesor guía. La metodología se basa en reuniones periódicas donde se monitorea tu progreso y se discute cómo continuar. Apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Requiere haber aprobado el examen de calificación y tener autonomía investigativa.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1390,6 +2109,9 @@
     "resumen": "Este taller continúa el trabajo de tesis doctoral, orientado a que desarrolles la capacidad de hacer investigación original en un área de tu elección mediante trabajo personal guiado por un profesor guía del programa. En esta etapa se espera haber avanzado buena parte en identificar el problema, revisar el trabajo previo y plantear la hipótesis de investigación, y comenzar a diseñar herramientas originales para probarla, como teoremas, algoritmos, software o experimentos, aunque el nivel de avance lo fija tu profesor guía. Trabajas con reuniones periódicas de seguimiento y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado la etapa inicial de tu tesis y autonomía investigativa.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1399,6 +2121,9 @@
     "resumen": "Esta etapa del trabajo de tesis doctoral culmina con el examen de propuesta, donde debes demostrar que comprendes el proceso científico en tu área, que tienes un tema viable con avances que cuentan con alguna validación internacional y un plan creíble para terminar la tesis. Para ello se espera que tengas definidos el problema, la revisión del trabajo previo y la hipótesis, y que hayas avanzado en diseñar y aplicar herramientas originales para probarla y en publicar resultados. Trabajas de forma personal con reuniones periódicas con tu profesor guía, y apruebas entregando el informe para el examen de propuesta, validado por el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de tu tesis.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1408,6 +2133,9 @@
     "resumen": "Este taller marca el inicio del cierre de la tesis doctoral, tras la aprobación de la propuesta. Mediante trabajo personal guiado por tu profesor guía, se espera que trabajes intensamente en diseñar herramientas originales para probar tu hipótesis, sean demostraciones, métodos, algoritmos, software o experimentos, en aplicarlas y analizar los resultados, y en publicarlos en conferencias y revistas internacionales, aunque el nivel de avance exacto lo fija tu profesor guía. La metodología consiste en reuniones periódicas donde se monitorea tu progreso y se discute cómo continuar, y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Requiere haber aprobado el examen de propuesta doctoral.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1417,6 +2145,9 @@
     "resumen": "En esta etapa avanzada de la tesis doctoral se espera que cierres la investigación propiamente tal, terminando de diseñar y aplicar herramientas originales para probar tu hipótesis, analizando los resultados y publicándolos en conferencias y revistas internacionales, y que comiences la escritura del documento de tesis. El trabajo es personal y guiado por un profesor guía del programa, que fija el nivel de avance esperado y con quien sostienes reuniones periódicas para monitorear el progreso y discutir cómo continuar. Apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de la tesis, incluida la propuesta aprobada, y autonomía para conducir investigación original.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   },
   {
@@ -1426,6 +2157,9 @@
     "resumen": "Esta es la etapa final del trabajo de tesis doctoral, en la que te preparas para defender tu investigación. El foco está principalmente en escribir el documento de tesis que reporta tu trabajo y resultados, aunque todavía es posible seguir publicando en conferencias y revistas internacionales. El trabajo es personal y guiado por un profesor guía del programa, con reuniones periódicas en las que se monitorea tu avance y se discute cómo continuar. Apruebas entregando el borrador de tesis, validado por el profesor guía y la coordinación del doctorado, que luego se envía a la comisión ante la cual defenderás la tesis para graduarte. Necesitas haber cerrado la investigación en las etapas previas y buena capacidad de redacción científica.",
     "tags": [
       41
+    ],
+    "acm": [
+      "SEP-Comunicación"
     ]
   }
 ]

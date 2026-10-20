@@ -1,5 +1,6 @@
 import tags from "../../data/courses/tags.json";
 import combinedCourses from "../../data/courses/combined.json";
+import { getAcmAreas } from "./acmTaxonomy";
 
 const tagNames = new Map(tags.map((tag) => [tag.id, tag.name]));
 const coursesByCode = new Map(
@@ -7,6 +8,9 @@ const coursesByCode = new Map(
 		course.codigo,
 		{
 			summary: course.resumen,
+			syllabusUrl: course.plan,
+			acmAreas: getAcmAreas(course.acm),
+			acmUnits: course.acm,
 			categories: course.tags
 				.map((id) => tagNames.get(id))
 				.filter((name): name is string => name !== undefined),

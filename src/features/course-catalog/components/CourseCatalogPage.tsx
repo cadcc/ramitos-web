@@ -148,6 +148,7 @@ export function CourseCatalogPage({
 							<CourseCard
 								course={course}
 								index={index}
+								acmArea={filters.acmArea}
 								showReviewableIndicator={reviewableCourseIds.has(course.id)}
 							/>
 						</Grid>

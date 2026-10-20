@@ -1,12 +1,74 @@
 // @vitest-environment jsdom
 import { act, cleanup, fireEvent, render } from "@testing-library/react";
-import { afterEach, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
+import { setPreviewFeature } from "../../../shared/hooks/usePreviewFeatures";
 import FilterBar from "./FilterBar";
 import tags from "../../../../data/courses/tags.json";
 
+beforeEach(() => {
+	setPreviewFeature("categories", true);
+	setPreviewFeature("acmCategories", true);
+});
+
 afterEach(() => {
 	cleanup();
+	localStorage.clear();
 	vi.useRealTimers();
+});
+
+it("hides disabled preview controls and ignores their active-filter indicator", () => {
+	setPreviewFeature("categories", false);
+	setPreviewFeature("acmCategories", false);
+	const view = render(
+		<FilterBar
+			filters={{ tags: ["Machine Learning"], acmArea: "IA" }}
+			onFilterChange={vi.fn()}
+			categoryOptions={tags.map((tag) => tag.name)}
+		/>,
+	);
+	expect(view.queryByRole("combobox", { name: "Categoría" })).toBeNull();
+	expect(view.queryByRole("button", { name: /Taxonomía ACM/ })).toBeNull();
+	expect(view.queryByText("Limpiar")).toBeNull();
+	expect(view.getByRole("group", { name: "Tipo de ramo" })).toBeDefined();
+});
+
+it("preserves other filters when selecting and clearing an ACM tree node", () => {
+	const onFilterChange = vi.fn();
+	const filters = {
+		category: "specialization" as const,
+		tags: ["Machine Learning"],
+		q: "redes",
+	};
+	const view = render(
+		<FilterBar
+			filters={filters}
+			onFilterChange={onFilterChange}
+			categoryOptions={tags.map((tag) => tag.name)}
+		/>,
+	);
+	const select = view.getByRole("button", { name: "Taxonomía ACM: Todas" });
+	fireEvent.click(select);
+	fireEvent.click(
+		view.getByRole("button", { name: "Expandir Desarrollo de Aplicaciones" }),
+	);
+	fireEvent.click(view.getByText("Inteligencia Artificial"));
+	expect(onFilterChange).toHaveBeenLastCalledWith({
+		...filters,
+		acmArea: "IA",
+	});
+	view.rerender(
+		<FilterBar
+			filters={{ ...filters, acmArea: "IA" }}
+			onFilterChange={onFilterChange}
+			categoryOptions={tags.map((tag) => tag.name)}
+		/>,
+	);
+	fireEvent.click(select);
+	fireEvent.click(view.getByRole("button", { name: "Todas las áreas" }));
+	expect(onFilterChange).toHaveBeenLastCalledWith({
+		...filters,
+		acmArea: undefined,
+	});
 });
 
 it("shows every local category and preserves other filters when selecting or clearing it", () => {

@@ -28,6 +28,35 @@ const dynamicCourse: Course = {
 };
 
 describe("course catalog API adapter", () => {
+	it("filters by ACM parent areas together with topic, course type, and search, including placeholders", () => {
+		const index = normalizeCourseCatalog({
+			count: 1,
+			categories: [],
+			courses: [{ code: "CC6205", name: "Procesamiento de Lenguaje Natural" }],
+		});
+		const matches = filterCourseCatalog(index.items, {
+			acmArea: "IA",
+			tags: ["Procesamiento de Lenguaje Natural"],
+			category: "specialization",
+			q: "CC6205",
+		});
+		expect(matches.map((entry) => entry.id)).toEqual(["CC6205"]);
+		expect(matches[0]?.isPlaceholder).not.toBe(true);
+		for (const acmArea of ["APLICACIONES", "IA-PLN"]) {
+			expect(
+				filterCourseCatalog(index.items, { acmArea, q: "CC6204" })[0],
+			).toMatchObject({ id: "CC6204", isPlaceholder: true });
+		}
+		expect(
+			filterCourseCatalog(index.items, { acmArea: "IA", q: "CC6204" })[0],
+		).toMatchObject({ id: "CC6204", isPlaceholder: true });
+		expect(
+			filterCourseCatalog(index.items, { acmArea: "SO", q: "CC6205" }),
+		).toEqual([]);
+		expect(filterCourseCatalog(index.items, { acmArea: "unknown" })).toEqual(
+			[],
+		);
+	});
 	it("selects bachelor electives by exact code format, threshold, and exclusions", () => {
 		const entries = [
 			"CC2999",

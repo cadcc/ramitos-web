@@ -3,6 +3,7 @@ import {
 	matchesCourseCategory,
 } from "../courseCategories";
 import localCourses from "../../../../data/courses/courses.json";
+import { matchesAcmNode } from "../../../constants/acmTaxonomy";
 import {
 	COURSE_TOPIC_OPTIONS,
 	COURSE_METADATA_CODES,
@@ -172,6 +173,15 @@ export function filterCourseCatalog(
 	if (filters.tags?.length) {
 		filtered = filtered.filter((course) =>
 			filters.tags!.some((tag) => course.categoryTags.includes(tag)),
+		);
+	}
+
+	if (filters.acmArea) {
+		filtered = filtered.filter((course) =>
+			matchesAcmNode(
+				getCourseMetadata(course.id)?.acmUnits ?? [],
+				filters.acmArea!,
+			),
 		);
 	}
 

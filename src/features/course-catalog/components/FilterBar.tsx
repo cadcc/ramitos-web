@@ -18,6 +18,8 @@ import type { CourseFilters, SortOption } from "../../../shared/types/domain";
 import { COURSE_CATEGORIES } from "../courseCategories";
 import type { CourseCategory } from "../../../shared/types/domain";
 import CategoryIcon from "../../../shared/components/CategoryIcon";
+import { AcmTaxonomyFilter } from "./AcmTaxonomyFilter";
+import { usePreviewFeatures } from "../../../shared/hooks/usePreviewFeatures";
 
 const sortOptions: {
 	value: SortOption;
@@ -44,6 +46,7 @@ export default function FilterBar({
 	onFilterChange,
 	categoryOptions = [],
 }: Props) {
+	const { features } = usePreviewFeatures();
 	const [draft, setDraft] = useState({
 		source: filters.q,
 		text: filters.q ?? "",
@@ -68,9 +71,10 @@ export default function FilterBar({
 	}, [searchText, filters, onFilterChange]);
 
 	const activeFilterCount =
+		(features.acmCategories && filters.acmArea ? 1 : 0) +
 		(filters.plan ? 1 : 0) +
 		(filters.currentlyOffered ? 1 : 0) +
-		(filters.tags && filters.tags.length > 0 ? 1 : 0) +
+		(features.categories && filters.tags && filters.tags.length > 0 ? 1 : 0) +
 		(filters.modernOnly === false ? 1 : 0);
 
 	return (
@@ -234,59 +238,68 @@ export default function FilterBar({
 					))}
 				</ToggleButtonGroup>
 
-				<FormControl
-					size="small"
-					sx={{ width: { xs: "100%", sm: 280 }, minWidth: 0 }}
-					disabled={categoryOptions.length === 0}
-				>
-					<InputLabel id="course-category-label" sx={{ fontSize: "0.8rem" }}>
-						Categoría
-					</InputLabel>
-					<Select
-						labelId="course-category-label"
-						value={filters.tags?.[0] ?? ""}
-						label="Categoría"
-						MenuProps={{
-							slotProps: {
-								paper: { sx: { maxHeight: 360, maxWidth: "100%" } },
-							},
-						}}
-						onChange={(e) => {
-							const val = e.target.value;
-							onFilterChange({
-								...filters,
-								tags: val ? [val] : undefined,
-							});
-						}}
-						sx={{
-							bgcolor: "background.paper",
-							borderRadius: 2,
-							fontSize: "0.8rem",
-							height: 32,
-						}}
+				{features.categories && (
+					<FormControl
+						size="small"
+						sx={{ width: { xs: "100%", sm: 280 }, minWidth: 0 }}
+						disabled={categoryOptions.length === 0}
 					>
-						<MenuItem value="">Todas</MenuItem>
-						{categoryOptions.map((tag) => (
-							<MenuItem
-								key={tag}
-								value={tag}
-								sx={{
-									fontSize: "0.85rem",
-									display: "flex",
-									alignItems: "center",
-									gap: 1,
-									whiteSpace: "normal",
-								}}
-							>
-								<CategoryIcon
-									category={tag}
-									sx={{ fontSize: 16, color: "text.secondary" }}
-								/>
-								{tag}
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
+						<InputLabel id="course-category-label" sx={{ fontSize: "0.8rem" }}>
+							Categoría
+						</InputLabel>
+						<Select
+							labelId="course-category-label"
+							value={filters.tags?.[0] ?? ""}
+							label="Categoría"
+							MenuProps={{
+								slotProps: {
+									paper: { sx: { maxHeight: 360, maxWidth: "100%" } },
+								},
+							}}
+							onChange={(e) => {
+								const val = e.target.value;
+								onFilterChange({
+									...filters,
+									tags: val ? [val] : undefined,
+								});
+							}}
+							sx={{
+								bgcolor: "background.paper",
+								borderRadius: 2,
+								fontSize: "0.8rem",
+								height: 32,
+							}}
+						>
+							<MenuItem value="">Todas</MenuItem>
+							{categoryOptions.map((tag) => (
+								<MenuItem
+									key={tag}
+									value={tag}
+									sx={{
+										fontSize: "0.85rem",
+										display: "flex",
+										alignItems: "center",
+										gap: 1,
+										whiteSpace: "normal",
+									}}
+								>
+									<CategoryIcon
+										category={tag}
+										sx={{ fontSize: 16, color: "text.secondary" }}
+									/>
+									{tag}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+				)}
+
+				{features.acmCategories && (
+					<AcmTaxonomyFilter
+						value={filters.acmArea}
+						onChange={(acmArea) => onFilterChange({ ...filters, acmArea })}
+					/>
+				)}
 
 				{activeFilterCount > 0 && (
 					<Chip
