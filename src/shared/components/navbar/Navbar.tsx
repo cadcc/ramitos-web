@@ -19,6 +19,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import StarsIcon from "@mui/icons-material/Stars";
 import BadgeIcon from "@mui/icons-material/Badge";
 import AdminIcon from "@mui/icons-material/AdminPanelSettings";
+import ScienceIcon from "@mui/icons-material/Science";
+import { PreviewFeaturesDialog } from "./PreviewFeaturesDialog";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { LoginDialog, useAuth } from "../../../features/auth";
 import { useState } from "react";
@@ -38,6 +40,7 @@ export default function Navbar() {
 	const { user, isAuthenticated, isAdmin, logout, openLoginDialog } = useAuth();
 	const navigate = useNavigate();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [previewOpen, setPreviewOpen] = useState(false);
 
 	const handleMenu = (e: React.MouseEvent<HTMLElement>) =>
 		setAnchorEl(e.currentTarget);
@@ -243,6 +246,17 @@ export default function Navbar() {
 										}
 									/>
 								</MenuItem>
+								<MenuItem
+									onClick={() => {
+										handleClose();
+										setPreviewOpen(true);
+									}}
+								>
+									<ListItemIcon>
+										<ScienceIcon fontSize="small" />
+									</ListItemIcon>
+									<ListItemText primary="Experimentos" />
+								</MenuItem>
 								{isAdmin && (
 									<Box>
 										<Divider />
@@ -286,6 +300,10 @@ export default function Navbar() {
 			</AppBar>
 
 			<LoginDialog />
+			<PreviewFeaturesDialog
+				open={previewOpen}
+				onClose={() => setPreviewOpen(false)}
+			/>
 		</>
 	);
 }

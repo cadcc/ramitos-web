@@ -1,0 +1,2165 @@
+[
+  {
+    "codigo": "CC1000",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242566",
+    "resumen": "Este curso, eminentemente práctico, busca que adquieras un manejo sólido de herramientas computacionales básicas para resolver problemas simples de ingeniería y ciencias, sin importar tu experiencia previa. Se trabaja el uso crítico y ético de la IA generativa, la preparación de documentos científicos y la interpretación de datos de fuentes públicas, el procesamiento y visualización de datos tabulados en planillas de cálculo, y la programación de scripts con vectores y matrices para cálculos estadísticos y numéricos. Funciona con aula invertida y laboratorios semanales en pareja, evaluados mediante un test de entrada, la resolución del problema planteado y una reflexión oral o escrita sobre los resultados. No requiere conocimientos previos, solo disposición a preparar cada sesión con anticipación.",
+    "tags": [
+      10,
+      11,
+      2,
+      39,
+      41
+    ],
+    "acm": [
+      "FDS-Fundamentos",
+      "GD-Analítica",
+      "GTI-Visualización",
+      "IA-SEP",
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC1002",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242634",
+    "resumen": "Aquí aprendes a resolver problemas mediante la programación siguiendo una metodología rigurosa: analizar el enunciado, descomponerlo en subproblemas, implementar funciones documentadas con ejemplos de uso y verificarlas con pruebas. Se recorren los fundamentos de expresiones, funciones, condicionales y recursión, para luego abordar la programación funcional con datos compuestos y estructuras recursivas, la programación imperativa con mutación, estructuras indexadas y archivos, y finalmente la programación orientada a objetos. Las clases combinan exposición, ejercicios en papel y casos de estudio cotidianos, y se evalúa mediante controles escritos, un examen y tareas de programación desarrolladas en el computador. No exige experiencia previa programando, pero sí disposición al razonamiento lógico y algorítmico y a trabajar con honestidad académica.",
+    "tags": [
+      17,
+      16,
+      13
+    ],
+    "acm": [
+      "FDS-Fundamentos",
+      "FDS-EstructurasDatos",
+      "FDS-Algoritmos",
+      "FLP-Funcional",
+      "FLP-POO"
+    ]
+  },
+  {
+    "codigo": "CC3001",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192166",
+    "resumen": "Este curso entrega las bases para diseñar algoritmos eficientes, analizarlos con rigor y elegir la estructura de datos adecuada para cada problema. Se trabajan la correctitud de programas y el análisis de eficiencia, las principales técnicas de diseño como recursividad, dividir para reinar, programación dinámica y algoritmos avaros, y luego estructuras de datos, tipos de datos abstractos y diccionarios, y finalmente algoritmos de ordenación, búsqueda en texto, compresión y grafos. Las clases combinan cátedras con clases auxiliares de resolución de problemas, y se evalúa con tareas y ejercicios de programación individuales, evaluaciones de hito y una evaluación final. Para que te vaya bien necesitas programar con soltura y sentirte cómodo con el razonamiento matemático, sobre todo con la inducción.",
+    "tags": [
+      31,
+      32,
+      34
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
+    ]
+  },
+  {
+    "codigo": "CC3002",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174814",
+    "resumen": "Este curso te prepara para desarrollar software orientado a objetos de pequeña y mediana complejidad que sea flexible, extensible y robusto. Se estudian los fundamentos de objetos, clases, tipos y polimorfismo; herramientas de desarrollo como entornos integrados, control de versiones y refactorización; metodologías de testeo, diseño por contratos y modelado con UML; patrones de diseño, y tópicos como interfaces gráficas, excepciones, concurrencia, genéricos y rendimiento. También se analizan dilemas éticos del desarrollo, como la propiedad intelectual, las licencias, el software libre y los sistemas de escritura inclusivos. Se evalúa con controles, tareas y un examen integrador. Para aprovecharlo necesitas programar con soltura y manejar algoritmos y estructuras de datos fundamentales.",
+    "tags": [
+      16,
+      13,
+      39
+    ],
+    "acm": [
+      "FLP-POO",
+      "IS-Herramientas",
+      "IS-Diseño",
+      "IS-Validación",
+      "IS-Refactorización",
+      "SEP-PI"
+    ]
+  },
+  {
+    "codigo": "CC3101",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209146",
+    "resumen": "Este curso entrega las herramientas matemáticas formales para modelar y resolver con rigor problemas computacionales que involucran elementos discretos. Se trabaja la lógica proposicional y de primer orden, incluyendo deducción natural con apoyo de un asistente de pruebas, las principales técnicas de demostración e inducción, relaciones, combinatoria y conteo, relaciones de recurrencia y teoría de grafos con sus algoritmos clásicos. Las clases expositivas se complementan con resolución de problemas en que se modela, se elige la técnica adecuada y se demuestra formalmente. Se evalúa mediante controles, tareas y un examen. Para que te vaya bien necesitas bases de programación y de álgebra introductoria, además de comodidad con el razonamiento abstracto y la lectura cuidadosa de enunciados.",
+    "tags": [
+      33,
+      34,
+      19
+    ],
+    "acm": [
+      "FME-Discretas",
+      "IS-Formales"
+    ]
+  },
+  {
+    "codigo": "CC3102",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174818",
+    "resumen": "Este curso estudia los fundamentos de los lenguajes formales, la computabilidad y la complejidad computacional para entender qué puede y qué no puede resolverse con un computador, y a qué costo. Se trabajan los lenguajes regulares y libres del contexto mediante autómatas, expresiones regulares y gramáticas, con aplicaciones prácticas al procesamiento de texto y al parsing; luego las máquinas de Turing como modelo de computación, los problemas indecidibles y las reducciones, y finalmente las clases P y NP y la NP-completitud. Se evalúa con controles, tareas teóricas y prácticas con reportes escritos, y un examen integrador. Para tener éxito necesitas soltura en matemáticas discretas, especialmente en lógica y demostraciones formales.",
+    "tags": [
+      37,
+      33,
+      18
+    ],
+    "acm": [
+      "AL-Modelos",
+      "AL-Complejidad",
+      "FME-Discretas"
+    ]
+  },
+  {
+    "codigo": "CC3201",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174822",
+    "resumen": "Este curso enseña a modelar, gestionar, consultar y analizar datos estructurados para construir aplicaciones eficientes y seguras. Se parte por la adquisición de datos desde fuentes externas y su modelamiento conceptual, para luego pasar al modelo relacional, el diseño de esquemas y la consulta mediante álgebra relacional y SQL. Se abordan también índices, optimización de consultas, transacciones e interfaces programáticas, junto con modelos de datos no tradicionales basados en árboles y grafos, siempre considerando la seguridad y la privacidad de los usuarios. Se evalúa con laboratorios teóricos individuales, laboratorios prácticos en grupo y un proyecto grupal a lo largo del semestre, con entregas parciales e informe final. Requiere manejo previo de algoritmos y estructuras de datos.",
+    "tags": [
+      3,
+      39
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Relacional",
+      "GD-Consultas",
+      "GD-Procesamiento",
+      "GD-Interiores",
+      "GD-NoEstructuradas",
+      "GD-Seguridad"
+    ]
+  },
+  {
+    "codigo": "CC3301",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174826",
+    "resumen": "Aquí aprendes a escribir programas en C eficientes en tiempo de ejecución y uso de memoria, entendiendo cómo el hardware y el sistema operativo influyen en su desempeño. Se profundiza en el lenguaje C, con su sistema de tipos, punteros, manejo de memoria, archivos y etapas de compilación; luego en arquitectura de computadores, desde los sistemas digitales y el assembler hasta el diseño del procesador y la memoria caché; y finalmente en la programación con la interfaz del sistema operativo Linux, incluyendo procesos, pipes y señales. Se trabaja con depuradores y con lectura de textos técnicos en inglés. Se evalúa con controles, un examen final y varias mini-tareas de programación. Requiere buen manejo de algoritmos y estructuras de datos.",
+    "tags": [
+      21,
+      20,
+      22
+    ],
+    "acm": [
+      "FLP-Sistemas",
+      "AR-Lógica",
+      "AR-Ensamblador",
+      "AR-Memoria",
+      "SO-Procesos",
+      "SO-Ficheros"
+    ]
+  },
+  {
+    "codigo": "CC3401",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209518",
+    "resumen": "Este curso enseña a analizar las necesidades de usuarios finales en su contexto de negocio, técnico y social, para diseñar sistemas interactivos que realmente las resuelvan. Se abordan la usabilidad y la experiencia de usuario, técnicas de levantamiento de necesidades y Design Thinking, la responsabilidad ética y la accesibilidad en el diseño, el prototipado incremental de interfaces web y móviles desde bocetos hasta alta fidelidad, y métodos para evaluar empíricamente la usabilidad con personas. El trabajo es teórico-práctico y gira en torno a un proyecto de diseño en equipo, evaluado mediante hitos de avance, además de controles conceptuales que deben aprobarse por separado. Requiere bases de programación y disposición para trabajar en equipo e interactuar con personas.",
+    "tags": [
+      12,
+      14,
+      39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Accesibilidad",
+      "IPO-Responsabilidad"
+    ]
+  },
+  {
+    "codigo": "CC3501",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174806",
+    "resumen": "Este curso introduce la computación gráfica y sus aplicaciones en ciencias e ingeniería, con el objetivo de modelar, simular y visualizar computacionalmente problemas que involucran geometrías y escenas en 2D y 3D, programando directamente la GPU. Se estudian el pipeline de renderizado, las transformaciones geométricas, texturas, modelación jerárquica y curvas, la visualización tridimensional con mallas, iluminación y sombreado, las simulaciones físicas con detección de colisiones y métodos numéricos para ecuaciones diferenciales, y la visualización científica. Se evalúa con controles, tareas computacionales con reportes, una presentación oral y un examen, que pueden incluir lecturas complementarias. Para que te vaya bien necesitas programar con soltura y manejar cálculo en varias variables, ecuaciones diferenciales y mecánica.",
+    "tags": [
+      9,
+      10,
+      11,
+      23
+    ],
+    "acm": [
+      "GTI-Fundamentos",
+      "GTI-Renderizado",
+      "GTI-Modelado",
+      "GTI-Sombreado",
+      "GTI-Simulación",
+      "GTI-Visualización"
+    ]
+  },
+  {
+    "codigo": "CC4001",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=8338",
+    "resumen": "Este taller práctico te prepara para competir en grupos pequeños en competencias de programación al estilo ACM, desarrollando la capacidad de identificar rápidamente una técnica algorítmica adecuada para un problema nuevo, elegir el lenguaje más conveniente e implementar una solución correcta bajo presión de tiempo y con formatos de salida estrictos. Los contenidos abarcan técnicas de diseño de algoritmos básicas y avanzadas, junto con las características distintivas de distintos lenguajes de programación. Se trabaja en sesiones grupales que simulan una competencia, donde cada equipo debe resolver al menos un problema, y en sesiones de discusión donde los grupos presentan y fundamentan sus estrategias de solución. Requiere conocimientos base de programación.",
+    "tags": [
+      36,
+      31,
+      32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias"
+    ]
+  },
+  {
+    "codigo": "CC4002",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5199",
+    "resumen": "Este taller prepara para resolver problemas de programación bajo presión de tiempo, en equipos pequeños al estilo de las competencias tipo ACM. Se practica identificar rápidamente una técnica algorítmica adecuada, escoger el lenguaje más conveniente para implementarla y entregar soluciones correctas que cumplan formatos de salida estrictos, iterando cuando una solución falla. En paralelo se discuten técnicas de diseño de algoritmos básicas y avanzadas, junto con las características que distinguen a distintos lenguajes de programación. La evaluación se basa en sesiones grupales que simulan una competencia, donde cada equipo debe resolver problemas, y en sesiones de discusión en que los grupos exponen y fundamentan sus estrategias. Requiere conocimientos base de programación y disposición para trabajar en equipo.",
+    "tags": [
+      36,
+      31,
+      32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias"
+    ]
+  },
+  {
+    "codigo": "CC4005",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=16618",
+    "resumen": "Este taller entrena para resolver rápidamente problemas de programación complejos con exigencias extremas de tiempo y memoria, como los de las competencias y los procesos de selección de empresas tecnológicas. Se trabajan el análisis de complejidad para estimar tiempos de ejecución, estrategias como búsqueda binaria y programación dinámica, algoritmos numéricos y de teoría de números, y una amplia variedad de algoritmos sobre árboles y grafos, terminando con problemas que combinan varias técnicas. Funciona con aula invertida: se estudia con videos y lecturas, y luego se resuelven desafíos en laboratorios grupales. Se evalúa el trabajo en laboratorio, la exposición y discusión de soluciones y tareas individuales periódicas. Requiere conocimientos base de programación y buena disposición al aprendizaje autónomo.",
+    "tags": [
+      36,
+      31,
+      32,
+      34
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
+    ]
+  },
+  {
+    "codigo": "CC4006",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54742",
+    "resumen": "Este taller entrena para resolver en poco tiempo problemas de programación de alta complejidad con exigencias extremas de tiempo y memoria, como los de las competencias y los procesos de selección de empresas tecnológicas. Se abordan búsqueda binaria y búsqueda exhaustiva con poda, estructuras de datos para consultas y actualizaciones eficientes sobre rangos, algoritmos sobre strings y geometría computacional, cerrando con problemas que combinan varias estrategias. Funciona con aula invertida: se estudia con videos y lecturas, y luego se resuelven desafíos en laboratorios grupales. Se evalúa el trabajo en laboratorio, la exposición y discusión de soluciones y tareas individuales periódicas. No exige cursos previos, pero para sacarle provecho conviene programar con soltura y tener disposición para aprender de forma autónoma.",
+    "tags": [
+      36,
+      31,
+      32,
+      35
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad"
+    ]
+  },
+  {
+    "codigo": "CC4101",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174850",
+    "resumen": "Este curso enseña a entender cómo funcionan los lenguajes de programación por dentro, definiéndolos paso a paso mediante la construcción de intérpretes en Scheme. Tras una base de programación funcional, se estudian la sintaxis y la semántica de un lenguaje, sustitución y alcance, las funciones de primera clase, las estrategias de evaluación temprana y perezosa, la recursión, el estado y la mutación, la extensión sintáctica con macros y los mecanismos de la orientación a objetos. Las clases combinan exposición con demostraciones en vivo y auxiliares de resolución de problemas, y se evalúa con controles, tareas de diseño e implementación de lenguajes y un examen. Requiere fundamentos de teoría de la computación y comodidad leyendo material técnico en inglés.",
+    "tags": [
+      18,
+      17,
+      16
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Abstracción",
+      "FLP-Traducción",
+      "FLP-Ejecución",
+      "FLP-POO",
+      "FLP-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC4102",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=209154",
+    "resumen": "Este curso profundiza en el diseño y análisis riguroso de algoritmos y estructuras de datos para resolver eficientemente problemas computacionales. Se estudian técnicas para demostrar cotas inferiores y establecer optimalidad, algoritmos para memoria secundaria, análisis amortizado, aprovechamiento de dominios discretos y algoritmos en línea con su competitividad, además de modelos no convencionales como los algoritmos aleatorizados, aproximados y paralelos. Las clases combinan exposición participativa, resolución de problemas y aula invertida, y se evalúa con controles, tareas de implementación cuyos resultados deben analizarse por escrito y un examen. Para que te vaya bien necesitas dominar algoritmos y estructuras de datos básicos, fundamentos de teoría de la computación y probabilidades, y sentirte cómodo con demostraciones matemáticas.",
+    "tags": [
+      31,
+      32,
+      37,
+      8,
+      23
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "AL-Complejidad",
+      "CPD-Algoritmos"
+    ]
+  },
+  {
+    "codigo": "CC4301",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=3503",
+    "resumen": "Este curso explica cómo funciona un computador desde los circuitos digitales hasta las optimizaciones de un procesador moderno. Se aprende a diseñar circuitos combinacionales y secuenciales de forma modular, a representar enteros en binario y a leer y escribir código ensamblador de arquitecturas CISC y RISC. Luego se estudian el funcionamiento de las memorias y de la CPU, los dispositivos de entrada/salida e interfaces de comunicación, y arquitecturas avanzadas como memorias caché, jerarquías de memoria, pipelines, ejecución superescalar y fuera de orden. Las clases son expositivas y se complementan con tareas individuales de diseño de hardware y de programación a bajo nivel; además se evalúa con controles y un examen. Requiere experiencia previa en programación de sistemas cercana al hardware.",
+    "tags": [
+      20,
+      21
+    ],
+    "acm": [
+      "AR-Lógica",
+      "AR-Representación",
+      "AR-Ensamblador",
+      "AR-Organización",
+      "AR-Memoria",
+      "AR-ES",
+      "AR-Energía"
+    ]
+  },
+  {
+    "codigo": "CC4302",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=181846",
+    "resumen": "Este curso enseña a escribir programas que aprovechen eficientemente los procesadores multi-core y a evaluar cómo la arquitectura del hardware y las estrategias del núcleo del sistema operativo afectan el desempeño del software. Se estudian procesos, threads y su sincronización evitando errores como dataraces y deadlocks, la administración del procesador y el scheduling, la memoria virtual con paginamiento y máquinas virtuales, y la entrada/salida, incluyendo drivers, discos, SSD y sistemas de archivos. Las clases son expositivas con resolución de problemas, y se evalúa con controles, un examen final y varias tareas prácticas de paralelización, sincronización e implementación de un driver en Linux. Requiere experiencia en programación de sistemas a bajo nivel y disposición para leer textos técnicos en inglés.",
+    "tags": [
+      22,
+      21,
+      23,
+      20
+    ],
+    "acm": [
+      "SO-Principios",
+      "SO-Concurrencia",
+      "SO-Planificación",
+      "SO-Procesos",
+      "SO-Memoria",
+      "SO-Dispositivos",
+      "SO-Ficheros",
+      "SO-Virtualización"
+    ]
+  },
+  {
+    "codigo": "CC4303",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174854",
+    "resumen": "Este curso enseña a diseñar e implementar aplicaciones en red, protocolos de transporte y redes de datos eficientes y correctas, además de usar los principios de Internet para diagnosticar y resolver problemas de operación de una red. Se recorre el modelo de capas desde las aplicaciones y la programación con sockets, pasando por los protocolos de transporte confiable, el protocolo IP con su direccionamiento y ruteo y la seguridad de redes, hasta llegar a las redes físicas. Las clases son expositivas y se complementan con tareas de programación que construyen y optimizan un protocolo propio; se evalúa con controles, un examen final y dichas tareas. Requiere conocimientos de sistemas operativos y comodidad leyendo documentación técnica en inglés.",
+    "tags": [
+      27,
+      28,
+      21
+    ],
+    "acm": [
+      "RC-Fundamentos",
+      "RC-Aplicaciones",
+      "RC-Fiabilidad",
+      "RC-Enrutamiento",
+      "RC-UnSoloSalto",
+      "RC-Seguridad"
+    ]
+  },
+  {
+    "codigo": "CC4401",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=206426",
+    "resumen": "Este curso enseña a construir software de manera sistemática trabajando en equipo, mediante el desarrollo de un sistema web con varios perfiles de usuario usando frameworks. Se abordan conceptos y atributos de calidad del software, modelos de ciclo de vida y metodologías como Scrum, elicitación y especificación de requisitos, diseño arquitectónico basado en patrones, diseño y evaluación de interfaces de usuario, mantención y evolución de código, y verificación y validación mediante pruebas. Las clases combinan exposición, demostraciones de herramientas y auxiliares, y se evalúa con controles, un examen final y un proyecto iterativo con entregas de requisitos, interfaces, programación y pruebas. Requiere dominar el diseño y la programación orientados a objetos y tener nociones de bases de datos.",
+    "tags": [
+      13,
+      14,
+      12
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Validación",
+      "IS-Refactorización",
+      "DPE-Web",
+      "IPO-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC4402",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=220162",
+    "resumen": "Este curso enseña a formular, gestionar y evaluar proyectos de software dentro de organizaciones, tanto para implantar nueva tecnología como para renovar sistemas existentes. Se recorre el ciclo completo de un proyecto: analizar el problema del cliente y la relación cliente-proveedor, definir el alcance, planificar, cotizar y negociar una propuesta, monitorear y controlar la ejecución gestionando cambios y riesgos, y evaluar la factibilidad y el impacto antes, durante y después, proponiendo la evolución del producto. Con clases expositivas, discusiones y aprendizaje basado en proyectos, se evalúa mediante controles, un examen, tareas que desarrollan un proyecto en equipo y coevaluaciones. Requiere conocimientos de ingeniería de software y habilidades de comunicación escrita y oral para presentar y defender propuestas.",
+    "tags": [
+      38,
+      40
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-TrabajoEquipo",
+      "IS-Fiabilidad",
+      "SEP-Economía"
+    ]
+  },
+  {
+    "codigo": "CC4901",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177474",
+    "resumen": "Esta práctica te permite incorporarte a la dinámica de trabajo de una organización real y demostrar en un contexto laboral auténtico lo aprendido en la carrera. Antes de partir se completan módulos en línea sobre competencias genéricas como comunicación profesional, compromiso ético, trabajo en equipo e innovación, y se diseña un plan de práctica que el departamento debe aprobar. Durante la estadía se espera realizar tareas como probar y evaluar software, implementar o modificar sistemas con buenas prácticas, o modelar bases de datos y extraer información. Se evalúa mediante la evaluación del supervisor en la empresa y un informe escrito sobre el problema, la solución y una reflexión personal. Necesitas buena base de programación y diseño de software.",
+    "tags": [
+      40,
+      13,
+      3
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo",
+      "IS-Construcción",
+      "IS-Validación"
+    ]
+  },
+  {
+    "codigo": "CC5002",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=144438",
+    "resumen": "Este curso práctico enseña a diseñar y construir aplicaciones web completas siguiendo buenas prácticas y estándares. Partiendo de un prototipo funcional, desarrollas un proyecto personal al que vas sumando funcionalidades: fundamentos de la web, desarrollo de interfaces, programación del lado del servidor con bases de datos y archivos, sesiones de usuario, programación asíncrona, frameworks de desarrollo, seguridad web y criterios de usabilidad, responsividad y accesibilidad. Las clases combinan cátedras con ejemplos prácticos y auxiliares con ejercicios semanales, y se evalúa con tareas de programación incrementales y ejercicios, más una tarea final que funciona como examen. Para que te vaya bien necesitas programar con soltura y manejar algoritmos y estructuras de datos básicas.",
+    "tags": [
+      14,
+      3,
+      28,
+      12
+    ],
+    "acm": [
+      "DPE-Web",
+      "IS-Construcción",
+      "GD-Relacional",
+      "SEG-Codificación",
+      "IPO-Accesibilidad"
+    ]
+  },
+  {
+    "codigo": "CC5003",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213318",
+    "resumen": "Aquí aprendes a diseñar y construir aplicaciones web reactivas de página única, con énfasis en el frontend pero abarcando también el backend, usando un stack unificado basado en un lenguaje con tipado opcional. Se trabajan la programación reactiva y el manejo del estado de interfaces, APIs seguras integradas con bases de datos, autenticación y protección contra ataques, pruebas automatizadas, y temas avanzados como comunicación bidireccional, contenedores e integración continua. Las clases combinan exposición con programación en vivo, y se evalúa mediante laboratorios prácticos y un proyecto grupal semestral con avances sucesivos y una presentación oral final. Necesitas una base sólida de programación y metodologías de diseño de software, además de disposición para trabajar en equipo.",
+    "tags": [
+      14,
+      28,
+      13,
+      24,
+      3
+    ],
+    "acm": [
+      "DPE-Web",
+      "FLP-Eventos",
+      "IS-Validación",
+      "IS-Herramientas",
+      "SEG-Codificación"
+    ]
+  },
+  {
+    "codigo": "CC5101",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=15338",
+    "resumen": "Este curso enseña a analizar con precisión matemática cómo se comportan algoritmos y estructuras de datos frente a entradas aleatorias, usando métodos basados en funciones generatrices. Primero se desarrollan las herramientas matemáticas, como el modelamiento de estructuras combinatorias y la probabilidad discreta, y luego se aplican a estructuras clásicas como tablas de hashing, árboles de búsqueda y skip lists, buscando no solo el costo promedio sino también la varianza y la distribución completa. Las cátedras usan intensivamente un sistema de álgebra computacional, y la evaluación se basa exclusivamente en tareas donde aplicas los métodos y presentas el trabajo por escrito de manera profesional. Necesitas manejar algoritmos y estructuras de datos, además de probabilidades.",
+    "tags": [
+      31,
+      32,
+      8,
+      33
+    ],
+    "acm": [
+      "AL-Complejidad",
+      "AL-Fundamentales",
+      "FME-Probabilidad",
+      "FME-Discretas"
+    ]
+  },
+  {
+    "codigo": "CC5115",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=92410",
+    "resumen": "Este curso introduce la programación funcional usando un lenguaje puramente funcional, mostrando cómo este estilo declarativo facilita razonar algebraicamente sobre programas, abstraer patrones recurrentes y paralelizar la ejecución. Se recorren los fundamentos del lenguaje, funciones de alto orden, recursión y pruebas por inducción, sistemas de tipos avanzados y tipos recursivos, evaluación perezosa, transformaciones para mejorar la eficiencia, efectos y mónadas, testing automático basado en propiedades y paralelización. Las cátedras combinan programación en vivo con mini-problemas grupales, auxiliares de resolución de problemas y casos de estudio, y se evalúa con tareas periódicas teóricas y prácticas, una presentación oral individual y un examen. Necesitas programar con soltura, conocer algoritmos y estructuras de datos, y sentirte cómodo con el razonamiento matemático formal.",
+    "tags": [
+      17,
+      19,
+      13,
+      23
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Tipos",
+      "FLP-Construcciones",
+      "FLP-Paralela",
+      "IS-Validación"
+    ]
+  },
+  {
+    "codigo": "CC5116",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54738",
+    "resumen": "Aquí construyes de forma incremental tu propio compilador para un lenguaje de alto nivel, desde el análisis sintáctico hasta la generación de código assembler, entendiendo cómo cada mecanismo del lenguaje impacta su diseño. Se abordan la representación de datos, convenciones de llamado e interacción con código de bajo nivel, funciones, verificación e inferencia de tipos, estructuras de datos en memoria, funciones de primera clase, objetos, recolección de basura y optimizaciones. El trabajo se centra en un proyecto en grupos pequeños con entregas sucesivas del compilador que enfatizan testing y documentación, complementado con quizzes individuales. Necesitas una base sólida en lenguajes de programación y arquitectura de computadores, y el desarrollo se hace en un lenguaje funcional tipado.",
+    "tags": [
+      18,
+      17,
+      20,
+      13
+    ],
+    "acm": [
+      "FLP-Traducción",
+      "FLP-Sintaxis",
+      "FLP-Semántica",
+      "FLP-Código",
+      "FLP-Ejecución",
+      "FLP-Tipos"
+    ]
+  },
+  {
+    "codigo": "CC5117",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=142862",
+    "resumen": "Este curso entrega herramientas teóricas y prácticas para modelar y analizar sistemas sociotécnicos, entendiendo cómo los algoritmos presentes en redes sociales, búsqueda, recomendaciones o decisiones automatizadas afectan a las personas y a la sociedad. Se estudian la teoría de grafos y las dinámicas en redes sociales, la equidad y los sesgos en el aprendizaje de máquinas junto con la auditoría de sistemas algorítmicos, y los sistemas de recomendación y la web como red. Las clases son expositivas, cada estudiante presenta un artículo científico avanzado, y un proyecto grupal con propuesta, implementación, informe y presentación oral integra lo aprendido. Necesitas base en matemáticas discretas o probabilidades y disposición para leer literatura científica en inglés.",
+    "tags": [
+      39,
+      34,
+      7,
+      1
+    ],
+    "acm": [
+      "FME-Discretas",
+      "IA-AA",
+      "IA-SEP",
+      "SEP-DIIA"
+    ]
+  },
+  {
+    "codigo": "CC5118",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=232721",
+    "resumen": "Este curso entrega los fundamentos teóricos de las redes complejas como herramienta matemática para analizar, caracterizar y modelar sistemas formados por entidades y sus relaciones, como redes sociales, cerebrales, de transporte o de propagación de enfermedades, considerando el costo computacional de los algoritmos involucrados. Se trabajan los fundamentos de grafos, las medidas de centralidad, los grafos aleatorios y el fenómeno de mundo pequeño, y los modelos de redes libres de escala y de propagación. Las clases son expositivas y las auxiliares guían el trabajo práctico, que se evalúa con tareas de análisis sobre datos reales y un proyecto grupal con hitos y presentaciones. Necesitas base en matemáticas discretas y minería de datos, y comodidad leyendo artículos en inglés.",
+    "tags": [
+      34,
+      4,
+      8
+    ],
+    "acm": [
+      "FME-Discretas",
+      "FME-Probabilidad",
+      "AL-Fundamentales",
+      "GD-Analítica"
+    ]
+  },
+  {
+    "codigo": "CC5119",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256090",
+    "resumen": "Este curso desarrolla habilidades para diseñar e implementar aplicaciones eficientes, seguras y concurrentes en un lenguaje de sistemas moderno, centrado en su modelo de propiedad y préstamos y en su sistema de tipos avanzado para evitar errores típicos de punteros, memoria y concurrencia. Se trabajan los fundamentos del lenguaje y la abstracción con genéricos, la gestión de memoria con punteros inteligentes, la concurrencia segura con threads y programación asíncrona, y la interoperabilidad con código externo junto al análisis de comportamiento indefinido. Las clases combinan exposición con programación en vivo, y se evalúa con laboratorios prácticos, evaluaciones escritas breves y un proyecto grupal semestral con demostración final. Necesitas sólidos conocimientos de sistemas operativos.",
+    "tags": [
+      21,
+      22,
+      18
+    ],
+    "acm": [
+      "FLP-Tipos",
+      "FLP-Sistemas",
+      "FLP-Paralela",
+      "SO-Concurrencia",
+      "SEG-Codificación"
+    ]
+  },
+  {
+    "codigo": "CC5201",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=71917",
+    "resumen": "Este curso aborda el manejo eficiente y eficaz de grandes volúmenes de información multimedia, con énfasis en la búsqueda por similitud sobre datos como imágenes, formas, objetos tridimensionales, documentos y grafos. Se estudian el modelamiento de estos datos en espacios métricos y vectoriales con sus funciones de distancia, los modelos de similitud para distintos tipos de contenido, los algoritmos de búsqueda por rango y de vecinos más cercanos, las técnicas de indexamiento multidimensional y métrico, y algunos tópicos avanzados. Las clases son expositivas con ejercicios en clase, y se evalúa mediante controles, tareas y un examen final. Necesitas conocimientos base de bases de datos y comodidad con herramientas matemáticas como álgebra lineal y estadística.",
+    "tags": [
+      3,
+      7,
+      32
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Procesamiento",
+      "AL-Fundamentales"
+    ]
+  },
+  {
+    "codigo": "CC5205",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174846",
+    "resumen": "Aquí aprendes a generar conocimiento a partir de datos de dominios diversos mediante el proceso de descubrimiento de conocimiento en bases de datos, y a elegir la técnica de análisis adecuada según el problema. Se recorren la preparación y limpieza de datos con apoyo de estadística básica, el aprendizaje supervisado y su evaluación, el clustering, el análisis de asociación y tópicos como modelos lineales, redes neuronales, reducción de atributos y privacidad de datos, con atención al sobreajuste y a la ética profesional. Se evalúa con laboratorios prácticos en parejas y un proyecto grupal sobre un área de tu interés, entregado por hitos con presentaciones orales e informes. Necesitas buena base de programación y estructuras de datos.",
+    "tags": [
+      4,
+      1,
+      39,
+      8
+    ],
+    "acm": [
+      "GD-Datos",
+      "GD-Analítica",
+      "IA-AA",
+      "GD-Seguridad"
+    ]
+  },
+  {
+    "codigo": "CC5206",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4589",
+    "resumen": "Este curso te enseña a extraer conocimiento útil de distintos tipos de datos aplicando el proceso de descubrimiento de conocimiento en bases de datos, y a seleccionar la técnica de análisis más adecuada según el dominio del problema, con casos de áreas como astronomía, medicina o marketing. Los contenidos abarcan una introducción general a la disciplina, el aprendizaje supervisado con la evaluación y comparación de clasificadores, el aprendizaje no supervisado mediante clustering y el análisis de reglas de asociación, además de alertar sobre el sobreajuste como problema ético y profesional. Se trabaja con discusión de casos, actividades prácticas en clase y un proyecto grupal evaluado mediante presentaciones e informes sucesivos. Requiere conocimientos base de programación y estructuras de datos.",
+    "tags": [
+      4,
+      1,
+      8,
+      39
+    ],
+    "acm": [
+      "GD-Analítica",
+      "IA-AA",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC5208",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4366",
+    "resumen": "Aquí aprendes a transformar grandes volúmenes de datos en representaciones visuales eficaces, y a analizar y diseñar sistemas de visualización según su expresividad y eficacia. El recorrido parte por los tipos de datos y su preprocesamiento, sigue con los fundamentos de la percepción humana y las variables visuales, y luego aborda técnicas para datos espaciales y multidimensionales, jerarquías, grafos y redes, junto con la visualización de datos geoespaciales, temporales y textuales. Las clases son principalmente expositivas, complementadas con trabajo personal, y la evaluación combina controles, un proyecto semestral y un examen final. Para aprovecharlo conviene tener experiencia manejando y consultando datos, como la que entrega un curso de bases de datos, además de soltura programando.",
+    "tags": [
+      11,
+      12
+    ],
+    "acm": [
+      "GTI-Visualización",
+      "IPO-Usuario"
+    ]
+  },
+  {
+    "codigo": "CC5209",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213302",
+    "resumen": "Este curso entrega los fundamentos matemáticos y computacionales para que un computador interprete imágenes y escenas reales, y te prepara para construir aplicaciones de visión basadas en técnicas clásicas y en aprendizaje profundo. Se estudian el procesamiento de imágenes y la detección de características, la geometría de cámaras y la reconstrucción tridimensional, las redes convolucionales con transferencia de aprendizaje y, finalmente, tópicos avanzados como detección, segmentación, transformers visuales, modelos generativos y aprendizaje sobre datos 3D. Se evalúa con tareas prácticas, cuestionarios de teoría y análisis, y un proyecto grupal entregado en iteraciones con informes. Necesitas base en aprendizaje de máquinas o minería de datos, buena programación, comodidad con el álgebra lineal y lectura técnica en inglés.",
+    "tags": [
+      6,
+      1,
+      2
+    ],
+    "acm": [
+      "IA-Visión",
+      "IA-AA",
+      "GTI-Imagen",
+      "GTI-Modelado"
+    ]
+  },
+  {
+    "codigo": "CC5212",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=4591",
+    "resumen": "Aquí comprendes cómo se procesan y almacenan datos a escala masiva, al estilo de las grandes empresas tecnológicas y laboratorios de investigación, conectando los principios clásicos de la computación distribuida con la computación en la nube moderna. Se revisan los fundamentos de los sistemas distribuidos y el paralelismo, los modelos de comunicación y abstracciones de procesamiento distribuido como MapReduce y el procesamiento de grafos, las bases de datos distribuidas con particionamiento, replicación y sus garantías, y los distintos modelos de almacenamiento NoSQL. Hay cátedras y sesiones prácticas, y se evalúa con controles, examen y actividades complementarias, incluyendo tareas de programación de aplicaciones distribuidas. Requiere conocimientos de bases de datos y un manejo intermedio de Java.",
+    "tags": [
+      25,
+      26,
+      3,
+      23,
+      24
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Comunicación",
+      "CPD-Coordinación",
+      "GD-Distribuidas",
+      "GD-NoSQL"
+    ]
+  },
+  {
+    "codigo": "CC5213",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=142134",
+    "resumen": "Aquí aprendes cómo funcionan los sistemas que buscan contenido multimedia por similitud, como encontrar fotos duplicadas, identificar una canción a partir de un fragmento de audio o detectar apariciones de una persona en un video. Se estudian las dos fases centrales de estos sistemas: la extracción de descriptores de contenido para imágenes, audio, texto y video, y los algoritmos e índices que permiten búsquedas eficientes y efectivas sobre grandes colecciones, además de cómo evaluar su desempeño. Se evalúa con controles breves en clase, tareas de programación y un proyecto personal final que resuelve un problema real, presentado oralmente; no hay examen final. Necesitas buena base de programación, algoritmos y estructuras de datos.",
+    "tags": [
+      7,
+      6,
+      32
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Procesamiento",
+      "GTI-Imagen"
+    ]
+  },
+  {
+    "codigo": "CC5215",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128670",
+    "resumen": "Este curso te enseña a analizar datos con información sensible sobre personas sin comprometer su privacidad, reconociendo los escenarios que provocan filtraciones y aplicando técnicas para hacer el análisis de forma segura. Se parte con las técnicas tradicionales de anonimización y los ataques que buscan evitar, para luego profundizar en la privacidad diferencial, sus mecanismos, variantes y propiedades de composición, el manejo de la sensibilidad y su uso para generar datos sintéticos, combinando teoría formal y práctica. Las clases incluyen programación en vivo, y se evalúa con laboratorios frecuentes y un proyecto final grupal con informe y presentación oral. Necesitas una base sólida de probabilidades y estadística, bases de datos y análisis de datos.",
+    "tags": [
+      39,
+      8,
+      28,
+      4
+    ],
+    "acm": [
+      "GD-Seguridad",
+      "SEP-Privacidad",
+      "FME-Probabilidad"
+    ]
+  },
+  {
+    "codigo": "CC5216",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128666",
+    "resumen": "Aquí aprendes a aplicar ciencia de datos a problemas urbanos y geográficos donde la componente espacial es clave, desde la concepción del proyecto hasta la transferencia de la solución a quienes deben adoptarla. Se trabajan los fundamentos de los datos geográficos y las trazas digitales, el modelamiento espacial con autocorrelación, regresión, clustering y clasificación espacial, el análisis de redes, flujos y accesibilidad urbana, y la visualización con Python y JavaScript, cerrando con estrategias de comunicación hacia contrapartes. Todo gira en torno a un proyecto en equipos sobre un problema real, evaluado por hitos de avance, una presentación oral final y un informe escrito. Necesitas una base sólida en diseño y análisis de algoritmos y soltura programando.",
+    "tags": [
+      4,
+      11,
+      1,
+      34
+    ],
+    "acm": [
+      "GD-Analítica",
+      "IA-AA",
+      "GTI-Visualización",
+      "FME-Estadística"
+    ]
+  },
+  {
+    "codigo": "CC5217",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128650",
+    "resumen": "Este curso te prepara para analizar y evaluar proyectos de software desde la perspectiva de la privacidad, frente a un escenario ético y legal cambiante. Se abordan el concepto de privacidad y el enfoque de privacidad desde el diseño, los marcos legales y normativas de distintos países, la relación entre seguridad y privacidad con fundamentos de criptografía, la gobernanza y clasificación de datos, los derechos de los usuarios y los métodos técnicos para compartir datos reduciendo riesgos, cerrando con evaluación de impacto y nociones de privacidad diferencial. Combina clases expositivas con análisis de casos, y se evalúa mediante un proyecto semestral en equipo entregado en tareas sucesivas con exposiciones. Requiere bases de ingeniería de software y de probabilidades y estadística.",
+    "tags": [
+      39,
+      29,
+      13
+    ],
+    "acm": [
+      "GD-Seguridad",
+      "SEG-Gobernanza",
+      "SEP-Privacidad",
+      "SEG-Ingeniería"
+    ]
+  },
+  {
+    "codigo": "CC5218",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=245422",
+    "resumen": "Este curso busca que analices críticamente los fundamentos conceptuales de la inteligencia artificial contemporánea, integrando perspectivas computacionales, científicas y filosóficas. Se recorren las grandes tradiciones del campo, como los enfoques simbólico, conexionista y estadístico, las arquitecturas de agentes, el estatus epistemológico del aprendizaje profundo, la percepción, el control y el aprendizaje por refuerzo, el lenguaje y el razonamiento en modelos fundacionales, y finalmente los límites, sesgos e impactos éticos y sociales de la IA. Las clases combinan exposiciones, lectura crítica, debates y estudios de caso, y se evalúa con controles sobre las lecturas y un estudio de caso grupal presentado oralmente. Requiere base previa en aprendizaje de máquinas o modelación probabilística y estadística, y lectura fluida en inglés.",
+    "tags": [
+      39,
+      1,
+      2
+    ],
+    "acm": [
+      "IA-Introducción",
+      "IA-RCR",
+      "IA-AA",
+      "IA-Agentes",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC5219",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256058",
+    "resumen": "Aquí aprendes a comparar, adaptar y combinar modelos generativos para construir sistemas que procesan y generan texto, imagen y audio. Se recorren las principales familias de arquitecturas generativas para visión, los grandes modelos de lenguaje y su ajuste fino eficiente, los modelos de audio, la multimodalidad y, finalmente, los LLM como sistemas con recuperación aumentada, agentes, razonamiento e interpretabilidad, siempre evaluando calidad, sesgos y riesgos éticos. Las clases expositivas se complementan con laboratorios en parejas usando bibliotecas especializadas, y se evalúa con esos laboratorios, mini evaluaciones teóricas, una tarea con defensa oral y la presentación de un paper reciente. Necesitas bases de probabilidades y estadística, experiencia en minería de datos y soltura para leer artículos técnicos en inglés.",
+    "tags": [
+      2,
+      1,
+      5,
+      6,
+      39,
+      7
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-PLN",
+      "IA-Visión",
+      "IA-Agentes",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC5220",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256094",
+    "resumen": "Este curso te enseña a formalizar problemas de optimización y a resolverlos con metaheurísticas, comparando algoritmos estocásticos mediante experimentos rigurosos y reproducibles. Se parte por los fundamentos de la optimización de caja negra y la metodología experimental, para luego implementar desde cero métodos de estado único, algoritmos evolutivos poblacionales y métodos de enjambre con manejo de restricciones, cerrando con optimización multiobjetivo, diversidad y tendencias actuales del área. Se trabaja en torno a un proyecto en equipo sobre un problema escogido por cada grupo, evaluado mediante tareas prácticas grupales con informes breves y una presentación final de un artículo reciente. Para que te vaya bien necesitas buenas bases de diseño y programación, además de comodidad con las matemáticas discretas.",
+    "tags": [
+      31,
+      8
+    ],
+    "acm": [
+      "IA-Búsqueda",
+      "AL-Estrategias",
+      "FME-Estadística"
+    ]
+  },
+  {
+    "codigo": "CC5221",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256098",
+    "resumen": "Este curso propone mirar los sistemas de inteligencia artificial como sistemas sociotécnicos, analizando sus beneficios y daños a partir de la interacción entre factores técnicos y humanos, para luego diseñar intervenciones que respondan a esos problemas. Se abordan los fundamentos sociotécnicos de la IA, los sesgos, la justicia y la transparencia algorítmica, y la confianza, la supervisión humana, la colaboración persona-IA y la rendición de cuentas, aplicando todo al estudio de un sistema real. Las clases combinan exposiciones con análisis de casos en grupo, y se evalúa con quizzes individuales sobre las lecturas y un proyecto grupal de diagnóstico y rediseño. Conviene llegar con bases de minería de datos y disposición a leer y discutir literatura académica.",
+    "tags": [
+      39,
+      12,
+      1
+    ],
+    "acm": [
+      "IA-SEP",
+      "IPO-Responsabilidad",
+      "IPO-Usuario",
+      "SEP-DIIA"
+    ]
+  },
+  {
+    "codigo": "CC5301",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5225",
+    "resumen": "Aquí aprendes a razonar matemáticamente sobre la seguridad de los algoritmos criptográficos, modelarlos formalmente y usarlos para resolver problemas prácticos de confidencialidad y autentificación en redes. Se parte de los objetivos de seguridad, los adversarios y la criptografía clásica, para luego estudiar la criptografía simétrica con cifradores de bloque, funciones de hash y autentificación de mensajes, la criptografía de clave pública basada en teoría de números, y su uso práctico mediante infraestructura de clave pública, acuerdos de claves y canales seguros. Se trabaja con clases teóricas y se evalúa con un control, un examen, tareas cortas de demostraciones y problemas, y un proyecto semestral. Requiere bases de algoritmos, teoría de la computación y probabilidades.",
+    "tags": [
+      29,
+      28,
+      27,
+      33
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto"
+    ]
+  },
+  {
+    "codigo": "CC5303",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=246070",
+    "resumen": "Este curso te entrega los conceptos centrales para comprender, diseñar y construir sistemas computacionales que funcionan de manera distribuida. Se estudian los modelos y la evolución de los sistemas distribuidos, los esquemas de comunicación entre procesos, la identificación y localización de entidades, la migración de procesos y código, la sincronización y coordinación con tolerancia a fallas, la consistencia y replicación de datos, y los sistemas de archivos distribuidos. Las clases son expositivas y se evalúa con controles, un examen y tareas de programación incrementales, donde cada entrega reutiliza las anteriores y todo debe funcionar correctamente. Para que te vaya bien necesitas dominar los fundamentos de redes de computadores y programar con soltura.",
+    "tags": [
+      25,
+      27,
+      22
+    ],
+    "acm": [
+      "CPD-Comunicación",
+      "CPD-Coordinación",
+      "CPD-Programas",
+      "GD-Distribuidas",
+      "SO-FicherosAvanzados"
+    ]
+  },
+  {
+    "codigo": "CC5304",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54746",
+    "resumen": "Este curso introduce la infraestructura de tecnologías de información desde la perspectiva de la alta disponibilidad, preparándote para diseñar soluciones institucionales, dialogar con especialistas en hardware y software, y negociar con proveedores externos. Se revisa el rol de la infraestructura en una organización moderna y la diferencia entre arquitectura e infraestructura, para luego estudiar data centers, servidores, almacenamiento y respaldo, redes y sistemas operativos, siempre considerando disponibilidad, desempeño y seguridad, y cerrar con administración de sistemas, continuidad operacional y principios de alta disponibilidad. Las clases son expositivas y se evalúa mediante controles durante el semestre y un examen final. Para aprovecharlo necesitas conocimientos base de bases de datos y de sistemas operativos.",
+    "tags": [
+      24,
+      25,
+      27,
+      28,
+      22
+    ],
+    "acm": [
+      "FS-Diseño",
+      "FS-Fiabilidad",
+      "FS-Rendimiento",
+      "FS-Recursos",
+      "FS-Seguridad"
+    ]
+  },
+  {
+    "codigo": "CC5308",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5133",
+    "resumen": "Aquí aprendes las bases de la administración de servicios en sistemas Linux, con criterio para evaluar plataformas técnicas y para exigir, proveer y responsabilizarte de niveles de servicio. Se parte por la instalación y configuración básica de distintas distribuciones, se revisan labores profesionales como control de acceso, sistemas de archivo, respaldos y actualizaciones, y luego la configuración de servicios típicos de servidor, como red, bases de datos, web y correo, para cerrar con seguridad y gestión de riesgos. Las clases expositivas, a cargo de distintos especialistas, incluyen práctica en máquinas virtuales, y se evalúa con tareas de configuración o programación shell, actividades grupales en aula y un control teórico. Necesitas conocimientos base de programación de sistemas y sistemas operativos.",
+    "tags": [
+      24,
+      22,
+      27,
+      28
+    ],
+    "acm": [
+      "SO-Principios",
+      "SO-Protección",
+      "SO-Ficheros",
+      "SO-Dispositivos",
+      "RC-Aplicaciones",
+      "FS-Recursos"
+    ]
+  },
+  {
+    "codigo": "CC5312",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=152490",
+    "resumen": "Este curso entrega los conceptos fundamentales de la seguridad computacional, como amenazas, vulnerabilidades y ataques, para que puedas evaluar de forma informada la seguridad de un sistema y proponer formas de protegerlo. Se revisan los principios básicos de la seguridad, el uso correcto de la criptografía para confidencialidad y autentificación, las técnicas de ataque y defensa sobre software vulnerable, el malware y la ingeniería social, la seguridad de sistemas operativos y redes, la seguridad web y móvil, y temas como respuesta a incidentes, privacidad y anonimato. Las clases son expositivas y se evalúa con controles, un examen y tareas de programación y teóricas, individuales o grupales. Necesitas bases sólidas de bases de datos y sistemas operativos.",
+    "tags": [
+      28,
+      29,
+      27,
+      39
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "RC-Seguridad",
+      "SO-Protección",
+      "SEP-Privacidad"
+    ]
+  },
+  {
+    "codigo": "CC5322",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=34561",
+    "resumen": "Este taller lleva a la práctica el funcionamiento de las redes de datos de gran tamaño, mostrando las dificultades reales que aparecen en ellas y en la Internet actual. Se trabajan las redes virtuales y sus escenarios de uso, el ruteo dinámico con protocolos y políticas para propagar prefijos IPv4 e IPv6, el diseño de sistemas de alta disponibilidad mediante distribución de carga y servicios replicados, y aspectos de seguridad en la red como cortafuegos y traducción de direcciones. Las clases lectivas se combinan con laboratorio en clases, y se evalúa mediante controles y un examen. Para aprovecharlo necesitas dominar los fundamentos de redes de computadores, en especial protocolos y direccionamiento.",
+    "tags": [
+      27,
+      24,
+      28,
+      25
+    ],
+    "acm": [
+      "RC-Enrutamiento",
+      "RC-Fiabilidad",
+      "RC-Seguridad",
+      "FS-Fiabilidad"
+    ]
+  },
+  {
+    "codigo": "CC5325",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=67522",
+    "resumen": "Este taller busca despertar el interés y profundizar la comprensión de la ciberseguridad a través de competencias tipo Capture the Flag, donde equipos resuelven desafíos usando programación, ingenio, deducción lógica y matemática básica. Se abordan problemas de esteganografía, criptografía clásica y moderna, vulnerabilidades en aplicaciones web, análisis forense, ingeniería reversa, explotación de programas para escalar privilegios e inteligencia de fuentes abiertas, siempre con énfasis en el uso ético y autorizado de estos conocimientos. Las clases se centran en discutir y resolver problemas, y se evalúa con tareas resueltas en equipo pero entregadas individualmente con código y un writeup del razonamiento, además de una competencia grupal final en vivo. Requiere sólidas bases de algoritmos, estructuras de datos y programación.",
+    "tags": [
+      28,
+      29,
+      21,
+      39
+    ],
+    "acm": [
+      "SEG-Cripto",
+      "SEG-Forense",
+      "SEG-Codificación",
+      "SEG-SEP"
+    ]
+  },
+  {
+    "codigo": "CC5326",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=166190",
+    "resumen": "Aquí aprendes a diseñar e implementar sistemas basados en internet de las cosas, desde el dispositivo hasta la aplicación que lo gestiona, con un enfoque orientado a problemas reales de la industria como domótica, wearables o salud. Se revisan arquitecturas y protocolos de red para IoT, el prototipado de dispositivos con firmware y su visualización y almacenamiento de datos, el ecosistema de productos actuales, edge y cloud computing con aprendizaje de máquinas aplicado, ciberseguridad y modelos de negocio. Las clases expositivas se complementan con un proyecto en equipo desarrollado en varias iteraciones, evaluado mediante informes y presentaciones. Conviene llegar con experiencia en programación de sistemas cercana al hardware y conocimientos base de redes de computadores.",
+    "tags": [
+      30,
+      27,
+      1,
+      28,
+      42
+    ],
+    "acm": [
+      "DPE-Empotradas",
+      "RC-Emergentes",
+      "DPE-Común",
+      "FS-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC5327",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=117482",
+    "resumen": "Este curso ofrece una visión transversal de la seguridad computacional, para que puedas evaluar con criterio qué tan seguro es un sistema y cómo atacarlo o protegerlo. Se parte por la criptografía simétrica y asimétrica y los principios de seguridad y modelamiento de amenazas, para luego abordar vulnerabilidades de software de bajo nivel, seguridad web, de redes, sistemas operativos y dispositivos móviles, testeo e ingeniería reversa, malware y seguridad de hardware, cerrando con privacidad, anonimato y reporte responsable de vulnerabilidades. Hay cátedras expositivas y auxiliares con laboratorios guiados, y se evalúa con ejercicios en clase, laboratorios individuales y un proyecto grupal dirigido. Necesitas buen manejo de programación y conocimientos sólidos de sistemas operativos.",
+    "tags": [
+      28,
+      29,
+      21,
+      39,
+      27
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "SEG-Forense",
+      "RC-Seguridad",
+      "SEP-Privacidad"
+    ]
+  },
+  {
+    "codigo": "CC5328",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128654",
+    "resumen": "Aquí aprendes a diseñar e implementar sistemas de sensorización basados en sistemas embebidos, orientados al monitoreo de condiciones de maquinaria industrial en el contexto de la industria 4.0 y los sistemas ciberfísicos. Se abordan los fundamentos de sistemas embebidos, la programación de microcontroladores y sensores con protocolos de comunicación serial, el prototipado de dispositivos con nociones de electrónica digital, la generación y análisis de datos con edge sensors y aprendizaje de máquinas, y los modelos de negocio asociados. Las clases expositivas se combinan con un proyecto en equipo con entregas sucesivas, y se evalúa mediante tareas, trabajo en clases, informes técnicos y presentaciones. Te ayudará manejar programación de bajo nivel y conocimientos sólidos de sistemas operativos.",
+    "tags": [
+      30,
+      20,
+      21,
+      1,
+      42
+    ],
+    "acm": [
+      "DPE-Empotradas",
+      "AR-ES",
+      "GTI-Física",
+      "IA-AA"
+    ]
+  },
+  {
+    "codigo": "CC5330",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=213310",
+    "resumen": "Este curso te prepara para diseñar e implementar sistemas y aplicaciones que consideren la ciberseguridad desde su concepción, evitando errores comunes de desarrollo, despliegue y configuración. Se recorren los fundamentos de riesgo, autenticación y control de acceso, la criptografía moderna y sus aplicaciones, la seguridad de bajo nivel, de sistemas operativos, redes y aplicaciones web, el desarrollo seguro, la seguridad defensiva con inteligencia de amenazas, y el marco legal, social y ético de la disciplina. Además de cátedras, hay clases prácticas, casos de estudio y laboratorios en el bloque auxiliar, y se evalúa mediante laboratorios prácticos con informe y código, junto con casos de estudio con sus reportes. Necesitas buena base en sistemas operativos y en ingeniería de software.",
+    "tags": [
+      28,
+      29,
+      39,
+      27,
+      13
+    ],
+    "acm": [
+      "SEG-Fundamentos",
+      "SEG-Cripto",
+      "SEG-Codificación",
+      "SEG-Ingeniería",
+      "SEG-Gobernanza",
+      "SEP-Seguridad"
+    ]
+  },
+  {
+    "codigo": "CC5401",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5230",
+    "resumen": "Aquí vives de cerca el desarrollo de un sistema de software real: formular, planificar y gestionar un proyecto, trabajar coordinadamente en equipo asumiendo un rol específico, administrar riesgos y asegurar la calidad del producto. Se abordan modelos de desarrollo y estándares de la industria, estimación de esfuerzo, ingeniería de requisitos, diseño arquitectónico, detallado y de interfaces, aseguramiento de calidad, pruebas e implantación. Cátedras y auxiliares apoyan un proyecto en equipos grandes que dura todo el semestre, y se evalúa con controles, un examen, el desempeño en el rol asignado, la fase de implantación y una coevaluación entre pares. Necesitas una base sólida en lenguajes de programación e ingeniería de software.",
+    "tags": [
+      13,
+      38
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Validación",
+      "IS-Fiabilidad"
+    ]
+  },
+  {
+    "codigo": "CC5402",
+    "creditos": 12,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174862",
+    "resumen": "Este curso integra lo aprendido durante la carrera en un proyecto que refleja la práctica profesional: en equipo, desarrollas una solución de software para un problema real de una organización externa, interactuando con clientes y usuarios. El trabajo sigue metodologías ágiles con una estrategia incremental en iteraciones, e implica planificar y negociar alcances, autogestionar el equipo, construir software de alta calidad técnica y considerar sus impactos éticos y ambientales. Cada iteración cierra con una presentación pública, y se evalúan la calidad del software, la gestión del proyecto, la comunicación oral, el valor aportado al cliente y la coevaluación. Como es integrador, requiere tener avanzada la carrera, con formación en minería de datos y gestión de proyectos.",
+    "tags": [
+      13,
+      38,
+      39,
+      40
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Requisitos",
+      "IS-Construcción",
+      "IS-Validación",
+      "SEP-Comunicación",
+      "SEP-Sostenibilidad"
+    ]
+  },
+  {
+    "codigo": "CC5404",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5219",
+    "resumen": "Este taller práctico busca que comprendas los conceptos centrales del modelamiento orientado a objetos usando UML como lenguaje común a lo largo de todo el semestre. Tras revisar el origen del lenguaje y una metodología de desarrollo basada en el Proceso Unificado, se trabaja con los distintos artefactos de UML, como diagramas de casos de uso, actividades, interacción, estados, clases y componentes, además del uso de una herramienta de modelamiento. En cada clase se presenta un artefacto con un ejemplo y un ejercicio a resolver en el momento, y se evalúa mediante esos ejercicios y un proyecto con entregas sucesivas que va desde los requerimientos hasta la implementación. Conviene llegar con base en diseño y programación orientada a objetos.",
+    "tags": [
+      13,
+      16
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-Diseño",
+      "IS-Herramientas",
+      "FLP-POO"
+    ]
+  },
+  {
+    "codigo": "CC5408",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54762",
+    "resumen": "En este taller diseñas e implementas un videojuego completo en equipo, usando un motor de videojuegos y herramientas complementarias para producir sus recursos, con foco en el usuario final. Se abordan la estructura de un videojuego y la creación de la experiencia, el diseño de mecánicas, historia, desafíos y controles, la incorporación de inteligencia artificial, interfaces y coherencia audiovisual, el balance y las pruebas con usuarios, y finalmente la publicación y el funcionamiento de la industria. La metodología se basa en proyectos, combinando clases expositivas, trabajo guiado y presentaciones de avance, y se evalúa mediante hitos incrementales que consideran calidad técnica, presentación, evaluación entre pares y coevaluación. Basta con conocimientos introductorios de programación y disposición para trabajar en equipo.",
+    "tags": [
+      15,
+      12,
+      9
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IA-Agentes"
+    ]
+  },
+  {
+    "codigo": "CC5409",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128662",
+    "resumen": "En este taller implementas en equipo un videojuego multijugador online, usando un motor de videojuegos y herramientas para producir recursos gráficos y de sonido, hasta publicarlo para que la comunidad pueda jugarlo. Como este paradigma introduce la arquitectura cliente-servidor, el proceso es guiado e incorpora gradualmente conceptos de redes y comunicación, lobby, replicación y sincronización, manejo de latencia y desconexiones, balance y testing con usuarios, elementos sociales como rankings y servicios de backend, y la conectividad necesaria para distribuir el juego. Las clases expositivas se combinan con trabajo de proyecto, y se evalúa con hitos incrementales que consideran calidad técnica, presentación y coevaluación del equipo. Conviene llegar con base sólida en diseño y programación orientada a objetos.",
+    "tags": [
+      15,
+      27,
+      25
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "RC-Aplicaciones",
+      "CPD-Coordinación",
+      "IPO-Evaluación"
+    ]
+  },
+  {
+    "codigo": "CC5501",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177402",
+    "resumen": "Aquí desarrollas habilidades para modelar, analizar y resolver problemas aplicados que requieren mallas geométricas sobre geometrías planas, superficies y volúmenes, combinando fundamentos teóricos con implementaciones prácticas. Se estudian polígonos y triangulaciones, la triangulación de Delaunay y sus algoritmos, la generación de mallas de buena calidad y su refinamiento, aplicaciones en computación gráfica, modelación de terrenos y elementos finitos, otros métodos de generación de mallas, los desafíos del caso tridimensional y la paralelización de estos algoritmos. Las clases expositivas resuelven problemas geométricos y su implementación, y se evalúa con ejercicios, un control, tareas de programación y un trabajo de investigación. Necesitas programar con soltura y tener una base sólida en algoritmos y estructuras de datos.",
+    "tags": [
+      35,
+      9,
+      10,
+      23,
+      31
+    ],
+    "acm": [
+      "GTI-Modelado",
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "CPD-Algoritmos"
+    ]
+  },
+  {
+    "codigo": "CC5502",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5216",
+    "resumen": "Este curso enseña a diseñar, analizar e implementar algoritmos geométricos en dos y tres dimensiones para modelar objetos reales de forma discreta, con aplicaciones en visualización, simulación, juegos y otras áreas de la ciencia y la ingeniería. Se abordan operaciones geométricas básicas, problemas de búsqueda e intersección, cerraduras convexas, diagramas de Voronoi y triangulaciones de Delaunay, generación de mallas, partición del espacio y planificación de movimientos, siempre atendiendo los casos degenerados y la robustez. Las clases combinan cátedras con aprendizaje basado en problemas, y se evalúa mediante controles, controles de lectura de artículos en inglés, una presentación, evaluaciones grupales y un proyecto computacional. Conviene llegar con buena base en algoritmos y estructuras de datos y soltura en matemáticas discretas.",
+    "tags": [
+      35,
+      31,
+      9,
+      32
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Estrategias",
+      "GTI-Modelado"
+    ]
+  },
+  {
+    "codigo": "CC5504",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54750",
+    "resumen": "Este curso explora los fundamentos cognitivos, de diseño y computacionales de la interacción entre personas y computadores, para analizar críticamente y construir interfaces gráficas pensadas en quienes las usan. Se recorren la psicología de los objetos cotidianos y los principios de diseño, los aportes de la neurociencia y la cognición humana, el análisis de errores, el diseño centrado en el usuario con sus métodos de usabilidad y el diseño detallado de interfaces para escritorio, web y dispositivos portátiles. Las clases incluyen exposiciones, discusión de artículos y estudio de casos, y se evalúa con controles de lectura, tareas basadas en casos y un proyecto final de desarrollo de una interfaz. Requiere base en ingeniería de software y lectura en inglés.",
+    "tags": [
+      12
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
+    ]
+  },
+  {
+    "codigo": "CC5509",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=15366",
+    "resumen": "Este curso estudia métodos del estado del arte para representar y clasificar patrones, con foco principal en aplicaciones de visión por computador como el reconocimiento de rostros, dígitos manuscritos o imágenes en general. Se tratan la extracción de características visuales y la reducción de dimensionalidad, las métricas para evaluar sistemas de reconocimiento, la clasificación supervisada y el clustering, y finalmente la codificación dispersa, las redes neuronales convolucionales y los modelos para patrones secuenciales. Las clases son expositivas e incluyen la presentación obligatoria y la discusión grupal de artículos técnicos; se evalúa con tareas individuales, un proyecto en parejas, un control y un examen. Para aprovecharlo necesitas programar con soltura y tener buena base en diseño de software.",
+    "tags": [
+      6,
+      1
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "GTI-Imagen"
+    ]
+  },
+  {
+    "codigo": "CC5510",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=31798",
+    "resumen": "Este curso introduce los desafíos de diseñar sistemas computacionales interactivos que respondan a necesidades concretas de usuarios reales, siguiendo una ruta metodológica que va desde entender el problema en su contexto hasta evaluar formalmente la solución. Se trabajan la usabilidad y la experiencia de usuario, técnicas para levantar y analizar necesidades, prototipado de baja y alta fidelidad, factores humanos, cognitivos, sociales y emocionales en el diseño, métodos cualitativos y cuantitativos de evaluación con usuarios, ética en estudios con personas y tendencias actuales del área. Las clases son teórico-prácticas, apoyadas en casos reales, y se evalúa con ejercicios en clase, análisis de casos y un proyecto en equipo con hitos de avance y presentación final. Basta con conocimientos introductorios de programación.",
+    "tags": [
+      12,
+      39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Responsabilidad"
+    ]
+  },
+  {
+    "codigo": "CC5511",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=84105",
+    "resumen": "Este curso entrega los conceptos centrales de la interacción humano-computador y las herramientas para concebir, construir y evaluar aplicaciones con interfaz gráfica de usuario. Se estudian las capacidades físicas, cognitivas y sociales de las personas que influyen en el diseño, los principios de las interfaces gráficas y del buen diseño, incluida la accesibilidad, el desarrollo centrado en el usuario, la prevención de fallas de interacción, arquitecturas y patrones de software para sistemas interactivos, métodos de evaluación con y sin usuarios, y los estándares del área. Las cátedras se complementan con clases auxiliares y ejercicios, y se evalúa mediante controles, un examen y ejercicios individuales o grupales. Requiere una base sólida en ingeniería de software.",
+    "tags": [
+      12,
+      13
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Accesibilidad",
+      "IS-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC5512",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=176570",
+    "resumen": "Este curso busca que entiendas las componentes técnicas de un videojuego y aprendas a analizar, modificar y extender motores de videojuegos en 2D y 3D, algo clave para la industria. Se parte programando juegos simples en un lenguaje cercano al hardware con bibliotecas de terceros, para luego estudiar modelos de objetos de juego, módulos de soporte como recursos, scripting y manejo del tiempo, y subsistemas especializados como renderizado, audio, colisiones, física, animación, inteligencia artificial y networking, apoyándose en depuradores y perfiladores. Se trabaja con cátedras, aprendizaje basado en proyectos y estudio de casos, y se evalúa con tareas computacionales individuales, una evaluación teórica y reportes técnicos. Requiere base en computación gráfica, programación de sistemas y diseño de software.",
+    "tags": [
+      15,
+      9,
+      21,
+      13
+    ],
+    "acm": [
+      "DPE-Juegos",
+      "GTI-Renderizado",
+      "GTI-Animación",
+      "GTI-Simulación",
+      "IS-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC5513",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=113966",
+    "resumen": "Este curso introduce los algoritmos y estructuras de datos para procesar y analizar información 3D, presente en áreas como el diseño asistido por computador, el entretenimiento y la medicina. Se estudian las representaciones de datos 3D como mallas, nubes de puntos y volúmenes, fundamentos de geometría diferencial, técnicas de procesamiento geométrico como reconstrucción de superficies, registro, simplificación, remallado y deformación, y métodos de análisis de formas basados en el operador Laplaciano y la difusión de calor, con aplicaciones en recuperación, correspondencias y simetrías. Las clases expositivas se complementan con demos y auxiliares prácticas, y se evalúa con tareas, presentaciones de artículos del estado del arte y un proyecto por iteraciones. Requiere sólida base en diseño de algoritmos y computación gráfica.",
+    "tags": [
+      9,
+      35,
+      7,
+      31,
+      32
+    ],
+    "acm": [
+      "GTI-Modelado",
+      "AL-Fundamentales",
+      "FME-Lineal"
+    ]
+  },
+  {
+    "codigo": "CC5514",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=232729",
+    "resumen": "Este curso enseña a aplicar técnicas de análisis topológico de datos para limpiar, clasificar y procesar datos en distintos formatos, eligiendo con criterio las herramientas algorítmicas y bibliotecas de código abierto adecuadas. Se parte de las limitaciones de los métodos clásicos de reducción de dimensión, para luego estudiar complejos simpliciales, homología persistente y diagramas de persistencia, herramientas como Mapper y construcciones escalables, y aplicaciones actuales como la clasificación de datos y el análisis de redes neuronales. La topología se presenta intuitivamente, con foco computacional. Se trabaja con cátedras, laboratorios y casos de estudio, y se evalúa con preguntas en clase, laboratorios y un proyecto grupal sobre datos reales. Requiere buena programación en Python y conocimientos de minería de datos.",
+    "tags": [
+      4,
+      1
+    ],
+    "acm": [
+      "GD-Analítica",
+      "AL-Fundamentales"
+    ]
+  },
+  {
+    "codigo": "CC5516",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=256106",
+    "resumen": "Este taller propone desarrollar software interactivo que resuelva problemas concretos de usuarios reales en su propio contexto, trabajando en equipos multidisciplinarios junto a estudiantes de comunicación e imagen y en diálogo con conocimientos de dominios como salud, educación o periodismo. Se revisan el pensamiento transdisciplinar y la evolución de la interacción humano-computador, el diseño participativo, la etnografía y la investigación contextual, para luego dedicar la mayor parte del semestre a un proyecto que abarca modelamiento del dominio, requisitos, prototipado y evaluación de usabilidad y aceptación, con atención a la ética en la investigación con personas. Se evalúa mediante presentaciones de avance del proyecto, que consideran calidad técnica, integración disciplinar y coevaluación. Requiere base en ingeniería de software.",
+    "tags": [
+      12,
+      13,
+      39
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación",
+      "IPO-Responsabilidad",
+      "IS-TrabajoEquipo"
+    ]
+  },
+  {
+    "codigo": "CC5601",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5235",
+    "resumen": "Este curso prepara para formular, evaluar y gestionar la adquisición de proyectos de tecnologías de la información en un ambiente de negocios. Se aprende a preparar un proyecto de este tipo, evaluarlo financieramente y presentarlo ante un directorio, y luego a conducir su compra en un proceso competitivo, desarrollando bases administrativas y técnicas, pautas de evaluación de propuestas, adjudicación, negociación y nociones básicas de contratos. Las clases teóricas y prácticas usan ejemplos reales y actuales, y se evalúa con controles y un proyecto en grupos pequeños que incluye un trabajo escrito y una presentación en público. Requiere conocimientos de ingeniería de software y de evaluación económica de proyectos.",
+    "tags": [
+      38,
+      40
+    ],
+    "acm": [
+      "SEP-Economía",
+      "IS-Requisitos",
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC5602",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=230989",
+    "resumen": "Aquí aprenderás a analizar una organización desde la perspectiva de las tecnologías de la información, evaluando su impacto y su aporte estratégico, para luego proponer mejoras concretas. Se estudian los modelos de negocio, la formulación de estrategias de negocio basadas en TI y el alineamiento entre ambos, incluyendo el uso de la información y los proyectos de soporte necesarios para ejecutar el plan. Las clases expositivas se complementan con estudios de caso de empresas reales. La evaluación se basa en análisis de casos, donde construyes el modelo y la estrategia de una organización, y en un proyecto final presentado en formato de video. Conviene llegar con nociones de formulación, evaluación y gestión de proyectos.",
+    "tags": [
+      38
+    ],
+    "acm": [
+      "SEP-Economía",
+      "GD-Datos"
+    ]
+  },
+  {
+    "codigo": "CC5603",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=180526",
+    "resumen": "Este curso entrega una formación integral para definir estrategias que garanticen la disponibilidad, integridad, calidad y seguridad de los datos dentro de una organización. Se abordan los fundamentos de la gestión y gobernanza de datos y sus modelos de madurez, la gestión de la calidad de datos, la operativización de la gobernanza mediante metadatos y datos maestros, una introducción a la analítica y al aprendizaje automático, y la gestión del cambio cultural hacia el dato. Combina clases expositivas, estudios de caso y un proyecto en equipo sobre un problema real, evaluado mediante exposiciones orales de casos, diagnóstico y propuesta de solución, más una evaluación formativa del trabajo en equipo. Ayuda contar con bases en gestión de proyectos.",
+    "tags": [
+      38,
+      3,
+      39,
+      1
+    ],
+    "acm": [
+      "GD-Datos",
+      "GD-Seguridad",
+      "GD-Analítica",
+      "SEG-Gobernanza"
+    ]
+  },
+  {
+    "codigo": "CC5609",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242562",
+    "resumen": "Este taller busca desarrollar habilidades de comunicación oral y escrita útiles tanto en la vida académica como en el mundo laboral, especialmente para relacionarse con clientes y equipos. Se trabaja la presencia profesional y la comunicación asertiva, el levantamiento de requerimientos, la conducción de reuniones y las presentaciones efectivas, además de la negociación, el manejo de objeciones, los procesos comerciales y la preparación para entrevistas laborales. Las clases combinan marcos conceptuales breves con estudios de caso y juegos de rol. Se evalúa con ejercicios de improvisación, presentaciones e informes individuales, y con propuestas técnicas y comerciales grupales escritas y expuestas oralmente. Más que contenidos técnicos avanzados, requiere una base de diseño y programación de software y disposición a participar activamente.",
+    "tags": [
+      40
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "IS-Requisitos",
+      "IS-TrabajoEquipo"
+    ]
+  },
+  {
+    "codigo": "CC5611",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=221370",
+    "resumen": "Aquí reflexionarás sobre los criterios éticos que deben guiar la conducta profesional y social de quien trabaja en computación, y aprenderás a aplicarlos de manera responsable, con especial atención a la inteligencia artificial. Se recorren los fundamentos de la ética y sus principales corrientes, los códigos de ética profesional, la propiedad intelectual en el software, la ética de datos, la privacidad y la legislación de protección de datos personales, y los principios, normativas y marcos de gestión de riesgo para sistemas de IA. Las clases expositivas se combinan con estudios de caso e investigación grupal. Se evalúa mediante controles, análisis de casos y un trabajo de investigación final con informe y presentación. Basta con una base de programación.",
+    "tags": [
+      39
+    ],
+    "acm": [
+      "SEP-AnálisisÉtico",
+      "SEP-Deontología",
+      "SEP-PI",
+      "SEP-Privacidad",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC5613",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=7134",
+    "resumen": "Crear un software o dispositivo excelente no basta: también hay que saber venderlo y lanzarlo. En este taller aprenderás a estructurar un plan de lanzamiento de producto centrado en la historia que quieres contar, distinguiendo entre audiencias técnicas y comerciales. Se trabajan el storytelling y el uso de la voz, la construcción de la narrativa, la preparación de datos y momentos memorables que refuercen el mensaje clave, y la revisión y ensayo de la presentación, junto con nociones básicas de marketing. Las sesiones son semanales y de asistencia obligatoria, con trabajos personales o grupales presentados en clase. Se evalúa la asistencia y una presentación final donde lanzas un producto tecnológico. Requiere una base de diseño y programación de software.",
+    "tags": [
+      40,
+      42
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "SEP-Economía"
+    ]
+  },
+  {
+    "codigo": "CC5614",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=226073",
+    "resumen": "Este curso entrega herramientas de psicología y comunicación para desenvolverte en entornos colaborativos y fortalecer tu desempeño profesional. Se abordan el autoconocimiento, la seguridad psicológica, la escucha activa y la gestión del tiempo, la retroalimentación constructiva, la cultura organizacional y los procesos de selección laboral, además de la toma de decisiones éticas, la resolución de conflictos, el liderazgo y temas de inclusión y bienestar. Las clases son talleres, con discusiones, simulaciones y reflexión grupal, más acompañamiento tutorial. La evaluación gira en torno a un plan de mejora personal y profesional, con informes, actas de reunión, una presentación oral coevaluada, participación en clases y una entrevista a un profesional de la computación. Requiere una base de diseño y programación de software.",
+    "tags": [
+      40,
+      39
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación",
+      "SEP-DIIA",
+      "SEP-Deontología"
+    ]
+  },
+  {
+    "codigo": "CC5615",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5198",
+    "resumen": "Este curso te prepara para diseñar e implementar soluciones de inteligencia de negocios que apoyen la gestión y la toma de decisiones en empresas e instituciones. Se estudian los conceptos y aplicaciones de la inteligencia de negocios en distintas industrias, la diferencia entre ambientes analíticos y transaccionales, el modelamiento multidimensional y la identificación de necesidades de gestión, para luego diseñar y construir data warehouses, procesos de extracción y carga de datos, cubos, reportes y dashboards usando una herramienta de código abierto. Las clases son teórico-prácticas y se aplican a problemas reales, y la evaluación considera un control, un trabajo y un examen. Necesitas una base sólida en bases de datos y modelamiento de datos.",
+    "tags": [
+      3,
+      11
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Analítica",
+      "GD-Datos",
+      "GTI-Visualización"
+    ]
+  },
+  {
+    "codigo": "CC5618",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=54758",
+    "resumen": "Este taller busca que comprendas cómo la digitalización y las nuevas tecnologías transforman el modelo y la estrategia de gestión de las organizaciones, y que aprendas a diagnosticar su madurez digital para proponer un plan de acción ágil. Se abordan la cuarta revolución industrial y los modelos de negocio digitales, la gestión de proyectos y del talento digital, el diseño de productos y servicios con enfoques como design thinking, lean startup y agile, la experiencia del cliente y la gestión del cambio cultural. Se trabaja con aprendizaje basado en proyectos, cátedras con casos y discusiones, workshops de innovación y presentaciones, evaluándose mediante trabajos grupales. Conviene llegar con una base en ingeniería de software y gestión de proyectos de desarrollo.",
+    "tags": [
+      38,
+      12,
+      42
+    ],
+    "acm": [
+      "SEP-Economía",
+      "IS-TrabajoEquipo",
+      "IPO-Diseño"
+    ]
+  },
+  {
+    "codigo": "CC5619",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=59758",
+    "resumen": "Aquí aprenderás a abordar necesidades reales de empresas y organizaciones diseñando y construyendo prototipos digitales con herramientas de desarrollo rápido, NoCode y LowCode. Se trabajan los principios de diseño centrado en el usuario y de interfaces, la accesibilidad y el diseño para distintas plataformas, la construcción y evaluación de prototipos web y móviles, y metodologías de levantamiento de requisitos y diseño como Design Sprint, Event Storming y el diseño guiado por el dominio, con miras a proponer productos mínimos viables. Las clases combinan teoría, ejercicios prácticos individuales y un proyecto grupal propuesto por los estudiantes, evaluado con una propuesta, una presentación de avance y una final. Necesitas una base sólida en ingeniería de software y conocimientos básicos de programación.",
+    "tags": [
+      12,
+      14,
+      13,
+      42
+    ],
+    "acm": [
+      "IPO-Diseño",
+      "IPO-Accesibilidad",
+      "IPO-Evaluación",
+      "DPE-Web",
+      "DPE-Móviles",
+      "IS-Requisitos"
+    ]
+  },
+  {
+    "codigo": "CC5620",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=180530",
+    "resumen": "Este curso entrega una visión base del derecho informático en Chile, la disciplina que estudia las implicancias legales y regulatorias de la tecnología digital, para que puedas reconocer y resolver los problemas legales que enfrentarás en el ejercicio profesional. Tras unas nociones generales del derecho, se abordan la protección de datos personales y sus próximos cambios normativos, la criminalidad informática y la ciberseguridad, el documento y la firma electrónica, y los medios de prueba digitales, con referencias a marcos internacionales. Las clases son expositivas y se complementan con discusión y estudio de casos. Se evalúa con una evaluación teórica, análisis de casos expuestos oralmente en grupo y un examen. Está pensado para estudiantes con alguna experiencia práctica profesional.",
+    "tags": [
+      39,
+      28
+    ],
+    "acm": [
+      "SEP-Privacidad",
+      "SEP-Seguridad",
+      "SEG-Gobernanza"
+    ]
+  },
+  {
+    "codigo": "CC5621",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192946",
+    "resumen": "Este curso enseña a analizar y rediseñar procesos dentro de organizaciones reales, usando herramientas de modelamiento, optimización y programación para proponer soluciones tecnológicas a sus problemas. Se parte por entender por qué rediseñar procesos en la industria, luego se diagnostica la situación actual de una organización considerando su estrategia y comportamiento organizacional, y finalmente se modela la situación deseada aplicando modelos de optimización para problemas como colas de espera, inventario, transporte y planificación de tareas. Las clases combinan exposición y resolución de problemas, y la evaluación se centra en un proyecto semestral grupal con presentaciones orales de avance, más coevaluación entre pares. Conviene llegar con nociones de formulación y gestión de proyectos y disposición para trabajar en equipo.",
+    "tags": [
+      38
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-Diseño",
+      "AL-Estrategias",
+      "SEP-Economía"
+    ]
+  },
+  {
+    "codigo": "CC5622",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192902",
+    "resumen": "Este taller desarrolla las habilidades interpersonales que marcan la diferencia en el desempeño profesional de un ingeniero dentro de una organización. Se abordan la comunicación efectiva y la gestión de las emociones, los estilos de liderazgo, el trabajo en equipo y los equipos de alto desempeño, y el manejo de conflictos. La metodología es activa y participativa, con análisis de casos y discusión grupal, juegos de roles, ejercicios prácticos y lecturas semanales en español e inglés. Se evalúa mediante actividades grupales e individuales en clase, tareas de reflexión y controles de lectura. Basta la formación base en diseño y programación; lo central es la disposición a participar, reflexionar sobre la propia práctica y leer en inglés.",
+    "tags": [
+      40
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC5623",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192906",
+    "resumen": "Este taller reflexivo y práctico ayuda a proyectar tu carrera profesional, ya sea en una empresa o emprendiendo, a partir del reconocimiento de tus propias fortalezas y recursos personales. Se trabajan el perfil psicolaboral y las competencias profesionales, el análisis del mercado laboral para un ingeniero en computación, el marketing personal y la elaboración del currículum, y la preparación para procesos de selección y entrevistas. La metodología es activa, con bitácoras, cuestionarios, análisis de casos, juegos de roles, simulaciones de entrevista, presentaciones tipo pitch y lecturas en español e inglés. Se evalúa con actividades en clase, tareas en casa y controles de lectura. Basta la formación base en programación; lo esencial es la apertura a la autorreflexión.",
+    "tags": [
+      40,
+      42
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "SEP-Economía"
+    ]
+  },
+  {
+    "codigo": "CC5701",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5211",
+    "resumen": "Este curso introduce la informática aplicada al área de la salud, un dominio con dificultades propias frente a otros contextos de desarrollo de software. Se revisan el funcionamiento del sistema de salud chileno, la ética profesional en salud e informática, los vocabularios y clasificaciones para estructurar datos clínicos, el registro clínico electrónico, los sistemas de información hospitalarios y sus estándares, la telemedicina y el uso de tecnología en diagnóstico. Combina clases expositivas e interactivas, charlas de especialistas, seminarios bibliográficos y visitas a centros de salud. Se evalúa con un trabajo de investigación, controles de lectura, trabajos en clase y un control final. Requiere conocimientos base de bases de datos y disposición a comunicarse con usuarios clínicos.",
+    "tags": [
+      13,
+      3,
+      39
+    ],
+    "acm": [
+      "GD-Modelado",
+      "GD-Datos",
+      "SEP-Deontología",
+      "SEP-Privacidad"
+    ]
+  },
+  {
+    "codigo": "CC5901",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=177478",
+    "resumen": "Esta práctica consiste en integrarse a una organización real para desempeñarse en labores propias de un ingeniero en computación, demostrando las competencias técnicas y genéricas adquiridas en la carrera. Antes de iniciarla se completan módulos en línea sobre comunicación, ética, trabajo en equipo e innovación, y se elabora un plan de práctica que debe ser aprobado. Durante la práctica se espera abordar tareas como diseñar, implementar o modificar software, evaluar su calidad, modelar bases de datos o desarrollar aplicaciones web. Se evalúa con la apreciación del supervisor en la organización y un informe final que describe el problema, la solución y una reflexión sobre el desempeño. Requiere sólida formación en programación, ingeniería de software y bases de datos.",
+    "tags": [
+      40,
+      13,
+      14,
+      3
+    ],
+    "acm": [
+      "SEP-Deontología",
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo",
+      "IS-Construcción",
+      "IS-Validación"
+    ]
+  },
+  {
+    "codigo": "CC5905",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5207",
+    "resumen": "Este curso permite trabajar en un tema aplicado de ciencias de la computación bajo la guía directa de un profesor, profundizando en técnicas específicas del área elegida y desarrollando un proyecto acotado de investigación aplicada. El trabajo incluye formular el proyecto, construir prototipos, demostraciones o pruebas de concepto, y evaluar críticamente desarrollos previos para mejorarlos; los temas pueden ir desde metodologías de ingeniería de software hasta computación gráfica, software educativo o aplicaciones a la ingeniería. Se organiza mediante tutorías, lecturas, búsqueda de artículos, reuniones de trabajo y presentaciones de avance, y se evalúa tanto el proceso como los productos comprometidos. Para aprovecharlo necesitas autonomía, autorregulación, compromiso con la tarea y una base sólida de programación.",
+    "tags": [
+      41,
+      38
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC6104",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=174374",
+    "resumen": "Este curso desarrolla el pensamiento estadístico, una forma sistemática de describir fenómenos reales considerando su incertidumbre y usando datos para tomar decisiones. Parte con análisis descriptivo y visualización de datos, programación estadística en R y fundamentos de probabilidades, para luego estudiar las dos grandes escuelas de inferencia, frecuentista y bayesiana, incluyendo estimación, pruebas de hipótesis y regresión. Cierra con temas avanzados como evaluación de modelos con teoría de la información, modelos gráficos y modelos multinivel. Las clases son expositivas con resolución de problemas, y se evalúa mediante tareas individuales con preguntas teóricas, problemas aplicados y lectura de artículos en inglés, más un examen teórico. Requiere conocimientos previos de probabilidades y estadística o análisis de datos.",
+    "tags": [
+      8,
+      11,
+      1
+    ],
+    "acm": [
+      "FME-Estadística",
+      "FME-Probabilidad",
+      "GTI-Visualización"
+    ]
+  },
+  {
+    "codigo": "CC6204",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=30074",
+    "resumen": "Este curso introduce el aprendizaje basado en redes neuronales profundas, clave en los avances recientes de la inteligencia artificial, con énfasis en visión computacional y procesamiento de lenguaje natural. Se estudian los fundamentos de las redes neuronales y su entrenamiento, técnicas de regularización y optimización, aspectos prácticos para diseñar, depurar y ajustar modelos, redes convolucionales para imágenes, redes recurrentes para secuencias y tópicos avanzados como modelos generativos. Aunque la teoría es importante, el enfoque es marcadamente práctico: hay clases teóricas, revisión y presentación de artículos del estado del arte, tareas de programación, un proyecto o tareas adicionales, un control de mitad de semestre y un examen. Requiere buena base en algoritmos y estructuras de datos y soltura programando.",
+    "tags": [
+      1,
+      6,
+      5,
+      2
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "IA-PLN"
+    ]
+  },
+  {
+    "codigo": "CC6205",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=258846",
+    "resumen": "Este curso introduce los fundamentos, métodos y aplicaciones del procesamiento de lenguaje natural, recorriendo la evolución de la disciplina desde los enfoques estadísticos clásicos hasta los grandes modelos de lenguaje. Se trabajan el preprocesamiento y la representación de texto, la clasificación y el modelado estadístico del lenguaje, los modelos neuronales y la arquitectura Transformer, los modelos preentrenados y su adaptación, la ingeniería de prompts, la generación aumentada por recuperación y la evaluación de modelos, además de ética, sesgos y equidad. Combina clases expositivas, laboratorios de programación y discusión de artículos científicos, y se evalúa con tareas individuales de programación, actividades breves en clase y un proyecto grupal con informe tipo artículo. Requiere base en algoritmos, estructuras de datos y probabilidades.",
+    "tags": [
+      5,
+      2,
+      1,
+      39,
+      7
+    ],
+    "acm": [
+      "IA-PLN",
+      "IA-AA",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC6301",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5136",
+    "resumen": "Este curso entrega herramientas para proponer y evaluar formalmente modelos de seguridad, algoritmos y protocolos criptográficos dentro de una sub-área de investigación actual de la criptografía, que varía según la versión del curso. Tras una introducción a la criptografía demostrable, la mayor parte del semestre se dedica a la lectura crítica y discusión de artículos recientes en temas como computación multipartita segura, criptografía funcional, votación electrónica, criptografía post-cuántica o de curvas elípticas. La metodología combina clases expositivas, presentaciones de artículos por parte de los estudiantes y discusión, y se evalúa con presentaciones de papers y un proyecto de investigación desarrollado durante el semestre. Requiere base en algoritmos, teoría de la computación y probabilidades, o bien conocimientos introductorios de criptografía.",
+    "tags": [
+      29,
+      28,
+      41
+    ],
+    "acm": [
+      "SEG-Cripto"
+    ]
+  },
+  {
+    "codigo": "CC63C",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=95798",
+    "resumen": "Este curso desarrolla las habilidades para identificar, analizar y gestionar creativamente los conflictos que surgen al dirigir proyectos tecnológicos, ya sea con clientes, proveedores o el propio equipo. Se abordan la naturaleza y el contexto emocional de los conflictos, los principios y etapas de la negociación como estrategia de generación de valor, y competencias de comunicación como organizar argumentos, generar rapport, usar preguntas y manejar objeciones en conversaciones difíciles. Las clases combinan conceptos, demostración de técnicas y ejercicios prácticos con casos reales y juegos de roles, y se evalúa con controles de contenido, guías de ejercicios y un trabajo final sobre un caso de estudio. Más que conocimientos técnicos, pide disposición a participar activamente y reflexionar sobre la propia comunicación.",
+    "tags": [
+      40,
+      38
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "IS-TrabajoEquipo"
+    ]
+  },
+  {
+    "codigo": "CC6402",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=115682",
+    "resumen": "Este taller profundiza en las metodologías ágiles y lean, explorando temas en la frontera del área como el desarrollo de productos innovadores sin un problema de negocio bien definido, la usabilidad con enfoques ágiles, la automatización de pruebas de aceptación, la mantención de sistemas con flujo continuo y el escalamiento de la agilidad a grandes organizaciones. Tras una breve introducción teórica, los estudiantes investigan y presentan tópicos avanzados, y luego desarrollan en conjunto un proyecto de software donde aplican y evalúan esos enfoques. Se evalúan la calidad del producto y la opinión del cliente, la aplicación de las prácticas con co-evaluación de pares, y la comprensión demostrada en presentaciones. Requiere experiencia previa en ingeniería de software.",
+    "tags": [
+      13,
+      12,
+      42
+    ],
+    "acm": [
+      "IS-TrabajoEquipo",
+      "IS-Validación",
+      "IS-Refactorización",
+      "IPO-Evaluación"
+    ]
+  },
+  {
+    "codigo": "CC6409",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=192366",
+    "resumen": "Este taller enseña a formular un proyecto de inteligencia artificial que resuelva un problema real y a llevarlo hasta producción como software que integra modelos de aprendizaje automático. Se abordan la formulación y planificación de proyectos de IA, los patrones de arquitectura para integrar modelos en sistemas de software, la preparación de datos y el entrenamiento y evaluación de modelos, las prácticas DevOps y MLOps para desplegarlos y mantenerlos, y la evaluación de su impacto económico, social y ético. Todo gira en torno a un proyecto en equipo ligado a la innovación, evaluado mediante presentaciones de propuesta, avances y resultados, junto con ejercicios breves. Se requiere base en ingeniería de software y minería de datos.",
+    "tags": [
+      1,
+      13,
+      24,
+      38,
+      39
+    ],
+    "acm": [
+      "IA-AA",
+      "IS-Diseño",
+      "IS-Construcción",
+      "IS-Fiabilidad",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC6501",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5202",
+    "resumen": "Este taller se centra en diseñar o rediseñar la interfaz y la interacción de un dispositivo o software, trabajando en equipo y evaluando los resultados con usuarios finales. A partir de un caso de estudio, se analizan en profundidad las interfaces existentes para detectar sus fortalezas y debilidades, se elabora una propuesta de rediseño y se implementa mediante prototipos rápidos que se prueban y mejoran iterativamente con usuarios, siguiendo un enfoque de diseño centrado en el usuario. La metodología combina lectura y discusión de papers, trabajo colaborativo y presentaciones orales, y se evalúa con informes y presentaciones del análisis y la propuesta, controles de lectura, y el informe y presentación del prototipo final. Requiere conocimientos previos de interfaces humano-computador.",
+    "tags": [
+      12
+    ],
+    "acm": [
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
+    ]
+  },
+  {
+    "codigo": "CC6502",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5201",
+    "resumen": "Este taller profundiza en la usabilidad en la interacción humano-computador: qué es, por qué, cuándo y cómo evaluarla, y cómo se relaciona con el diseño de interfaces. Se estudian sus atributos, las diferencias entre usuarios y diversos métodos de evaluación, desde el testeo con usuarios y sus aspectos éticos hasta la observación, los cuestionarios y la evaluación heurística. Gran parte del curso consiste en diseñar y ejecutar una evaluación de usabilidad sobre un software o sitio web real, con análisis estadístico de los datos. Combina clases expositivas, taller y discusión de papers, y se evalúa con controles de lectura, un proyecto de usabilidad y un proyecto final. Requiere bases en ingeniería de software e interfaces humano-computador.",
+    "tags": [
+      12,
+      8,
+      39
+    ],
+    "acm": [
+      "IPO-Evaluación",
+      "IPO-Responsabilidad",
+      "FME-Estadística"
+    ]
+  },
+  {
+    "codigo": "CC6603",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=128658",
+    "resumen": "Este curso práctico aplica el ciclo de innovación y emprendimiento para desarrollar, en equipos interdisciplinarios, un producto mínimo viable que responda a necesidades reales de usuarios o clientes. Se recorren la detección de oportunidades con herramientas centradas en el usuario, la generación de ideas y el estudio de mercado, la construcción de la propuesta de valor y del modelo de negocios, la comunicación mediante pitch y storytelling, y el prototipado, testeo e iteración de la solución junto con el análisis de riesgos. Las clases se basan en estudio de casos, workshops y aprendizaje basado en proyecto, y se evalúa con trabajos y presentaciones grupales que culminan en un elevator pitch. Requiere nociones previas de formulación, evaluación y gestión de proyectos.",
+    "tags": [
+      12,
+      40,
+      38,
+      42
+    ],
+    "acm": [
+      "SEP-Economía",
+      "SEP-Comunicación",
+      "IPO-Usuario",
+      "IPO-Diseño",
+      "IPO-Evaluación"
+    ]
+  },
+  {
+    "codigo": "CC66H",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33565",
+    "resumen": "Este curso desarrolla competencias para modelar y resolver problemas reales con aprendizaje de máquinas y, en especial, con redes neuronales profundas. Parte por los fundamentos de las redes neuronales y su entrenamiento mediante descenso de gradiente y retropropagación, sigue con aspectos prácticos como la generalización, las métricas de desempeño y el ajuste de hiperparámetros, y luego aborda redes convolucionales para imágenes y redes recurrentes para secuencias, implementadas con librerías especializadas. La metodología combina clases teóricas, revisión de artículos de investigación, trabajos prácticos y un proyecto, y se evalúa con tareas, trabajo práctico y una prueba escrita. Para aprovecharlo conviene programar con soltura y manejar cálculo diferencial, en particular derivadas y la regla de la cadena.",
+    "tags": [
+      1,
+      6
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión"
+    ]
+  },
+  {
+    "codigo": "CC66I",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33569",
+    "resumen": "Este curso entrega los fundamentos de la gestión de datos a gran escala y del procesamiento distribuido, con el objetivo de entender cómo funcionan por dentro grandes sitios web y motores de búsqueda. Se estudian el diseño de sistemas distribuidos y sus sistemas de archivos, los marcos de procesamiento masivo y los lenguajes para analizar datos sobre múltiples máquinas, la recuperación de información con indexación y técnicas de ranking, y los almacenes NoSQL diseñados para escalar, junto con sus garantías y formas de distribuir los datos. Las clases expositivas se complementan con sesiones prácticas, y la evaluación se basa íntegramente en laboratorios. Conviene programar con soltura, ya que se implementan tareas sobre plataformas distribuidas.",
+    "tags": [
+      25,
+      26,
+      3,
+      7
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Comunicación",
+      "GD-Distribuidas",
+      "GD-NoSQL",
+      "GD-Procesamiento"
+    ]
+  },
+  {
+    "codigo": "CC66U",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=83001",
+    "resumen": "Este curso enseña a modelar y resolver problemas con técnicas modernas de aprendizaje de máquinas basadas en redes neuronales profundas, desde concebir la solución hasta implementarla, compararla y optimizarla. Se estudian los fundamentos de las redes neuronales y su entrenamiento con descenso de gradiente y retropropagación, los aspectos prácticos de generalización, métricas, optimizadores e inicialización, y las arquitecturas convolucionales y recurrentes aplicadas a la clasificación de imágenes, la detección de objetos y el procesamiento de secuencias y documentos con librerías especializadas. Se trabaja con clases teóricas, revisión de artículos de investigación, trabajos prácticos y un proyecto, y se evalúa con tareas, trabajo práctico y cuestionarios. Conviene programar con soltura y manejar cálculo diferencial, especialmente la regla de la cadena.",
+    "tags": [
+      1,
+      6,
+      5
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-Visión",
+      "IA-PLN"
+    ]
+  },
+  {
+    "codigo": "CC66V",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=211586",
+    "resumen": "Este curso enseña a comprender y aplicar técnicas modernas de inteligencia artificial generativa para crear y manipular texto, imágenes, audio y contenido multimodal. Se estudian los principios de los principales modelos generativos de imágenes, los modelos de lenguaje de gran escala con su alineamiento, ajuste eficiente y despliegue, los modelos multimodales y de audio, y técnicas de prompting, razonamiento, agentes y generación aumentada por recuperación. También se aborda cómo evaluar lo generado, problemas como el sesgo y la alucinación, y las implicancias éticas de estas tecnologías. Combina clases teóricas, revisión de artículos, trabajos prácticos con bibliotecas especializadas y un proyecto, y se evalúa con tareas, trabajo práctico y cuestionarios. Conviene llegar con bases de aprendizaje profundo y soltura programando.",
+    "tags": [
+      2,
+      1,
+      5,
+      6,
+      39,
+      7
+    ],
+    "acm": [
+      "IA-AA",
+      "IA-PLN",
+      "IA-Visión",
+      "IA-Agentes",
+      "IA-SEP"
+    ]
+  },
+  {
+    "codigo": "CC6907",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=252090",
+    "resumen": "Este curso te prepara para abordar con éxito tu memoria de título: aquí eliges un tema, consigues un profesor guía y dejas planificado el trabajo que desarrollarás después. A partir de un problema de computación, identificas su contexto, defines objetivos, revisas el estado del arte, esbozas una solución con su forma de evaluarla y das los primeros pasos de su desarrollo. Fuera de un par de clases informativas, todo es trabajo autónomo con reuniones periódicas con tu guía. Se evalúa con una propuesta de tema y un informe final, calificados como aprobado o reprobado. Para que te vaya bien necesitas autonomía, buena gestión del tiempo, escritura técnica clara y capacidad de integrar lo aprendido en la carrera.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC6908",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5231",
+    "resumen": "Aquí aprendes a establecer con claridad los antecedentes técnicos, objetivos y metodología de tu futuro proyecto de memoria. Primero identificas un problema relevante para la ingeniería en computación y justificas el valor de abordarlo; luego estudias la bibliografía del área, sitúas tu tema respecto de otros trabajos y construyes prototipos para validar su factibilidad técnica; finalmente describes la solución propuesta, sus etapas y la metodología a seguir. El trabajo se desarrolla en reuniones periódicas con un profesor guía, complementadas con charlas sobre escritura de documentos y proyectos de ingeniería. Se evalúa con una propuesta inicial de tema y un informe final del proyecto. Necesitas la formación completa de la carrera y buen dominio del inglés técnico.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC6909",
+    "creditos": 21,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=5232",
+    "resumen": "Aquí desarrollas el proyecto de memoria que planificaste previamente, llevándolo desde el diseño hasta una solución concreta y validada. El trabajo consiste en implementar la solución propuesta, comprobar que efectivamente resuelve el problema planteado, idealmente con mediciones que muestren en qué medida se logran los objetivos, y escribir un documento formal que presente el contexto, las alternativas, la solución escogida, su validación, los resultados y las conclusiones. Avanzas mediante reuniones periódicas con tu profesor guía y entregas parciales del documento. El informe final es revisado por una comisión de profesores que entrega retroalimentación y lo califica. Para tener éxito necesitas autonomía, experiencia en proyectos de software, buena escritura técnica y manejo de inglés para la literatura del área.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC6919",
+    "creditos": 24,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=252066",
+    "resumen": "En esta etapa ejecutas el proyecto de memoria definido previamente: resuelves el problema planteado aplicando la tecnología seleccionada y sigues la metodología acordada para comprobar que la solución funciona. Todo culmina en un informe que reporta de forma clara y concisa la motivación, el estado del arte, el desarrollo de la solución, los resultados y las conclusiones. No hay clases regulares; el curso se basa en trabajo personal y reuniones frecuentes con tu profesor guía, respetando los plazos del calendario de titulación. Se califica con nota sobre el informe final, y su aprobación queda condicionada a superar el examen de título. Necesitas autonomía, buena planificación, escritura técnica sólida y los conocimientos integrados de la carrera, además de experiencia práctica profesional.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7010",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154850",
+    "resumen": "Este curso de doctorado reconoce una pasantía de investigación de al menos dos meses en una institución de prestigio en el extranjero, idealmente en un entorno de habla inglesa. La experiencia busca fortalecer tus habilidades científicas y de colaboración, y exponerte a una cultura y prácticas de investigación distintas. Antes de partir debes presentar al comité académico del programa una solicitud formal con la institución, el investigador a cargo, las fechas, el plan de trabajo y el entregable que validará la estadía, como un artículo enviado o un reporte técnico. Al volver entregas ese documento, que se evalúa como aprobado o reprobado. Necesitas tener superada la etapa de calificación doctoral y autonomía para investigar.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7015",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154854",
+    "resumen": "Dirigido a estudiantes de doctorado, este curso permite validar una nueva pasantía de investigación de al menos dos meses en una institución de prestigio fuera de Chile, idealmente de habla inglesa. Su propósito es desarrollar tus habilidades científicas y de colaboración y darte la experiencia de trabajar en otro entorno de investigación, con cultura y prácticas diferentes. Con al menos un mes de anticipación debes solicitar formalmente su aprobación al comité académico, indicando institución, investigador responsable, fechas, programa de trabajo y el entregable que acreditará los resultados, por ejemplo un artículo o un reporte técnico. A tu regreso presentas ese documento, que se califica como aprobado o reprobado. Requiere haber aprobado el examen de calificación y autonomía para investigar.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7020",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154862",
+    "resumen": "Este curso de postgrado te permite realizar una investigación anexa a tu tesis bajo la supervisión de un profesor del programa distinto de tu guía. La idea es abrir tu campo de acción más allá de tu área específica, aplicar resultados de tu tesis en otro dominio y vivir la experiencia de investigar con otra persona a cargo. El trabajo se organiza en torno a lecturas, búsqueda de artículos y material relacionado, reuniones de trabajo y una presentación de la investigación. Se evalúa mediante un artículo o informe técnico aprobado por el profesor supervisor y validado por el comité académico. Para aprovecharlo necesitas autonomía, autorregulación, compromiso con la investigación y una base sólida en tu propio tema de tesis.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7025",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207910",
+    "resumen": "Orientado a estudiantes de doctorado, este curso reconoce la participación en una escuela temática internacional, realizada en el extranjero o dictada en inglés, con una carga lectiva sustancial. Su propósito es que aprendas o te actualices en un área vigente de la computación, mientras fortaleces tu internacionalización y construyes redes con estudiantes de otras partes del mundo. Antes de asistir presentas al comité académico una solicitud formal con el lugar, las fechas, el programa detallado, la carga de trabajo, la forma de aprobación y el visto bueno de tu profesor guía. Si la escuela es aceptada, al terminar entregas su certificado de aprobación y el curso se califica como aprobado o reprobado. Requiere haber superado el examen de calificación.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7110",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=149134",
+    "resumen": "Este curso entrega las herramientas técnicas y formales para garantizar que los programas cumplen lo especificado y detectar errores lo antes posible, con foco especial en los sistemas de tipos. Partiendo del lambda cálculo y su semántica operacional, se estudia cómo formalizar y extender lenguajes, demostrar la coherencia de sus sistemas de tipos, la conexión entre tipos y lógica constructiva, el polimorfismo, modelos formales de lenguajes orientados a objetos e inferencia de tipos. Las cátedras combinan teoría con demostraciones en vivo; se evalúa con controles, un examen y tareas individuales donde implementas sistemas de tipos e intérpretes. Necesitas conocimientos previos de lenguajes de programación y comodidad con las demostraciones formales.",
+    "tags": [
+      19,
+      18,
+      33,
+      17
+    ],
+    "acm": [
+      "FLP-Tipos",
+      "FLP-Formalismos",
+      "FLP-Funcional",
+      "FLP-POO"
+    ]
+  },
+  {
+    "codigo": "CC7125",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27134",
+    "resumen": "Este curso entrega las bases matemáticas para construir software confiable usando un asistente de pruebas, con el que aprendes a definir programas y lenguajes, enunciar propiedades precisas y producir demostraciones verificadas por la máquina. Se recorren la programación funcional y el razonamiento por inducción, la lógica y su conexión con los tipos, la semántica y equivalencia de programas imperativos, la verificación con lógica de Hoare, la semántica operacional y los sistemas de tipos estáticos. Las clases combinan teoría con ejemplos en vivo. La evaluación es continua mediante minicontroles y minitareas, más un proyecto final sobre un tema avanzado, y un examen eximible. No se exige saber lógica, pero ayudan la madurez matemática y la experiencia con lenguajes.",
+    "tags": [
+      19,
+      17,
+      33,
+      18
+    ],
+    "acm": [
+      "FLP-Funcional",
+      "FLP-Tipos",
+      "FLP-Formalismos",
+      "FLP-Metodologías",
+      "IS-Formales",
+      "FME-Discretas"
+    ]
+  },
+  {
+    "codigo": "CC7126",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=30618",
+    "resumen": "Este curso entrega una visión general de las técnicas formales para razonar con rigor matemático sobre el comportamiento de los programas, comprendiendo sus fundamentos, alcances y limitaciones. Se estudia cómo dar un significado preciso a un programa mediante semántica formal, cómo demostrar su corrección funcional con lógicas de programas, incluso cuando manipulan memoria dinámica, y cómo inferir propiedades automáticamente en tiempo de compilación mediante análisis estático, junto con los algoritmos que mecanizan estas técnicas. Se evalúa con tareas individuales, una presentación oral sobre un tema estudiado de forma independiente y, según el desempeño en las tareas, un examen final. Necesitas conocimientos sólidos de lenguajes de programación y cierta madurez matemática, especialmente en álgebra.",
+    "tags": [
+      19,
+      18,
+      13
+    ],
+    "acm": [
+      "FLP-Formalismos",
+      "FLP-Análisis",
+      "FLP-Metodologías",
+      "IS-Formales"
+    ]
+  },
+  {
+    "codigo": "CC7220",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=95770",
+    "resumen": "Este curso estudia los fundamentos de la revolución en la creación, manejo, procesamiento y consumo de datos impulsada por la Web y por los avances en procesamiento, comunicación y almacenamiento, con especial atención a los datos enlazados. Se revisan las tendencias en la generación y uso de datos a gran escala, con casos de estudio en gobierno y ciencia, y los modelos y técnicas básicas para desarrollar en la Web de datos; luego cada estudiante profundiza en un área particular con enfoque teórico o aplicado. El trabajo se basa en lecturas, informes escritos, presentaciones de los estudiantes y un proyecto final de investigación individual o grupal. Requiere autonomía y disposición para leer y discutir literatura científica.",
+    "tags": [
+      3,
+      7,
+      41,
+      26
+    ],
+    "acm": [
+      "GD-NoEstructuradas",
+      "GD-Datos",
+      "GD-Distribuidas"
+    ]
+  },
+  {
+    "codigo": "CC7221",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=68490",
+    "resumen": "Este curso recorre el estado del arte en reconocimiento visual basado en aprendizaje profundo, para que puedas entender, analizar y proponer modelos que interpreten imágenes automáticamente. Tras sentar los fundamentos de las redes convolucionales y sus arquitecturas modernas, se abordan la búsqueda de imágenes por similitud, la detección de objetos, la segmentación semántica y los modelos generativos. Las cátedras se complementan con la lectura de artículos recientes de conferencias del área, y se evalúa con tareas computacionales, presentaciones de papers y un examen práctico similar a una tarea, del que es posible eximirse. Requiere base sólida en programación y estructuras de datos, experiencia previa con redes neuronales o aprendizaje de máquinas y lectura fluida de textos técnicos en inglés.",
+    "tags": [
+      6,
+      1,
+      2,
+      7
+    ],
+    "acm": [
+      "IA-Visión",
+      "IA-AA",
+      "GD-Procesamiento"
+    ]
+  },
+  {
+    "codigo": "CC7320",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154866",
+    "resumen": "Este curso entrega herramientas algorítmicas y de teoría de la información para diseñar estructuras de datos que operan en espacio reducido, algo clave cuando la memoria es jerárquica o limitada. Se parte de las nociones de compresibilidad y entropía junto con métodos clásicos de compresión, para luego estudiar representaciones compactas de secuencias, permutaciones, árboles, grafos y grillas, y estructuras comprimidas para indexar colecciones de texto, contrastando siempre teoría y práctica. Las clases las dictan el profesor y los propios estudiantes bajo su tutoría, y se evalúa con esas presentaciones y un trabajo final individual en que se estudia, implementa y compara una estructura contra el estado del arte. Requiere una base sólida en diseño y análisis de algoritmos.",
+    "tags": [
+      32,
+      31,
+      7
+    ],
+    "acm": [
+      "AL-Fundamentales",
+      "AL-Complejidad",
+      "GD-Procesamiento"
+    ]
+  },
+  {
+    "codigo": "CC73J",
+    "creditos": 3,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=84893",
+    "resumen": "Este taller busca que apliques lo aprendido en gestión informática formulando y gestionando un proyecto de TI frente a un desafío organizacional, ya sea de renovación, desarrollo o implantación de tecnología. El trabajo recorre las fases de un proyecto: identificar el problema u oportunidad, definir el alcance del producto, preparar, cotizar y negociar una propuesta con un cliente, acordar recursos e hitos, y luego monitorear, gestionar riesgos y replanificar ante situaciones ficticias planteadas por el profesor. Se trabaja en equipos, con exposiciones breves del profesor y trabajo grupal guiado, y se evalúa mediante entregas de avance del proyecto, cada una con su presentación oral. Requiere los conocimientos de los cursos del diploma de postítulo en gestión informática.",
+    "tags": [
+      38,
+      40
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "IS-TrabajoEquipo",
+      "SEP-Comunicación",
+      "SEP-Economía"
+    ]
+  },
+  {
+    "codigo": "CC7515",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=242942",
+    "resumen": "Este curso enseña a aprovechar las tarjetas gráficas como plataforma de cómputo paralelo de alto rendimiento, tanto en computación gráfica como en aplicaciones científicas, de ingeniería y de propósito general. Aprenderás a reconocer qué problemas son paralelizables, a diseñar, programar y optimizar soluciones paralelas y a evaluar su desempeño, recorriendo modelos de computación paralela, arquitecturas de GPU frente a CPU, modelos de programación para cómputo general y programación de shaders. Incluye lectura de artículos en inglés, y se evalúa con controles de lectura, evaluaciones grupales, tareas de programación y un proyecto computacional con presentación oral, sin examen. Requiere programar con soltura en C/C++ y conocimientos de programación de sistemas y computación gráfica.",
+    "tags": [
+      23,
+      9,
+      10,
+      20
+    ],
+    "acm": [
+      "CPD-Programas",
+      "CPD-Algoritmos",
+      "CPD-Evaluación",
+      "AR-Heterogeneidad",
+      "GTI-Sombreado"
+    ]
+  },
+  {
+    "codigo": "CC7910",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=152910",
+    "resumen": "Este curso desarrolla las habilidades para investigar en ciencia y tecnología, con énfasis en las particularidades de la computación frente a las ciencias clásicas. Se reflexiona sobre la computación como disciplina científica y sobre la ciencia desde la filosofía, la economía y la sociología, y se practica cómo plantear un problema de investigación, construir el estado del arte, formular hipótesis, objetivos y metodología, y planificar un proyecto. También se ejercitan la lectura crítica, la búsqueda de fuentes, la escritura científica y la presentación de resultados, junto con la ética en la investigación y en el uso de datos. Se evalúa con un informe de lectura, una presentación oral, un proyecto y actividades semanales; exige leer, escribir y exponer.",
+    "tags": [
+      41,
+      39
+    ],
+    "acm": [
+      "SEP-Comunicación",
+      "SEP-AnálisisÉtico",
+      "SEP-Historia"
+    ]
+  },
+  {
+    "codigo": "CC7920",
+    "creditos": 18,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154874",
+    "resumen": "Este curso constituye una primera experiencia real de investigación, semestral y guiada por un profesor del claustro, en la que se aplican las nociones de metodología de la investigación en computación. Se trabaja en un área específica, primero con una revisión sistemática de la literatura y luego con una investigación breve sobre un tema dentro de ella. El trabajo es personal, con reuniones periódicas con el profesor guía, y se evalúa a partir de dos documentos escritos en inglés, un estudio bibliográfico y un artículo científico breve pero completo, y del desempeño; estos documentos sirven además para acceder al examen de calificación del doctorado. Requiere formación previa en metodología de investigación, autonomía y buen inglés escrito.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7970",
+    "creditos": 18,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207298",
+    "resumen": "Este curso acompaña la elaboración de la propuesta de tesis, que debe establecer con claridad los antecedentes técnicos, el estado del arte, los objetivos, la metodología y el aporte esperado del trabajo. Se aprende cómo se estructura una buena propuesta, se presentan y discuten los posibles temas con retroalimentación del coordinador del programa, y se prepara la defensa oral del tema con apoyo audiovisual. Hay una clase semanal en que cada estudiante comenta su avance ante el grupo, además de reuniones periódicas con el profesor guía; para aprobar, la propuesta debe ser aceptada por un profesor evaluador distinto del guía y luego presentada oralmente. Conviene llegar con tema y profesor guía definidos, y con formación en metodología de investigación.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC7980",
+    "creditos": 18,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=207302",
+    "resumen": "Este curso corresponde al desarrollo y la escritura de la tesis, donde se resuelve el problema planteado en la propuesta aplicando una perspectiva científica. Se construye el estado del arte, se integran y profundizan los conocimientos adquiridos en los cursos, se desarrolla y valida una solución identificando sus aportes, y se documenta en un texto formal que describe el problema, las técnicas disponibles, la solución y su validación, destacando la contribución al conocimiento. El trabajo es autónomo, con reuniones periódicas con el profesor guía, y se evalúa a partir del documento escrito y de una charla pública similar a una defensa de grado. Requiere haber elaborado previamente la propuesta de tesis y capacidad para investigar de manera independiente.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC79E",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27886",
+    "resumen": "Este seminario te prepara para detectar, en la organización donde trabajas, un problema que pueda dar origen a un proyecto de tecnologías de la información con enfoque ingenieril, y para identificarlo, analizarlo, dimensionarlo y delimitarlo. Las clases presenciales entregan directrices sobre cómo se concibe y estructura una propuesta de proyecto, revisan ejemplos y sirven para resolver dudas y validar las ideas que traen los estudiantes. A lo largo del semestre entregas informes escritos sobre la definición de tu proyecto, que un tutor revisa para darte retroalimentación temprana, y el informe final con la formulación preliminar lo evalúa el Comité Académico. Te conviene tener experiencia laboral en un entorno de TI y capacidad de análisis y redacción técnica.",
+    "tags": [
+      38,
+      41
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC79F",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=27890",
+    "resumen": "Aquí formulas la propuesta completa del proyecto de TI que luego desarrollarás como proyecto de grado del magíster. Trabajas la presentación del contexto y del problema, la justificación organizacional y tecnológica, la definición de objetivos, la metodología y el plan de trabajo. Combina clases presenciales de acompañamiento, con directrices para definir y validar cada componente de la propuesta, y reuniones periódicas con un profesor guía que asesora en el contenido, mientras un tutor apoya en lo estructural. Entregas informes escritos durante el semestre y, al final, la propuesta avalada por tu profesor guía, que evalúa el Comité Académico según su calidad, claridad y pertinencia. Necesitas haber identificado y delimitado previamente un proyecto de TI en tu organización.",
+    "tags": [
+      38,
+      41
+    ],
+    "acm": [
+      "IS-Requisitos",
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC79G",
+    "creditos": 21,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=32142",
+    "resumen": "En esta etapa ejecutas la investigación aplicada de tu proyecto de grado, abordando un problema real y práctico de tecnologías de la información con un enfoque científico. Con el apoyo de tu profesor guía, en reuniones periódicas de seguimiento, planificas en detalle las tareas, desarrollas las actividades, recoges los datos necesarios para evaluar si la solución resuelve el problema planteado e interpretas los resultados. El trabajo culmina con una presentación oral en formato científico sobre el problema, la metodología, los resultados y su interpretación, que el Comité Académico evalúa considerando también la calidad y claridad de la exposición. Para avanzar bien necesitas contar con una propuesta de proyecto ya formulada y aprobada, además de autonomía para organizar tu trabajo.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC79H",
+    "creditos": 6,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=33973",
+    "resumen": "Este curso te acompaña en la escritura del documento de tesis de magíster, donde reportas la investigación aplicada realizada con todos los elementos que exige un informe científico-técnico. En reuniones periódicas con tu profesor guía refinas el problema, los objetivos y la solución, defines la estructura del documento, redactas cada capítulo y abordas los tópicos que hayan quedado pendientes, dimensionando además la contribución del trabajo, su posible generalización y el trabajo futuro. Al cierre entregas el documento de tesis, que evalúa tu profesor guía o un miembro del Comité Académico y que te entrega retroalimentación para preparar la versión final. Necesitas haber completado la investigación aplicada y contar con sus resultados, además de buena capacidad de redacción técnica.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8910",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154878",
+    "resumen": "Este taller inicia el trabajo de tesis doctoral, en el que desarrollas la capacidad de hacer investigación original en un área de tu elección mediante trabajo personal guiado por un profesor guía del programa. En esta primera etapa lo esperable es identificar un problema de investigación relevante y recopilar el trabajo previo del área, detectando oportunidades para mejorar el estado del arte, aunque el nivel de avance exacto lo fija tu profesor guía. La metodología se basa en reuniones periódicas donde se monitorea tu progreso y se discute cómo continuar. Apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Requiere haber aprobado el examen de calificación y tener autonomía investigativa.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8920",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154882",
+    "resumen": "Este taller continúa el trabajo de tesis doctoral, orientado a que desarrolles la capacidad de hacer investigación original en un área de tu elección mediante trabajo personal guiado por un profesor guía del programa. En esta etapa se espera haber avanzado buena parte en identificar el problema, revisar el trabajo previo y plantear la hipótesis de investigación, y comenzar a diseñar herramientas originales para probarla, como teoremas, algoritmos, software o experimentos, aunque el nivel de avance lo fija tu profesor guía. Trabajas con reuniones periódicas de seguimiento y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado la etapa inicial de tu tesis y autonomía investigativa.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8930",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154886",
+    "resumen": "Esta etapa del trabajo de tesis doctoral culmina con el examen de propuesta, donde debes demostrar que comprendes el proceso científico en tu área, que tienes un tema viable con avances que cuentan con alguna validación internacional y un plan creíble para terminar la tesis. Para ello se espera que tengas definidos el problema, la revisión del trabajo previo y la hipótesis, y que hayas avanzado en diseñar y aplicar herramientas originales para probarla y en publicar resultados. Trabajas de forma personal con reuniones periódicas con tu profesor guía, y apruebas entregando el informe para el examen de propuesta, validado por el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de tu tesis.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8940",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154890",
+    "resumen": "Este taller marca el inicio del cierre de la tesis doctoral, tras la aprobación de la propuesta. Mediante trabajo personal guiado por tu profesor guía, se espera que trabajes intensamente en diseñar herramientas originales para probar tu hipótesis, sean demostraciones, métodos, algoritmos, software o experimentos, en aplicarlas y analizar los resultados, y en publicarlos en conferencias y revistas internacionales, aunque el nivel de avance exacto lo fija tu profesor guía. La metodología consiste en reuniones periódicas donde se monitorea tu progreso y se discute cómo continuar, y apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Requiere haber aprobado el examen de propuesta doctoral.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8950",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154894",
+    "resumen": "En esta etapa avanzada de la tesis doctoral se espera que cierres la investigación propiamente tal, terminando de diseñar y aplicar herramientas originales para probar tu hipótesis, analizando los resultados y publicándolos en conferencias y revistas internacionales, y que comiences la escritura del documento de tesis. El trabajo es personal y guiado por un profesor guía del programa, que fija el nivel de avance esperado y con quien sostienes reuniones periódicas para monitorear el progreso y discutir cómo continuar. Apruebas entregando un breve informe de avance que validan el profesor guía y la coordinación del doctorado. Necesitas haber completado las etapas previas de la tesis, incluida la propuesta aprobada, y autonomía para conducir investigación original.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  },
+  {
+    "codigo": "CC8960",
+    "creditos": 30,
+    "plan": "https://ucampus.uchile.cl/m/fcfm_catalogo/programa?bajar=1&id=154898",
+    "resumen": "Esta es la etapa final del trabajo de tesis doctoral, en la que te preparas para defender tu investigación. El foco está principalmente en escribir el documento de tesis que reporta tu trabajo y resultados, aunque todavía es posible seguir publicando en conferencias y revistas internacionales. El trabajo es personal y guiado por un profesor guía del programa, con reuniones periódicas en las que se monitorea tu avance y se discute cómo continuar. Apruebas entregando el borrador de tesis, validado por el profesor guía y la coordinación del doctorado, que luego se envía a la comisión ante la cual defenderás la tesis para graduarte. Necesitas haber cerrado la investigación en las etapas previas y buena capacidad de redacción científica.",
+    "tags": [
+      41
+    ],
+    "acm": [
+      "SEP-Comunicación"
+    ]
+  }
+]

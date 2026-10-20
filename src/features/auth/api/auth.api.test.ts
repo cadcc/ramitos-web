@@ -88,6 +88,7 @@ describe("DCC login errors", () => {
 
 describe("DCC token exchange", () => {
 	beforeEach(() => {
+		vi.stubEnv("VITE_API_MOCKING_ENABLED", "false");
 		vi.stubEnv("VITE_AUTH_API_ORIGIN", window.location.origin);
 
 		apiMocks.dccLoginExchangeTokens.mockReset();
@@ -96,6 +97,7 @@ describe("DCC token exchange", () => {
 
 	afterEach(() => {
 		vi.unstubAllGlobals();
+		vi.unstubAllEnvs();
 	});
 
 	it("exchanges a one-time secret once and persists the verified account", async () => {

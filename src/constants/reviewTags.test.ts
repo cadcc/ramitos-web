@@ -11,26 +11,28 @@ import {
 it("hides zero-value tags and keeps only the highest-valued exclusive option", () => {
 	expect(
 		getCourseSummaryTags({
-			variable_workload: { value: 2 },
-			consistent_workload: { value: 7 },
+			flexible_deadlines: { value: 2 },
+			rigid_deadlines: { value: 7 },
 			useful_work: { value: 0 },
 			useful_research: { value: 3 },
 		}),
-	).toEqual(["consistent_workload", "useful_research"]);
+	).toEqual(["rigid_deadlines", "useful_research"]);
 });
 it("resolves exclusive ties consistently and omits groups with no positive values", () => {
 	expect(
 		getCourseSummaryTags({
-			consistent_workload: { value: 4 },
-			variable_workload: { value: 4 },
+			rigid_deadlines: { value: 4 },
+			flexible_deadlines: { value: 4 },
 		}),
-	).toEqual(["variable_workload"]);
-	expect(getCourseSummaryTags({ variable_workload: { value: 0 } })).toEqual([]);
+	).toEqual(["flexible_deadlines"]);
+	expect(getCourseSummaryTags({ flexible_deadlines: { value: 0 } })).toEqual(
+		[],
+	);
 });
 it("loads all sections with stable identities and display labels", () => {
 	expect(REVIEW_TAG_SECTIONS).toHaveLength(7);
 	expect(getReviewTagLabel("useful_work")).toBe("Útil para: Industria");
-	expect(getReviewTagAxis("variable_workload")).toBe("carga");
+	expect(getReviewTagAxis("flexible_deadlines")).toBe("carga");
 	expect(getReviewTagLabel("Unknown server tag")).toBe("Unknown server tag");
 });
 it("keeps collection selections independent", () => {
@@ -40,14 +42,9 @@ it("keeps collection selections independent", () => {
 });
 it("replaces the other exclusive option without affecting unrelated selections", () => {
 	expect(
-		toggleReviewTag(
-			["variable_workload", "useful_work"],
-			"consistent_workload",
-		),
-	).toEqual(["useful_work", "consistent_workload"]);
-	expect(
-		toggleReviewTag(["consistent_workload"], "consistent_workload"),
-	).toEqual([]);
+		toggleReviewTag(["flexible_deadlines", "useful_work"], "rigid_deadlines"),
+	).toEqual(["useful_work", "rigid_deadlines"]);
+	expect(toggleReviewTag(["rigid_deadlines"], "rigid_deadlines")).toEqual([]);
 });
 it("rejects duplicate keys and invalid grouping definitions", () => {
 	const duplicate = structuredClone(config);

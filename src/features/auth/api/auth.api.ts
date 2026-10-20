@@ -131,6 +131,20 @@ export function redirectToDccLogin(requestedReturnPath?: string) {
 				: currentPath;
 
 	sessionStorage.setItem(DCC_RETURN_PATH_STORAGE_KEY, returnPath);
+	if (
+		import.meta.env.DEV &&
+		import.meta.env.VITE_API_MOCKING_ENABLED === "true"
+	) {
+		// Document navigations do not pass through MSW. Simulate the provider's
+		// return locally, then let the normal callback exchange and verify a session.
+		const callback = new URL(DCC_CALLBACK_PATH, window.location.origin);
+		callback.searchParams.set("returnTo", returnPath);
+		callback.searchParams.set("secret", "ramitos-mock-dcc");
+		callback.searchParams.set("status", "ok");
+		callback.searchParams.set("workflow", "dccLogin");
+		window.location.assign(callback.toString());
+		return;
+	}
 
 	const authOrigin = getDccAuthOrigin();
 	const redirect = new URL(DCC_CALLBACK_PATH, window.location.origin);
@@ -180,7 +194,10 @@ export async function requestPasswordToken(
 	return response.data.accessToken;
 }
 export async function requestDccAccessToken(secret: string): Promise<string> {
-	const authOrigin = getDccAuthOrigin();
+	const authOrigin =
+		import.meta.env.DEV && import.meta.env.VITE_API_MOCKING_ENABLED === "true"
+			? window.location.origin
+			: getDccAuthOrigin();
 	if (authOrigin !== window.location.origin) {
 		try {
 			const response = await fetch(

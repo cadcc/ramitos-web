@@ -1,4 +1,5 @@
 import type { User } from "../../../shared/types/domain";
+import { browserSessionExclusive } from "./browserSessionLock";
 import {
 	AccountVerificationError,
 	fetchCurrentUser,
@@ -36,6 +37,13 @@ export class SessionCancelledError extends Error {
 }
 
 class SessionStorageError extends Error {}
+
+function newSessionId() {
+	// getRandomValues remains available on origins where randomUUID is absent.
+	return Array.from(crypto.getRandomValues(new Uint8Array(16)), (byte) =>
+		byte.toString(16).padStart(2, "0"),
+	).join("");
+}
 
 type SessionDependencies = {
 	storage: () => Pick<Storage, "getItem" | "setItem" | "removeItem">;
@@ -129,7 +137,7 @@ export function createSession(deps: SessionDependencies) {
 		// Only legacy credentials migrate; a persisted role never grants access.
 		const legacyToken = storage.getItem("ramitos-token");
 		if (!legacyToken) return null;
-		const migrated = { id: crypto.randomUUID(), token: legacyToken };
+		const migrated = { id: newSessionId(), token: legacyToken };
 		write(migrated);
 		return migrated;
 	}
@@ -167,7 +175,7 @@ export function createSession(deps: SessionDependencies) {
 			await deps.exclusive(() => {
 				if (attempt !== version) return;
 				if (expectedId && read()?.id !== expectedId) return;
-				const next = { id: crypto.randomUUID(), token: null };
+				const next = { id: newSessionId(), token: null };
 				write(next);
 				record = next;
 				blockedStorage = false;
@@ -274,7 +282,7 @@ export function createSession(deps: SessionDependencies) {
 		return deps.exclusive(() => {
 			if (version !== attempt) return null;
 			if (expectedId && read()?.id !== expectedId) return null;
-			const next = { id: crypto.randomUUID(), token: null };
+			const next = { id: newSessionId(), token: null };
 			write(next);
 			record = next;
 			blockedStorage = false;
@@ -501,7 +509,7 @@ export type Session = ReturnType<typeof createSession>;
 export const session = createSession({
 	storage: () => window.localStorage,
 	tabStorage: () => window.sessionStorage,
-	exclusive: (work) => navigator.locks.request("ramitos-session", work),
+	exclusive: browserSessionExclusive,
 	listen(changed) {
 		const storage = (event: StorageEvent) => {
 			if (

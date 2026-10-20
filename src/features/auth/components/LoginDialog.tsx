@@ -40,7 +40,6 @@ export function LoginDialog() {
 	};
 
 	const handleClose = () => {
-		if (loginPending) return;
 		setPasswordFormOpen(false);
 		setUsername("");
 		setPassword("");
@@ -139,11 +138,7 @@ export function LoginDialog() {
 				</Stack>
 			</DialogContent>
 			<DialogActions>
-				<Button
-					onClick={handleClose}
-					disabled={loginPending}
-					sx={{ minHeight: 44 }}
-				>
+				<Button onClick={handleClose} sx={{ minHeight: 44 }}>
 					Cancelar
 				</Button>
 			</DialogActions>

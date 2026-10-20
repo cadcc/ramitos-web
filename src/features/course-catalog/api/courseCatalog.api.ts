@@ -1,4 +1,14 @@
-import { matchesCourseCategory } from "../courseCategories";
+import {
+	COURSE_CATEGORY_CODES,
+	matchesCourseCategory,
+} from "../courseCategories";
+import localCourses from "../../../../data/courses/courses.json";
+import { matchesAcmNode } from "../../../constants/acmTaxonomy";
+import {
+	COURSE_TOPIC_OPTIONS,
+	COURSE_METADATA_CODES,
+	getCourseMetadata,
+} from "../../../constants/courseMetadata";
 import {
 	getCoursesStaticData,
 	listCourses,
@@ -16,6 +26,7 @@ import type {
 export const COURSE_CATALOG_PAGE_SIZE = 24;
 
 export interface CourseCatalogEntry {
+	isPlaceholder?: boolean;
 	id: string;
 	name: string;
 	categoryTags: string[];
@@ -40,34 +51,38 @@ function statValue(
 	return Math.max(0, Math.min(5, value));
 }
 
-function categoryNames(
-	indexes: number[] | undefined,
-	categories: string[],
-): string[] {
-	return Array.from(
-		new Set(
-			(indexes ?? [])
-				.map((index) => categories[index])
-				.filter((category): category is string => Boolean(category)),
-		),
-	);
-}
-
 export function normalizeCourseCatalog(
 	data: CoursesStaticDataContainer,
 ): CourseCatalogIndex {
 	const items = data.courses.map((course) => ({
 		id: course.code,
 		name: course.name,
-		categoryTags: categoryNames(course.categories, data.categories),
+		categoryTags: getCourseMetadata(course.code)?.categories ?? [],
 	}));
+	const backendCodes = new Set(items.map((course) => course.id));
+	const localNames = new Map(
+		localCourses.courses.map((course) => [course.code, course.name]),
+	);
+	const classifiedCodes = new Set([
+		...Object.values(COURSE_CATEGORY_CODES).flatMap((codes) => [...codes]),
+		...localCourses.courses
+			.filter((course) => matchesCourseCategory(course.code, "dcc"))
+			.map((course) => course.code),
+		...COURSE_METADATA_CODES,
+	]);
+	const placeholders: CourseCatalogEntry[] = [...classifiedCodes]
+		.filter((code) => !backendCodes.has(code))
+		.map((code) => ({
+			id: code,
+			name: localNames.get(code) ?? "Nombre no disponible",
+			categoryTags: getCourseMetadata(code)?.categories ?? [],
+			isPlaceholder: true,
+		}));
 
 	return {
-		items,
-		categoryOptions: [...data.categories].sort((a, b) =>
-			a.localeCompare(b, "es"),
-		),
-		total: data.count,
+		items: [...items, ...placeholders],
+		categoryOptions: COURSE_TOPIC_OPTIONS,
+		total: items.length + placeholders.length,
 	};
 }
 
@@ -82,6 +97,7 @@ export function toCourseCatalogItem(
 	// TODO(backend): Replace the remaining catalog defaults when credits,
 	// offering history and plan membership are exposed.
 	return {
+		isPlaceholder: entry.isPlaceholder,
 		id: entry.id,
 		name: entry.name,
 		code: entry.id,
@@ -109,14 +125,17 @@ export async function getCourseCatalogPage(
 ): Promise<CourseCatalogPage> {
 	const pageEntries = entries.slice(cursor, cursor + COURSE_CATALOG_PAGE_SIZE);
 	if (pageEntries.length === 0) return { items: [], nextCursor: null };
+	const availableEntries = pageEntries.filter((entry) => !entry.isPlaceholder);
 
 	const courses =
 		reviewableCourses ??
-		(
-			await listCourses({
-				codes: pageEntries.map((course) => course.id),
-			})
-		).data;
+		(availableEntries.length === 0
+			? []
+			: (
+					await listCourses({
+						codes: availableEntries.map((course) => course.id),
+					})
+				).data);
 	const coursesById = new Map(
 		courses.map((course) => [course.id, course] as const),
 	);
@@ -154,6 +173,15 @@ export function filterCourseCatalog(
 	if (filters.tags?.length) {
 		filtered = filtered.filter((course) =>
 			filters.tags!.some((tag) => course.categoryTags.includes(tag)),
+		);
+	}
+
+	if (filters.acmArea) {
+		filtered = filtered.filter((course) =>
+			matchesAcmNode(
+				getCourseMetadata(course.id)?.acmUnits ?? [],
+				filters.acmArea!,
+			),
 		);
 	}
 

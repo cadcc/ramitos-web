@@ -1,14 +1,17 @@
-import { useNavigate, Link } from "@tanstack/react-router";
+import { useNavigate, Link, createLink } from "@tanstack/react-router";
 import {
 	Box,
 	Breadcrumbs,
 	Button,
 	CircularProgress,
+	Chip,
 	Divider,
 	Fade,
+	Link as MaterialLink,
 	Typography,
 } from "@mui/material";
 import BackIcon from "@mui/icons-material/ArrowBack";
+import type { ChipProps } from "@mui/material/Chip";
 import {
 	getAverageScore,
 	getRadarColor,
@@ -18,6 +21,12 @@ import { CourseReviewsSection } from "../../reviews";
 import { useCourseDetail } from "../hooks/useCourseDetail";
 import CourseRadar from "./CourseRadar";
 import { CourseTagSummary } from "./CourseTagSummary";
+import { CourseAcmClassifications } from "./CourseAcmClassifications";
+import { usePreviewFeatures } from "../../../shared/hooks/usePreviewFeatures";
+
+const CategoryChipLink = createLink((props: ChipProps<"a">) => (
+	<Chip component="a" {...props} />
+));
 
 interface CourseDetailPageProps {
 	cursoId: string;
@@ -102,6 +111,7 @@ function CourseBreadcrumbs({ courseCode }: { courseCode: string }) {
 }
 
 function CourseHeader({ course }: { course: Curso }) {
+	const { features } = usePreviewFeatures();
 	return (
 		<Box>
 			<Typography
@@ -116,13 +126,54 @@ function CourseHeader({ course }: { course: Curso }) {
 			>
 				{course.code} - {course.name}
 			</Typography>
-			<Typography
-				variant="body1"
-				color="text.secondary"
-				sx={{ lineHeight: 1.65 }}
-			>
-				{course.description}
-			</Typography>
+			{features.categories && course.categoryTags.length > 0 && (
+				<Box
+					role="group"
+					aria-label="Categorías del ramo"
+					sx={{ display: "flex", flexWrap: "wrap", gap: 0.75, mb: 1.5 }}
+				>
+					{course.categoryTags.map((category) => (
+						<CategoryChipLink
+							key={category}
+							to="/"
+							search={{ tags: [category] }}
+							clickable
+							label={category}
+							size="small"
+							color="primary"
+							variant="outlined"
+							sx={{
+								maxWidth: "100%",
+								height: "auto",
+								"& .MuiChip-label": { whiteSpace: "normal", py: 0.5 },
+							}}
+						/>
+					))}
+				</Box>
+			)}
+			{features.acmCategories && (
+				<CourseAcmClassifications units={course.acmUnits ?? []} />
+			)}
+			{course.syllabusUrl && (
+				<MaterialLink
+					href={course.syllabusUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					variant="body2"
+					sx={{ display: "inline-block", mb: 1 }}
+				>
+					Programa del curso
+				</MaterialLink>
+			)}
+			{features.courseSummaries && (
+				<Typography
+					variant="body1"
+					color="text.secondary"
+					sx={{ lineHeight: 1.65 }}
+				>
+					{course.description}
+				</Typography>
+			)}
 			<CourseTagSummary tags={course.reviewTags} />
 		</Box>
 	);

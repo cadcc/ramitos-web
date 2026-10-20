@@ -3,8 +3,10 @@ import { useCallback } from "react";
 import { z } from "zod";
 import type { CourseFilters } from "../shared/types/domain";
 import { CourseCatalogPage } from "../features/course-catalog";
+import { ACM_NODE_IDS } from "../constants/acmTaxonomy";
 
 const searchSchema = z.object({
+	acmArea: z.enum(ACM_NODE_IDS).optional(),
 	category: z
 		.enum([
 			"dcc",
@@ -43,6 +45,7 @@ function HomePage() {
 			: "code";
 
 	const filters: CourseFilters = {
+		acmArea: search.acmArea,
 		category: search.category,
 		reviewable: search.reviewable,
 		q: search.q,
@@ -58,6 +61,7 @@ function HomePage() {
 		(newFilters: CourseFilters) => {
 			void navigate({
 				search: {
+					acmArea: newFilters.acmArea,
 					q: newFilters.q,
 					category: newFilters.category,
 					reviewable: newFilters.reviewable,

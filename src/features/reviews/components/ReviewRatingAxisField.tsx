@@ -1,14 +1,13 @@
-import { ReviewTagOptions } from "./ReviewTagOptions";
+import { Box, Collapse, Divider, Typography } from "@mui/material";
 import { REVIEW_TAG_SECTIONS } from "../../../constants/reviewTags";
-import { Box, Collapse, Typography } from "@mui/material";
-import { alpha } from "@mui/material/styles";
-import type { CourseRatings } from "../../../shared/types/domain";
 import { AXIS_COLORS } from "../../../constants/courseDisplay";
+import type { CourseRatings } from "../../../shared/types/domain";
 import type { ReviewAxisDef } from "../model/reviewForm.model";
+import { ReviewEmojiSlider } from "./ReviewEmojiSlider";
+import { ReviewTagOptions } from "./ReviewTagOptions";
 
 interface ReviewRatingAxisFieldProps {
 	axis: ReviewAxisDef;
-	isNext?: boolean;
 	selected: number | undefined;
 	selectedTags: string[];
 	onRatingChange: (axis: keyof CourseRatings, value: number) => void;
@@ -17,161 +16,55 @@ interface ReviewRatingAxisFieldProps {
 
 export function ReviewRatingAxisField({
 	axis,
-	isNext = false,
 	selected,
 	selectedTags,
 	onRatingChange,
 	onToggleTag,
 }: ReviewRatingAxisFieldProps) {
-	const axisChosen = selected !== undefined;
 	const section = REVIEW_TAG_SECTIONS.find(
 		(section) => section.axis === axis.key,
 	);
-	const axisColor = AXIS_COLORS[axis.key] ?? "#666";
-
+	const axisColor = AXIS_COLORS[axis.key]!;
 	return (
-		<Box
-			sx={{
-				borderLeft: "3px solid",
-				borderColor: isNext ? axisColor : "transparent",
-				pl: 1.25,
-				ml: -1.625,
-				borderRadius: 0.5,
-				animation: axisChosen ? "axisComplete 500ms ease-out" : "none",
-				"@keyframes axisComplete": {
-					from: { backgroundColor: alpha(axisColor, 0.12) },
-					to: { backgroundColor: "transparent" },
-				},
-				"@media (prefers-reduced-motion: reduce)": { animation: "none" },
-			}}
-		>
+		<Box sx={{ position: "relative", mb: selected !== undefined ? 0 : 1 }}>
 			<Box
 				sx={{
-					display: "flex",
-					flexDirection: { xs: "column", sm: "row" },
-					justifyContent: "space-between",
-					alignItems: "flex-start",
-					gap: { xs: 0.75, sm: 1.5 },
+					display: "grid",
+					gridTemplateColumns: {
+						xs: "minmax(0, 1fr)",
+						md: "minmax(0, 0.9fr) minmax(0, 1.1fr)",
+					},
+					gap: { xs: 0, md: 4 },
+					alignItems: "center",
 				}}
 			>
-				<Box sx={{ flex: 1 }}>
+				<Box sx={{ minWidth: 0 }}>
 					<Typography
+						component="h3"
 						sx={{
 							fontWeight: 700,
 							fontSize: "1rem",
-							fontFamily: '"Space Grotesk", sans-serif',
 							color: axisColor,
+							mb: 0.5,
 						}}
 					>
 						{section?.label ?? axis.label}
 					</Typography>
 					<Typography
 						variant="caption"
-						color="text.secondary"
-						sx={{ fontSize: "0.8rem" }}
+						sx={{ fontSize: "0.8rem", color: "text.secondary" }}
 					>
 						{section?.question ?? axis.question}
 					</Typography>
 				</Box>
-
-				<Box
-					sx={{
-						flexShrink: 0,
-						width: { xs: "100%", sm: "auto" },
-						maxWidth: { xs: 320, sm: "none" },
-						alignSelf: { xs: "center", sm: "auto" },
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "center",
-					}}
-				>
-					<Box
-						sx={{
-							display: "grid",
-							gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
-							gap: { xs: 0.5, sm: "6px" },
-							width: "100%",
-						}}
-					>
-						{[1, 2, 3, 4, 5].map((value) => {
-							const isSelected = selected === value;
-							const emoji = axis.emojis[value - 1]!;
-							return (
-								<Box
-									key={value}
-									role="button"
-									aria-pressed={isSelected}
-									tabIndex={0}
-									aria-label={`${section?.label ?? axis.label}: ${value} - ${axis.levels[value - 1]}`}
-									title={`${axis.levels[value - 1]}`}
-									onClick={() => onRatingChange(axis.key, value)}
-									onKeyDown={(e) => {
-										if (e.key === "Enter" || e.key === " ") {
-											e.preventDefault();
-											onRatingChange(axis.key, value);
-										}
-									}}
-									sx={{
-										width: { xs: "100%", sm: 40 },
-										minWidth: 0,
-										height: { xs: 44, sm: 36 },
-										borderRadius: 1.5,
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-										cursor: "pointer",
-										fontSize: "1.35rem",
-										lineHeight: 1,
-										border: 2,
-										borderColor: isSelected ? axisColor : "divider",
-										bgcolor: isSelected ? axisColor : "transparent",
-										transition: "all 0.15s ease",
-										opacity: !axisChosen || isSelected ? 1 : 0.55,
-										"&:hover": {
-											opacity: 1,
-											borderColor: axisColor,
-											bgcolor: isSelected ? axisColor : alpha(axisColor, 0.08),
-										},
-									}}
-								>
-									{emoji}
-								</Box>
-							);
-						})}
-					</Box>
-					<Box
-						sx={{
-							display: "grid",
-							gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-							width: "100%",
-							mt: 0.4,
-							px: "2px",
-						}}
-					>
-						{[0, 2, 4].map((levelIndex) => (
-							<Typography
-								key={levelIndex}
-								sx={{
-									fontSize: "0.7rem",
-									color: "text.secondary",
-									textAlign:
-										levelIndex === 0
-											? "left"
-											: levelIndex === 2
-												? "center"
-												: "right",
-								}}
-								component="span"
-							>
-								{axis.levels[levelIndex]}
-							</Typography>
-						))}
-					</Box>
-				</Box>
+				<ReviewEmojiSlider
+					axis={axis}
+					value={selected}
+					onChange={(value) => onRatingChange(axis.key, value)}
+				/>
 			</Box>
-
-			<Collapse in={selected !== undefined}>
-				<Box sx={{ mt: 1.25 }}>
+			<Collapse in={selected !== undefined} unmountOnExit>
+				<Box sx={{ mt: 2.25 }}>
 					<ReviewTagOptions
 						items={section?.items ?? []}
 						selectedTags={selectedTags}
@@ -180,6 +73,16 @@ export function ReviewRatingAxisField({
 					/>
 				</Box>
 			</Collapse>
+			<Divider
+				aria-hidden="true"
+				sx={{
+					position: "absolute",
+					bottom: selected !== undefined ? -12 : -16,
+					opacity: 0.5,
+					left: 0,
+					right: 0,
+				}}
+			/>
 		</Box>
 	);
 }

@@ -19,9 +19,11 @@ export interface Curso {
 	code: string;
 	credits: number;
 	description: string;
+	syllabusUrl?: string;
 	department: string;
 	plan: "obligatorio" | "electivo_licenciatura" | "electivo_especialidad";
 	categoryTags: string[];
+	acmUnits?: string[];
 	reviewTags: string[];
 	currentlyOffered: boolean;
 	lastOffered: string;
@@ -51,6 +53,7 @@ export interface SeccionSummary {
 }
 
 export interface CursoListItem {
+	isPlaceholder?: boolean;
 	id: string;
 	name: string;
 	code: string;
@@ -97,6 +100,7 @@ export type CourseCategory =
 	| "integral";
 
 export interface CourseFilters {
+	acmArea?: string;
 	category?: CourseCategory;
 	reviewable?: boolean;
 	q?: string;

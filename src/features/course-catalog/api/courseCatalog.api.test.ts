@@ -28,6 +28,35 @@ const dynamicCourse: Course = {
 };
 
 describe("course catalog API adapter", () => {
+	it("filters by ACM parent areas together with topic, course type, and search, including placeholders", () => {
+		const index = normalizeCourseCatalog({
+			count: 1,
+			categories: [],
+			courses: [{ code: "CC6205", name: "Procesamiento de Lenguaje Natural" }],
+		});
+		const matches = filterCourseCatalog(index.items, {
+			acmArea: "IA",
+			tags: ["Procesamiento de Lenguaje Natural"],
+			category: "specialization",
+			q: "CC6205",
+		});
+		expect(matches.map((entry) => entry.id)).toEqual(["CC6205"]);
+		expect(matches[0]?.isPlaceholder).not.toBe(true);
+		for (const acmArea of ["APLICACIONES", "IA-PLN"]) {
+			expect(
+				filterCourseCatalog(index.items, { acmArea, q: "CC6204" })[0],
+			).toMatchObject({ id: "CC6204", isPlaceholder: true });
+		}
+		expect(
+			filterCourseCatalog(index.items, { acmArea: "IA", q: "CC6204" })[0],
+		).toMatchObject({ id: "CC6204", isPlaceholder: true });
+		expect(
+			filterCourseCatalog(index.items, { acmArea: "SO", q: "CC6205" }),
+		).toEqual([]);
+		expect(filterCourseCatalog(index.items, { acmArea: "unknown" })).toEqual(
+			[],
+		);
+	});
 	it("selects bachelor electives by exact code format, threshold, and exclusions", () => {
 		const entries = [
 			"CC2999",
@@ -86,7 +115,7 @@ describe("course catalog API adapter", () => {
 	});
 	beforeEach(() => listCoursesMock.mockReset());
 
-	it("normalizes the complete static index and resolves category indexes", () => {
+	it("resolves local tag IDs by course code instead of backend category indexes", () => {
 		const result = normalizeCourseCatalog({
 			count: 2,
 			categories: ["Programacion", "Sistemas"],
@@ -96,12 +125,47 @@ describe("course catalog API adapter", () => {
 			],
 		});
 
-		expect(result.total).toBe(2);
+		expect(result.total).toBe(result.items.length);
+		expect(result.total).toBeGreaterThan(2);
+		expect(result.items.filter((entry) => entry.id === "CC1000")).toHaveLength(
+			1,
+		);
+		expect(
+			result.items.find((entry) => entry.id === "CC1000")?.isPlaceholder,
+		).not.toBe(true);
+		expect(result.items.find((entry) => entry.id === "CC4900")).toMatchObject({
+			isPlaceholder: true,
+		});
+		expect(
+			filterCourseCatalog(result.items, { category: "required", q: "CC4900" }),
+		).toHaveLength(1);
+		expect(
+			filterCourseCatalog(result.items, {
+				tags: ["Programación Funcional"],
+				q: "CC1002",
+			})[0],
+		).toMatchObject({ id: "CC1002", isPlaceholder: true });
 		expect(result.items[0]).toEqual({
 			id: "CC1000",
 			name: "Herramientas",
-			categoryTags: ["Programacion", "Sistemas"],
+			categoryTags: [
+				"Computación Científica y Simulación",
+				"Visualización de Datos",
+				"IA Generativa y LLMs",
+				"Ética, Privacidad y Regulación",
+				"Investigación, Escritura Científica y Tesis",
+			],
 		});
+		expect(result.items[1]?.categoryTags).toEqual([]);
+		expect(result.categoryOptions).toHaveLength(42);
+		expect(result.categoryOptions).toContain("Machine Learning");
+		expect(
+			filterCourseCatalog(result.items, {
+				tags: ["IA Generativa y LLMs"],
+				q: "herramientas",
+				category: "required",
+			}).map((course) => course.id),
+		).toEqual(["CC1000"]);
 	});
 
 	it("filters the static index before dynamic pages are requested", () => {
@@ -166,6 +230,38 @@ describe("course catalog API adapter", () => {
 			"CC1000",
 			"CC2000",
 		]);
+	});
+
+	it("skips placeholder codes in mixed pages and makes no request for placeholder-only pages", async () => {
+		const placeholder = {
+			id: "CC1002",
+			name: "Introducción a la Programación",
+			categoryTags: ["Programación Funcional"],
+			isPlaceholder: true,
+		};
+		listCoursesMock.mockResolvedValue({ data: [dynamicCourse] });
+		const mixed = await getCourseCatalogPage([
+			{ id: "CC1000", name: "Herramientas", categoryTags: [] },
+			placeholder,
+		]);
+		expect(listCoursesMock).toHaveBeenCalledWith({ codes: ["CC1000"] });
+		expect(mixed.items[1]).toMatchObject({
+			id: "CC1002",
+			isPlaceholder: true,
+			reviewCount: 0,
+		});
+		listCoursesMock.mockClear();
+		const entries = Array.from({ length: 25 }, (_, index) => ({
+			...placeholder,
+			id: `LOCAL${index}`,
+		}));
+		const first = await getCourseCatalogPage(entries);
+		expect(first.items).toHaveLength(24);
+		expect(first.nextCursor).toBe(24);
+		const last = await getCourseCatalogPage(entries, first.nextCursor!);
+		expect(last.items).toHaveLength(1);
+		expect(last.nextCursor).toBeNull();
+		expect(listCoursesMock).not.toHaveBeenCalled();
 	});
 
 	it("keeps static courses when dynamic statistics are missing", () => {

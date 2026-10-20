@@ -1,5 +1,15 @@
 import { CourseCardTitle } from "./CourseCardTitle";
-import { Card, CardContent, Typography, Box, Tooltip } from "@mui/material";
+import {
+	Card,
+	CardContent,
+	Typography,
+	Box,
+	Tooltip,
+	Chip,
+} from "@mui/material";
+import { getAcmAreaUnits } from "../../../constants/acmTaxonomy";
+import { getCourseMetadata } from "../../../constants/courseMetadata";
+import { usePreviewFeatures } from "../../../shared/hooks/usePreviewFeatures";
 import { Link } from "@tanstack/react-router";
 import type { CursoListItem } from "../../../shared/types/domain";
 import {
@@ -20,13 +30,102 @@ interface Props {
 	course: CursoListItem;
 	index: number;
 	showReviewableIndicator?: boolean;
+	acmArea?: string;
+}
+
+function CourseCardAcmPills({
+	code,
+	areaId,
+}: {
+	code: string;
+	areaId?: string;
+}) {
+	const { features } = usePreviewFeatures();
+	const units = getAcmAreaUnits(
+		getCourseMetadata(code)?.acmUnits ?? [],
+		areaId,
+	);
+	if (!features.acmCategories || units.length === 0) return null;
+	return (
+		<Box
+			role="group"
+			aria-label="Unidades ACM"
+			sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, my: 0.5 }}
+		>
+			{units.map((unit) => (
+				<Chip
+					key={unit.id}
+					component="span"
+					label={unit.label}
+					size="small"
+					variant="outlined"
+					sx={{
+						maxWidth: "100%",
+						height: "auto",
+						borderRadius: 999,
+						fontSize: "0.65rem",
+						"& .MuiChip-label": {
+							whiteSpace: "normal",
+							overflowWrap: "anywhere",
+							py: 0.375,
+							px: 1,
+							lineHeight: 1.3,
+						},
+					}}
+				/>
+			))}
+		</Box>
+	);
 }
 
 export default function CourseCard({
 	course,
 	showReviewableIndicator = false,
+	acmArea,
 }: Props) {
 	const isCurrent = course.lastOffered === CURRENT_SEMESTER;
+	if (course.isPlaceholder) {
+		return (
+			<Card
+				aria-disabled="true"
+				sx={{
+					height: "100%",
+					minHeight: COURSE_CARD_MIN_HEIGHT,
+					bgcolor: "action.disabledBackground",
+					color: "text.secondary",
+					boxShadow: "none",
+					backgroundImage: "none",
+					borderColor: "divider",
+					filter: "grayscale(1)",
+					cursor: "default",
+					"&:hover": { transform: "none", boxShadow: "none" },
+				}}
+			>
+				<CardContent
+					sx={{
+						display: "flex",
+						flexDirection: "column",
+						gap: 0.75,
+						height: "100%",
+						p: 2,
+						"&:last-child": { pb: 2 },
+					}}
+				>
+					<Typography variant="overline" sx={courseCardCodeSx}>
+						{course.code}
+					</Typography>
+					<CourseCardTitle title={course.name} />
+					<CourseCardAcmPills code={course.code} areaId={acmArea} />
+					<Typography
+						variant="caption"
+						sx={{ ...courseCardOpinionSx, mt: "auto" }}
+					>
+						Aún no disponible
+					</Typography>
+				</CardContent>
+			</Card>
+		);
+	}
 
 	return (
 		<Card
@@ -123,6 +222,8 @@ export default function CourseCard({
 							{course.lastOffered}
 						</Typography>
 					</Box>
+
+					<CourseCardAcmPills code={course.code} areaId={acmArea} />
 
 					{/* Bottom: opinions | mini radar */}
 					<Box

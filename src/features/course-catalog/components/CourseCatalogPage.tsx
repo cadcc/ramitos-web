@@ -1,6 +1,6 @@
 import { useAuth } from "../../auth";
 import { useInfiniteScroll } from "../../../shared/hooks/useInfiniteScroll";
-import { Box, Button, Fade, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Button, Grid, Skeleton, Typography } from "@mui/material";
 import type { CourseFilters } from "../../../shared/types/domain";
 import type { CourseCatalogEntry } from "../api/courseCatalog.api";
 import { COURSE_CATALOG_PAGE_SIZE } from "../api/courseCatalog.api";
@@ -87,15 +87,26 @@ export function CourseCatalogPage({
 				categoryOptions={categoryOptions}
 			/>
 
-			{indexQuery.isSuccess && !error && !requiresLogin && (
-				<Fade in>
-					<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-						{filteredTotal} {filteredTotal === 1 ? "ramo" : "ramos"}
-					</Typography>
-				</Fade>
-			)}
-			{indexQuery.isLoading && (
-				<Skeleton width={86} height={20} sx={{ mb: 2 }} />
+			{!requiresLogin && (
+				<Typography
+					component="div"
+					variant="body2"
+					color="text.secondary"
+					role="status"
+					aria-label="Cantidad de ramos"
+					sx={{ mb: 2, height: "1lh", position: "relative" }}
+				>
+					{indexQuery.isLoading ? (
+						<Skeleton
+							aria-hidden
+							width={86}
+							height="100%"
+							sx={{ position: "absolute", top: 0, left: 0 }}
+						/>
+					) : indexQuery.isSuccess && !error ? (
+						`${filteredTotal} ${filteredTotal === 1 ? "ramo" : "ramos"}`
+					) : null}
+				</Typography>
 			)}
 
 			{requiresLogin ? (
@@ -137,6 +148,7 @@ export function CourseCatalogPage({
 							<CourseCard
 								course={course}
 								index={index}
+								acmArea={filters.acmArea}
 								showReviewableIndicator={reviewableCourseIds.has(course.id)}
 							/>
 						</Grid>

@@ -40,7 +40,9 @@ test("next-page placeholders keep their dimensions when loaded", async ({
 	await page.setViewportSize({ width: 1024, height: 700 });
 	await page.goto("/");
 	const placeholders = page.getByLabel("Cargando cursos");
-	await expect(page.getByText("25 ramos", { exact: true })).toBeVisible();
+	await expect(
+		page.getByRole("status", { name: "Cantidad de ramos" }),
+	).toHaveText(/\d+ ramos/);
 	await expect(placeholders).toHaveCount(1);
 	await expect(placeholders.getByText(/opiniones/)).toHaveCount(0);
 	await expect(placeholders.locator("svg")).toHaveCount(0);

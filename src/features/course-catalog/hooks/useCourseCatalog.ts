@@ -6,6 +6,10 @@ import {
 	useQueryClient,
 } from "@tanstack/react-query";
 import { useMemo } from "react";
+import {
+	usePreviewFeatures,
+	getPreviewCourseFilters,
+} from "../../../shared/hooks/usePreviewFeatures";
 import type { CourseFilters } from "../../../shared/types/domain";
 import {
 	COURSE_CATALOG_PAGE_SIZE,
@@ -14,7 +18,12 @@ import {
 	getCourseCatalogIndex,
 } from "../api/courseCatalog.api";
 
-export function useCourseCatalog(filters: CourseFilters) {
+export function useCourseCatalog(inputFilters: CourseFilters) {
+	const { features } = usePreviewFeatures();
+	const filters = useMemo(
+		() => getPreviewCourseFilters(inputFilters, features),
+		[inputFilters, features],
+	);
 	const queryClient = useQueryClient();
 	const { user, isAuthenticated } = useAuth();
 	const personalFilter = filters.reviewable !== undefined;
@@ -52,16 +61,28 @@ export function useCourseCatalog(filters: CourseFilters) {
 						},
 				)
 			: entries;
-		return filterCourseCatalog(source, filters);
+		return filterCourseCatalog(
+			features.placeholderCourses
+				? source
+				: source.filter((entry) => !entry.isPlaceholder),
+			filters,
+		);
 	}, [
 		indexQuery.data?.items,
 		filters,
 		personalFilter,
 		isAuthenticated,
 		reviewableQuery.data,
+		features.placeholderCourses,
 	]);
 	const entriesFingerprint = useMemo(
-		() => filteredEntries.map((course) => course.id).join(","),
+		() =>
+			filteredEntries
+				.map(
+					(course) =>
+						`${course.id}:${course.isPlaceholder ? "placeholder" : "available"}`,
+				)
+				.join(","),
 		[filteredEntries],
 	);
 	const pageQueryOptions = (cursor: number) => ({
